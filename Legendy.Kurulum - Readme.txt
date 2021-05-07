@@ -1,0 +1,63 @@
+Bölüm 1 - Komutlar ( FreeBSD 11.2 veya üzeri sürüm )
+
+Putty, Makine veya SSH baðlantý saðladýðýnýz programa aþaðýdaki komutlarý yüklemeler sonrasý sýrasýyla giriniz.
+
+pkg update -f
+
+pkg install gcc8
+
+pkg install python3
+
+Bölüm 2 - Komutlar ( MYSQL )
+
+Eðer makinenizde Mysql5.5 kurulu ve Mysql5.6 yoksa aþaðýdaki gibi yapýnýz.
+Mysql 5.6 kuruluysa iþlem yapmanýza gerek yoktur.
+
+pkg delete -y mysql55-server
+pkg delete -y mysql55-client
+
+cd /var/db
+rm -rf mysql
+
+Bu iþlemin ardýndan makineye reboot atýnýz.
+Yeniden baþlatýldýðýnda komut satýrýna aþaðýdaki sýrayla devam ediniz.
+
+pkg install mysql56-server
+pwd_mkdb -p /etc/master.passwd
+chown -R mysql /var/db/mysql/
+chgrp -R mysql /var/db/mysql/
+sysrc mysql_enable="YES"
+service mysql-server start
+mysqladmin -uroot -p password
+
+Ýlk kýsýma hiçbir þey girmeden "ENTER" tuþuna basýnýz.
+
+Þifre kýsmýna : password yapýnýz.
+Tekrar þifre soracaktýr ona da ayný þekilde password yazýnýz.
+
+
+Daha sonrasýnda cd /usr dizinine teslim etmiþ olduðum home.tar.gz dosyasýný atýp
+
+tar zxvf home.tar.gz
+Komutunu girip home klasörünüzü çýkartýnýz.
+
+cd /var/db dizinine gelip teslim etmiþ olduðum mysql.tar.gz dosyasýný atýp
+
+tar zxvf mysql.tar.gz
+Komutunu girip mysql klasörünüzü çýkartýnýz.
+
+Kurulum iþleminin ardýndan makinenize reboot atýnýz.
+
+Makine tekrar baþladýðýnda "cd/usr/home/main" dizinine gelip sh admin_panel.sh yazýp 1 e basarak kanallarý açabilirsiniz.
+Tek kanal açmak isterseniz "1i" yazýp srv1 ardýndan 1 99 yazarak tek kanal açabilirsiniz.
+Kanallarý kapatmak için panele 2 yazýp "ENTER" basýnýz.
+Loglarý temizlemek için panele 33 yazýp "ENTER" basýnýz.
+Questleri sýfýrlayýp okutmak için panele 777 yazýp "ENTER" basýnýz.
+
+
+Navicatta manuel olarak MD5 þifre oluþturmak için
+account'a sað týklayýp Console seçeneðini seçiniz.
+
+Çýkan ekranda týrnak içerisindeki kýsmý giriniz. "select password ( "12345" );
+
+bu komut size 12345 þifresinin MD5 uzantýsýný verecektir. Daha sonrasýnda account password kýsmýna bu þifreyi girebilirsiniz.
