@@ -1,0 +1,88 @@
+######################################
+### Requirements:
+# php
+# php-mysql
+# bash
+## Permission:
+# find . -name "*.sh" -exec chmod u+x {} \;
+######################################
+### How DBManager works:
+## Open .worker/config/common/mysql.conf to change its mysql data connection
+host user password database
+## e.g.
+localhost tools tools player
+#############################
+### NEW WAY
+## How to use pan.sh to import/export item/mob protos
+root@localhost:/home/DBManager # ./pan.sh
+
+What do you want to do?
+
+1) .txt to db
+2) db to .sql
+3) db to .txt
+4) exit
+#? 1
+Which locale?
+1) common
+2) exit
+#? 1
+
+root@localhost:/home/DBManager # ./pan.sh
+
+What do you want to do?
+
+1) .txt to db
+2) db to .sql
+3) db to .txt
+4) exit
+#? 3
+Which locale?
+1) common
+2) exit
+#? 1
+
+root@localhost:/home/DBManager #
+#############################
+### OLD WAY
+## To export (database to smth) into X_proto.txt you should:
+# ./export.sh
+
+Which data do you want to export ?
+
+1) Excel             4) Names             7) exit
+2) SQL Data          5) SQL Schema
+3) Proto for Client  6) SQL Patch
+#? 1
+
+Select locale for Excel export
+
+1) common
+2) exit
+#? 1
+
+Which table do you want to export
+
+1) item_proto
+2) mob_proto
+3) exit
+#? 1
+## then the relative data/common/item_proto.txt will be created
+## =>
+#? 2
+## then the relative data/common/mob_proto.txt will be created
+#############################
+## Explanation export:
+1) Excel             4) Names             7) exit
+2) SQL Data          5) SQL Schema
+3) Proto for Client  6) SQL Patch
+=
+1. Database to X_proto.txt (to data/common/%s)
+2. Database to X_proto.sql (to data/common/%s)
+3. Useless unimplemented feature for dump_proto.exe
+4. Database to X_names.txt (to data/common/%s)
+5. Empty Database Structure to X_proto.sql (to schema/common/%s)
+6. Creates the 2) 4) 5) things
+
+
+

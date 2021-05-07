@@ -1,0 +1,6 @@
+{
+	"hostname":	"localhost",
+	"user":		"mt2",
+	"password":	"mt2",
+	"database":	"player"
+}

@@ -1,0 +1,18 @@
+﻿  Mysql2Proto.cpp
+C:\DS Project\DS Files\Source\ClientSource\Client\eterBase\filename.h(187,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\DS Project\DS Files\Source\ClientSource\Client\eterBase\filename.h(354,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\DS Project\DS Files\Source\ClientSource\Client\eterLib\SkyBox.h(107,2): warning C5208: TypeDef adında kullanılan adlandırılmamış sınıf, statik olmayan veri üyeleri, üye sabit listeleri veya üye sınıfları dışında üye bildiremez
+C:\DS Project\DS Files\Source\ClientSource\Extern\Python2\pymath.h(22,28): warning C4273: 'round': tutarsız dll bağlantısı
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(533,44): message : önceki 'round' tanımına bakın
+C:\DS Project\DS Files\Source\ClientSource\Tools\Mysql2Proto\Mysql2Proto\Mysql2Proto.cpp(540,98): warning C4474: 'printf' : biçim dizesi için çok fazla sayıda bağımsız değişken geçirildi
+C:\DS Project\DS Files\Source\ClientSource\Tools\Mysql2Proto\Mysql2Proto\Mysql2Proto.cpp(540,98): message : yer tutucular ve bunların parametreleri 1 değişen sayıda bağımsız değişken bekliyor, ancak 2 tane sağlandı
+C:\DS Project\DS Files\Source\ClientSource\Tools\Mysql2Proto\Mysql2Proto\Mysql2Proto.cpp(777,65): warning C4474: 'fprintf' : biçim dizesi için çok fazla sayıda bağımsız değişken geçirildi
+C:\DS Project\DS Files\Source\ClientSource\Tools\Mysql2Proto\Mysql2Proto\Mysql2Proto.cpp(777,65): message : yer tutucular ve bunların parametreleri 0 değişen sayıda bağımsız değişken bekliyor, ancak 1 tane sağlandı
+C:\DS Project\DS Files\Source\ClientSource\Tools\Mysql2Proto\Mysql2Proto\Mysql2Proto.cpp(781,91): warning C4091: 'static ': hiçbir değişken bildirimi yapılmadığında 'optionIndex' solunda yoksayılır
+  lzo.cpp
+  tea.cpp
+  Kod üretiliyor
+  Previous IPDB not found, fall back to full compilation.
+  All 700 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Kodun üretilmesi tamamlandı
+  Mysql2Proto.vcxproj -> C:\DS Project\DS Files\Source\ClientSource\Tools\Mysql2Proto\Release\Mysql2Proto.exe

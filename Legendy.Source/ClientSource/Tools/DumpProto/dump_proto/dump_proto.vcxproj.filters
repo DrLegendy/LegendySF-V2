@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="LZO">
+      <UniqueIdentifier>{2b20929e-886b-432e-825f-f4a936835689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TEA">
+      <UniqueIdentifier>{b5ef2c0d-4fca-4823-b28e-b53b977da30c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CsvFile.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dump_proto.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemCSVReader.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lzo.cpp">
+      <Filter>LZO</Filter>
+    </ClCompile>
+    <ClCompile Include="tea.cpp">
+      <Filter>TEA</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CsvFile.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemCSVReader.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lzo.h">
+      <Filter>LZO</Filter>
+    </ClInclude>
+    <ClInclude Include="tea.h">
+      <Filter>TEA</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionParser.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dump_proto.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="dump_proto.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="main_icon.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

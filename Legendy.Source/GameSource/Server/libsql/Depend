@@ -1,0 +1,27 @@
+AsyncSQL.o: AsyncSQL.cpp AsyncSQL.h ../libthecore/include/stdafx.h \
+ ../libthecore/include/typedef.h ../libthecore/include/heart.h \
+ ../libthecore/include/fdwatch.h ../libthecore/include/socket.h \
+ ../libthecore/include/kstbl.h ../libthecore/include/hangul.h \
+ ../libthecore/include/buffer.h ../libthecore/include/signal.h \
+ ../libthecore/include/log.h ../libthecore/include/main.h \
+ ../libthecore/include/utils.h ../libthecore/include/crypt.h \
+ ../libthecore/include/memcpy.h ../libthecore/include/log.h Semaphore.h
+Semaphore.o: Semaphore.cpp stdafx.h ../libthecore/include/stdafx.h \
+ ../libthecore/include/typedef.h ../libthecore/include/heart.h \
+ ../libthecore/include/fdwatch.h ../libthecore/include/socket.h \
+ ../libthecore/include/kstbl.h ../libthecore/include/hangul.h \
+ ../libthecore/include/buffer.h ../libthecore/include/signal.h \
+ ../libthecore/include/log.h ../libthecore/include/main.h \
+ ../libthecore/include/utils.h ../libthecore/include/crypt.h \
+ ../libthecore/include/memcpy.h AsyncSQL.h ../libthecore/include/log.h \
+ Semaphore.h
+Statement.o: Statement.cpp Statement.h AsyncSQL.h \
+ ../libthecore/include/stdafx.h ../libthecore/include/typedef.h \
+ ../libthecore/include/heart.h ../libthecore/include/fdwatch.h \
+ ../libthecore/include/socket.h ../libthecore/include/kstbl.h \
+ ../libthecore/include/hangul.h ../libthecore/include/buffer.h \
+ ../libthecore/include/signal.h ../libthecore/include/log.h \
+ ../libthecore/include/main.h ../libthecore/include/utils.h \
+ ../libthecore/include/crypt.h ../libthecore/include/memcpy.h \
+ ../libthecore/include/log.h Semaphore.h
+Tellwait.o: Tellwait.cpp

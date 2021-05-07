@@ -1,0 +1,600 @@
+c:\ds project\ds fıles\source\clıentsource\clıent\bın\metın2clıent.bsc
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\bın\metın2clıent.bsc
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\userınterface.pch
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\metın2clıent.pdb
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\stdafx.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\stdafx.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\affectflagcontaıner.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebase.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasebattle.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebaseeffect.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebaseevent.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasemotıon.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasemovement.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasetransform.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\cameraprocedure.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonacce.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonbackground.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonbackgroundmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoncharactermanager.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoncharactermanagermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoncharactermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoneffectmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoneventmanager.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoneventmanagermoudle.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythongameeventmanagermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonıtem.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonıtem.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythongameeventmanagermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoneventmanagermoudle.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoneventmanager.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoneffectmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoncharactermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoncharactermanagermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythoncharactermanager.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonbackgroundmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonbackground.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonacce.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\cameraprocedure.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasetransform.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasemovement.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasemotıon.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebaseevent.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebaseeffect.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebasebattle.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınstancebase.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\affectflagcontaıner.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonıtemmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnonplayer.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnonplayermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayer.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayereventhandler.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerınput.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerınputkeyboard.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerınputmouse.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerskıll.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonquest.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonskıll.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonchat.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonchatmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonexchange.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonexchangemodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonflymodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonguıld.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonmessenger.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonmınımap.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonmınımap.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonmessenger.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonguıld.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonflymodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonexchangemodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonexchange.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonchatmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonchat.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonskıll.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonquest.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerskıll.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerınputmouse.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerınputkeyboard.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayerınput.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayereventhandler.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonplayer.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnonplayermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnonplayer.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonıtemmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonmınımapmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsafebox.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonshop.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythontexttaıl.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythontexttaılmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonpackmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\processscanner.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıon.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıoncamera.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıoncursor.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonevent.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonlogo.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonprocedure.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonwebpage.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonıme.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonımemodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonprofılermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsoundmanagermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsystem.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsystem.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsoundmanagermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonprofılermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonımemodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonıme.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonwebpage.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonprocedure.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonlogo.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıonevent.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıoncursor.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıoncamera.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonapplıcatıon.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\processscanner.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonpackmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythontexttaılmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythontexttaıl.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonshop.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsafebox.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonmınımapmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsystemmodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\guıldmarkdownloader.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\guıldmarkuploader.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\markımage.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\markmanager.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\locale.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\accountconnector.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınsultchecker.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\networkactormanager.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\processcrc.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonexceptıonsender.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkdatagram.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkdatagrammodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstream.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamcommand.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamevent.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreammodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegame.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameactor.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameıtem.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameıtem.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameactor.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegame.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreammodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamevent.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamcommand.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstream.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkdatagrammodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkdatagram.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonexceptıonsender.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\processcrc.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\networkactormanager.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\ınsultchecker.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\accountconnector.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\locale.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\markmanager.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\markımage.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\guıldmarkuploader.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\guıldmarkdownloader.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonsystemmodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasehandshake.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseloadıng.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaselogın.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseofflıne.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseselect.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\serverstatechecker.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\serverstatecheckermodule.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\checklatestfıles.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\hackshıeld.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\nprotectgameguard.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\wıselogıcxtrap.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\gametype.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\movıeman.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\userınterface.sbr
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\userınterface.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\movıeman.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\gametype.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\wıselogıcxtrap.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\nprotectgameguard.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\hackshıeld.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\checklatestfıles.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\serverstatecheckermodule.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\serverstatechecker.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseselect.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseofflıne.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaselogın.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseloadıng.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasehandshake.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\userınterface.pch
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\metın2clıent.pdb
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\stdafx.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\stdafx.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\affectflagcontaıner.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebase.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasebattle.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebaseeffect.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebaseevent.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasemotıon.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasemovement.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasetransform.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\cameraprocedure.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonacce.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonbackground.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonbackgroundmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoncharactermanager.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoncharactermanagermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoncharactermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoneffectmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoneventmanager.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoneventmanagermoudle.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythongameeventmanagermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonıtem.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonıtem.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythongameeventmanagermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoneventmanagermoudle.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoneventmanager.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoneffectmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoncharactermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoncharactermanagermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythoncharactermanager.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonbackgroundmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonbackground.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonacce.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\cameraprocedure.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasetransform.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasemovement.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasemotıon.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebaseevent.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebaseeffect.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebasebattle.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınstancebase.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\affectflagcontaıner.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonıtemmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnonplayer.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnonplayermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayer.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayereventhandler.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerınput.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerınputkeyboard.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerınputmouse.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerskıll.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonquest.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonskıll.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonchat.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonchatmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonexchange.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonexchangemodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonflymodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonguıld.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonmessenger.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonmınımap.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonmınımap.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonmessenger.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonguıld.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonflymodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonexchangemodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonexchange.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonchatmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonchat.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonskıll.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonquest.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerskıll.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerınputmouse.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerınputkeyboard.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayerınput.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayereventhandler.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonplayer.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnonplayermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnonplayer.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonıtemmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonmınımapmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsafebox.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonshop.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythontexttaıl.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythontexttaılmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonpackmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\processscanner.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıon.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıoncamera.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıoncursor.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonevent.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonlogo.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonprocedure.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonwebpage.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonıme.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonımemodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonprofılermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsoundmanagermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsystem.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsystem.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsoundmanagermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonprofılermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonımemodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonıme.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonwebpage.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonprocedure.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonlogo.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıonevent.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıoncursor.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıoncamera.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonapplıcatıon.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\processscanner.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonpackmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythontexttaılmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythontexttaıl.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonshop.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsafebox.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonmınımapmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsystemmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\guıldmarkdownloader.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\guıldmarkuploader.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\markımage.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\markmanager.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\locale.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\accountconnector.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınsultchecker.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\networkactormanager.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\processcrc.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonexceptıonsender.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkdatagram.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkdatagrammodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstream.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamcommand.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamevent.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreammodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegame.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameactor.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameıtem.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameıtem.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegameactor.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasegame.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreammodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamevent.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamcommand.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstream.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkdatagrammodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkdatagram.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonexceptıonsender.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\processcrc.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\networkactormanager.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\ınsultchecker.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\accountconnector.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\locale.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\markmanager.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\markımage.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\guıldmarkuploader.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\guıldmarkdownloader.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonsystemmodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasehandshake.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseloadıng.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaselogın.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseofflıne.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseselect.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\serverstatechecker.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\serverstatecheckermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\checklatestfıles.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\hackshıeld.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\nprotectgameguard.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\wıselogıcxtrap.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\gametype.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\movıeman.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\userınterface.sbr
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\userınterface.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\movıeman.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\gametype.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\wıselogıcxtrap.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\nprotectgameguard.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\hackshıeld.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\checklatestfıles.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\serverstatecheckermodule.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\serverstatechecker.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseselect.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseofflıne.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaselogın.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphaseloadıng.obj
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\pythonnetworkstreamphasehandshake.obj
+c:\ds project\ds fıles\source\clıentsource\clıent\bın\metın2clıent.exe
+c:\ds project\ds fıles\source\clıentsource\clıent\bın\metın2clıent.map
+c:\ds project\ds fıles\source\clıentsource\clıent\bın\metın2clıent.pdb
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\bın\metın2clıent.exe
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\bın\metın2clıent.map
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\bın\metın2clıent.pdb
+c:\ds project\ds fıles\source\clıentsource\clıent\userınterface\release\userınterface.res
+c:\users\burakdayanc\desktop\güncel\clıentsource\clıent\userınterface\release\userınterface.res
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\accountconnector.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\affectflagcontainer.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\cameraprocedure.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\checklatestfiles.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\gametype.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\guildmarkdownloader.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\guildmarkuploader.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\hackshield.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebase.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasebattle.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebaseeffect.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebaseevent.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasemotion.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasemovement.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasetransform.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınsultchecker.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\locale.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\markımage.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\markmanager.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\movieman.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\networkactormanager.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\nprotectgameguard.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\processcrc.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\processscanner.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonacce.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplication.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationcamera.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationcursor.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationevent.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationlogo.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationprocedure.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationwebpage.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonbackground.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonbackgroundmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoncharactermanager.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoncharactermanagermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoncharactermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonchat.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonchatmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoneffectmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoneventmanager.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoneventmanagermoudle.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonexceptionsender.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonexchange.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonexchangemodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonflymodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythongameeventmanagermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonguild.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonıme.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonımemodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonıtem.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonıtemmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonmessenger.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonminimap.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonminimapmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkdatagram.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkdatagrammodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstream.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamcommand.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamevent.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreammodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasegame.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasegameactor.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasegameıtem.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasehandshake.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaseloading.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaselogin.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaseoffline.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaseselect.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnonplayer.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnonplayermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonpackmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayer.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayereventhandler.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerınput.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerınputkeyboard.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerınputmouse.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerskill.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonprofilermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonquest.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsafebox.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonshop.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonskill.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsoundmanagermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsystem.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsystemmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythontexttail.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythontexttailmodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\serverstatechecker.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\serverstatecheckermodule.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\stdafx.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\wiselogicxtrap.obj
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.res
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.pch
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\metin2client.pdb
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\accountconnector.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\affectflagcontainer.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\cameraprocedure.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\checklatestfiles.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\gametype.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\guildmarkdownloader.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\guildmarkuploader.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\hackshield.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebase.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasebattle.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebaseeffect.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebaseevent.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasemotion.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasemovement.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınstancebasetransform.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\ınsultchecker.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\locale.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\markımage.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\markmanager.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\movieman.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\networkactormanager.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\nprotectgameguard.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\processcrc.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\processscanner.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonacce.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplication.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationcamera.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationcursor.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationevent.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationlogo.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationprocedure.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonapplicationwebpage.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonbackground.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonbackgroundmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoncharactermanager.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoncharactermanagermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoncharactermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonchat.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonchatmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoneffectmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoneventmanager.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythoneventmanagermoudle.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonexceptionsender.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonexchange.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonexchangemodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonflymodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythongameeventmanagermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonguild.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonıme.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonımemodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonıtem.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonıtemmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonmessenger.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonminimap.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonminimapmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkdatagram.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkdatagrammodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstream.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamcommand.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamevent.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreammodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasegame.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasegameactor.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasegameıtem.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphasehandshake.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaseloading.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaselogin.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaseoffline.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnetworkstreamphaseselect.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnonplayer.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonnonplayermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonpackmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayer.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayereventhandler.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerınput.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerınputkeyboard.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerınputmouse.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonplayerskill.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonprofilermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonquest.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsafebox.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonshop.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonskill.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsoundmanagermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsystem.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythonsystemmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythontexttail.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\pythontexttailmodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\serverstatechecker.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\serverstatecheckermodule.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\stdafx.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\wiselogicxtrap.sbr
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\..\bin\metin2client.exe
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\bscmake.command.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\bscmake.read.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\bscmake.write.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\cl.command.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\cl.read.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\cl.write.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\link.command.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\link.read.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\link.write.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\rc.command.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\rc.read.1.tlog
+c:\users\burakdayanc\desktop\güncel\clientsource\client\userınterface\release\userınterface.tlog\rc.write.1.tlog

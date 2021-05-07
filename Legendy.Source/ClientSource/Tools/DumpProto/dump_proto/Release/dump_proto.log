@@ -1,0 +1,21 @@
+﻿  ItemCSVReader.cpp
+E:\AltYapı\DSProject\Source\ClientSource\Client\eterBase\filename.h(187,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\AltYapı\DSProject\Source\ClientSource\Client\eterBase\filename.h(354,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\AltYapı\DSProject\Source\ClientSource\Client\eterLib\SkyBox.h(107,2): warning C5208: TypeDef adında kullanılan adlandırılmamış sınıf, statik olmayan veri üyeleri, üye sabit listeleri veya üye sınıfları dışında üye bildiremez
+E:\AltYapı\DSProject\Source\ClientSource\Extern\Python2\pymath.h(22,28): warning C4273: 'round': tutarsız dll bağlantısı
+D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(533,44): message : önceki 'round' tanımına bakın
+  dump_proto.cpp
+E:\AltYapı\DSProject\Source\ClientSource\Client\eterBase\filename.h(187,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\AltYapı\DSProject\Source\ClientSource\Client\eterBase\filename.h(354,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\AltYapı\DSProject\Source\ClientSource\Client\eterLib\SkyBox.h(107,2): warning C5208: TypeDef adında kullanılan adlandırılmamış sınıf, statik olmayan veri üyeleri, üye sabit listeleri veya üye sınıfları dışında üye bildiremez
+E:\AltYapı\DSProject\Source\ClientSource\Extern\Python2\pymath.h(22,28): warning C4273: 'round': tutarsız dll bağlantısı
+D:\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(533,44): message : önceki 'round' tanımına bakın
+E:\AltYapı\DSProject\Source\ClientSource\Tools\DumpProto\dump_proto\dump_proto.cpp(232,19): warning C4477: 'fprintf' : '%s' biçim dizesi 'char *' türü bir bağımsız değişken gerektirir, ancak 6 değişen sayıda bağımsız değişkenin türü 'int'
+E:\AltYapı\DSProject\Source\ClientSource\Tools\DumpProto\dump_proto\dump_proto.cpp(738,104): warning C4474: 'printf' : biçim dizesi için çok fazla sayıda bağımsız değişken geçirildi
+E:\AltYapı\DSProject\Source\ClientSource\Tools\DumpProto\dump_proto\dump_proto.cpp(738,104): message : yer tutucular ve bunların parametreleri 1 değişen sayıda bağımsız değişken bekliyor, ancak 2 tane sağlandı
+  Kod üretiliyor
+  64 of 1052 functions ( 6.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    28 functions had inline decision re-evaluated but remain unchanged
+  Kodun üretilmesi tamamlandı
+  dump_proto.vcxproj -> E:\AltYapı\DSProject\Source\ClientSource\Tools\DumpProto\Release\DumpProto.exe
