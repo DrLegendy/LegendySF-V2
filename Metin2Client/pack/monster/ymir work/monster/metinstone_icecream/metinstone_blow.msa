@@ -1,0 +1,34 @@
+ScriptType               MotionData
+
+MotionFileName           "D:/Ymir Work/monster/metinstone_icecream/metinstone_blow.GR2"
+MotionDuration           1.666667
+Accumulation           0.00	0.00	0.00
+
+Group MotionEventData
+{
+    MotionEventDataCount     2
+    Group Event00
+    {
+        MotionEventType      1
+        StartingTime         0.000000
+        
+        IndependentFlag      0
+        AttachingEnable      0
+        AttachingBoneName    "metinstone_icecream01_Part_19"
+        FollowingEnable      0
+        EffectFileName       "d:/ymir work/effect/background/metinstone_laser.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+    }
+    Group Event01
+    {
+        MotionEventType      1
+        StartingTime         0.008110
+        
+        IndependentFlag      0
+        AttachingEnable      0
+        AttachingBoneName    "metinstone_icecream01_Part_19"
+        FollowingEnable      0
+        EffectFileName       "d:/ymir work/effect/background/metinstone_blow.mse"
+        EffectPosition       0.000000 0.000000 0.000000
+    }
+}

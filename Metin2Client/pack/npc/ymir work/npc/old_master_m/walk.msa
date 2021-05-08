@@ -1,0 +1,6 @@
+ScriptType               MotionData
+
+MotionFileName           "d:\ymir work\npc\old_master_M\walk.GR2"
+MotionDuration           1.0
+Accumulation             -0.15  -124.83 0.00
+

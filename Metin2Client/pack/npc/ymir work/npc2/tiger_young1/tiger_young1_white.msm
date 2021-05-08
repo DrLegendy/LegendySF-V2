@@ -1,0 +1,27 @@
+ScriptType            RaceDataScript
+
+BaseModelFileName     "D:\Ymir Work\npc2\tiger_young1\tiger_young1.GR2"
+
+Group ShapeData
+{
+    PathName 		 ""
+    ShapeDataCount 		 1
+	Group ShapeData00
+	{
+		ShapeIndex			0
+
+		Model				"D:\Ymir Work\npc2\tiger_young1\tiger_young1.GR2"
+		SourceSkin			"D:\Ymir Work\npc2\tiger_young1\tiger_young1.dds"
+		TargetSkin			"D:\Ymir Work\npc2\tiger_young1\tiger_young1_white.dds"
+	}
+}
+Group ShapeData
+{
+    PathName 		 ""
+    ShapeDataCount 		 0
+}
+Group AttachingData
+{
+    AttachingDataCount       0
+}
+
