@@ -1,0 +1,7 @@
+title subImage
+version 1.0
+image "ui_minidungeon_01.dds"
+left 0
+top 169
+right 22
+bottom 191

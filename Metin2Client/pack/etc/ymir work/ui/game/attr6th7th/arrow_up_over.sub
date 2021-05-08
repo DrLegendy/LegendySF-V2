@@ -1,0 +1,7 @@
+title subImage
+version 1.0
+image "properties_01.dds"
+left 110
+top 25
+right 127
+bottom 42

@@ -1,0 +1,7 @@
+title subImage
+version 1.0
+image "occupation/occupation_001.dds"
+left 0
+top 127
+right 219
+bottom 225

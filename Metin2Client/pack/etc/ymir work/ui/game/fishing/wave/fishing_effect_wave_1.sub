@@ -1,0 +1,7 @@
+title subImage
+version 1.0
+image "fishing_01.dds"
+left 30
+top 422
+right 60
+bottom 452

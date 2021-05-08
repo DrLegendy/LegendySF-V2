@@ -1,0 +1,13 @@
+EXCHANGE_ASK_MESSAGE	%s (Lv. %d) ile alýþveriþi onaylýyormusun?
+CHANNEL_SWITCH	Kanal deðiþtir
+CHANNEL_SWITCH_CHANGE	Deðiþtir
+CHANNEL_SWITCH_NOT_SELECT	Seçim yapmadýnýz.
+CHANNEL_SWITCH_ERROR	Giriþ iþlemi yapýlýrken bir hata meydana geldi.
+CHANNEL_SWITCH_DOWN	%s þuan kapalý baþka bir kanal deneyin.
+CHANNEL_SWITCH_FULL	%s þuan dolu baþka bir kanal deneyin.
+CHANNEL_SWITCH_ALREADY_HERE	Zaten bu kanaldasýn.
+CHANNEL_SWITCH_SPECIAL_MAP	Burada kanal deðiþikliði yapamazsýn.
+ITEM_LOCKED	Ruhuna baðlý
+ITEM_UNLOCKED	Ruhundan ayrýlýyor
+REFINE_FAILURE_CAN_NOT_ATTACH0	Bu nesneye %s katamazsýn.
+REFINE_FAILURE_NO_GOLD_SOCKET0	Bu nesneye %s katamazsýn
