@@ -1,0 +1,62 @@
+TextureSet
+
+TextureCount 5
+Start Texture001
+    "D:\YMIR WORK\terrainmaps\N\snow.m\field 01.dds"
+    5.000000
+    5.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture001
+Start Texture002
+    "D:\YMIR WORK\terrainmaps\N\snow.m\snow03.dds"
+    8.000000
+    8.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture002
+Start Texture003
+    "D:\YMIR WORK\terrainmaps\N\snow.m\snow01.dds"
+    9.000000
+    9.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture003
+Start Texture004
+    "D:\YMIR WORK\terrainmaps\N\snow.m\snow02.dds"
+    6.000000
+    6.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture004
+Start Texture005
+    "D:\YMIR WORK\terrainmaps\N\snow.m\stone01.DDS"
+    9.000000
+    9.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture005
+
+
+
+
+
+
+
+
+

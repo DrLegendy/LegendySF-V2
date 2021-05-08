@@ -1,0 +1,15 @@
+TextureSet
+
+TextureCount 01
+
+Start Texture001
+    "D:\YMIR WORK\terrainmaps\N\snow.m\field 01.dds"
+    5.000000
+    5.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture001
+

@@ -1,0 +1,204 @@
+TextureSet
+
+TextureCount 20
+
+Start Texture001
+    "d:\ymir work\terrainmaps\a\grass\grass 02.dds"
+    8.000000
+    8.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture001
+Start Texture002
+    "d:\ymir work\terrainmaps\elemental_01\elemental_02_03.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture002
+Start Texture003
+    "d:\ymir work\terrainmaps\CapeDragonHead\CapeDragon_field001.dds"
+    1.000000
+    1.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture003
+Start Texture004
+    "d:\ymir work\terrainmaps\elemental_01\elemental_02_04.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture004
+Start Texture005
+    "d:\ymir work\terrainmaps\n\flame area\valcano_01.dds"
+    2.000000
+    2.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture005
+Start Texture006
+    "d:\ymir work\terrainmaps\elemental_01\elemental_02_06.dds"
+    2.000000
+    2.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture006
+Start Texture007
+    "d:\ymir work\terrainmaps\n\flame area\valcano_rock.dds"
+    2.000000
+    2.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture007
+Start Texture008
+    "d:\ymir work\terrainmaps\elemental_01\elemental_02_08.dds"
+    3.000000
+    3.000000
+    0.000000
+    0.000000
+    0
+    0
+    0
+End Texture008
+Start Texture009
+    "d:\ymir work\terrainmaps\trent\field\field 01.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture009
+Start Texture010
+    "d:\ymir work\terrainmaps\n\flame area\valcano_04.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture010
+Start Texture011
+    "d:\ymir work\terrainmaps\elemental_01\elemental_02_05.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture011
+Start Texture012
+    "d:\ymir work\terrainmaps\n\snow.m\tile04.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture012
+Start Texture013
+    "d:\ymir work\terrainmaps\n\snow.m\tile05.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture013
+Start Texture014
+    "d:\ymir work\terrainmaps\n\snow.m\tile02.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture014
+Start Texture015
+    "d:\ymir work\terrainmaps\n\snow.m\grass 02.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture015
+Start Texture016
+    "d:\ymir work\terrainmaps\guild_village\guild_village_field003.dds"
+    2.000000
+    2.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture016
+Start Texture017
+    "d:\ymir work\terrainmaps\guild_village\guild_village_cliff002.dds"
+    2.000000
+    2.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture017
+Start Texture018
+    "d:\ymir work\terrainmaps\elemental_01\elemental_02_07.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture018
+Start Texture019
+    "d:\ymir work\terrainmaps\a\grass\grass 03.dds"
+    8.000000
+    8.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture019
+Start Texture020
+    "d:\ymir work\terrainmaps\b\tile\tile03.dds"
+    4.000000
+    4.000000
+    0.000000
+    0.000000
+    1
+    0
+    0
+End Texture020
