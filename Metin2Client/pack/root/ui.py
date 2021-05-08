@@ -615,6 +615,10 @@ class EditLine(TextLine):
 	def SetNumberMode(self):
 		self.numberMode = True
 
+	def CanEdit(self, flag):
+		self.CanClick = flag
+
+
 	#def AddExceptKey(self, key):
 	#	ime.AddExceptKey(key)
 

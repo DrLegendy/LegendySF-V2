@@ -155,6 +155,10 @@ class CInputMain : public CInputProcessor
 		void		Hack(LPCHARACTER ch, const char * c_pData);
 		int			MyShop(LPCHARACTER ch, const char * c_pData, size_t uiBytes);
 
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+		void 		CubeRenewalSend(LPCHARACTER ch, const char* data);
+#endif
+
 		void		Refine(LPCHARACTER ch, const char* c_pData);
 #ifdef ENABLE_ACCE_SYSTEM
 		void		Acce(LPCHARACTER pkChar, const char* c_pData);

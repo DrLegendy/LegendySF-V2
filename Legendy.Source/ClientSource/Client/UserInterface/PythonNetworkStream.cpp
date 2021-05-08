@@ -188,6 +188,11 @@ class CMainPacketHeaderMap : public CNetworkPacketHeaderMap
 #ifdef ENABLE_ACCE_SYSTEM
 			Set(HEADER_GC_ACCE, CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketAcce), STATIC_SIZE_PACKET));
 #endif
+
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+			Set(HEADER_GC_CUBE_RENEWAL,	CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketGCCubeRenewalReceive), STATIC_SIZE_PACKET));
+#endif
+
 			Set(HEADER_GC_UNK_213,			CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketGCUnk213), STATIC_SIZE_PACKET)); // @fixme007
 
 		}

@@ -67,7 +67,7 @@
 
 #define ENABLE_EXTRA_APPLY_BONUS												// Yeni Bonuslar Modulu
 #define ENABLE_ELEMENTAL_APPLY_BONUS											// Elemental Bonuslar Modulu
-
+#define ENABLE_CUBE_RENEWAL_WORLDARD											// Offical Cube Sistemi
 /*
 	###		New Debugging Defines
 */

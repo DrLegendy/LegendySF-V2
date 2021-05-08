@@ -66,6 +66,8 @@ class Interface(object):
 		# END_OF_ITEM_MALL
 
 		self.wndWeb = None
+		if app.ENABLE_CUBE_RENEWAL_WORLDARD:
+			self.wndCubeRenewal = None
 		self.wndTaskBar = None
 		self.wndCharacter = None
 		self.wndInventory = None
@@ -294,6 +296,12 @@ class Interface(object):
 		self.wndItemSelect.Hide()
 	# END_OF_ACCESSORY_REFINE_ADD_METIN_STONE
 
+	if app.ENABLE_CUBE_RENEWAL_WORLDARD:
+		def __MakeCubeRenewal(self):
+			import uicuberenewal
+			self.wndCubeRenewal = uicuberenewal.CubeRenewalWindows()
+			self.wndCubeRenewal.Hide()
+
 	def MakeInterface(self):
 		self.__MakeMessengerWindow()
 		self.__MakeGuildWindow()
@@ -307,6 +315,10 @@ class Interface(object):
 		self.__MakeGameButtonWindow()
 		self.__MakeHelpWindow()
 		self.__MakeTipBoard()
+
+		if app.ENABLE_CUBE_RENEWAL_WORLDARD:
+			self.__MakeCubeRenewal()
+
 		self.__MakeWebWindow()
 		self.__MakeCubeWindow()
 		self.__MakeCubeResultWindow()
@@ -481,6 +493,11 @@ class Interface(object):
 			self.wndItemSelect.Destroy()
 		# END_OF_ACCESSORY_REFINE_ADD_METIN_STONE
 
+		if app.ENABLE_CUBE_RENEWAL_WORLDARD:
+			if self.wndCubeRenewal:
+				self.wndCubeRenewal.Destroy()
+				self.wndCubeRenewal.Close()
+
 		self.wndChatLog.Destroy()
 		for btn in self.questButtonList:
 			btn.SetEvent(0)
@@ -505,6 +522,8 @@ class Interface(object):
 		if self.wndExpandedTaskBar:
 			del self.wndExpandedTaskBar
 		del self.wndEnergyBar
+		if app.ENABLE_CUBE_RENEWAL_WORLDARD:
+			del self.wndCubeRenewal
 		del self.wndCharacter
 		del self.wndInventory
 		if self.wndDragonSoul:
@@ -1135,6 +1154,10 @@ class Interface(object):
 
 	def CloseWbWindow(self):
 		self.wndWeb.Close()
+
+	if app.ENABLE_CUBE_RENEWAL_WORLDARD:
+		def BINARY_CUBE_RENEWAL_OPEN(self):
+			self.wndCubeRenewal.Show()
 
 	def OpenCubeWindow(self):
 		self.wndCube.Open()

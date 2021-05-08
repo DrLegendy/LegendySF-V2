@@ -275,7 +275,9 @@ item	30500	10
 item	30505	10
 reward	460	1
 gold	100000	
-percent	5	
+allow_copy 1
+percent	100
+category SILAH
 end		
 		
 section		
@@ -398,6 +400,7 @@ item	30507	10
 reward	1340	1
 gold	100000	
 percent	30	
+category ZIRH
 end		
 		
 section		

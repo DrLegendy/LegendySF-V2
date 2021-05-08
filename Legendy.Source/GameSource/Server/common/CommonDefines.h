@@ -72,6 +72,8 @@ enum eCommonDefines {
 /////////////////////////////Bizim Eklediklerimiz
 #define ENABLE_EXTRA_APPLY_BONUS																	// Yeni Bonuslar Modulu
 #define ENABLE_ELEMENTAL_APPLY_BONUS																// Yeni Elemental Bonuslar Modulu
+#define ENABLE_CUBE_RENEWAL_WORLDARD																// Official Cube Sistemi
+#define ENABLE_CUBE_ATTR_SOCKET																		// Official Cube Sistemi Fixi
 
 
 

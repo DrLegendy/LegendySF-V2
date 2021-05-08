@@ -79,8 +79,13 @@ void initquest();
 void initsafebox();
 void initguild();
 void initMessenger();
+
 #ifdef ENABLE_ACCE_SYSTEM
 void initAcce();
+#endif
+
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+void intcuberenewal();
 #endif
 
 extern const std::string& ApplicationStringTable_GetString(DWORD dwID);

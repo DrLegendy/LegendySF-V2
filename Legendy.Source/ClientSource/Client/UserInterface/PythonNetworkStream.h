@@ -288,6 +288,12 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool	SendAcceRefinePacket();
 #endif
 
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+		bool CubeRenewalMakeItem(int index_item, int count_item, int index_item_improve);
+		bool CubeRenewalClose();
+		bool RecvCubeRenewalPacket();
+#endif
+
 	//////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////
 	public:

@@ -1874,6 +1874,11 @@ class GameWindow(ui.ScriptWindow):
 				serverCommandItem[0], serverCommandItem[1]
 			)
 
+	if app.ENABLE_CUBE_RENEWAL_WORLDARD:
+		def BINARY_CUBE_RENEWAL_OPEN(self):
+			if self.interface:
+				self.interface.BINARY_CUBE_RENEWAL_OPEN()
+
 	def BINARY_ServerCommand_Run(self, line):
 		try:
 			#print " BINARY_ServerCommand_Run", line

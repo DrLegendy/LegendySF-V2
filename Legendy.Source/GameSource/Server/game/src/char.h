@@ -10,7 +10,11 @@
 #include "constants.h"
 #include "affect.h"
 #include "affect_flag.h"
+#ifndef ENABLE_CUBE_RENEWAL_WORLDARD
 #include "cube.h"
+#else
+#include "cuberenewal.h"
+#endif
 #include "mining.h"
 #include "../../common/CommonDefines.h"
 #ifdef ENABLE_ACCE_SYSTEM

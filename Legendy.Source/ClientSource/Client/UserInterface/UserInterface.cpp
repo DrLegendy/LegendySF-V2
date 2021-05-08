@@ -614,6 +614,10 @@ bool RunMainScript(CPythonLauncher& pyLauncher, const char* lpCmdLine)
 	// inituiscriptlibManager();
 #endif
 
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+	intcuberenewal();
+#endif
+
 	NANOBEGIN
 
     PyObject * builtins = PyImport_ImportModule("__builtin__");

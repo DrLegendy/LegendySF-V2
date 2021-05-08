@@ -38,6 +38,10 @@
 
 #include "AccountConnector.h"
 
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+#include "PythonCubeRenewal.h"
+#endif
+
 #include "ServerStateChecker.h"
 #include "AbstractApplication.h"
 #include "MovieMan.h"
@@ -362,6 +366,9 @@ class CPythonApplication : public CMSApplication, public CInputKeyboard, public 
 
 		CPythonSystem				m_pySystem;
 
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+	CPythonCubeRenewal 			m_pyCubeRenewal;
+#endif
 
 		PyObject *					m_poMouseHandler;
 		D3DXVECTOR3					m_v3CenterPosition;

@@ -2115,6 +2115,31 @@ ACMD(do_gift)
 	ch->ChatPacket(CHAT_TYPE_COMMAND, "gift");
 }
 
+#ifdef ENABLE_CUBE_RENEWAL_WORLDARD
+ACMD(do_cube)
+{
+
+	const char *line;
+	char arg1[256], arg2[256], arg3[256];
+	line = two_arguments(argument, arg1, sizeof(arg1), arg2, sizeof(arg2));
+	one_argument(line, arg3, sizeof(arg3));
+
+	if (0 == arg1[0])
+	{
+		return;
+	}
+
+	switch (LOWER(arg1[0]))
+	{
+		case 'o':	// open
+			Cube_open(ch);
+			break;
+
+		default:
+			return;
+	}
+}
+#else
 ACMD(do_cube)
 {
 	if (!ch->CanDoCube())
@@ -2124,8 +2149,9 @@ ACMD(do_cube)
 	int cube_index = 0, inven_index = 0;
 	const char *line;
 
+	int inven_type = 0;
+	
 	char arg1[256], arg2[256], arg3[256];
-
 	line = two_arguments(argument, arg1, sizeof(arg1), arg2, sizeof(arg2));
 	one_argument(line, arg3, sizeof(arg3));
 
@@ -2145,11 +2171,11 @@ ACMD(do_cube)
 	const std::string& strArg1 = std::string(arg1);
 
 	// r_info (request information)
-
+	// /cube r_info     ==> (Client -> Server) CoAc NPC¡Æ¢® ¢¬¢¬¥ìe ¨ùo AO¢¥A ¡¤©ö¨öACC ¢¯aA¡í
 	//					    (Server -> Client) /cube r_list npcVNUM resultCOUNT 123,1/125,1/128,1/130,5
 	//
-
-
+	// /cube r_info 3   ==> (Client -> Server) CoAc NPC¡Æ¢® ¢¬¢¬¥ìe¨ùo AO¢¥A ¡¤©ö¨öACC A©¬ 3©ö©ªA¡Æ ¨ú¨¡AIAUA¡í ¢¬¢¬¥ìa¢¥A ¥ì¡Í CE¢¯aCN A¢´¨¬¢¬¢¬| ¢¯aA¡í
+	// /cube r_info 3 5 ==> (Client -> Server) CoAc NPC¡Æ¢® ¢¬¢¬¥ìe¨ùo AO¢¥A ¡¤©ö¨öACC A©¬ 3©ö©ªA¡Æ ¨ú¨¡AIAU¨¬IAI AIEA 5¡Æ©øAC ¨ú¨¡AIAUA¡í ¢¬¢¬¥ìa¢¥A ¥ì¡Í CE¢¯aCN Ac¡¤a A¢´¨¬¢¬¢¬| ¢¯aA¡í
 	//					   (Server -> Client) /cube m_info startIndex count 125,1|126,2|127,2|123,5&555,5&555,4/120000@125,1|126,2|127,2|123,5&555,5&555,4/120000
 	//
 	if (strArg1 == "r_info")
@@ -2189,8 +2215,7 @@ ACMD(do_cube)
 
 		case 'a':	// add cue_index inven_index
 			{
-				if (0 == arg2[0] || !isdigit(*arg2) ||
-					0 == arg3[0] || !isdigit(*arg3))
+				if (0 == arg2[0] || !isdigit(*arg2) || 0 == arg3[0] || !isdigit(*arg3))
 					return;
 
 				str_to_number(cube_index, arg2);
@@ -2223,6 +2248,7 @@ ACMD(do_cube)
 			return;
 	}
 }
+#endif
 
 ACMD(do_in_game_mall)
 {

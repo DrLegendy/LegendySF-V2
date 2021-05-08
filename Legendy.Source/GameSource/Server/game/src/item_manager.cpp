@@ -20,7 +20,11 @@
 
 #include "../../common/VnumHelper.h"
 #include "DragonSoul.h"
+#ifndef ENABLE_CUBE_RENEWAL_WORLDARD
 #include "cube.h"
+#else
+#include "cuberenewal.h"
+#endif
 
 ITEM_MANAGER::ITEM_MANAGER()
 	: m_iTopOfTable(0), m_dwVIDCount(0), m_dwCurrentID(0)
