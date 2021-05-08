@@ -1,0 +1,12 @@
+ScriptType	MapSetting
+
+CellScale	200
+HeightScale	0.500000
+
+ViewRadius	128
+
+MapSize	1	1
+BasePosition	307200	1792000
+TextureSet	textureset\metin2_boss_entrance.txt
+Environment	map_boss_entrance.msenv
+

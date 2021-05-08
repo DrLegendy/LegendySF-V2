@@ -1,0 +1,16 @@
+ScriptType	MapSetting
+
+CellScale	200
+HeightScale	0.500000
+
+ViewRadius	256
+
+MapSize	5	5
+BasePosition	128000	921600
+TextureSet	textureset\metin2_map_elemental_02.txt
+Environment	metin2_map_elemental_02.msenv
+Environment1	metin2_map_elemental_02_01.msenv
+
+EnvironmentRange1	0	0	1280	640	metin2_map_elemental_02.msenv
+EnvironmentRange2	0	640	1280	1280	metin2_map_elemental_02_01.msenv
+
