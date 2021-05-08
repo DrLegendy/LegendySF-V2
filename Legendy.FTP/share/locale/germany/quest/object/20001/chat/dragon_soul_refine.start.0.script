@@ -1,0 +1,3 @@
+say_title ( mob_name ( 20001 ) ) 
+say ( gameforge . dragon_soul_refine . _020_say ) 
+ds . open_refine_window ( ) 

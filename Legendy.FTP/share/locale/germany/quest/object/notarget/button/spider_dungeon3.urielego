@@ -1,0 +1,5 @@
+say_title ( "Yeni tehlike" ) 
+say ( "" ) 
+say ( "Bilgin Uriel'in yanına git ve yazıyı ona göster." ) 
+say ( "Yazıyı çevirmesini bilir muhakkak." ) 
+say ( "" ) 

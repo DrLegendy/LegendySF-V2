@@ -1,0 +1,4 @@
+local setting = flame_dungeon . setting ( ) 
+flame_dungeon . clear_timer ( d . get_map_index ( ) ) 
+d . setf ( "party_leader_pid" , 0 ) 
+pc . warp ( 5980 * 100 , 7075 * 100 , 62 ) 

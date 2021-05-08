@@ -1,0 +1,4 @@
+setskin ( NOWINDOW ) 
+makequestbutton ( "Binicilik egitimi basarisiz." ) 
+q . set_title ( "Binicilik egitimi basarisiz" ) 
+q . start ( ) 

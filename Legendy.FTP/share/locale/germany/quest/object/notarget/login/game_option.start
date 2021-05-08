@@ -1,0 +1,29 @@
+local val = 0 
+local msg = gameforge . game_option . _100_say .. " " 
+if pc . getqf ( "block_exchange" ) == 1 then 
+msg = msg .. gameforge . game_option . _110_say val = val + 1 
+end 
+if pc . getqf ( "block_guild_invite" ) == 1 then 
+val = val + 4 
+msg = msg .. gameforge . game_option . _120_say .. " " 
+end 
+if pc . getqf ( "block_messenger_invite" ) == 1 then 
+msg = msg .. gameforge . game_option . _130_say .. " " 
+val = val + 16 
+end 
+if pc . getqf ( "block_party_invite" ) == 1 then 
+msg = msg .. gameforge . game_option . _140_say .. " " 
+val = val + 2 
+end 
+if pc . getqf ( "block_party_request" ) == 1 then 
+msg = msg .. gameforge . game_option . _150_say .. " " 
+val = val + 32 
+end 
+if pc . getqf ( "block_whisper" ) == 1 then 
+msg = msg .. gameforge . game_option . _160_say .. " " 
+val = val + 8 
+end 
+if val ~= 0 then 
+syschat ( msg ) 
+end 
+pc . send_block_mode ( val ) 

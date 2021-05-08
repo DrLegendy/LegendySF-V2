@@ -1,0 +1,2 @@
+local setting = flame_dungeon . setting ( ) 
+pc . warp ( setting . outside_entry_pos [ 1 ] * 100 , setting . outside_entry_pos [ 2 ] * 100 , 62 ) 

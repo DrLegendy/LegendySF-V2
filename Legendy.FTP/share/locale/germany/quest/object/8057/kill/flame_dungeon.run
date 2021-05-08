@@ -1,0 +1,4 @@
+if flame_dungeon . is_flamed ( d . get_map_index ( ) ) and d . getf ( "level" ) == 16 then notice_in_map ( "Araf Metini Yok Edildi." ) 
+notice_in_map ( "Yeni görev için Am-heh ile görüþün..." ) 
+flame_dungeon . level_clear ( ) 
+ return end 

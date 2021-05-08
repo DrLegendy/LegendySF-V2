@@ -1,0 +1,2 @@
+if get_time ( ) >= pc . getf ( "pony_buy" , "make_time" ) then setstate ( "buy" ) 
+ return end 

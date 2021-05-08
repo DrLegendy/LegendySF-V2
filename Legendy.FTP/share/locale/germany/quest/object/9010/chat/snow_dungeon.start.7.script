@@ -1,0 +1,5 @@
+local set = snow_dungeon . get_settings ( ) 
+local warp_to_level = set . Position_level_1 local level = 2 
+say ( "Eski: x: " .. warp_to_level [ 1 ] .. " y:" .. warp_to_level [ 2 ] .. "" ) 
+local warp_to_level = set . _G [ "Position_level_" .. level ] 
+say ( "Yeni: x: " .. warp_to_level [ 1 ] .. " y:" .. warp_to_level [ 2 ] .. "" ) 

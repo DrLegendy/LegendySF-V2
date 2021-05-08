@@ -1,0 +1,17 @@
+d . setf ( "level" , 4 ) 
+d . jump_all ( 3072 + 70 , 12032 + 585 ) 
+d . regen_file ( "data/dungeon/katakomb/catacomb_kat4.txt" ) 
+notice_in_map ( "5. seviyeye ulaþmak için labirentte yolunuzu bulun!" ) 
+local lab = number ( 1 , 4 ) 
+if lab == 1 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_warps1.txt" ) 
+end 
+if lab == 2 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_warps2.txt" ) 
+end 
+if lab == 3 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_warps3.txt" ) 
+end 
+if lab == 4 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_warps4.txt" ) 
+end 

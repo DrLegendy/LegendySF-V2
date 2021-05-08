@@ -1,0 +1,3 @@
+say ( "Azrail yenildi. Devil's Catacomb'a nihayet" ) 
+say ( "huzur hakim. Þimdi yeryüzüne ýþýnlanacaksýn." ) 
+timer ( "catacomb_azrail" , 30 ) 

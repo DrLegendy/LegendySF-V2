@@ -1,0 +1,33 @@
+local set = snow_dungeon . get_settings ( ) 
+local n = party . getf ( "ice_dungeon_map_index" ) 
+local cord = set . base_cord local level = d . getf_from_map_index ( "level" , n ) 
+if level == 0 then 
+say_npc_name ( ) 
+say ( "Grubunuz zaten Buzdaði'ni fethetti." ) 
+return 
+end 
+if pc . getqf ( "out_party_time" ) < get_global_time ( ) then 
+say_npc ( ) 
+say ( "" ) 
+say ( "Du hast länger als  " .. math . ceil ( set . DurationMaxOnReJoinGroup / 60 ) .. " Minute(n) vor dem" ) 
+say ( "Eisberg verweilt und kannst jetzt nicht" ) 
+say ( "mehr eintreten." ) 
+return 
+end 
+if n == 0 then 
+setskin ( NOWINDOW ) 
+return 
+else 
+say_npc ( ) 
+say ( "" ) 
+say ( "Tekrar grubuna katýlmak istiyor musun?" ) 
+if select ( "Evet" , "Hayýr" ) == 1 then 
+local warp_to_level = set . Position_level_1 local level = d . getf_from_map_index ( "level" , n ) 
+if level >= 1 and level <= 10 then 
+if level == 1 then warp_to_level = set . Position_level_1 elseif level == 2 then warp_to_level = set . Position_level_2 elseif level == 3 then warp_to_level = set . Position_level_3 elseif level == 4 then warp_to_level = set . Position_level_4 elseif level == 5 then warp_to_level = set . Position_level_5 elseif level == 6 then warp_to_level = set . Position_level_6 elseif level == 7 then warp_to_level = set . Position_level_7 elseif level == 8 then warp_to_level = set . Position_level_8 elseif level == 9 then warp_to_level = set . Position_level_9 elseif level == 10 then warp_to_level = set . Position_level_10 end 
+pc . warp ( ( cord [ 1 ] + warp_to_level [ 1 ] ) * 100 , ( cord [ 2 ] + warp_to_level [ 2 ] ) * 100 , n ) 
+else 
+return 
+end 
+end 
+end 

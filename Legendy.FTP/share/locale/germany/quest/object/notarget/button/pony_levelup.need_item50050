@@ -1,0 +1,8 @@
+say_title ( "At madalyonu bul!" ) 
+say ( "" ) 
+say_reward ( "Binicilik egitiminden mezun olabilmek için bir " ) 
+say_reward ( "at madalyonuna ihtiyacin var." ) 
+say_reward ( "Bunun en kolay yolu Maymun Zindanindan almak." ) 
+say ( "" ) 
+setstate ( "start" ) 
+q . done ( ) 

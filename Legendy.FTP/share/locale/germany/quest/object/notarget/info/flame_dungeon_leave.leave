@@ -1,0 +1,11 @@
+say_title ( "Kýrmýzý Ejderha Kalesi" ) 
+say ( "Kýrmýzý Ejderha Kalesi'nden" ) 
+say ( "çýkmak mý istiyorsun?" ) 
+local warp = select ( "Evet" , "Hayýr" ) 
+if warp == 1 then 
+clear_letter ( ) 
+q . done ( ) 
+pc . warp ( 5980 * 100 , 7075 * 100 , 62 ) 
+else 
+say ( "Ýyi þanslar!" ) 
+end 

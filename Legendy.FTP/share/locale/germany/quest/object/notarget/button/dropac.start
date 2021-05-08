@@ -1,0 +1,19 @@
+if pc . is_gm ( ) then local sec = select ( "Drop Aç " , "Drop Kapat " , "Kapat " ) 
+if sec == 1 then 
+say_yesil ( "Merhaba " .. pc . get_name ( ) .. " " ) 
+say_sari ( "Bu bölümden drop açabilirsin. " ) 
+say_kirmizi ( "Drop oranlarý kaç olarak açýlsýn? " ) 
+local dropdeger = input ( ) 
+command ( "priv 0 1 " .. dropdeger .. " 1000" ) 
+command ( "priv 0 2 " .. dropdeger .. " 1000" ) 
+command ( "priv 0 4 " .. dropdeger .. " 1000" ) 
+chat ( "Droplar aktifleþti. " ) 
+elseif sec == 2 then 
+command ( "priv 0 1 0 1000" ) 
+command ( "priv 0 2 0 1000" ) 
+command ( "priv 0 4 0 1000" ) 
+chat ( "Droplar kapatýldý. " ) 
+elseif sec == 3 then 
+end 
+send_letter ( " Drop Aç " ) 
+ return end 

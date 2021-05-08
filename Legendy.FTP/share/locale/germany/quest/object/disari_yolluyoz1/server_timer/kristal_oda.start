@@ -1,0 +1,6 @@
+notice_all ( "CH 1: Mavi Ejderha geri döndü!" ) 
+game . set_event_flag ( "kesilen_metin1" , 0 ) 
+purge_area ( 829200 , 1.0596e+06 , 844200 , 1.0746e+06 ) 
+clear_server_timer ( "ejderi_kescen1" , get_server_timer_arg ( ) ) 
+game . set_event_flag ( "ejder_kullanimda1" , 0 ) 
+forked . warp_all_in_map ( "79" , "73" , "180100" , "1220400" , 1 ) 

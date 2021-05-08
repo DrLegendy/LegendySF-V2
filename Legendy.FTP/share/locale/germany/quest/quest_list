@@ -1,0 +1,83 @@
+### To compile all the quests written in here, you just have to do:
+## ./pre_qc.py -ac
+### OR
+## python pre_qc.py -ac
+
+
+## READ
+game_option.quest
+pet_system.quest
+ride.quest
+
+
+## SKIPPED - if commented with "#", it will be skipped just like these:
+# samples/guild_make.quest
+# samples/marble_drop.quest
+# samples/mob_drop_item.quest
+
+
+
+## all_quests
+all_quests/admin_quests/bug_block.lua
+all_quests/admin_quests/map_index.lua
+all_quests/admin_quests/open_drop.lua
+all_quests/event_quests/ox_event.lua
+all_quests/general_quests/cor_dragonis.lua
+all_quests/general_quests/exp_helper.lua
+all_quests/general_quests/startup_options.lua
+all_quests/guild_quests/alter_of_power.lua
+all_quests/guild_quests/guild_craft.lua
+all_quests/guild_quests/guild_land.lua
+all_quests/guild_quests/guild_management.lua
+all_quests/guild_quests/guild_ranking.lua
+all_quests/guild_quests/guild_smith.lua
+all_quests/guild_quests/war_bet.lua
+all_quests/guild_quests/war_join.lua
+all_quests/guild_quests/war_list.lua
+all_quests/horse_quests/horse_info.lua
+all_quests/horse_quests/horse_level_up.lua
+all_quests/horse_quests/horse_menu.lua
+all_quests/horse_quests/horse_mission.lua
+all_quests/horse_quests/horse_revive.lua
+all_quests/horse_quests/horse_ticket.lua
+all_quests/horse_quests/horse_upgrade.lua
+all_quests/horse_quests/horse_use.lua
+all_quests/horse_quests/take_horse.lua
+all_quests/item_quests/change_empire.lua
+all_quests/item_quests/change_sex.lua
+all_quests/item_quests/reset_status.lua
+all_quests/item_quests/teleport_ring.lua
+all_quests/item_quests/dragon_charm.lua
+all_quests/map_quests/barones_dungeon.lua
+all_quests/map_quests/barones_mission.lua
+all_quests/map_quests/catacomb_dungeon.lua
+all_quests/map_quests/razador_dungeon.lua
+all_quests/map_quests/razador_dungeon_exit.lua
+all_quests/map_quests/blue_dragon_dungeon.lua
+all_quests/map_quests/nemere_dungeon.lua
+all_quests/map_quests/spider_dungeon.lua
+all_quests/map_quests/spider_dungeon2.lua
+all_quests/map_quests/devil_tower_dungeon.lua
+all_quests/mount_quests/mount.lua
+all_quests/npc_quests/blacksmith.lua
+all_quests/npc_quests/blacksmith_info.lua
+all_quests/npc_quests/cube.lua
+all_quests/npc_quests/dragon_soul.lua
+all_quests/npc_quests/dragon_soul_shop.lua
+all_quests/npc_quests/dragon_soul_upgrade.lua
+all_quests/npc_quests/energy.lua
+all_quests/npc_quests/fisher.lua
+all_quests/npc_quests/marriage.lua
+all_quests/npc_quests/mining.lua
+all_quests/npc_quests/npc_talks.lua
+all_quests/npc_quests/reset_skills.lua
+all_quests/npc_quests/teachers.lua
+all_quests/npc_quests/warehouse.lua
+all_quests/npc_quests/teleporter.lua
+all_quests/pet_quests/pets.lua
+all_quests/system_quests/sash.lua
+all_quests/system_quests/sash_mission.lua
+
+
+## EX
+# sash.quest

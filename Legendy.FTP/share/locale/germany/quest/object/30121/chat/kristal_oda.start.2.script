@@ -1,0 +1,20 @@
+local saniyekalan1 = ( game . get_event_flag ( "time_11" ) - get_time ( ) ) 
+local dakikakalan1 = math . ceil ( saniyekalan1 / 60 ) 
+local saniyekalan2 = ( game . get_event_flag ( "time_12" ) - get_time ( ) ) 
+local dakikakalan2 = math . ceil ( saniyekalan2 / 60 ) 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Þuan ejderha odasýna gireceðin aktif kanallar:" ) 
+if game . get_event_flag ( "ejder_kullanimda1" ) ~= 0 and dakikakalan1 > 0 then 
+say_green ( "CH1:Ejderha odasý (Dolu)" ) 
+else 
+say_yellow ( "CH1:Ejderha odasý (Boþ)" ) 
+end 
+if game . get_event_flag ( "ejder_kullanimda2" ) ~= 0 and dakikakalan2 > 0 then 
+say_green ( "CH2:Ejderha odasý (Dolu)" ) 
+else 
+say_yellow ( "CH2:Ejderha odasý (Boþ)" ) 
+end 
+say_reward ( "CH3:Ejderha odasýna giriþler kapalý." ) 
+say_reward ( "CH4:Ejderha odasýna giriþler kapalý." ) 
+say ( "" ) 

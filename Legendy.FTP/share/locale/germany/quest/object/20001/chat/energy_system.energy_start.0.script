@@ -1,0 +1,21 @@
+say_title ( "Simyacý " ) 
+say ( "Yapabildin mi? Enerji parçasý elde edebildin mi?" ) 
+say ( "Simya yardýmýyla parçalayabileceðim daha fazla" ) 
+say ( "eþya getir bana. Tekniðim henüz mükemmelleþmedi." ) 
+say ( "Bu yüzden ne kadar parça elde edebileceðine dair" ) 
+say ( "bir garanti veremeyeceðim." ) 
+wait ( ) 
+say_title ( "Simyacý " ) 
+say ( "Tek bir þart var: Kendi seviyen ve eþyanýn" ) 
+say ( "seviyesi en az 35 olmalý. Hým, bir göz atalým" ) 
+say ( "bakalým..." ) 
+wait ( ) 
+if pc . get_level ( ) >= 35 then 
+say_title ( "Simyacý " ) 
+say ( "Ah süper! Güçlü ve tecrübelisin. Ýþlenecek eþyayý " ) 
+say ( "ver bakalým." ) 
+else 
+say_title ( "Simyacý " ) 
+say ( "Henüz yeterince güçlü deðilsin! En az 35." ) 
+say ( "seviyeye ulaþtýðýnda tekrar gel." ) 
+end 

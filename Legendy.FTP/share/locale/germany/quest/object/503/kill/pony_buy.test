@@ -1,0 +1,7 @@
+pc . setqf ( "kill_count" , pc . getqf ( "kill_count" ) + 1 ) 
+q . set_counter ( "Öldürmen gereken:" , 20 - pc . getqf ( "kill_count" ) ) 
+if get_time ( ) >= pc . getqf ( "limit_time" ) then 
+setstate ( "failure" ) 
+end 
+if pc . getqf ( "kill_count" ) >= 20 and pc . getqf ( "limit_time" ) >= get_time ( ) then setstate ( "report" ) 
+ return end 

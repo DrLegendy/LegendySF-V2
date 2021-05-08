@@ -1,0 +1,4 @@
+if snow_dungeon . is_nemeres_dungeon ( ) == true then 
+local set = snow_dungeon . get_settings ( ) 
+pc . setqf ( "out_party_time" , get_global_time ( ) + set . DurationMaxOnReJoinGroup ) 
+end 

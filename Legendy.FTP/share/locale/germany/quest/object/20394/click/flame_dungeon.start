@@ -1,0 +1,3 @@
+if pc . get_level ( ) >= 90 then pc . give_item2 ( 71175 , 1 ) 
+set_state ( "run" ) 
+ return end 

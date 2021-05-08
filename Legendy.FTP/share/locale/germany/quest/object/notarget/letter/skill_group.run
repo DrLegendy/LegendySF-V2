@@ -1,0 +1,25 @@
+if pc . get_skill_group ( ) == 0 then send_letter ( "Beceri Eðitimi" ) 
+local job = pc . get_job ( ) 
+if job == 0 then 
+local v = pc_find_skill_teacher_vid ( 1 ) 
+if 0 ~= v then target . vid ( "teacher1" , v , "Bedensel Savas Ögretmeni" ) end 
+local v = pc_find_skill_teacher_vid ( 2 ) 
+if 0 ~= v then target . vid ( "teacher2" , v , "Zihinsel Savas Ögretmeni" ) end 
+elseif job == 1 then 
+local v = pc_find_skill_teacher_vid ( 1 ) 
+if 0 ~= v then target . vid ( "teacher3" , v , "Yakin Dövüþ Ögretmeni" ) end 
+local v = pc_find_skill_teacher_vid ( 2 ) 
+if 0 ~= v then target . vid ( "teacher4" , v , "Uzak Dövüþ Ögretmeni" ) end 
+elseif job == 2 then 
+local v = pc_find_skill_teacher_vid ( 1 ) 
+if 0 ~= v then target . vid ( "teacher5" , v , "Büyülü Silah Ögretmeni" ) end 
+local v = pc_find_skill_teacher_vid ( 2 ) 
+if 0 ~= v then target . vid ( "teacher6" , v , "Kara Büyü Ögretmeni" ) end 
+elseif job == 3 then 
+local v = pc_find_skill_teacher_vid ( 1 ) 
+if 0 ~= v then target . vid ( "teacher7" , v , "Ejderha Gücü Ögretmeni" ) end 
+local v = pc_find_skill_teacher_vid ( 2 ) 
+if 0 ~= v then target . vid ( "teacher8" , v , "iyilestirme Ögretmeni" ) end 
+clear_letter ( ) 
+end 
+ return end 

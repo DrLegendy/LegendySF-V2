@@ -1,0 +1,4 @@
+if d . select ( get_server_timer_arg ( ) ) then 
+notice_in_map ( "Zaman doldu." ) 
+server_timer ( "Jp_OutAll" , 1 , d . get_map_index ( ) ) 
+end 

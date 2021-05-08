@@ -1,0 +1,20 @@
+d . setf ( "level" , 5 ) 
+d . jump_all ( 3072 + 846 , 12032 + 898 ) 
+d . regen_file ( "data/dungeon/katakomb/catacomb_kat5.txt" ) 
+notice_in_map ( "Tartoruslarý yen ve altýncý seviyeye geçebilmek için Surat Totemini ele geçirin." ) 
+local gar = number ( 1 , 5 ) 
+if gar == 1 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_boss1.txt" ) 
+end 
+if gar == 2 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_boss2.txt" ) 
+end 
+if gar == 3 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_boss3.txt" ) 
+end 
+if gar == 4 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_boss4.txt" ) 
+end 
+if gar == 5 then 
+d . regen_file ( "data/dungeon/katakomb/catacomb_boss5.txt" ) 
+end 

@@ -1,0 +1,21 @@
+local pet_info = pet_system . get_pet_info ( item . vnum ) 
+if null ~= pet_info then 
+local mobVnum = pet_info [ 1 ] 
+local petName = pet_info [ 2 ] 
+local spawn_effect_file_name = pet_system . get_spawn_effect_file ( pet_info [ 3 ] ) 
+if true == pet . is_summon ( mobVnum ) then 
+if spawn_effect_file_name ~= nil then 
+pet . spawn_effect ( mobVnum , spawn_effect_file_name ) 
+end 
+pet . unsummon ( mobVnum ) 
+else 
+if pet . count_summoned ( ) < 1 then 
+pet . summon ( mobVnum , petName , false ) 
+else 
+syschat ( gameforge . pet_system . _030_chat ) 
+end 
+if spawn_effect_file_name ~= nil then 
+pet . spawn_effect ( mobVnum , spawn_effect_file_name ) 
+end 
+end 
+end 

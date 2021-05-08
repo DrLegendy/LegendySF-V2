@@ -1,0 +1,7 @@
+if game . get_event_flag ( "spider_use_time" ) - get_time ( ) <= 0 then 
+purge_area ( 81200 , 613200 , 94200 , 628200 ) 
+pc . warp ( 68900 , 611000 ) 
+pc . setqf ( "sen_girdin" , get_time ( ) + 30 ) 
+pc . delqf ( "go_to_spider" ) 
+cleartimer ( "barones_check" ) 
+end 

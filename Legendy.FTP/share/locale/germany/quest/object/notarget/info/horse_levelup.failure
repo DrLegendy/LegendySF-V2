@@ -1,0 +1,7 @@
+say_title ( "At üzerinden saldiri olmadi." ) 
+say ( "" ) 
+say ( "Düstün veya indin." ) 
+say ( "Görev basarisiz." ) 
+say ( "" ) 
+setstate ( "start" ) 
+q . done ( ) 

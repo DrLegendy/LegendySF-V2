@@ -1,0 +1,190 @@
+
+-- -- PET_SYSTEM begin
+-- gameforge.pet_system = {}
+-- gameforge.pet_system._030_chat = "Non puoi ancora evocare questo pet "
+-- gameforge.pet_system.petname_34001 = " - Fenice di fuoco "
+-- gameforge.pet_system.petname_34002 = " - Cucciolo di Renna "
+-- gameforge.pet_system.petname_34003 = " - Fenice di Ghiaccio "
+-- gameforge.pet_system.petname_34004 = " - Piccolo Azrael "
+-- gameforge.pet_system.petname_34005 = " - Porky "
+-- gameforge.pet_system.petname_34006 = " - Rufus "
+-- gameforge.pet_system.petname_34007 = " - Khan "
+-- gameforge.pet_system.petname_34008 = " - Leonida "
+-- gameforge.pet_system.petname_34009 = " - Piccolo Azrael(oro) "
+-- gameforge.pet_system.petname_34010 = " - Bambi "
+-- gameforge.pet_system.petname_34011 = " - Knuud "
+-- gameforge.pet_system.petname_34012 = " - Bao Bao "
+-- gameforge.pet_system.petname_34013 = " - Miniboia Grassoccio (nero) "
+-- gameforge.pet_system.petname_34014 = " - Miniboa  Grassoccio (oro) "
+-- gameforge.pet_system.petname_34015 = " - Boney "
+-- gameforge.pet_system.petname_34016 = " - Fenice di Giada "
+-- gameforge.pet_system.petname_34017 = " - Porky Polare "
+-- gameforge.pet_system.petname_34018 = " - Rufus Gelido "
+-- gameforge.pet_system.petname_34019 = " - Khan dell'Artide "
+-- gameforge.pet_system.petname_34020 = " - Leonida da Neve "
+-- gameforge.pet_system.petname_34021 = " - Sheldon "
+-- gameforge.pet_system.petname_34022 = " - Cooper "
+-- gameforge.pet_system.petname_34023 = " - Baby Pantera "
+-- gameforge.pet_system.petname_34024 = " - Baby Leopardo "
+-- gameforge.pet_system.petname_34026 = " - Testa di zucca "
+-- gameforge.pet_system.petname_34027 = " - Scopa volante "
+-- gameforge.pet_system.petname_34028 = " - Fiocchetto "
+-- gameforge.pet_system.petname_34029 = " - Campanellino "
+-- gameforge.pet_system.petname_34030 = " - Dio dell'Amore "
+-- gameforge.pet_system.petname_34031 = " - Cuore Furioso "
+-- gameforge.pet_system.petname_34032 = " - Mezzaluna Rossa "
+-- gameforge.pet_system.petname_34033 = " - Mezzaluna Blu "
+-- gameforge.pet_system.petname_34034 = " - Pecorella bianca "
+-- gameforge.pet_system.petname_34035 = " - Montone Blu "
+-- gameforge.pet_system.petname_34039 = " - Piccolo Huashin "
+-- gameforge.pet_system.petname_34055 = " - Bruce "
+-- gameforge.pet_system.petname_34056 = " - Wayne "
+-- gameforge.pet_system.petname_34057 = " - Robin "
+-- gameforge.pet_system.petname_34058 = " - Valentino "
+-- gameforge.pet_system.petname_34059 = " - Valentinia "
+-- gameforge.pet_system.petname_34060 = " - Valentino+ "
+-- gameforge.pet_system.petname_34061 = " - Valentinia+ "
+-- gameforge.pet_system.petname_34062 = " - Lanterna lunare (ar) "
+-- gameforge.pet_system.petname_34063 = " - Lanterna lunare (blu) "
+-- gameforge.pet_system.petname_34066 = " - Bonsai "
+-- gameforge.pet_system.petname_34066p = " - Bonsai+ "
+-- gameforge.pet_system.petname_34066pp = " - +Bonsai+ "
+-- gameforge.pet_system.petname_34067 = " - Signora Jiangshi+ "
+-- gameforge.pet_system.petname_34068 = " - Signor Jiangshi+ "
+-- gameforge.pet_system.petname_34069 = " - Jiangshi Junior "
+-- gameforge.pet_system.petname_34070 = " - Elfo Rosso "
+-- gameforge.pet_system.petname_34071 = " - Elfo Verde "
+-- gameforge.pet_system.petname_34084 = " - Donnie "
+-- gameforge.pet_system.petname_34085 = " - Frank "
+-- gameforge.pet_system.petname_34006 = " - Rufus "
+-- -- PET_SYSTEM end
+
+quest pet_system begin
+	state start begin
+
+		function get_pet_info(itemVnum)
+			if pet_system.pet_info_map==nil then
+				pet_system.pet_info_map = {
+				-- [ITEM VNUM] MOB_VNUM, DEFAULT NAME
+					[53001] = {34001, gameforge.pet_system.petname_34001, 0}, --			no bonus	120giorni
+					[53002] = {34002, gameforge.pet_system.petname_34002, 0}, --		 	+1500 HP e +15% danno, Permette di droppare le calze se lo si tiene al proprio fianco mentre si uccidono mob.				20giorni
+					[53003] = {34003, gameforge.pet_system.petname_34003, 0}, --			no bonus	120giorni
+					[53005] = {34004, gameforge.pet_system.petname_34004, 1}, --			+1500 HP e +15% di danno, se il PG si trova dal 2° piano della Torre dei Demoni in su, o se si trova all'interno delle Catacombe del Diavolo	30giorni
+					[53006] = {34009, gameforge.pet_system.petname_34009, 1}, --			+1500 HP e +15% di danno, se il PG si trova dal 2° piano della Torre dei Demoni in su, o se si trova all'interno delle Catacombe del Diavolo	200giorni(non implementato sull offy ma c'è)
+					[53007] = {34010, gameforge.pet_system.petname_34010, 0}, --			+1500 HP e +15% danno, Permette di droppare le calze se lo si tiene al proprio fianco mentre si uccidono mob.				20giorni
+					[53008] = {34011, gameforge.pet_system.petname_34011, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53009] = {34012, gameforge.pet_system.petname_34012, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53010] = {34008, gameforge.pet_system.petname_34008, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53011] = {34007, gameforge.pet_system.petname_34007, 0}, --			+1500 HP e +15% di danno	120giorni
+					[53012] = {34005, gameforge.pet_system.petname_34005, 0}, --			+15% danno e +1500 HP		30giorni
+					[53013] = {34006, gameforge.pet_system.petname_34006, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53014] = {34013, gameforge.pet_system.petname_34013, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53015] = {34014, gameforge.pet_system.petname_34014, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53016] = {34015, gameforge.pet_system.petname_34015, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53017] = {34016, gameforge.pet_system.petname_34016, 0}, --			+30% di Exp e +15% di Danno	120giorni
+					[53018] = {34020, gameforge.pet_system.petname_34020, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53019] = {34019, gameforge.pet_system.petname_34019, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53020] = {34017, gameforge.pet_system.petname_34017, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53021] = {34018, gameforge.pet_system.petname_34018, 0}, --			+1500 HP, +15% Forte contro Mostri	30giorni
+					[53022] = {34021, gameforge.pet_system.petname_34021, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53023] = {34022, gameforge.pet_system.petname_34022, 0}, --			+1500 HP e +15% di danno	30giorni
+					[53024] = {34023, gameforge.pet_system.petname_34023, 0}, --			+1500 HP, +5% Trafiggente, +5% Resistenza Abilità		7giorni
+					[53025] = {34024, gameforge.pet_system.petname_34024, 0}, --			+1500 HP e +5% Critico, +10% Resistenza ai Danni Medi	7giorni
+					-- [53026] = { ???, "Pepsi", 0}, -- ???
+					[53218] = {34023, gameforge.pet_system.petname_34023, 0}, --			+1500 HP, +5% Trafiggente, +5% Resistenza Abilità		30giorni
+					[53219] = {34023, gameforge.pet_system.petname_34023, 0}, --			+1500 HP, +5% Trafiggente, +5% Resistenza Abilità		120giorni
+					[53220] = {34024, gameforge.pet_system.petname_34024, 0}, --			+1500 HP e +5% Critico, +10% Resistenza ai Danni Medi	30giorni
+					[53221] = {34024, gameforge.pet_system.petname_34024, 0}, --			+1500 HP e +5% Critico, +10% Resistenza ai Danni Medi	120giorni
+					[53222] = {34026, gameforge.pet_system.petname_34026, 0}, --			1500 HP, +15% danno		30giorni
+					[53223] = {34027, gameforge.pet_system.petname_34027, 0}, --			+1500 HP, +15% danno	30giorni
+					[53224] = {34028, gameforge.pet_system.petname_34028, 0}, --			+1500 HP, +15% danno	30giorni
+					[53225] = {34029, gameforge.pet_system.petname_34029, 0}, --			+15% danno, +5% danno critico, +15% danno magico	30giorni
+					[53226] = {34030, gameforge.pet_system.petname_34030, 0}, --			+1500 HP +5% Trafiggenti	120giorni
+					[53227] = {34031, gameforge.pet_system.petname_34031, 0}, --			+1500 HP +5% Critico		120giorni
+					[53228] = {34033, gameforge.pet_system.petname_34033, 0}, --			+1500 HP, +15% danno fisico e danno magico	30giorni
+					[53229] = {34032, gameforge.pet_system.petname_34032, 0}, --			+5% colpi critici, +15% danno fisico e danno magico	30giorni
+					[53230] = {34034, gameforge.pet_system.petname_34034, 0}, --			+5% colpi trafiggenti e +1500 HP	30giorni
+					[53231] = {34035, gameforge.pet_system.petname_34035, 0}, --			+5% colpi critici e +1500 HP	30giorni
+					[53232] = {34039, gameforge.pet_system.petname_34039, 0}, --			+1500 HP e +5% Trafiggenti		30giorni
+					[53233] = {34055, gameforge.pet_system.petname_34055, 0}, --			+5% colpi critici e +1500 HP	30giorni	Il pet raccoglierà automaticamente tutti gli oggetti a terra nelle sue vicinanze.
+					[53234] = {34056, gameforge.pet_system.petname_34056, 0}, --			+5% colpi trafiggenti e +1500 HP	30giorni	Il pet raccoglierà automaticamente tutti gli oggetti a terra nelle sue vicinanze.
+					[53235] = {34057, gameforge.pet_system.petname_34057, 0}, --			+5% colpi critici e +1500 HP	1giorno Il pet raccoglierà automaticamente tutti gli oggetti a terra nelle sue vicinanze.
+					[53236] = {34060, gameforge.pet_system.petname_34060, 0}, --			+15% Forte contro Mostri e +1500 HP		30giorni	Se insieme al Pet evocato si sta utilizzando un Icona Amuleto del Cioccolato.pngAmuleto del Cioccolato, si otterrà 50% Exp Bonus.
+					[53237] = {34061, gameforge.pet_system.petname_34061, 0}, --			+5% colpi critici e +1500 HP			30giorni	Se insieme al Pet evocato si sta utilizzando un Icona Amuleto del Cioccolato.pngAmuleto del Cioccolato, si otterrà 50% Exp Bonus.
+					[53238] = {34058, gameforge.pet_system.petname_34058, 0}, --			no bonus								1giorno		Se insieme al Pet evocato si sta utilizzando un Icona Amuleto del Cioccolato.pngAmuleto del Cioccolato, si otterrà 20% Exp Bonus.
+					[53239] = {34059, gameforge.pet_system.petname_34059, 0}, --			no bonus								1giorno		Se insieme al Pet evocato si sta utilizzando un Icona Amuleto del Cioccolato.pngAmuleto del Cioccolato, si otterrà 20% Exp Bonus.
+					[53240] = {34063, gameforge.pet_system.petname_34063, 0}, --			+5% colpi critici e +1500 HP		30giorni
+					[53241] = {34062, gameforge.pet_system.petname_34062, 0}, --			+1500 HP, +15% Forte contro Mostri	30giorni
+					[53256] = {34066, gameforge.pet_system.petname_34066, 0}, --			no bonus							3600giorni
+					[53242] = {34066, gameforge.pet_system.petname_34066p, 0}, --			+5% colpi critici e +1500 HP		30giorni		Il pet raccoglierà automaticamente tutti gli oggetti a terra nelle sue vicinanze.
+					[53243] = {34066, gameforge.pet_system.petname_34066pp, 0}, --			20% exp								30giorni
+					[53244] = {34067, gameforge.pet_system.petname_34067, 0}, --			+5% colpi critici e +15% di danno		30giorni		Equipaggiandolo con un'armatura Vampiro+ , un elmo Vampiro+ e il Leccalecca garantisce un bonus di +20% Exp e + 5% Danni Medi e Abilità
+					[53245] = {34068, gameforge.pet_system.petname_34068, 0}, --			+5% colpi trafiggenti e +15% di danno	30giorni		Equipaggiandolo con un'armatura Vampiro+ , un elmo Vampiro+ e il Leccalecca garantisce un bonus di +20% Exp e + 5% Danni Medi e Abilità
+					[53246] = {34069, gameforge.pet_system.petname_34069, 0}, --			no bonus								1giorno			Equipaggiandolo con un'armatura ed elmo Vampiro garantisce un bonus di +20% Exp
+					[53247] = {34070, gameforge.pet_system.petname_34070, 0}, --			+5% colpi critici e +5% Possibilità di Svenimento		30giorni	Equipaggiandolo con il Vestito da festa+, il Copricapo+ o il Basco+ si riceveranno, in aggiunta, due bonus del set. Aggiungendo un Anello della Felicità, si riceverà un altro bonus del set.
+					[53248] = {34071, gameforge.pet_system.petname_34071, 0}, --			+5% colpi trafiggenti e +5% Possibilità di Svenimento	1giorno		Equipaggiandolo con il Vestito da festa+, il Copricapo+ o il Basco+ si riceveranno, in aggiunta, due bonus del set. Aggiungendo un Anello della Felicità, si riceverà un altro bonus del set.
+					[53249] = {34072, gameforge.pet_system.petname_34072, 0}, --			no bonus												30giorni	Equipaggiandolo con il vestito da festa, il copricapo o il basco si riceveranno, in aggiunta, un bonus del set. Aggiungendo un Anello della Felicità, si riceverà un altro bonus del set.
+					[53250] = {34084, gameforge.pet_system.petname_34084, 0}, --			Donnie ???
+					[53251] = {34085, gameforge.pet_system.petname_34085, 0}, --			Frank ???
+					-- GF specials
+					[38200] = {34006, gameforge.pet_system.petname_34006, 0}, --			Sigillo Rufus ???
+					[38201] = {34006, gameforge.pet_system.petname_34006, 0}, --			Sigillo Rufus ???
+				}
+			end
+			return pet_system.pet_info_map[itemVnum]
+		end
+
+		function get_spawn_effect_file(idx)
+			if pet_system.effect_table==nil then
+				pet_system.effect_table = {
+					[0] = nil,
+					[1] = "d:\\\\ymir work\\\\effect\\\\etc\\\\appear_die\\\\npc2_appear.mse",
+				}
+			end
+			return pet_system.effect_table[idx]
+		end
+
+		when
+			-- 38200~38201
+			38200.use or 38201.use or
+			-- 53001~53026 (no 53003, 53026)
+			53001.use or 53002.use or 53003.use or 53005.use or 53006.use or 53007.use or 53008.use or 53009.use or
+			53010.use or 53011.use or 53012.use or 53013.use or 53014.use or 53015.use or 53016.use or 53017.use or 53018.use or 53019.use or
+			53020.use or 53021.use or 53022.use or 53023.use or 53024.use or 53025.use or -- 53004.use or 53026.use or
+			-- 53218~53251
+			53218.use or 53219.use or
+			53220.use or 53221.use or 53222.use or 53223.use or 53224.use or 53225.use or 53226.use or 53227.use or 53228.use or 53229.use or
+			53230.use or 53231.use or 53232.use or 53233.use or 53234.use or 53235.use or 53236.use or 53237.use or 53238.use or 53239.use or
+			53240.use or 53241.use or 53242.use or 53243.use or 53244.use or 53245.use or 53246.use or 53247.use or 53248.use or 53249.use or
+			53250.use or 53251.use or
+			-- 53256
+			53256.use
+		begin
+			local pet_info = pet_system.get_pet_info(item.vnum)
+
+			if null ~= pet_info then
+
+				local mobVnum = pet_info[1]
+				local petName = pet_info[2]
+				local spawn_effect_file_name = pet_system.get_spawn_effect_file(pet_info[3])
+
+				if true == pet.is_summon(mobVnum) then
+					if spawn_effect_file_name ~= nil then
+						pet.spawn_effect(mobVnum, spawn_effect_file_name)
+					end
+					pet.unsummon(mobVnum)
+				else
+					if pet.count_summoned() < 1 then
+						pet.summon(mobVnum, petName, false)
+					else
+						syschat(gameforge.pet_system._030_chat)
+					end
+					if spawn_effect_file_name ~= nil then
+						pet.spawn_effect(mobVnum, spawn_effect_file_name)
+					end
+				end -- if pet.is_summon
+			end -- if null ~= pet_info
+
+		end -- when
+	end -- state
+end -- quest

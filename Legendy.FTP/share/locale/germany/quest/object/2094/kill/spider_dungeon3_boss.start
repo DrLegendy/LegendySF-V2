@@ -1,0 +1,2 @@
+if pc . get_map_index ( ) == 217 then game . drop_item_with_ownership ( "30327" , 1 ) 
+ return end 

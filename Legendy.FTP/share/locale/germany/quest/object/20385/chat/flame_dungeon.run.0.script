@@ -1,0 +1,17 @@
+say ( "canavarlar_11 : " .. d . getf ( "counter_11" ) ) 
+say ( "canavarlar_13 : " .. d . getf ( "counter_13" ) ) 
+say ( "server saati : " .. get_server_timer_arg ( ) ) 
+say ( "toplam canavar sayýsý : " .. d . count_monster ( ) ) 
+say ( "level : " .. d . getf ( "level" ) ) 
+say ( "Dmap index : " .. d . get_map_index ( ) ) 
+say ( "Pmap index : " .. pc . get_map_index ( ) ) 
+say ( "eriþim süresi : " .. pc . getf ( "flame_dungeon" , "exit_time" ) ) 
+say ( "gerçek zaman : " .. get_global_time ( ) ) 
+if flame_dungeon . is_flamed ( d . get_map_index ( ) ) then 
+say ( "in dungeon" ) 
+end 
+if d . is_unique_dead ( "stone1" ) then 
+say ( "taþ 1 öldü " ) 
+else 
+say ( "taþ 1 yaþýyor" ) 
+end 

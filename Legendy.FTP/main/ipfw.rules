@@ -1,0 +1,56 @@
+#!/bin/sh
+IPF="ipfw -q add"
+ipfw -q -f flush
+
+#loopback
+$IPF 10 allow all from any to any via lo0
+$IPF 20 deny all from any to 127.0.0.0/8
+$IPF 30 deny all from 127.0.0.0/8 to any
+$IPF 40 deny tcp from any to any frag
+
+# stateful
+$IPF 50 check-state
+$IPF 60 allow tcp from any to any established
+$IPF 70 allow all from any to any out keep-state
+$IPF 80 allow icmp from any to any
+
+# open port ftp (20, 21), ssh (22), mail (25)
+# http (80), https (443), dns (53), mysql (3306)
+default_udp_yes_ports='53'
+default_tcp_yes_ports='22 53 3306'
+default_tcp_no_ports=''
+
+# here auth PORTs for "NORM"/"..." thing
+metin2_udp_yes_ports='30001'
+# here PORTs
+metin2_tcp_yes_ports='30001 30003 30005 30007 30009 30011'
+# here DB_PORTs and P2P_PORTs
+metin2_tcp_no_ports='30000 30002 30004 30006 30008 30010 30012'
+
+# merge lists
+udp_yes_ports="$default_udp_yes_ports $metin2_udp_yes_ports"
+tcp_yes_ports="$default_tcp_yes_ports $metin2_tcp_yes_ports"
+tcp_nop_ports="$default_tcp_no_ports $metin2_tcp_no_ports"
+
+# white ip list
+white_sites=''
+
+# block tcp/udp ports
+for val in $tcp_nop_ports; do
+	$IPF 2220 allow all from 127.0.0.0/8 to any $val
+	for whitez in $white_sites; do
+		$IPF 2210 allow tcp from $whitez to any $val in
+		$IPF 2210 allow tcp from 127.0.0.0/8 to $whitez $val out
+	done
+	$IPF 2230 deny all from any to me $val
+done
+# unblock tcp ports
+for val in $tcp_yes_ports; do
+	$IPF 2200 allow tcp from any to any $val in limit src-addr 20
+	$IPF 2210 allow tcp from any to any $val out
+done
+# unblock udp ports
+for val in $udp_yes_ports; do
+	$IPF 2200 allow udp from any to any $val in limit src-addr 20
+	$IPF 2210 allow udp from any to any $val out
+done

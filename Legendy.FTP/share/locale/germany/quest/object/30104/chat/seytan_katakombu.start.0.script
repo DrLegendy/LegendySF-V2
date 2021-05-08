@@ -1,0 +1,5 @@
+say ( "Şeytan ruhlarını hissedebiliyor musun?" ) 
+wait ( ) 
+say ( "Devam etmek istiyor musun?" ) 
+wait ( ) 
+timer ( "katakomb_kat_5" , 6 ) 

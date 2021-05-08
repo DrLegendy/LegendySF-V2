@@ -1,0 +1,31 @@
+if pc . get_level ( ) < 40 then 
+say_title ( "Þeytan Kulesi Bekçisi:" ) 
+say_kirmizi ( "Cesaretini takdir ediyorum fakat" ) 
+say_kirmizi ( "kuleye girebilmek için en az" ) 
+say_kirmizi ( "40.seviye olman gerekmektedir." ) 
+return 
+end 
+if not party . is_party ( ) then 
+say_title ( "Þeytan Kulesi Bekçisi:" ) 
+say_kirmizi ( "Cesaretini takdir ediyorum fakat" ) 
+say_kirmizi ( "grubun olmadan giriþ talebi yapamazsýn." ) 
+return 
+end 
+if not party . is_leader ( ) then 
+say_title ( "Þeytan Kulesi Bekçisi:" ) 
+say_kirmizi ( "Cesaretini takdir ediyorum fakat" ) 
+say_kirmizi ( "yalnýzca grup lideri giriþ talebi yapabilir." ) 
+return 
+end 
+say_title ( "Þeytan Kulesi Bekçisi:" ) 
+say_yesil ( "Grubunla Þeytan Kulesine giriþ yapacaksýn." ) 
+say_kirmizi ( "Unutma; girdiðiniz alan sadece grubunuza aittir." ) 
+say_yesil ( "Þeytan kulesine þimdi girmek istiyor musun?" ) 
+local s = select ( "Evet " , "Hayýr " ) 
+if s == 1 then 
+local idx = 66 
+local x = 2165 
+local y = 7270 
+d . new_jump_party ( idx , x , y ) 
+d . regen_file ( "data/dungeon/deviltower1_regen.txt" ) 
+end 

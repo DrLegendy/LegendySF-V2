@@ -1,0 +1,57 @@
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "At resmini bitirdim," ) 
+say ( "simdi bir acemi ata binebilirsin." ) 
+say ( "Bir acemi at ile daha hizli hareket" ) 
+say ( "edebilirsin. Fiyati 100.000 Yang." ) 
+say ( "Onu satin almak istiyor musun?" ) 
+say ( "" ) 
+local b = select ( "Satin al." , "Satin alma." , "iptal" ) 
+if 1 == b then 
+if pc . money >= 100000 then 
+char_log ( 0 , " HORSE_BUY" , "BEGIN" ) 
+pc . changemoney ( - 100000 ) 
+char_log ( 0 , " HORSE_BUY" , " DEC money 100000" ) 
+horse . unride ( ) 
+horse . advance ( ) 
+horse . ride ( ) 
+char_log ( 0 , " HORSE_BUY" , "INC horse_advance 1" ) 
+pc . give_item2 ( "50051" , 1 ) 
+char_log ( 0 , " HORSE_BUY" , "INC 50051 1" ) 
+char_log ( 0 , " HORSE_BUY" , "END" ) 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "Bu resim ile ati her yere çagirabilirsin." ) 
+say ( "Eger bu resmi kaybedersen, yeniden yapimi için" ) 
+say ( "ücret ödersin. Bu nedenle ona dikkat et!" ) 
+say ( "" ) 
+setstate ( "start" ) 
+q . done ( ) 
+else 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "At resmi için yeterli Yang'in yok!" ) 
+say ( "" ) 
+end 
+elseif 2 == b then 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "Daha sonra yine gel." ) 
+say ( "" ) 
+elseif 3 == b then 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "Gerçekten at resmini iptal etmek istediginden" ) 
+say ( "emin misin? Eger simdi iptal edersen," ) 
+say ( "herseye bastan baslarsin." ) 
+say ( "" ) 
+local b = select ( "Tabii ki." , "Hayir, elbette hayir." ) 
+if 1 == b then 
+setstate ( "start" ) 
+elseif 2 == b then 
+else 
+say ( "UNBEKANNTE TASTE [" .. b .. "]" ) 
+end 
+else 
+say ( "UNBEKANNTE TASTE [" .. b .. "]" ) 
+end 

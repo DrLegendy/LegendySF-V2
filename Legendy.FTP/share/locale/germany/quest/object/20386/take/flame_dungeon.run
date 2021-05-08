@@ -1,0 +1,98 @@
+if flame_dungeon . is_flamed ( pc . get_map_index ( ) ) and item . vnum == 30329 and d . getf ( "level" ) == 12 then local i = number ( 1 , 5 ) 
+if i == 1 then 
+npc . purge ( ) 
+item . remove ( ) 
+notice_in_map ( "Ýsfet Stel mekanýzmasýný Açýldý," ) 
+notice_in_map ( "Yeni görev için Am-heh ile görüþün..." ) 
+flame_dungeon . level_clear ( ) 
+else 
+item . remove ( ) 
+say ( "Bu Parça yanlýþ Yok oldu. Doðru Altýn Diþli Çarký Bul." ) 
+end 
+ return end if flame_dungeon . is_flamed ( d . get_map_index ( ) ) and item . vnum == 30330 and d . getf ( "level" ) == 15 then local setting = flame_dungeon . setting ( ) 
+if npc . get_vid ( ) == d . get_unique_vid ( "stone5_1" ) then 
+npc . purge ( ) 
+item . remove ( ) 
+say ( "Bu akýllýca bir seçim oldu. Þimdi bir sonraki Ifset Stel'ini Yok et." ) 
+d . setf ( "stonekill" , 2 ) 
+if d . count_monster ( ) < 100 then 
+d . regen_file ( "data/dungeon/flame_dungeon/" .. "fd_e.txt" ) 
+end 
+elseif npc . get_vid ( ) == d . get_unique_vid ( "stone5_2" ) then 
+if d . getf ( "stonekill" ) == 2 then 
+npc . purge ( ) 
+item . remove ( ) 
+say ( "Bu akýllýca bir seçim oldu. Þimdi bir sonraki Ifset Stel'ini Yok et." ) 
+d . setf ( "stonekill" , 3 ) 
+if d . count_monster ( ) < 100 then 
+d . regen_file ( "data/dungeon/flame_dungeon/" .. "fd_e.txt" ) 
+end 
+else 
+item . remove ( ) 
+say ( "Yanlýþ seçim. Maat Taþý Yok Oldu." ) 
+end 
+elseif npc . get_vid ( ) == d . get_unique_vid ( "stone5_3" ) then 
+if d . getf ( "stonekill" ) == 3 then 
+npc . purge ( ) 
+item . remove ( ) 
+say ( "Bu akýllýca bir seçim oldu. Þimdi bir sonraki Ifset Stel'ini Yok et." ) 
+d . setf ( "stonekill" , 4 ) 
+if d . count_monster ( ) < 100 then 
+d . regen_file ( "data/dungeon/flame_dungeon/" .. "fd_e.txt" ) 
+end 
+else 
+item . remove ( ) 
+say ( "Yanlýþ seçim. Maat Taþý Yok Oldu." ) 
+end 
+elseif npc . get_vid ( ) == d . get_unique_vid ( "stone5_4" ) then 
+if d . getf ( "stonekill" ) == 4 then 
+npc . purge ( ) 
+item . remove ( ) 
+say ( "Bu akýllýca bir seçim oldu. Þimdi bir sonraki Ifset Stel'ini Yok et." ) 
+d . setf ( "stonekill" , 5 ) 
+if d . count_monster ( ) < 100 then 
+d . regen_file ( "data/dungeon/flame_dungeon/" .. "fd_e.txt" ) 
+end 
+else 
+item . remove ( ) 
+say ( "Yanlýþ seçim. Maat Taþý Yok Oldu." ) 
+end 
+elseif npc . get_vid ( ) == d . get_unique_vid ( "stone5_5" ) then 
+if d . getf ( "stonekill" ) == 5 then 
+npc . purge ( ) 
+item . remove ( ) 
+say ( "Bu akýllýca bir seçim oldu. Þimdi bir sonraki Ifset Stel'ini Yok et." ) 
+d . setf ( "stonekill" , 6 ) 
+if d . count_monster ( ) < 100 then 
+d . regen_file ( "data/dungeon/flame_dungeon/" .. "fd_e.txt" ) 
+end 
+else 
+item . remove ( ) 
+say ( "Yanlýþ seçim. Maat Taþý Yok Oldu." ) 
+end 
+elseif npc . get_vid ( ) == d . get_unique_vid ( "stone5_6" ) then 
+if d . getf ( "stonekill" ) == 6 then 
+npc . purge ( ) 
+item . remove ( ) 
+say ( "Bu akýllýca bir seçim oldu. Þimdi Son Ifset Stel'ini Yok et." ) 
+d . setf ( "stonekill" , 7 ) 
+if d . count_monster ( ) < 100 then 
+d . regen_file ( "data/dungeon/flame_dungeon/" .. "fd_e.txt" ) 
+end 
+else 
+item . remove ( ) 
+say ( "Yanlýþ seçim. Maat Taþý Yok Oldu." ) 
+end 
+else 
+if d . getf ( "stonekill" ) == 7 then 
+npc . purge ( ) 
+item . remove ( ) 
+notice_in_map ( "Tüm Ifset Stel'inler Yok Edildi." ) 
+notice_in_map ( "Yeni görev için Am-heh ile görüþün..." ) 
+flame_dungeon . level_clear ( ) 
+else 
+item . remove ( ) 
+say ( "Yanlýþ seçim. Maat Taþý Yok Oldu." ) 
+end 
+end 
+ return end 

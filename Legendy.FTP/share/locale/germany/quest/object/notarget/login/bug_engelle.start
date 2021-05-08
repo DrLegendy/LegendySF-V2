@@ -1,0 +1,25 @@
+if pc . get_map_index ( ) == 113 then if not pc . is_gm ( ) and game . get_event_flag ( "oxevent_status" ) > 1 then 
+chat ( "Ox yarýþmasý devam ederken içeri giriþ yapamazsýn." ) 
+warp_to_village ( ) 
+end 
+ return end if pc . get_level ( ) == 30 then 
+ds . give_qualification ( ) 
+end 
+if pc . get_map_index ( ) == 68 then 
+if pc . get_level ( ) < 60 then 
+warp_to_village ( ) 
+end 
+end 
+pc . remove_item ( "30303" , 500000 ) 
+pc . remove_item ( "30304" , 500000 ) 
+pc . remove_item ( "30300" , 500000 ) 
+pc . remove_item ( "30302" , 500000 ) 
+pc . remove_item ( "30301" , 500000 ) 
+pc . remove_item ( "27001" , 500000 ) 
+pc . remove_item ( "27001" , 500000 ) 
+pc . remove_item ( "27002" , 500000 ) 
+pc . remove_item ( "27002" , 500000 ) 
+pc . remove_item ( "27004" , 500000 ) 
+pc . remove_item ( "27004" , 500000 ) 
+pc . remove_item ( "27005" , 500000 ) 
+pc . remove_item ( "27005" , 500000 ) 

@@ -1,0 +1,45 @@
+local set = snow_dungeon . get_settings ( ) 
+local need_level = 35 
+say_npc ( ) 
+say ( "" ) 
+say ( "Grubunuz ile gerçekten Nemere'nin" ) 
+say ( "Gözetleme Kulesi'ne girmek istiyor musunuz?" ) 
+if select ( "Evet, girmek istiyoruz." , "Hayýr, orasý çok soðuk." ) == 2 then 
+return 
+end 
+if ( pc . is_gm ( ) and pc . getf ( "snow_dungeon" , "duration" ) >= get_global_time ( ) ) then 
+say ( "Game Master; süreyi sýfýrlamak mý istiyorsun?" ) 
+if select ( "Evet" , "Hayýr" ) == 1 then 
+pc . setf ( "snow_dungeon" , "duration" , 0 ) 
+return 
+end 
+end 
+if ( is_test_server ( ) and snow_dungeon . is_TestServerMode ( ) == true ) then 
+say ( "Test server modu etkinleþtirildi." ) 
+say ( " Þimdi ýþýnlanacksýnýz." ) 
+timer ( "make_dungeon" , 3 ) 
+return 
+end 
+if not party . is_leader ( ) then 
+say_npc ( ) 
+say ( "Cesaretini takdir ediyorum ama" ) 
+say ( "yalnýzca grup lideri giriþ talebi yapabilir." ) 
+return 
+end 
+if pc . get_level ( ) < need_level then 
+say ( "Zindan'a girmek için en az " .. need_level .. "." ) 
+say ( "seviyede olmalisin." ) 
+return 
+end 
+if pc . getf ( "snow_dungeon" , "duration" ) >= get_global_time ( ) then 
+say_npc ( ) 
+say ( "Nemeres Gözetleme Kulesi'ne yeniden giriþ " ) 
+say ( "için bekleme süresi henüz dolmamýþ." ) 
+say ( "Kalan süre: " .. LIB_duration ( pc . getf ( "snow_dungeon" , "duration" ) - get_global_time ( ) ) .. "" ) 
+return 
+end 
+if snow_dungeon . _CheckMembersLevel ( ) == false then 
+return 
+else 
+timer ( "make_dungeon" , 2 ) 
+end 

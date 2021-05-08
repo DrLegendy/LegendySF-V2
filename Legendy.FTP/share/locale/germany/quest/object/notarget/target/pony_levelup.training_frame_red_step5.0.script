@@ -1,0 +1,6 @@
+target . delete ( "__TARGET__" ) 
+say_title ( "Binicilik egitimi (5)" ) 
+say ( "" ) 
+say_reward ( "(5)Nolu noktaya varildi!" ) 
+say ( "" ) 
+setstate ( "report" ) 

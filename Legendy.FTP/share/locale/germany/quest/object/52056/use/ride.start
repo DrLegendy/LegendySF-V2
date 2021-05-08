@@ -1,0 +1,10 @@
+if pc . is_polymorphed ( ) then 
+syschat ( "You are transformed" ) 
+elseif not pc . is_riding ( ) then 
+if horse . is_summon ( ) then 
+horse . unsummon ( ) 
+end 
+ride . Ride ( item . vnum , 0 ) 
+else 
+syschat ( "You are already riding" ) 
+end 

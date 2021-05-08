@@ -1,0 +1,37 @@
+if d . select ( get_server_timer_arg ( ) ) then 
+local set = snow_dungeon . get_settings ( ) 
+local level = d . getf ( "level" ) 
+local mob_count = d . count_monster ( ) 
+local next_jump_time = set . NextJumpTime if level == 1 and mob_count <= 0 then 
+notice_in_map ( "Tüm yaratýklarý maðlup ettin. Bir kaç dakika içerisinde bir sonraki kata ýþýnlanacaksýn." ) 
+server_timer ( "Jp_2" , next_jump_time , d . get_map_index ( ) ) 
+d . clear_regen ( ) 
+d . kill_all ( ) 
+d . set_regen_file ( "data/dungeon/ice_dungeon/zone_2.txt" ) 
+elseif level == 3 and mob_count <= 0 then 
+notice_in_map ( "Tüm yaratýklarý maðlup ettin. Bir kaç dakika içerisinde bir sonraki kata ýþýnlanacaksýn." ) 
+server_timer ( "Jp_4" , next_jump_time , d . get_map_index ( ) ) 
+d . clear_regen ( ) 
+d . kill_all ( ) 
+d . regen_file ( "data/dungeon/ice_dungeon/zone_4.txt" ) 
+elseif level == 4 and mob_count <= 0 then 
+notice_in_map ( "Tüm yaratýklarý maðlup ettin. Bir kaç dakika içerisinde bir sonraki kata ýþýnlanacaksýn." ) 
+server_timer ( "Jp_5" , next_jump_time , d . get_map_index ( ) ) 
+d . clear_regen ( ) 
+d . kill_all ( ) 
+d . set_regen_file ( "data/dungeon/ice_dungeon/zone_5.txt" ) 
+elseif level == 6 and mob_count <= 0 then 
+local MobStonelvl6 = set . MobVnum_level_6 notice_in_map ( "Tüm canavarlarý yok ettiniz. " .. mob_name ( MobStonelvl6 ) .. "'i öldürün." ) 
+d . clear_regen ( ) 
+d . kill_all ( ) 
+d . regen_file ( "data/dungeon/ice_dungeon/zone_6.txt" ) 
+d . spawn_mob ( MobStonelvl6 , 570 , 649 ) 
+elseif level == 7 and mob_count <= 0 then 
+notice_in_map ( "Tüm yaratýklarý maðlup ettin. Bir kaç dakika içerisinde bir sonraki kata ýþýnlanacaksýn." ) 
+server_timer ( "Jp_8" , next_jump_time , d . get_map_index ( ) ) 
+d . clear_regen ( ) 
+d . kill_all ( ) 
+d . set_regen_file ( "data/dungeon/ice_dungeon/zone_8.txt" ) 
+end 
+snow_dungeon . _GetLastTime ( ) 
+end 

@@ -1,0 +1,15 @@
+if snow_dungeon . is_nemeres_dungeon ( ) == true then 
+local set = snow_dungeon . get_settings ( ) 
+local backk = set . outside_entry_pos pc . set_warp_location ( backk [ 1 ] , backk [ 2 ] , backk [ 3 ] ) 
+if d . getf ( "party_leader_pid" ) ~= party . get_leader_pid ( ) then 
+chat ( "nemeres_wait_dungeon #RAUS:# Sizin grubunuz içeride değil." ) 
+chat ( "nemeres_wait_dungeon #RAUS:#debug -> " .. d . getf ( "party_leader_pid" ) .. " != " .. party . get_leader_pid ( ) .. "" ) 
+d . exit ( ) 
+return 
+end 
+if pc . get_level ( ) < set . need_level_group then 
+chat ( "nemeres_wait_dungeon #RAUS:# Benim seviyem düşük." ) 
+d . exit ( ) 
+return 
+end 
+end 

@@ -1,0 +1,49 @@
+if pc . level <= 24 then 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "Ata binmeye baslamak için 25.seviyeye ulasmis" ) 
+say ( "olman gerekiyor. Bana kalirsa daha fazla " ) 
+say ( "olsa daha iyi olur." ) 
+say ( "" ) 
+elseif pc . countitem ( "50050" ) < 1 then 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "Ata binmeye hazir olmak için, öncelikle " ) 
+say ( "yeterlilik testini geçmelisin. Bu teste" ) 
+say ( "katilabilmen için, bir at madalyonuna ihtiyacin" ) 
+say ( "var. Buna sahip olmanin" ) 
+say ( "en kolay yolu, ikinci köydeki " ) 
+say ( "Maymun Zindani'na gitmek." ) 
+say ( "Maymunlar bunu sana karsiliksiz" ) 
+say ( "vermeyeceklerdir.." ) 
+say ( "" ) 
+setstate ( "need_item50050" ) 
+elseif pc . countitem ( "50050" ) >= 1 and pc . level >= 25 then 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "Ohh..Bir at madalyonun var, harika!" ) 
+say ( "simdi binicilik için gerekli yeterlilige" ) 
+say ( "sahip oldugunu kanitlaman gerekiyor. Lütfen" ) 
+say ( "30 dakika içinde 20 okçu" ) 
+say ( "öldür. Bunu basarabilirsen" ) 
+say ( "binicilik için hazirsin demektir!" ) 
+say ( "" ) 
+local b = select ( "Kabul et." , "Reddet." ) 
+if 1 == b then 
+if pc . countitem ( "50050" ) >= 1 then 
+pc . removeitem ( "50050" , 1 ) 
+setstate ( "test" ) 
+end 
+elseif 2 == b then 
+say_title ( "Seyis:" ) 
+say ( "" ) 
+say ( "ilgini çektigi zaman geri dön." ) 
+say ( "" ) 
+else 
+say ( "UNBEKANNTE TASTE [" .. b .. "]" ) 
+end 
+else 
+say_title ( "Seyis:" ) 
+say ( "Belli ki, burada binicilik" ) 
+say ( "bilgileriyle ilgili bir problem var." ) 
+end 

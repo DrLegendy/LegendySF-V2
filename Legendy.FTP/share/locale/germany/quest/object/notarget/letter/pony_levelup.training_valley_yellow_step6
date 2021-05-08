@@ -1,0 +1,5 @@
+target . pos ( "__TARGET__" , 710 , 730 , 64 , "" ) 
+setskin ( NOWINDOW ) 
+makequestbutton ( "Binicilik egitimi (6)" ) 
+q . set_title ( "Binicilik egitimi (6)" ) 
+q . start ( ) 

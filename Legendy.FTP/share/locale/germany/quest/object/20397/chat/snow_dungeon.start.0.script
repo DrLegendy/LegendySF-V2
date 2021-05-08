@@ -1,0 +1,18 @@
+say_npc ( ) 
+say ( "" ) 
+say ( "Savaþ'ý baþlatmak istiyor musun?" ) 
+if select ( "Evet" , "Hayýr, korkuyorum. " ) == 1 then 
+local set = snow_dungeon . get_settings ( ) 
+local loop_durr = set . DurationLoopTimer local wait_durations = set . wait_duration local t = get_global_time ( ) 
+d . setf ( "LastTimeGetOutPut" , 0 ) 
+server_loop_timer ( "CheckLevelAndCountKillOnMobs" , loop_durr , d . get_map_index ( ) ) 
+d . regen_file ( "data/dungeon/ice_dungeon/zone_1.txt" ) 
+d . setf ( "Start_Time" , t + set . maxlife_time_on_dungeon ) 
+server_timer ( "Jp_OutAllFailNotice" , ( t + set . maxlife_time_on_dungeon ) - t , d . get_map_index ( ) ) 
+d . setqf2 ( "snow_dungeon" , "duration" , t + wait_durations ) 
+d . setf ( "level" , 1 ) 
+notice_in_map ( "Bir sonraki kata çýkmak için Tüm yaratýklarý öldürmelisiniz." ) 
+npc . purge ( ) 
+snow_dungeon . _GetLastTime ( ) 
+end 
+setskin ( NOWINDOW ) 

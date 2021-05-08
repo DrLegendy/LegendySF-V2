@@ -1,0 +1,8 @@
+target . delete ( "__TARGET__" ) 
+say_title ( "" .. pc . get_name ( ) .. "" ) 
+say ( "" ) 
+say ( "Yaþasýn, eski mezar taþýný buldun ve üzerindeki" ) 
+say ( "yazýnýn kopyasýný aldýn! Yüzbaþýya göstermek için" ) 
+say ( "geri dön." ) 
+say ( "" ) 
+setstate ( "geribas" ) 

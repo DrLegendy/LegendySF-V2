@@ -1,0 +1,74 @@
+local setting = energy_system . setting ( ) 
+local need = 30 
+say_title ( "Simyacý " ) 
+say ( "Yapabildin mi? Enerji parçasý elde edebildin mi?" ) 
+say ( "Simya yardýmýyla parçalayabileceðim daha fazla" ) 
+say ( "eþya getir bana. Tekniðim henüz mükemmelleþmedi." ) 
+say ( "Bu yüzden ne kadar parça elde edebileceðine dair" ) 
+say ( "bir garanti veremeyeceðim." ) 
+wait ( ) 
+say_title ( "Simyacý " ) 
+say ( "Tek bir þart var: Kendi seviyen ve eþyanýn" ) 
+say ( "seviyesi en az 35 olmalý. Hým, bir göz atalým" ) 
+say ( "bakalým..." ) 
+wait ( ) 
+if pc . get_level ( ) < 35 then 
+say_title ( "Simyacý " ) 
+say ( "Henüz yeterince güçlü deðilsin! En az 35." ) 
+say ( "seviyeye ulaþtýðýnda tekrar gel." ) 
+return 
+end 
+if pc . count_item ( setting . energy_stone ) < need then 
+say_title ( "Simyacý " ) 
+say ( "30 tane Enerji Parçasý gerekiyor. Yoksa" ) 
+say ( "Enerji Kristalini üretemem." ) 
+return 
+else 
+say_title ( "Simyacý " ) 
+say ( "Güzel. Lazým olan 30 enerji parçasýný getirdin." ) 
+say ( "Bunlardan bir enerji kristali üretebilirim. Biraz" ) 
+say ( "bekle lütfen. Deneyeceðim ama olacaðýna dair" ) 
+say ( "garanti veremem." ) 
+wait ( ) 
+end 
+local charge = 1000 
+say_title ( "Simyacý " ) 
+say ( "Her þey hazýr durumda. Parçalarý birleþtirip" ) 
+say ( "enerji kristali üretebiliriz. Ama ben de bir" ) 
+say ( "þekilde ekmeðimi kazanmalýyým. Tamir aletleri de" ) 
+say ( "gökten inmiyor yani. Masraflarý karþýlamak için" ) 
+say ( "1000 yang ödemeni istiyorum. Ödemeye" ) 
+say ( "hazýr mýsýn?" ) 
+local s = select ( "Elbette!" , "Hayýr, henüz deðil." ) 
+if s == 2 then 
+return 
+end 
+if pc . get_gold ( ) < charge then 
+say_title ( "Simyacý " ) 
+say ( "Yeteri kadar yang yok. Bu þartlarda kristal" ) 
+say ( "üretemeyiz." ) 
+return 
+end 
+pc . change_gold ( - charge ) 
+pc . remove_item ( setting . energy_stone , need ) 
+if pc . getqf ( "hasExperience" ) == 0 then 
+say_title ( "Simyacý " ) 
+say ( "Ýþte enerji kristalin. Sadece ilk giriþimde" ) 
+say ( "baþarýlý olunur hep. Simya, saðý solu belli" ) 
+say ( "olmayan bir bilim. Ufak tefek farklýlýklar" ) 
+say ( "baþarýsýzlýða neden olabilir! Yani deneylerde" ) 
+say ( "genelde küçük de olsa baþarýsýzlýða uðrama riski" ) 
+say ( "bulunur." ) 
+pc . give_item2 ( setting . charging_stone , 1 ) 
+pc . setqf ( "hasExperience" , 1 ) ; 
+return 
+end 
+local r = number ( 1 , 100 ) 
+if r > 30 then 
+say_title ( "Simyacý " ) 
+say ( "Baþaramadým. Üzgünüm bu sefer olmadý." ) 
+return 
+end 
+say_title ( "Simyacý " ) 
+say ( "Baþardým! Ýþte enerji kristalin." ) 
+pc . give_item2 ( setting . charging_stone , 1 ) 

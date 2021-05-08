@@ -1,0 +1,7 @@
+local set = snow_dungeon . get_settings ( ) 
+local cord = set . base_cord local start_pos = set . Position_level_1 local t = get_global_time ( ) 
+d . new_jump_party ( set . map_index , ( cord [ 1 ] + start_pos [ 1 ] ) , ( cord [ 2 ] + start_pos [ 2 ] ) ) 
+snow_dungeon . _ClearAlls ( ) 
+d . setf ( "party_leader_pid" , party . get_leader_pid ( ) ) 
+party . setf ( "ice_dungeon_map_index" , d . get_map_index ( ) ) 
+d . spawn_mob_dir ( 20397 , 173 , 262 , 1 ) 

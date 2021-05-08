@@ -1,0 +1,57 @@
+say_title ( "Uriel:" ) 
+say ( "Hey Evet Sen." ) 
+say ( "Sen gerçekten çok zeki görünüyorsun." ) 
+say ( "Yarýþmanýn ismi Ox Yarýþmasý. " ) 
+say ( "Sorular sorulacak cevap vereceksin," ) 
+say ( "bilirsen süpriz bir hediye kazanacaksýn." ) 
+if game . get_event_flag ( "oxevent_status" ) == 0 then 
+wait ( ) 
+say_title ( "Uriel:" ) 
+say ( "Yarýþmaya katýlmana izin veriyorum." ) 
+say ( "Ýstersen ayrýca izleyici de olabilirsin." ) 
+say ( "Baþlama zamaný henüz kararlaþtýrýlmadý." ) 
+say ( "Zaman geldiðinde seni bilgilendireceðim." ) 
+say ( "Tetikte kal!" ) 
+elseif game . get_event_flag ( "oxevent_status" ) == 1 then 
+pc . setqf ( "oxkontrolone" , get_time ( ) + 10 ) 
+wait ( ) 
+say_title ( "Uriel:" ) 
+say ( "Yarýþmaya Katýlmak Ýstiyormusun? " ) 
+local s = select ( "Evet " , "Hayýr " , "Ýzlemek Ýstiyorum " ) 
+if s == 1 then 
+if get_time ( ) > pc . getqf ( "oxkontrolone" ) then 
+say_title ( "Uriel:" ) 
+say ( "10 saniye doldu þansýný tekrar dene." ) 
+pc . setqf ( "oxkontrolone" , get_time ( ) + 0 ) 
+return 
+end 
+if pc . get_level ( ) < 15 then 
+say_title ( "Uriel:" ) 
+say ( "OX-Yarýþmasýna katýlabilmen için en az" ) 
+say ( "15. seviyede olmalýsýn." ) 
+say ( "" ) 
+else 
+say_title ( "Uriel:" ) 
+say ( "Tamam þimdi seni ýþýnlýyorum." ) 
+wait ( ) 
+pc . warp ( 896500 , 24600 ) 
+end 
+elseif s == 3 then 
+say_title ( "Uriel:" ) 
+say ( "Ýzleyici olarak mý katýlmak istiyorsun?" ) 
+say ( "Tamam, ýþýnlýyorum seni." ) 
+wait ( ) 
+pc . warp ( 896300 , 28900 ) 
+end 
+elseif game . get_event_flag ( "oxevent_status" ) == 2 then 
+say_title ( "Uriel:" ) 
+say ( "Yarýþma baþladý, giremezsin!" ) 
+say ( "Ancak izleyici olarak katýlabilirsin." ) 
+local s = select ( "Katýl" , "Katýlma" ) 
+if s == 1 then 
+say_title ( "Uriel:" ) 
+say ( "Tamam, ýþýnlýyorum seni." ) 
+wait ( ) 
+pc . warp ( 896300 , 28900 ) 
+end 
+end 

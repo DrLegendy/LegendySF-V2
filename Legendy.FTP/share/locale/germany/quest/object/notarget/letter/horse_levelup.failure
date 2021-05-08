@@ -1,0 +1,4 @@
+setskin ( NOWINDOW ) 
+makequestbutton ( "At üzerinden saldiri olmadi." ) 
+q . set_title ( "At üzerinden saldiri olmadi." ) 
+q . start ( ) 

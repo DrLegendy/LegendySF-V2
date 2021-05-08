@@ -1,0 +1,6 @@
+target . delete ( "Hedef1" ) 
+say ( "Nokta 1 isaretlendi." ) 
+pc . setqf ( "flag1" , 1 ) 
+if pc . getqf ( "flag1" ) == 1 and pc . getqf ( "flag2" ) == 1 then 
+setstate ( "report" ) 
+end 

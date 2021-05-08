@@ -1,0 +1,5 @@
+kristal_oda={["start"]=0,ejder_odasi_kalansure= function ()local saniyekalan = ( game . get_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" ) - get_time ( ) ) 
+local dakikakalan = math . ceil ( saniyekalan / 60 ) 
+notice ( "Mavi Ejderha'yý öldürmeye " .. dakikakalan .. " dakikalýk bir zaman" ) 
+notice ( "kaldý!" ) 
+end }

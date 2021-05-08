@@ -1,0 +1,4 @@
+d . setf ( "level" , 6 ) 
+d . jump_all ( 3072 + 1358 , 12032 + 671 ) 
+d . regen_file ( "data/dungeon/katakomb/catacomb_kat6.txt" ) 
+notice_in_map ( "Kharoon ve diðer tüm düþmanlarý yenin!" ) 

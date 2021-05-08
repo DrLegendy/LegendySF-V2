@@ -1,0 +1,27 @@
+target . pos ( "__TARGET__" , 380 , 820 , 64 , "" ) 
+if pc . get_map_index ( ) ~= 64 then 
+say ( "Egitim alanina git." ) 
+say ( "" ) 
+local b = select ( "LOS" , "Çik" ) 
+if 1 == b then 
+pc . warp_local ( 64 , 150 , 740 ) 
+elseif 2 == b then 
+say ( "Çikmak istediginden emin misin?" ) 
+say ( "" ) 
+local b = select ( "Evet" , "Hayir" ) 
+if 1 == b then 
+setstate ( "start" ) 
+q . done ( ) 
+elseif 2 == b then 
+pc . warp_local ( 64 , 150 , 740 ) 
+else 
+say ( "UNKNOWN BUTTON [" .. b .. "]" ) 
+end 
+else 
+say ( "UNKNOWN BUTTON [" .. b .. "]" ) 
+end 
+end 
+setskin ( NOWINDOW ) 
+makequestbutton ( "Binicilik egitimi (1)" ) 
+q . set_title ( "Binicilik egitimi (1)" ) 
+q . start ( ) 

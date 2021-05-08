@@ -1,0 +1,4 @@
+if d . select ( get_server_timer_arg ( ) ) and d . getf ( "level" ) == 4 then 
+notice_in_map ( "Zaman doldu! " ) 
+d . exit_all ( ) 
+end 

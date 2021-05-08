@@ -1,0 +1,3 @@
+notice_in_map ( string . format ( "Kalan zaman: %d dakika(lar)" , 15 ) ) 
+notice_in_map ( "Süre bitince grup olarak kale'nin dýþýna atýlacaksýnýz." ) 
+timer ( "flame_dungeon_5m_left_timer" , 10 * 60 ) 

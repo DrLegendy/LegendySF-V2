@@ -1,0 +1,8 @@
+pc . setqf ( "flag1" , 0 ) 
+pc . setqf ( "flag2" , 0 ) 
+target . pos ( "Hedef1" , 586 , 1139 , 1 , "" ) 
+target . pos ( "Hedef2" , 260 , 1172 , 1 , "" ) 
+setskin ( NOWINDOW ) 
+makequestbutton ( "Her noktaya git." ) 
+q . set_title ( "Her noktaya git." ) 
+q . start ( ) 

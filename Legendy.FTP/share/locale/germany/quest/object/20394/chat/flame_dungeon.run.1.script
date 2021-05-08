@@ -1,0 +1,3 @@
+local setting = flame_dungeon . setting ( ) 
+pc . setf ( "flame_dungeon" , "fdRtest" , 1 ) 
+pc . warp ( setting . dungeon_entry_pos [ 1 ] * 100 , setting . dungeon_entry_pos [ 2 ] * 100 , 351 ) 

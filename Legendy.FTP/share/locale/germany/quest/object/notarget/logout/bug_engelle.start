@@ -1,0 +1,2 @@
+if pc . get_map_index ( ) > 3.49e+06 and pc . get_map_index ( ) < 3.511e+06 or pc . get_map_index ( ) == 351 then pc . warp ( 5980 * 100 , 7075 * 100 , 62 ) 
+ return end 

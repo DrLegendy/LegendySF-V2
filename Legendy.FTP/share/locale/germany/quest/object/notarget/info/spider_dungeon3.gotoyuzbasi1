@@ -1,0 +1,7 @@
+say_title ( "Urielin mektubunu teslim et" ) 
+say ( "" ) 
+say ( "Amma da dik kafalýymýþ þu yaþlý adam...Teþekkür" ) 
+say ( "etseydi bir yeri mi eksilirdi? Aman neyse." ) 
+say ( "Bilgilerin çok önemli olduðunu söylediði için" ) 
+say ( "hemen Yüzbaþýya ileteceðim." ) 
+say ( "" ) 

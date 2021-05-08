@@ -1,0 +1,20 @@
+if item . vnum == 50084 then npc . purge ( ) 
+item . remove ( ) 
+d . setf ( "stone_count" , d . getf ( "stone_count" ) - 1 ) 
+if d . getf ( "stone_count" ) <= 0 then 
+d . clear_regen ( ) 
+d . kill_all ( ) 
+notice_in_map ( "Tüm mühürleri açtýn ve artýk 5.kata" ) 
+notice_in_map ( "girebilirsin. Bu katta Kibirli Þeytan Kralý da" ) 
+notice_in_map ( "var. 6. kattaki tüm canavarlarý öldür." ) 
+clear_server_timer ( "devil_stone5_fail1" , get_server_timer_arg ( ) ) 
+clear_server_timer ( "devil_stone5_fail2" , get_server_timer_arg ( ) ) 
+clear_server_timer ( "devil_stone5_fail3" , get_server_timer_arg ( ) ) 
+clear_server_timer ( "devil_stone5_fail" , get_server_timer_arg ( ) ) 
+d . setf ( "level" , 6 ) 
+d . jump_all ( special . devil_tower [ 5 ] [ 1 ] , special . devil_tower [ 5 ] [ 2 ] ) 
+d . regen_file ( "data/dungeon/deviltower6_regen.txt" ) 
+else 
+notice_in_map ( "Mührü açtýn! " .. d . getf ( "stone_count" ) .. " kaldý." ) 
+end 
+ return end 

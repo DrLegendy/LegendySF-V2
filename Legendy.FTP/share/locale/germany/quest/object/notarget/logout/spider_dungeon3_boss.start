@@ -1,0 +1,2 @@
+if pc . get_map_index ( ) == 217 then pc . remove_item ( "30327" , pc . countitem ( "30327" ) ) 
+ return end 

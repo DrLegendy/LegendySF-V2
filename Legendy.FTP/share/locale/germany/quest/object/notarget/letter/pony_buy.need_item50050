@@ -1,0 +1,4 @@
+setskin ( NOWINDOW ) 
+makequestbutton ( "Bana bir at madalyonu getir." ) 
+q . set_title ( "Bana bir at madalyonu getir!" ) 
+q . start ( ) 

@@ -1,0 +1,4 @@
+setskin ( NOWINDOW ) 
+makequestbutton ( "Acemi at sonuçlari" ) 
+q . set_title ( "Acemi at sonuçlari" ) 
+q . start ( ) 

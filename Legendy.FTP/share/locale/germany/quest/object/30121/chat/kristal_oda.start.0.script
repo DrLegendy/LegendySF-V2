@@ -1,0 +1,327 @@
+if pc . get_channel_id ( ) == 2 then 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 2 and game . get_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" ) - get_time ( ) > 0 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Üzgünüm Ejderha Tapınağı şuan dolu." ) 
+say ( "Kalan süre: " .. game . get_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" ) - get_time ( ) .. " saniye" ) 
+say ( "" ) 
+return 
+end 
+if game . get_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" ) - get_time ( ) < 0 and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) >= 1 then 
+game . set_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" , 0 ) 
+purge_area ( 829200 , 1.0596e+06 , 844200 , 1.0746e+06 ) 
+warp_all_to_village ( 79 ) 
+setskin ( NOWINDOW ) 
+return 
+end 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 and pc . count_item ( 30179 ) < 3 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "Gerekli eşya 3x: " .. item_name ( 30179 ) .. ":" ) 
+say_item_vnum ( 30179 ) 
+say ( "3 adet anahtara ihtiyacın var." ) 
+return 
+end 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 1 then 
+pc . setqf ( "ejder_bug_engel2" , get_time ( ) + 5 ) 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Üzgünüm Ejderha Tapınağı şuan dolu." ) 
+say ( "Eğer şifreyi biliyorsan," ) 
+say ( "doğru bir şekilde yaz." ) 
+say ( "" ) 
+say_reward ( "5 saniye süren var!" ) 
+say ( "" ) 
+local pin = tonumber ( input ( "" ) ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel2" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel2" , get_time ( ) + 0 ) 
+return 
+end 
+if string . len ( pin ) < 4 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Şifre en az 4 karakterden oluşmalı." ) 
+return 
+end 
+if game . get_event_flag ( "ejder_sifresi" .. pc . get_channel_id ( ) .. "" ) == pin then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+if pc . count_item ( 30179 ) < 3 then 
+say ( "Girmene izin veremem." ) 
+say ( "Gerekli eşya 3x: " .. item_name ( 30179 ) .. ":" ) 
+say_item_vnum ( 30179 ) 
+say ( "3 tane anahtara sahip olduğunda tekrar gel." ) 
+return 
+end 
+pc . remove_item ( "30179" , 3 ) 
+say ( "Şifre doğru tebrikler!" ) 
+say ( "Seni içeri gönderiyorum. Onu yenmeden dönme!" ) 
+pc . setqf ( "icerdesin" .. pc . get_channel_id ( ) .. "" , 1 ) 
+wait ( ) 
+pc . warp ( 843600 , 1.0669e+06 ) 
+elseif pin ~= game . get_event_flag ( "ejder_sifresi" .. pc . get_channel_id ( ) .. "" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "Üzgünüm şifreyi hatalı girdin." ) 
+return 
+end 
+end 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 and pc . count_item ( 30179 ) >= 3 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "Ejderha Tapınağı'na girmek isteyen ilk kişi" ) 
+say ( "sensin. Yeterli sayıda Kıvrık Anahtara sahipsen" ) 
+say ( "seni içeri bırakacağım. Ama ilk önce bir şifre" ) 
+say ( "belirleyeceksin. Bu şifreyi, 5 dakika" ) 
+say ( "içerisinde savaş arkadaşlarına verip onların" ) 
+say ( "içeri girmesini sağlayabilirsin. Bu anahtarın" ) 
+say ( "sadece 30 dakika tesir edeceğini unutma. O zamana" ) 
+say ( "kadar ejderhayı öldürmüş olmanız gerekiyor!" ) 
+say ( "" ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 5 ) 
+local i = select ( "Hazırım!" , "Vazgeç " ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel3" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 0 ) 
+return 
+end 
+if 1 == i and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 then 
+say_title ( "Sura Ruhu:" ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 5 ) 
+local pin = number ( 1000 , 1e+07 ) 
+say ( "" ) 
+say ( "" ) 
+say ( "" ) 
+say_reward ( "Yazman gereken şifre : " .. pin ) 
+say_reward ( "5 saniye süren var!" ) 
+local giris = tonumber ( input ( "" ) ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel3" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 0 ) 
+return 
+end 
+if giris ~= pin then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say_red ( "Malesef, Yanlış yazdın." ) 
+return 
+end 
+if pin and pin <= 1e+09 and pc . count_item ( 30179 ) >= 3 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Arzu edersen seni doğrudan Ejderha Mağarası'na" ) 
+say ( "götürebilirim. Bana şimdi vermen gerekenler:" ) 
+say ( "3x:" ) 
+say_item_vnum ( 30179 ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 5 ) 
+local zaxd = select ( "Al ve beni içeri bırak!" , "Vazgeç " ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel3" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 0 ) 
+return 
+end 
+if zaxd == 2 then 
+return 
+elseif zaxd == 1 and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 then 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) ~= 0 then 
+syschat ( "Ejderha odasına başka bir grup girdi." ) 
+return 
+end 
+game . set_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" , 1 ) 
+pc . setqf ( "ejder_sifre" , pin ) 
+pc . setqf ( "icerdesin" .. pc . get_channel_id ( ) .. "" , 1 ) 
+pc . remove_item ( "30179" , 3 ) 
+pc . setqf ( "lider" , 1 ) 
+clear_server_timer ( "ejderi_kescen" .. pc . get_channel_id ( ) .. "" , get_server_timer_arg ( ) ) 
+clear_server_timer ( "disari_yolluyoz" .. pc . get_channel_id ( ) .. "" , get_server_timer_arg ( ) ) 
+game . set_event_flag ( "ejder_sifresi" .. pc . get_channel_id ( ) .. "" , pin ) 
+game . set_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" , get_time ( ) + 1800 ) 
+pc . warp ( 843600 , 1.0669e+06 ) 
+elseif zaxd == 1 and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) ~= 0 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Birileri senden önce davrandı. Onların" ) 
+say ( "odadan çıkmalarını bekle ya da parolayı " ) 
+say ( "biliyorsan söyle." ) 
+end 
+else 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Bir hata oluştu." ) 
+say ( "" ) 
+end 
+end 
+end 
+elseif pc . get_channel_id ( ) == 1 then 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 2 and game . get_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" ) - get_time ( ) > 0 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Üzgünüm Ejderha Tapınağı şuan dolu." ) 
+say ( "Kalan süre: " .. game . get_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" ) - get_time ( ) .. " saniye" ) 
+say ( "" ) 
+return 
+end 
+if game . get_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" ) - get_time ( ) < 0 and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) >= 1 then 
+game . set_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" , 0 ) 
+purge_area ( 829200 , 1.0596e+06 , 844200 , 1.0746e+06 ) 
+warp_all_to_village ( 79 ) 
+setskin ( NOWINDOW ) 
+return 
+end 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 and pc . count_item ( 30179 ) < 3 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "Gerekli eşya 3x: " .. item_name ( 30179 ) .. ":" ) 
+say_item_vnum ( 30179 ) 
+say ( "3 adet anahtara ihtiyacın var." ) 
+return 
+end 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 1 then 
+pc . setqf ( "ejder_bug_engel2" , get_time ( ) + 5 ) 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Üzgünüm Ejderha Tapınağı şuan dolu." ) 
+say ( "Eğer şifreyi biliyorsan," ) 
+say ( "doğru bir şekilde yaz." ) 
+say ( "" ) 
+say_reward ( "5 saniye süren var!" ) 
+say ( "" ) 
+local pin = tonumber ( input ( "" ) ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel2" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel2" , get_time ( ) + 0 ) 
+return 
+end 
+if string . len ( pin ) < 4 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Şifre en az 4 karakterden oluşmalı." ) 
+return 
+end 
+if game . get_event_flag ( "ejder_sifresi" .. pc . get_channel_id ( ) .. "" ) == pin then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+if pc . count_item ( 30179 ) < 3 then 
+say ( "Girmene izin veremem." ) 
+say ( "Gerekli eşya 3x: " .. item_name ( 30179 ) .. ":" ) 
+say_item_vnum ( 30179 ) 
+say ( "3 tane anahtara sahip olduğunda tekrar gel." ) 
+return 
+end 
+pc . remove_item ( "30179" , 3 ) 
+say ( "Şifre doğru tebrikler!" ) 
+say ( "Seni içeri gönderiyorum. Onu yenmeden dönme!" ) 
+pc . setqf ( "icerdesin" .. pc . get_channel_id ( ) .. "" , 1 ) 
+wait ( ) 
+pc . warp ( 843600 , 1.0669e+06 ) 
+elseif pin ~= game . get_event_flag ( "ejder_sifresi" .. pc . get_channel_id ( ) .. "" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "Üzgünüm şifreyi hatalı girdin." ) 
+return 
+end 
+end 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 and pc . count_item ( 30179 ) >= 3 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "Ejderha Tapınağı'na girmek isteyen ilk kişi" ) 
+say ( "sensin. Yeterli sayıda Kıvrık Anahtara sahipsen" ) 
+say ( "seni içeri bırakacağım. Ama ilk önce bir şifre" ) 
+say ( "belirleyeceksin. Bu şifreyi, 5 dakika" ) 
+say ( "içerisinde savaş arkadaşlarına verip onların" ) 
+say ( "içeri girmesini sağlayabilirsin. Bu anahtarın" ) 
+say ( "sadece 30 dakika tesir edeceğini unutma. O zamana" ) 
+say ( "kadar ejderhayı öldürmüş olmanız gerekiyor!" ) 
+say ( "" ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 5 ) 
+local i = select ( "Hazırım!" , "Vazgeç " ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel3" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 0 ) 
+return 
+end 
+if 1 == i and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 then 
+pc . setqf ( "ejder_bug_engel2" , get_time ( ) + 5 ) 
+say_title ( "Sura Ruhu:" ) 
+local pin1 = number ( 1000 , 1e+07 ) 
+local pin2 = number ( 1000 , 99999 ) 
+local pin3 = number ( 1000 , 1e+07 ) 
+local pin4 = number ( 1000 , 99999 ) 
+local pin5 = number ( 1000 , 1e+07 ) 
+local pin6 = number ( 1000 , 99999 ) 
+local gercek = number ( 2 , 7 ) 
+local pin 
+if gercek == 2 then 
+pin = pin1 
+elseif gercek == 3 then 
+pin = pin2 
+elseif gercek == 4 then 
+pin = pin3 
+elseif gercek == 5 then 
+pin = pin4 
+elseif gercek == 6 then 
+pin = pin5 
+elseif gercek == 7 then 
+pin = pin6 
+end 
+say_reward ( "Seçmen gereken şifre : " .. pin ) 
+say_reward ( "5 saniye süren var!" ) 
+local sifre = select ( "Vazgeç " , pin1 , pin2 , pin3 , pin4 , pin5 , pin6 ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel2" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel2" , get_time ( ) + 0 ) 
+return 
+end 
+if sifre == gercek and pc . count_item ( 30179 ) >= 3 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Arzu edersen seni doğrudan Ejderha Mağarası'na" ) 
+say ( "götürebilirim. Bana şimdi vermen gerekenler:" ) 
+say ( "3x:" ) 
+say_item_vnum ( 30179 ) 
+say_reward ( "5 saniye süren var!" ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 5 ) 
+local zaxd = select ( "Al ve beni içeri bırak!" , "Vazgeç " ) 
+if get_time ( ) > pc . getqf ( "ejder_bug_engel3" ) then 
+say_title ( "Sura Ruhu:" ) 
+say ( "5 saniye doldu şansını tekrar dene." ) 
+pc . setqf ( "ejder_bug_engel3" , get_time ( ) + 0 ) 
+return 
+end 
+if zaxd == 2 then 
+return 
+elseif zaxd == 1 and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) == 0 then 
+if game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) ~= 0 then 
+syschat ( "Ejderha odasına başka bir grup girdi." ) 
+return 
+end 
+game . set_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" , 1 ) 
+pc . setqf ( "ejder_sifre" , pin ) 
+pc . setqf ( "icerdesin" .. pc . get_channel_id ( ) .. "" , 1 ) 
+pc . remove_item ( "30179" , 3 ) 
+pc . setqf ( "lider" , 1 ) 
+clear_server_timer ( "ejderi_kescen" .. pc . get_channel_id ( ) .. "" , get_server_timer_arg ( ) ) 
+clear_server_timer ( "disari_yolluyoz" .. pc . get_channel_id ( ) .. "" , get_server_timer_arg ( ) ) 
+game . set_event_flag ( "ejder_sifresi" .. pc . get_channel_id ( ) .. "" , pin ) 
+game . set_event_flag ( "time_1" .. pc . get_channel_id ( ) .. "" , get_time ( ) + 1800 ) 
+pc . warp ( 843600 , 1.0669e+06 ) 
+elseif zaxd == 1 and game . get_event_flag ( "ejder_kullanimda" .. pc . get_channel_id ( ) .. "" ) ~= 0 then 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Birileri senden önce davrandı. Onların" ) 
+say ( "odadan çıkmalarını bekle ya da parolayı " ) 
+say ( "biliyorsan söyle." ) 
+end 
+else 
+say_title ( "Sura Ruhu:" ) 
+say ( "" ) 
+say ( "Bir hata oluştu." ) 
+say ( "" ) 
+end 
+end 
+end 
+else 
+return 
+end 

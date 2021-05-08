@@ -1,0 +1,6 @@
+say_title ( "Binicilik Yeterliligi." ) 
+say ( "" ) 
+say ( "30 dakika içerisinde 20 okçu " ) 
+say ( "öldür ve seyise sonuç " ) 
+say ( "hakkinda bilgi ver. " ) 
+say ( "" ) 

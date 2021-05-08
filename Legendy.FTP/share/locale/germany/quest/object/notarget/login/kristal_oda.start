@@ -1,0 +1,24 @@
+if pc . getqf ( "icerdesin" .. pc . get_channel_id ( ) .. "" ) == 1 then 
+send_letter ( "Mavi Ejderha'yý maðlup edin" ) 
+end 
+if pc . get_map_index ( ) == 79 and pc . getqf ( "icerdesin" .. pc . get_channel_id ( ) .. "" ) ~= 1 then pc . warp ( 180100 , 1.2204e+06 ) 
+ return end if pc . get_map_index ( ) == 79 and pc . getqf ( "lider" ) == 1 then notice_all ( "CH " .. pc . get_channel_id ( ) .. ": " .. pc . get_name ( ) .. " grubu, Mavi Ejderha'yý öldürmeye çalýþýyor!" ) 
+notice ( "" .. pc . getqf ( "ejder_sifre" ) .. " numaralý þifreyi daðýtmaya 5 dakika zamanýn" ) 
+notice ( "var!" ) 
+purge_area ( 829200 , 1.0596e+06 , 844200 , 1.0746e+06 ) 
+regen_in_map ( 79 , "data/dungeon/skia_deliboss.txt" ) 
+server_timer ( "sifre_kapat" .. pc . get_channel_id ( ) .. "" , 300 , pc . get_map_index ( ) ) 
+server_timer ( "ejderi_kescen" .. pc . get_channel_id ( ) .. "" , 1800 , pc . get_map_index ( ) ) 
+server_timer ( "ejderi_kontrol_et_" .. pc . get_channel_id ( ) .. "_1" , 30 , pc . get_map_index ( ) ) 
+kristal_oda . ejder_odasi_kalansure ( ) 
+pc . setqf ( "lider" , 2 ) 
+pc . set_warp_location ( 73 , 1801 , 12204 ) 
+ return end if pc . get_map_index ( ) == 79 and pc . getqf ( "icerdesin" .. pc . get_channel_id ( ) .. "" ) == 1 and pc . getqf ( "lider" ) ~= 1 then kristal_oda . ejder_odasi_kalansure ( ) 
+pc . set_warp_location ( 73 , 1801 , 12204 ) 
+ return end if pc . get_map_index ( ) ~= 79 then if pc . getqf ( "icerdesin1" ) == 1 or pc . getqf ( "icerdesin2" ) == 1 then 
+pc . delqf ( "icerdesin1" ) 
+pc . delqf ( "icerdesin2" ) 
+pc . delqf ( "ejder_sifre" ) 
+pc . delqf ( "lider" ) 
+end 
+ return end 

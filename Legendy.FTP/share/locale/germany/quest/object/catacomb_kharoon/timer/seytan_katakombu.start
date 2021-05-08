@@ -1,0 +1,4 @@
+d . setf ( "level" , 7 ) 
+d . jump_all ( 3072 + 73 , 12032 + 1157 ) 
+d . regen_file ( "data/dungeon/katakomb/catacomb_kat7.txt" ) 
+notice_in_map ( "Azrail'i yenin!" ) 

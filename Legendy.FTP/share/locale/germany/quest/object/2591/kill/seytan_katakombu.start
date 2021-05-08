@@ -1,0 +1,4 @@
+local tar = number ( 1 , 1 ) 
+if tar == 1 then 
+game . drop_item ( 30312 , 1 ) 
+end 

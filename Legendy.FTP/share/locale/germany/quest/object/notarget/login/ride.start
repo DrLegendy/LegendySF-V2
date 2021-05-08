@@ -1,0 +1,5 @@
+local vnum , remain_time = pc . get_special_ride_vnum ( ) 
+if vnum == 0 then return end 
+local mount_info = ride . GetRideInfo ( vnum ) 
+if mount_info == nil then return end 
+ride . Ride ( vnum , remain_time ) 

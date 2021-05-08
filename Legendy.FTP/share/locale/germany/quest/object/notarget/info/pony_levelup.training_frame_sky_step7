@@ -1,0 +1,4 @@
+say_title ( "Binicilik egitimi (7)" ) 
+say ( "" ) 
+say_reward ( "(7)Nolu noktaya ulasildi!" ) 
+say ( "" ) 

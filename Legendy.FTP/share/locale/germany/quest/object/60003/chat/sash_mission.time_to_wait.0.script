@@ -1,0 +1,7 @@
+say ( "Selam. Görüyorum ki ihtiyaç duyduðumuz bütün" ) 
+say ( "kumaþlarý toplamýþsýn. Artýk Sung Mahi'ye karþý " ) 
+say ( "savaþma gücüne sahip olduðun için çok mutluyum." ) 
+say ( "Tekrar görüþeceðiz!" ) 
+say_item_vnum ( 85005 ) 
+pc . remove_item ( 85000 , 40 ) 
+pc . give_item2 ( 85005 , 1 ) 

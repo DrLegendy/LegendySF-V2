@@ -1,0 +1,8 @@
+if game . get_event_flag ( "oxevent_status" ) == 1 then 
+notice ( "O-X Eventi aktif, hemen yarýþmaya katýlmak için Uriel'e ulaþ!" ) 
+end 
+if pc . get_map_index ( ) == 113 and not pc . is_gm ( ) then if pc . is_mount ( ) then 
+pc . unmount ( ) 
+horse . unsummon ( ) 
+end 
+ return end 

@@ -1,0 +1,11 @@
+if item . vnum == 30311 then item . remove ( ) 
+say ( "Kapı artık açık." ) 
+say ( "Acele edin gidelim." ) 
+wait ( ) 
+say ( "Şimdi gerçek bir macera başlıyor." ) 
+say ( "2. seviyeye geçmek için sadece bir saatin var." ) 
+wait ( ) 
+d . new_jump_all ( 216 , 3622 , 12079 ) 
+d . setf ( "catacomb_kat2" , 1 ) 
+game . set_event_flag ( "Azrail_dead" , 0 ) 
+ return end 

@@ -1,0 +1,25 @@
+if snow_dungeon . is_nemeres_dungeon ( ) == true then 
+local set = snow_dungeon . get_settings ( ) 
+local stone_level5_count = 6 
+local next_jump_time = 5 
+local vnum = item . get_vnum ( ) 
+local key_level_5 = 30332 
+local search = d . getf ( "Stone_5_count" ) 
+if vnum == key_level_5 then 
+local new = search + 1 
+if new > stone_level5_count then 
+notice_in_map ( "Son taþý açtýnýz, biraz sonra çýkacaksýnýz." ) 
+npc . purge ( ) 
+item . remove ( ) 
+server_timer ( "Jp_6" , next_jump_time , d . get_map_index ( ) ) 
+d . clear_regen ( ) 
+d . kill_all ( ) 
+d . regen_file ( "data/dungeon/ice_dungeon/zone_6.txt" ) 
+else 
+notice_in_map ( "" .. search .. ". Taþý açtýnýz, biraz daha ilerlemeniz gerekmekte. " .. stone_level5_count - search .. " Adet taþýnýz kaldý." ) 
+npc . purge ( ) 
+item . remove ( ) 
+end 
+d . setf ( "Stone_5_count" , new ) 
+end 
+end 

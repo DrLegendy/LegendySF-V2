@@ -1,0 +1,4 @@
+if flame_dungeon . is_flamed ( pc . get_map_index ( ) ) and d . getf ( "level" ) == 14 then notice_in_map ( "Tebrikler!.. Ignator Maðlup Edildi," ) 
+notice_in_map ( "Yeni görev için Am-heh ile görüþün..." ) 
+flame_dungeon . level_clear ( ) 
+ return end 
