@@ -378,7 +378,11 @@ void CClientManager::QUERY_PLAYER_LOAD(CPeer * peer, DWORD dwHandle, TPlayerLoad
 #endif
 
 				"skill_level,quickslot,skill_group,alignment,mobile,horse_level,horse_riding,horse_hp,horse_hp_droptime,horse_stamina,"
-				"UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(last_play),horse_skill_point FROM player%s WHERE id=%d",
+			"UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(last_play),"
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+			"UNIX_TIMESTAMP(last_play),"
+			#endif
+			"horse_skill_point FROM player%s WHERE id=%d",
 				GetTablePostfix(), packet->player_id);
 
 		ClientHandleInfo * pkInfo = new ClientHandleInfo(dwHandle, packet->player_id);
@@ -534,6 +538,9 @@ bool CreatePlayerTableFromRes(MYSQL_RES * res, TPlayerTable * pkTab)
 	str_to_number(pkTab->horse.dwHorseHealthDropTime, row[col++]);
 	str_to_number(pkTab->horse.sStamina, row[col++]);
 	str_to_number(pkTab->logoff_interval, row[col++]);
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+	str_to_number(pkTab->lastplaytime, row[col++]);
+#endif
 	str_to_number(pkTab->horse_skill_point, row[col++]);
 
 	// reset sub_skill_point

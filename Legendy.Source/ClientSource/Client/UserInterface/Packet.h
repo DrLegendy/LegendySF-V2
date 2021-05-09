@@ -1186,6 +1186,9 @@ typedef struct SSimplePlayerInformation
     BYTE                byJob;
     BYTE                byLevel;
     DWORD               dwPlayMinutes;
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+	DWORD				dwLastPlayTime;
+#endif
     BYTE                byST, byHT, byDX, byIQ;
 //	WORD				wParts[CRaceData::PART_MAX_NUM];
     WORD                wMainPart;

@@ -829,6 +829,13 @@ class ImageBox(Window):
 	def __init__(self, layer = "UI"):
 		Window.__init__(self, layer)
 
+		if app.ENABLE_OFFICAL_CHARACTER_SCREEN:
+			self.name=""
+			self.eventDict={}
+			self.eventFunc = {"mouse_click" : None, "mouse_over_in" : None, "mouse_over_out" : None}
+			self.eventArgs = {"mouse_click" : None, "mouse_over_in" : None, "mouse_over_out" : None}
+			self.argDict={}
+
 		self.eventDict={}
 
 	def __del__(self):
@@ -852,6 +859,38 @@ class ImageBox(Window):
 
 	def GetHeight(self):
 		return wndMgr.GetHeight(self.hWnd)
+
+	if app.ENABLE_OFFICAL_CHARACTER_SCREEN:
+		def ForceRender(self):
+			wndMgr.ImageForceRender(self.hWnd)
+
+		def OnMouseLeftButtonUp(self):
+			try:
+				apply(self.eventDict["MOUSE_LEFT_UP"], self.argDict["MOUSE_LEFT_UP"])
+			except KeyError:
+				pass
+
+		def OnMouseLeftButtonDown(self):
+			try:
+				apply(self.eventDict["MOUSE_LEFT_DOWN"], self.argDict["MOUSE_LEFT_DOWN"])
+			except KeyError:
+				pass
+
+		def SAFE_SetStringEvent(self, event, func, *args):
+			self.eventDict[event]=__mem_func__(func)
+			self.argDict[event]=args
+
+		def SAFE_SetMouseClickEvent(self, func, *args):
+			self.eventDict["MOUSE_LEFT_DOWN"]=__mem_func__(func)
+			self.argDict["MOUSE_LEFT_DOWN"]=args
+
+		def SetEvent(self, func, *args) :
+			result = self.eventFunc.has_key(args[0])
+			if result :
+				self.eventFunc[args[0]] = func
+				self.eventArgs[args[0]] = args
+			else :
+				print "[ERROR] ui.py SetEvent, Can`t Find has_key : %s" % args[0]
 
 	def OnMouseOverIn(self):
 		try:
@@ -937,6 +976,9 @@ class Button(Window):
 
 		self.ButtonText = None
 		self.ToolTipText = None
+
+		if app.ENABLE_OFFICAL_CHARACTER_SCREEN:
+			self.TextChild = []
 
 	def __del__(self):
 		Window.__del__(self)
@@ -1051,6 +1093,45 @@ class Button(Window):
 
 	def IsDown(self):
 		return wndMgr.IsDown(self.hWnd)
+
+	if app.ENABLE_OFFICAL_CHARACTER_SCREEN:
+		def AppendTextLineAllClear(self) :
+			self.TextChild = []
+
+		def SetAppendTextChangeText(self, idx, text):
+			if not len(self.TextChild) :
+				return
+
+				self.TextChild[idx].SetText(text)
+
+		def SetAppendTextColor(self, idx, color) :
+			if not len(self.TextChild) :
+				return
+
+			self.TextChild[idx].SetPackedFontColor(color)
+
+		def AppendTextLine(self, text, font_size = localeInfo.UI_DEF_FONT, font_color = grp.GenerateColor(0.7607, 0.7607, 0.7607, 1.0), text_sort = "center", pos_x = None, pos_y = None):
+			textLine = TextLine()
+			textLine.SetParent(self)
+			textLine.SetFontName(font_size)
+			textLine.SetPackedFontColor(font_color)
+			textLine.SetText(text)
+			textLine.Show()
+
+			if not pos_x and not pos_y :
+				textLine.SetPosition(self.GetWidth()/2, self.GetHeight()/2)
+			else :
+				textLine.SetPosition(pos_x, pos_y)
+
+			textLine.SetVerticalAlignCenter()
+			if "center" == text_sort :
+				textLine.SetHorizontalAlignCenter()
+			elif "right" == text_sort :
+				textLine.SetHorizontalAlignRight()
+			elif "left" == 	text_sort :
+				textLine.SetHorizontalAlignLeft()
+
+			self.TextChild.append(textLine)
 
 class RadioButton(Button):
 	def __init__(self):
@@ -1873,6 +1954,126 @@ class BoardWithTitleBar(Board):
 	def SetCloseEvent(self, event):
 		self.titleBar.SetCloseEvent(event)
 
+class ThinBoardCircle(Window):
+	CORNER_WIDTH = 4
+	CORNER_HEIGHT = 4
+	LINE_WIDTH = 4
+	LINE_HEIGHT = 4
+	BOARD_COLOR = grp.GenerateColor(255.0, 255.0, 255.0, 1.0)
+
+	LT = 0
+	LB = 1
+	RT = 2
+	RB = 3
+	L = 0
+	R = 1
+	T = 2
+	B = 3
+
+	def __init__(self, layer = "UI"):
+		Window.__init__(self, layer)
+
+		CornerFileNames = [ "d:/ymir work/ui/pattern/thinboardcircle/ThinBoard_Corner_"+dir+"_Circle.tga" for dir in ["LeftTop","LeftBottom","RightTop","RightBottom"] ]
+		LineFileNames = [ "d:/ymir work/ui/pattern/thinboardcircle/ThinBoard_Line_"+dir+"_Circle.tga" for dir in ["Left","Right","Top","Bottom"] ]
+
+		self.Corners = []
+		for fileName in CornerFileNames:
+			Corner = ExpandedImageBox()
+			Corner.AddFlag("attach")
+			Corner.AddFlag("not_pick")
+			Corner.LoadImage(fileName)
+			Corner.SetParent(self)
+			Corner.SetPosition(0, 0)
+			Corner.Show()
+			self.Corners.append(Corner)
+
+		self.Lines = []
+		for fileName in LineFileNames:
+			Line = ExpandedImageBox()
+			Line.AddFlag("attach")
+			Line.AddFlag("not_pick")
+			Line.LoadImage(fileName)
+			Line.SetParent(self)
+			Line.SetPosition(0, 0)
+			Line.Show()
+			self.Lines.append(Line)
+
+		Base = Bar()
+		Base.SetParent(self)
+		Base.AddFlag("attach")
+		Base.AddFlag("not_pick")
+		Base.SetPosition(self.CORNER_WIDTH, self.CORNER_HEIGHT)
+		Base.SetColor(self.BOARD_COLOR)
+		Base.Show()
+		self.Base = Base
+		
+		self.ButtonText = None
+		self.BonusId = 0
+
+		self.Lines[self.L].SetPosition(0, self.CORNER_HEIGHT)
+		self.Lines[self.T].SetPosition(self.CORNER_WIDTH, 0)
+
+	def __del__(self):
+		Window.__del__(self)
+
+	def SetSize(self, width, height):
+
+		width = max(self.CORNER_WIDTH*2, width)
+		height = max(self.CORNER_HEIGHT*2, height)
+		Window.SetSize(self, width, height)
+
+		self.Corners[self.LB].SetPosition(0, height - self.CORNER_HEIGHT)
+		self.Corners[self.RT].SetPosition(width - self.CORNER_WIDTH, 0)
+		self.Corners[self.RB].SetPosition(width - self.CORNER_WIDTH, height - self.CORNER_HEIGHT)
+		self.Lines[self.R].SetPosition(width - self.CORNER_WIDTH, self.CORNER_HEIGHT)
+		self.Lines[self.B].SetPosition(self.CORNER_HEIGHT, height - self.CORNER_HEIGHT)
+
+		verticalShowingPercentage = float((height - self.CORNER_HEIGHT*2) - self.LINE_HEIGHT) / self.LINE_HEIGHT
+		horizontalShowingPercentage = float((width - self.CORNER_WIDTH*2) - self.LINE_WIDTH) / self.LINE_WIDTH
+		self.Lines[self.L].SetRenderingRect(0, 0, 0, verticalShowingPercentage)
+		self.Lines[self.R].SetRenderingRect(0, 0, 0, verticalShowingPercentage)
+		self.Lines[self.T].SetRenderingRect(0, 0, horizontalShowingPercentage, 0)
+		self.Lines[self.B].SetRenderingRect(0, 0, horizontalShowingPercentage, 0)
+		self.Base.SetSize(width - self.CORNER_WIDTH*2, height - self.CORNER_HEIGHT*2)
+		
+	def SetText(self, text):
+		if not self.ButtonText:
+			textLine = TextLine()
+			textLine.SetParent(self)
+			textLine.SetPosition(self.GetWidth()/2, self.GetHeight()/2)
+			textLine.SetVerticalAlignCenter()
+			textLine.SetHorizontalAlignCenter()
+			textLine.Show()
+			self.ButtonText = textLine
+
+		self.ButtonText.SetText(text)
+		
+	def GetText(self):
+		if not self.ButtonText:
+			return ""
+		return self.ButtonText.GetText()
+		
+	def SetBonusId(self, bnsId):
+		self.BonusId = bnsId
+		
+	def GetBonusId(self):
+		if self.BonusId != 0:
+			return self.BonusId
+
+	def ShowInternal(self):
+		self.Base.Show()
+		for wnd in self.Lines:
+			wnd.Show()
+		for wnd in self.Corners:
+			wnd.Show()
+
+	def HideInternal(self):
+		self.Base.Hide()
+		for wnd in self.Lines:
+			wnd.Hide()
+		for wnd in self.Corners:
+			wnd.Hide()
+
 class ThinBoard(Window):
 
 	CORNER_WIDTH = 16
@@ -1952,6 +2153,99 @@ class ThinBoard(Window):
 		self.Lines[self.T].SetRenderingRect(0, 0, horizontalShowingPercentage, 0)
 		self.Lines[self.B].SetRenderingRect(0, 0, horizontalShowingPercentage, 0)
 		self.Base.SetSize(width - self.CORNER_WIDTH*2, height - self.CORNER_HEIGHT*2)
+
+	def ShowInternal(self):
+		self.Base.Show()
+		for wnd in self.Lines:
+			wnd.Show()
+		for wnd in self.Corners:
+			wnd.Show()
+
+	def HideInternal(self):
+		self.Base.Hide()
+		for wnd in self.Lines:
+			wnd.Hide()
+		for wnd in self.Corners:
+			wnd.Hide()
+
+class ThinBoardGold(Window):
+	CORNER_WIDTH = 16
+	CORNER_HEIGHT = 16
+	LINE_WIDTH = 16
+	LINE_HEIGHT = 16
+	BOARD_COLOR = grp.GenerateColor(0.0, 0.0, 0.0, 0.51)
+
+	LT = 0
+	LB = 1
+	RT = 2
+	RB = 3
+	L = 0
+	R = 1
+	T = 2
+	B = 3
+
+	def __init__(self, layer = "UI"):
+		Window.__init__(self, layer)
+		CornerFileNames = [ "d:/ymir work/ui/pattern/thinboardgold/ThinBoard_Corner_"+dir+".tga" for dir in ["LeftTop_gold", "LeftBottom_gold","RightTop_gold", "RightBottom_gold"]]
+		LineFileNames = [ "d:/ymir work/ui/pattern/thinboardgold/ThinBoard_Line_"+dir+".tga" for dir in ["Left_gold", "Right_gold", "Top_gold", "Bottom_gold"]]
+
+		self.Corners = []
+		for fileName in CornerFileNames:
+			Corner = ExpandedImageBox()
+			Corner.AddFlag("attach")
+			Corner.AddFlag("not_pick")
+			Corner.LoadImage(fileName)
+			Corner.SetParent(self)
+			Corner.SetPosition(0, 0)
+			Corner.Show()
+			self.Corners.append(Corner)
+
+		self.Lines = []
+		for fileName in LineFileNames:
+			Line = ExpandedImageBox()
+			Line.AddFlag("attach")
+			Line.AddFlag("not_pick")
+			Line.LoadImage(fileName)
+			Line.SetParent(self)
+			Line.SetPosition(0, 0)
+			Line.Show()
+			self.Lines.append(Line)
+
+		Base = ExpandedImageBox()
+		Base.SetParent(self)
+		Base.AddFlag("attach")
+		Base.AddFlag("not_pick")
+		Base.LoadImage("d:/ymir work/ui/pattern/thinboardgold/thinboard_bg_gold.tga")
+		Base.SetPosition(self.CORNER_WIDTH, self.CORNER_HEIGHT)
+		Base.Show()
+		self.Base = Base
+
+		self.Lines[self.L].SetPosition(0, self.CORNER_HEIGHT)
+		self.Lines[self.T].SetPosition(self.CORNER_WIDTH, 0)
+
+	def __del__(self):
+		Window.__del__(self)
+
+	def SetSize(self, width, height):
+
+		width = max(self.CORNER_WIDTH*2, width)
+		height = max(self.CORNER_HEIGHT*2, height)
+		Window.SetSize(self, width, height)
+
+		self.Corners[self.LB].SetPosition(0, height - self.CORNER_HEIGHT)
+		self.Corners[self.RT].SetPosition(width - self.CORNER_WIDTH, 0)
+		self.Corners[self.RB].SetPosition(width - self.CORNER_WIDTH, height - self.CORNER_HEIGHT)
+		self.Lines[self.R].SetPosition(width - self.CORNER_WIDTH, self.CORNER_HEIGHT)
+		self.Lines[self.B].SetPosition(self.CORNER_HEIGHT, height - self.CORNER_HEIGHT)
+
+		verticalShowingPercentage = float((height - self.CORNER_HEIGHT*2) - self.LINE_HEIGHT) / self.LINE_HEIGHT
+		horizontalShowingPercentage = float((width - self.CORNER_WIDTH*2) - self.LINE_WIDTH) / self.LINE_WIDTH
+		self.Lines[self.L].SetRenderingRect(0, 0, 0, verticalShowingPercentage)
+		self.Lines[self.R].SetRenderingRect(0, 0, 0, verticalShowingPercentage)
+		self.Lines[self.T].SetRenderingRect(0, 0, horizontalShowingPercentage, 0)
+		self.Lines[self.B].SetRenderingRect(0, 0, horizontalShowingPercentage, 0)
+		if self.Base:
+			self.Base.SetRenderingRect(0, 0, horizontalShowingPercentage, verticalShowingPercentage)
 
 	def ShowInternal(self):
 		self.Base.Show()
@@ -3029,6 +3323,16 @@ class PythonScriptLoader(object):
 				parent.Children[Index].SetParent(parent)
 				self.LoadElementThinBoard(parent.Children[Index], ElementValue, parent)
 
+			elif Type == "thinboard_gold":
+				parent.Children[Index] = ThinBoardGold()
+				parent.Children[Index].SetParent(parent)
+				self.LoadElementThinBoardGold(parent.Children[Index], ElementValue, parent)
+
+			elif Type == "thinboard_circle":
+				parent.Children[Index] = ThinBoardCircle()
+				parent.Children[Index].SetParent(parent)
+				self.LoadElementThinBoard(parent.Children[Index], ElementValue, parent)
+
 			elif Type == "box":
 				parent.Children[Index] = Box()
 				parent.Children[Index].SetParent(parent)
@@ -3492,8 +3796,26 @@ class PythonScriptLoader(object):
 
 		return True
 
+	def LoadElementThinBoardCircle(self, window, value, parentWindow):
+		if FALSE == self.CheckKeyList(value["name"], value, self.BOARD_KEY_LIST):
+			return FALSE
+
+		window.SetSize(int(value["width"]), int(value["height"]))
+		self.LoadDefaultData(window, value, parentWindow)
+		return TRUE
+
 	## ThinBoard
 	def LoadElementThinBoard(self, window, value, parentWindow):
+
+		if False == self.CheckKeyList(value["name"], value, self.BOARD_KEY_LIST):
+			return False
+
+		window.SetSize(int(value["width"]), int(value["height"]))
+		self.LoadDefaultData(window, value, parentWindow)
+
+		return True
+
+	def LoadElementThinBoardGold(self, window, value, parentWindow):
 
 		if False == self.CheckKeyList(value["name"], value, self.BOARD_KEY_LIST):
 			return False

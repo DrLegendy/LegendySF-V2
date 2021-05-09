@@ -344,6 +344,9 @@ typedef struct SSimplePlayer
 	BYTE		byLevel;
 	DWORD		dwPlayMinutes;
 	BYTE		byST, byHT, byDX, byIQ;
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+	DWORD		dwLastPlayTime;
+#endif
 	WORD		wMainPart;
 	BYTE		bChangeName;
 	WORD		wHairPart;
@@ -448,8 +451,10 @@ typedef struct SPlayerTable
 	short	sRandomHP;
 	short	sRandomSP;
 
-	int         playtime;
-
+	int		playtime;
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+	int		lastplaytime;
+#endif
 	short	stat_point;
 	short	skill_point;
 	short	sub_skill_point;

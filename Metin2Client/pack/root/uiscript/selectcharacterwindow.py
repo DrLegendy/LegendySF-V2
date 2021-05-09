@@ -1,580 +1,1073 @@
+import localeInfo
 import uiScriptLocale
-
+import app
 ROOT_PATH = "d:/ymir work/ui/public/"
 LOCALE_PATH = uiScriptLocale.SELECT_PATH
 
-BOARD_X = SCREEN_WIDTH * (65) / 800
-BOARD_Y = SCREEN_HEIGHT * (220) / 600
+BOARD_X = SCREEN_WIDTH * (25) / 800
+BOARD_Y = SCREEN_HEIGHT * (156) / 600
 
+PLUS_BUTTON_WIDTH = 20
+TEMPORARY_HEIGHT = 30
 BOARD_ITEM_ADD_POSITION = -40
 
-window = {
-	"name" : "SelectCharacterWindow",
-
-	"x" : 0,
-	"y" : 0,
-
-	"width" : SCREEN_WIDTH,
-	"height" : SCREEN_HEIGHT,
-
-	"children" :
-	(
-		## Board
-		{
-			"name" : "BackGroundPattern",
-			"type" : "expanded_image",
-
-			"x" : 0,
-			"y" : 42,
-
-			"image" : "d:/ymir work/ui/intro/pattern/background_pattern.tga",
-
-			"rect" : (0.0, 0.0, float(SCREEN_WIDTH - 128) / 128.0, float(SCREEN_HEIGHT - 128 - 42*2) / 128.0),
-		},
-
-		## Alpha
-		{
-			"name" : "Alpha",
-			"type" : "expanded_image",
-
-			"x" : 0,
-			"y" : 0,
-
-			"image" : "d:/ymir work/ui/intro/select/background_alpha.sub",
-
-			"x_scale" : float(SCREEN_WIDTH) / 100.0,
-			"y_scale" : float(SCREEN_HEIGHT) / 69.0,
-		},
-
-		## Top & Bottom Line
-		{
-			"name" : "Top_Line",
-			"type" : "expanded_image",
-
-			"x" : 0,
-			"y" : 0,
-
-			"image" : "d:/ymir work/ui/intro/pattern/line_pattern.tga",
-
-			"rect" : (0.0, 0.0, float(SCREEN_WIDTH - 50) / 50.0, 0.0),
-		},
-		{
-			"name" : "Bottom_Line",
-			"type" : "expanded_image",
-
-			"x" : 0,
-			"y" : SCREEN_HEIGHT - 42,
-
-			"image" : "d:/ymir work/ui/intro/pattern/line_pattern.tga",
-
-			"rect" : (0.0, 0.0, float(SCREEN_WIDTH - 50) / 50.0, 0.0),
-		},
-
-		## BackGround
-		{
-			"name" : "BackGround",
-			"type" : "expanded_image",
-
-			"x" : 0,
-			"y" : 0,
-			"x_scale" : float(SCREEN_WIDTH) / 800.0,
-			"y_scale" : float(SCREEN_HEIGHT) / 600.0,
-			"mode" : "MODULATE",
-
-			"image" : "d:/ymir work/ui/intro/pattern/intro_background.dds",
-		},
-
-		## Name
-		{
-			"name" : "name_warrior",
-			"type" : "image",
-
-			"x" : BOARD_X - 27,
-			"y" : BOARD_Y - 174 + 25,
-
-			"image" : LOCALE_PATH+"name_warrior.sub",
-		},
-		{
-			"name" : "name_assassin",
-			"type" : "image",
-
-			"x" : BOARD_X - 27,
-			"y" : BOARD_Y - 174 + 25,
-
-			"image" : LOCALE_PATH+"name_assassin.sub",
-		},
-		{
-			"name" : "name_sura",
-			"type" : "image",
-
-			"x" : BOARD_X - 27,
-			"y" : BOARD_Y - 174 + 25,
-
-			"image" : LOCALE_PATH+"name_sura.sub",
-		},
-		{
-			"name" : "name_shaman",
-			"type" : "image",
-
-			"x" : BOARD_X - 27,
-			"y" : BOARD_Y - 174 + 25,
-
-			"image" : LOCALE_PATH+"name_shaman.sub",
-		},
-
-
-		## Character Board
-		{
-			"name" : "character_board",
-			"type" : "thinboard",
-
-			"x" : BOARD_X,
-			"y" : BOARD_Y,
-
-			"width" : 208,
-			"height" : 363 + BOARD_ITEM_ADD_POSITION,
-
-			"children" :
-			(
-
-				## Empire Flag
-				{
-					"name" : "EmpireFlag_A",
-					"type" : "expanded_image",
-
-					"x" : 21,
-					"y" : 12,
-					"x_scale" : 0.5,
-					"y_scale" : 0.5,
-
-					"image" : "d:/ymir work/ui/intro/empire/empireflag_a.sub"
-				},
-				{
-					"name" : "EmpireFlag_B",
-					"type" : "expanded_image",
-
-					"x" : 21,
-					"y" : 12,
-					"x_scale" : 0.5,
-					"y_scale" : 0.5,
-
-					"image" : "d:/ymir work/ui/intro/empire/empireflag_b.sub"
-				},
-				{
-					"name" : "EmpireFlag_C",
-					"type" : "expanded_image",
-
-					"x" : 21,
-					"y" : 12,
-					"x_scale" : 0.5,
-					"y_scale" : 0.5,
-
-					"image" : "d:/ymir work/ui/intro/empire/empireflag_c.sub"
-				},
-
-				{
-					"name" : "EmpireNameSlot",
-					"type" : "image",
-
-					"x" : 100,
-					"y" : 12,
-
-					"image" : "d:/ymir work/ui/public/Parameter_Slot_03.sub",
-
-					"children" :
-					(
-						{
-							"name" : "EmpireName",
-							"type" : "text",
-
-							"x" : 0,
-							"y" : 0,
-
-							"text" : uiScriptLocale.SELECT_EMPIRE_NAME,
-
-							"all_align" : "center",
-						},
-					),
-				},
-
-				{
-					"name" : "GuildNameSlot",
-					"type" : "image",
-
-					"x" : 100,
-					"y" : 33,
-
-					"image" : "d:/ymir work/ui/public/Parameter_Slot_03.sub",
-
-					"children" :
-					(
-						{
-							"name" : "GuildName",
-							"type" : "text",
-
-							"x" : 0,
-							"y" : 0,
-
-							"text" : uiScriptLocale.SELECT_NO_GUILD,
-
-							"all_align" : "center",
-						},
-					),
-				},
-
-				{
-					"name" : "character_name",
-					"type" : "text",
-
-					"x" : 17,
-					"y" : 124 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_NAME,
-
-					"children" :
-					(
-						{
-							"name" : "character_name_slot",
-							"type" : "image",
-
-							"x" : 43,
-							"y" : -2,
-
-							"image" : "d:/ymir work/ui/public/Parameter_Slot_05.sub",
-						},
-						{
-							"name" : "character_name_value",
-							"type" : "text",
-
-							"x" : 43 + 130/2,
-							"y" : 0,
-
-							"text" : "",
-
-							"text_horizontal_align" : "center",
-						},
-					),
-				},
-				{
-					"name" : "character_level",
-					"type" : "text",
-
-					"x" : 17,
-					"y" : 50 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_LEVEL,
-
-					"children" :
-					(
-						{
-							"name" : "character_level_slot",
-							"type" : "image",
-
-							"x" : 43,
-							"y" : -2,
-
-							"image" : "d:/ymir work/ui/public/Parameter_Slot_05.sub",
-						},
-						{
-							"name" : "character_level_value",
-							"type" : "text",
-
-							"x" : 43 + 130/2,
-							"y" : 0,
-
-							"text" : "",
-
-							"text_horizontal_align" : "center",
-						},
-					),
-				},
-				{
-					"name" : "character_play_time",
-					"type" : "text",
-
-					"x" : 17,
-					"y" : 76 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_PLAYTIME,
-
-					"children" :
-					(
-						{
-							"name" : "character_play_time_slot",
-							"type" : "image",
-
-							"x" : 83,
-							"y" : -2,
-
-							"image" : "d:/ymir work/ui/public/Parameter_Slot_03.sub",
-						},
-						{
-							"name" : "character_play_time_value",
-							"type" : "text",
-
-							"x" : 83 + 91/2,
-							"y" : 0,
-
-							"text" : "",
-
-							"text_horizontal_align" : "center",
-						},
-					),
-				},
-				{
-					"name" : "character_hth",
-					"type" : "text",
-
-					"x" : 17,
-					"y" : 102 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_HP,
-
-					"children" :
-					(
-						{
-							"name" : "gauge_hth",
-							"type" : "gauge",
-
-							"x" : 30,
-							"y" : 4,
-
-							"width" : 100,
-							"color" : "red",
-						},
-						{
-							"name" : "character_hth_slot",
-							"type" : "image",
-
-							"x" : 134,
-							"y" : -2,
-
-							"image" : "d:/ymir work/ui/public/Parameter_Slot_00.sub",
-						},
-						{
-							"name" : "character_hth_value",
-							"type" : "text",
-
-							"x" : 134 + 39/2,
-							"y" : 0,
-
-							"text" : "",
-
-							"text_horizontal_align" : "center",
-						},
-					),
-				},
-				{
-					"name" : "character_int",
-					"type" : "text",
-
-					"x" : 17,
-					"y" : 128 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_SP,
-
-					"children" :
-					(
-						{
-							"name" : "gauge_int",
-							"type" : "gauge",
-
-							"x" : 30,
-							"y" : 4,
-
-							"width" : 100,
-							"color" : "pink",
-						},
-						{
-							"name" : "character_int_slot",
-							"type" : "image",
-
-							"x" : 134,
-							"y" : -2,
-
-							"image" : "d:/ymir work/ui/public/Parameter_Slot_00.sub",
-						},
-						{
-							"name" : "character_int_value",
-							"type" : "text",
-
-							"x" : 134 + 39/2,
-							"y" : 0,
-
-							"text" : "",
-
-							"text_horizontal_align" : "center",
-						},
-					),
-				},
-				{
-					"name" : "character_str",
-					"type" : "text",
-
-					"x" : 17,
-					"y" : 154 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_ATT_GRADE,
-
-					"children" :
-					(
-						{
-							"name" : "gauge_str",
-							"type" : "gauge",
-
-							"x" : 30,
-							"y" : 4,
-
-							"width" : 100,
-							"color" : "purple",
-						},
-						{
-							"name" : "character_str_slot",
-							"type" : "image",
-
-							"x" : 134,
-							"y" : -2,
-
-							"image" : "d:/ymir work/ui/public/Parameter_Slot_00.sub",
-						},
-						{
-							"name" : "character_str_value",
-							"type" : "text",
-
-							"x" : 134 + 39/2,
-							"y" : 0,
-
-							"text" : "",
-
-							"text_horizontal_align" : "center",
-						},
-					),
-				},
-				{
-					"name" : "character_dex",
-					"type" : "text",
-
-					"x" : 17,
-					"y" : 180 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_DEX_GRADE,
-
-					"children" :
-					(
-						{
-							"name" : "gauge_dex",
-							"type" : "gauge",
-
-							"x" : 30,
-							"y" : 4,
-
-							"width" : 100,
-							"color" : "blue",
-						},
-						{
-							"name" : "character_dex_slot",
-							"type" : "image",
-
-							"x" : 134,
-							"y" : -2,
-
-							"image" : "d:/ymir work/ui/public/Parameter_Slot_00.sub",
-						},
-						{
-							"name" : "character_dex_value",
-							"type" : "text",
-
-							"x" : 134 + 39/2,
-							"y" : 0,
-
-							"text" : "",
-
-							"text_horizontal_align" : "center",
-						},
-					),
-				},
-
-				## Buttons
-				{
-					"name" : "start_button",
-					"type" : "button",
-
-					"x" : 14,
-					"y" : 210 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_SELECT,
-					"text_height" : 6,
-
-					"default_image" : ROOT_PATH + "XLarge_Button_01.sub",
-					"over_image" : ROOT_PATH + "XLarge_Button_02.sub",
-					"down_image" : ROOT_PATH + "XLarge_Button_03.sub",
-				},
-				{
-					"name" : "create_button",
-					"type" : "button",
-
-					"x" : 14,
-					"y" : 210 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_CREATE,
-					"text_height" : 6,
-
-					"default_image" : ROOT_PATH + "XLarge_Button_01.sub",
-					"over_image" : ROOT_PATH + "XLarge_Button_02.sub",
-					"down_image" : ROOT_PATH + "XLarge_Button_03.sub",
-				},
-				{
-					"name" : "exit_button",
-					"type" : "button",
-
-					"x" : 105,
-					"y" : 245 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_EXIT,
-
-					"default_image" : ROOT_PATH + "Large_Button_01.sub",
-					"over_image" : ROOT_PATH + "Large_Button_02.sub",
-					"down_image" : ROOT_PATH + "Large_Button_03.sub",
-				},
-				{
-					"name" : "delete_button",
-					"type" : "button",
-
-					"x" : 14,
-					"y" : 245 + 100 - 21 + BOARD_ITEM_ADD_POSITION,
-
-					"text" : uiScriptLocale.SELECT_DELETE,
-
-					"default_image" : ROOT_PATH + "Large_Button_01.sub",
-					"over_image" : ROOT_PATH + "Large_Button_02.sub",
-					"down_image" : ROOT_PATH + "Large_Button_03.sub",
-				},
-			),
-		},
-
-		## Buttons
-		{
-			"name" : "left_button",
-			"type" : "button",
-
-			"x" : SCREEN_WIDTH * (450) / 800,
-			"y" : SCREEN_HEIGHT * (505) / 600,
-
-			"default_image" : "d:/ymir work/ui/intro/select/left_button_01.sub",
-			"over_image" : "d:/ymir work/ui/intro/select/left_button_02.sub",
-			"down_image" : "d:/ymir work/ui/intro/select/left_button_03.sub",
-		},
-		{
-			"name" : "right_button",
-			"type" : "button",
-
-			"x" : SCREEN_WIDTH * (580) / 800,
-			"y" : SCREEN_HEIGHT * (505) / 600,
-
-			"default_image" : "d:/ymir work/ui/intro/select/right_button_01.sub",
-			"over_image" : "d:/ymir work/ui/intro/select/right_button_02.sub",
-			"down_image" : "d:/ymir work/ui/intro/select/right_button_03.sub",
-		},
-
-	),
-}
+X_GAP = 11
+Y_GAP = 12
+
+NAME_X = 18
+NAME_Y = 84
+NAME_SCALE_X = 0.65
+NAME_SCALE_Y = 0.65
+
+FLAG_SCALE_X = 0.45
+FLAG_SCALE_Y = 0.45
+
+SHADOW_SCALE_X = 3.0 * SCREEN_WIDTH  / 800.0
+SHADOW_SCALE_Y = 2.0 * SCREEN_HEIGHT / 600.0
+
+STAT_GAUGE_X = X_GAP + 3
+STAT_GAUGE_Y = 286
+STAT_GAUGE_BAR_X = 40
+STAT_GAUGE_BAR_WIDTH = 105
+STAT_GAUGE_GAP = 18
+STAT_GAUGE_TEXT_WIDTH = 21
+STAT_GAUGE_TEXT_HEIGHT = 13
+
+THINBOARD_GOLD_HEIGHT = 364
+THINBOARD_CIRCLE_LEFT_WIDTH = 175
+THINBOARD_CIRCLE_RIGHT_WIDTH = 180
+THINBOARD_CIRCLE_RIGHT_HEIGHT = 270
+
+DESC_FACE_X = 4
+DESC_FACE_Y = -23
+
+FACE_X = 7
+FACE_Y = 4
+SELECT_BTN_X = X_GAP + 4
+SELECT_BTN_Y = 10
+SELECT_BTN_GAP = 44
+if app.ENABLE_WOLFMAN_CHARACTER:
+	window = {
+		"name" : "New_SelectCharacterWindow",
+		"x" : 0,
+		"y" : 0,
+		"width" : SCREEN_WIDTH,
+		"height" : SCREEN_HEIGHT,
+		"children"	:
+		(
+			{
+				"name" : "BackGround",
+				"type" : "expanded_image",
+				"x" : 0,
+				"y" : 0,
+				"x_scale" : float(SCREEN_WIDTH) / 1024.0,
+				"y_scale" : float(SCREEN_HEIGHT) / 768.0,
+				"image" : LOCALE_PATH + "empire/background/empire_sinsu.sub",
+			},
+			{
+				"name" : "desc_phase",
+				"type" : "image",
+				"x" : 0,
+				"y" : BOARD_Y - NAME_Y - 45,
+				"image" : ROOT_PATH + "public_intro_btn/descPhase_btn.sub",
+				"children" :
+				(
+					{
+						"name" : "my_id", "type" : "text",
+						"x" : 18, "y" : 7, "r" : 0.7843, "g" : 0.7843, "b" : 0.7843,
+						"text" : "",
+						"fontsize" : "LARGE",
+					},
+				),
+			},
+			{
+				"name" : "name_warrior",
+				"type" : "expanded_image", 
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_warrior.sub",
+			},
+			{
+				"name" : "name_assassin",
+				"type" : "expanded_image",
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_assassin.sub",
+			},
+			{
+				"name" : "name_sura",
+				"type" : "expanded_image",
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_sura.sub",
+			},
+			{
+				"name" : "name_shaman",
+				"type" : "expanded_image",
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_shaman.sub",
+			},
+			{
+				"name" : "name_wolfman",
+				"type" : "expanded_image",
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_wolfman.sub",
+			},
+			{
+				"name" : "Shadow",
+				"type" : "expanded_image",
+				"x" : SCREEN_WIDTH/2 - (64)*SHADOW_SCALE_X,
+				"y" : SCREEN_HEIGHT - SCREEN_HEIGHT*(70)/600.0 - (88)*SHADOW_SCALE_Y/2.0, 
+				"x_scale" : SHADOW_SCALE_X, "y_scale" : SHADOW_SCALE_Y,
+				"image" : LOCALE_PATH + "shadow/shadow.tga",
+			},
+			{
+				"name" : "character_board",
+				"type" : "thinboard_gold",
+				"x" : BOARD_X,
+				"y" : BOARD_Y,
+				"width" : THINBOARD_CIRCLE_LEFT_WIDTH + (X_GAP * 2) + 1,
+				"height" : 305,
+				"children" :
+				(
+					{
+						"name" : "EmpireNameSlot",
+						"type" : "thinboard_circle",
+						"x" : X_GAP,
+						"y" : Y_GAP,
+						"width" : THINBOARD_CIRCLE_LEFT_WIDTH,
+						"height" : 42,
+						"children" :
+						(
+							{
+								"name" : "EmpireFlag",
+								"type" : "expanded_image",
+								"x" : 4,
+								"y" : 3,
+								"x_scale" : FLAG_SCALE_X,
+								"y_scale" : FLAG_SCALE_Y,
+								"image" : LOCALE_PATH + "empire/empireflag_a.sub"
+							},
+							{
+								"name" : "EmpireName",
+								"type" : "text",
+								"x" : 29,
+								"y" : 0,
+								"text" : uiScriptLocale.SELECT_EMPIRE_NAME,
+								"fontsize" : "LARGE",
+								"all_align" : "center",
+							},
+						),
+					},
+					{
+						"name" : "SelectJobSlot",
+						"type" : "thinboard_circle",
+						"x" : X_GAP,
+						"y" : 61,
+						"width" : THINBOARD_CIRCLE_LEFT_WIDTH,
+						"height" : 231,
+						"children" :
+						(
+							{
+								"name" : "NoneButton_0",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_1",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_2",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*2,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_3", 
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*3,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_4",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*4,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "CharacterSlot_0",
+								"type" : "radio_button", 
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_1",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_2",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*2,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_3",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*3,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_4",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*4,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterFace_0",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_1",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_2",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*2 - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_3",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*3 - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_4",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*4 - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+						),
+					},
+				),
+			},
+			{
+				"name" : "select_thinboard2",
+				"type" : "thinboard_gold", 
+				"x" : BOARD_X,
+				"y" : BOARD_Y + 305 + 3,
+				"width" : THINBOARD_CIRCLE_LEFT_WIDTH + (X_GAP * 2) + 1,
+				"height" : (Y_GAP * 2) + 27,
+				"children" : 
+				(
+					{
+						"name" : "create_button",
+						"type" : "button",
+						"x" : X_GAP + 4, "y" : Y_GAP,
+						"default_image" : ROOT_PATH + "public_intro_btn/plus_btn_01.sub",
+						"over_image" : ROOT_PATH + "public_intro_btn/plus_btn_02.sub",
+						"down_image" : ROOT_PATH + "public_intro_btn/plus_btn_03.sub",
+					},
+					
+
+					{
+						"name" : "delete_button",
+						"type" : "button",
+						"x" : THINBOARD_CIRCLE_LEFT_WIDTH + X_GAP - 58,
+						"y" : Y_GAP,
+						"default_image" : ROOT_PATH + "public_intro_btn/minus_btn_01.sub",
+						"over_image" : ROOT_PATH + "public_intro_btn/minus_btn_02.sub",
+						"down_image" : ROOT_PATH + "public_intro_btn/minus_btn_03.sub",
+					},
+				),
+			},
+			{
+				"name" : "start_button",
+				"type" : "button",
+				"x" : SCREEN_WIDTH/2 - 107,
+				"y" : SCREEN_HEIGHT - SCREEN_HEIGHT*(70)/600.0,
+				"default_image" : ROOT_PATH + "public_intro_btn/start_btn_01.sub",
+				"over_image" : ROOT_PATH + "public_intro_btn/start_btn_02.sub",
+				"down_image" : ROOT_PATH + "public_intro_btn/start_btn_03.sub",
+			},
+			{
+				"name" : "exit_button",
+				"type" : "button",
+				"x" : SCREEN_WIDTH/2 + 32,
+				"y" : SCREEN_HEIGHT - SCREEN_HEIGHT*(70)/600.0,
+				"default_image" : ROOT_PATH + "public_intro_btn/cancel_btn_01.sub",
+				"over_image" : ROOT_PATH + "public_intro_btn/cancel_btn_02.sub",
+				"down_image" : ROOT_PATH + "public_intro_btn/cancel_btn_03.sub",
+			},
+			{
+				"name" : "character_discriptionboard",
+				"type" : "thinboard_gold",
+				"x" : SCREEN_WIDTH - BOARD_X - (THINBOARD_CIRCLE_RIGHT_WIDTH + (X_GAP * 2)),
+				"y" : BOARD_Y,
+				"width" : THINBOARD_CIRCLE_RIGHT_WIDTH + (X_GAP * 2) + 1,
+				"height" : THINBOARD_GOLD_HEIGHT,
+				"children"	:
+				(
+					{
+						"name" : "raceName_Btn",
+						"type" : "image",
+						"x" : 10,
+						"y" : -17,
+						"image" : ROOT_PATH + "public_intro_btn/raceName_btn.sub",
+						"children" :
+						(
+							{
+								"name" : "DiscFace",
+								"type" : "image",
+								"x" : DESC_FACE_X,
+								"y" : DESC_FACE_Y,
+								"image" : "d:/ymir work/bin/icon/face/warrior_m.tga"
+							},
+							{
+								"name" : "raceName_Text",
+								"type" : "text",
+								"x" : 100,
+								"y" : 5,
+								"r" : 0.7843,
+								"g" : 0.7843,
+								"b" : 0.7843,
+								"text" : localeInfo.JOB_WARRIOR, "text_horizontal_align" : "center"
+							}
+						),
+					},
+					{
+						"name" : "text_board", "type" : "thinboard_circle",
+						"x" : X_GAP,
+						"y" : Y_GAP,
+						"width" : THINBOARD_CIRCLE_RIGHT_WIDTH,
+						"height" : THINBOARD_CIRCLE_RIGHT_HEIGHT,
+						"children" :
+						(
+							{
+								"name" : "prev_button",
+								"type" : "button",
+								"x" : 122,
+								"y" : 250,
+								"default_image" : ROOT_PATH + "public_intro_btn/prev_btn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/prev_btn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/prev_btn_01.sub",
+							},
+							{
+								"name" : "next_button",
+								"type" : "button",
+								"x" : 122 + 20 + 10,
+								"y" : 250,
+								"default_image" : ROOT_PATH + "public_intro_btn/next_btn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/next_btn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/next_btn_01.sub",
+							},
+						),
+					},
+					{
+						"name" : "hth",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y,
+						"text" : uiScriptLocale.CREATE_HP,
+						"children" :
+						(
+							{
+								"name" : "hth_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "red",
+							},
+							{
+								"name" : "hth_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "hth_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+					{
+						"name" : "int",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y + STAT_GAUGE_GAP,
+						"text" : uiScriptLocale.CREATE_SP,
+						"children" :
+						(
+							{
+								"name" : "int_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "pink",
+							},
+							{
+								"name" : "int_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "int_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+					{
+						"name" : "str",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y + STAT_GAUGE_GAP*2,
+						"text" : uiScriptLocale.CREATE_ATT_GRADE,
+						"children" :
+						(
+							{
+								"name" : "str_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "purple",
+							},
+							{
+								"name" : "str_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "str_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+					{
+						"name" : "dex",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y + STAT_GAUGE_GAP*3,
+						"text" : uiScriptLocale.CREATE_DEX_GRADE,
+						"children" :
+						(
+							{
+								"name" : "dex_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "blue",
+							},
+							{
+								"name" : "dex_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "dex_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+				), 
+			},
+		),	
+	}
+else:
+	window = {
+		"name" : "New_SelectCharacterWindow",
+		"x" : 0,
+		"y" : 0,
+		"width" : SCREEN_WIDTH,
+		"height" : SCREEN_HEIGHT,
+		"children"	:
+		(
+			{
+				"name" : "BackGround",
+				"type" : "expanded_image",
+				"x" : 0,
+				"y" : 0,
+				"x_scale" : float(SCREEN_WIDTH) / 1024.0,
+				"y_scale" : float(SCREEN_HEIGHT) / 768.0,
+				"image" : LOCALE_PATH + "empire/background/empire_sinsu.sub",
+			},
+			{
+				"name" : "desc_phase",
+				"type" : "image",
+				"x" : 0,
+				"y" : BOARD_Y - NAME_Y - 45,
+				"image" : ROOT_PATH + "public_intro_btn/descPhase_btn.sub",
+				"children" :
+				(
+					{
+						"name" : "my_id", "type" : "text",
+						"x" : 18, "y" : 7, "r" : 0.7843, "g" : 0.7843, "b" : 0.7843,
+						"text" : "",
+						"fontsize" : "LARGE",
+					},
+				),
+			},
+			{
+				"name" : "name_warrior",
+				"type" : "expanded_image", 
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_warrior.sub",
+			},
+			{
+				"name" : "name_assassin",
+				"type" : "expanded_image",
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_assassin.sub",
+			},
+			{
+				"name" : "name_sura",
+				"type" : "expanded_image",
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_sura.sub",
+			},
+			{
+				"name" : "name_shaman",
+				"type" : "expanded_image",
+				"x" : BOARD_X + NAME_X,
+				"y" : BOARD_Y - NAME_Y,
+				"x_scale" : NAME_SCALE_X,
+				"y_scale" : NAME_SCALE_Y,
+				"image" : LOCALE_PATH + "name_shaman.sub",
+			},
+			{
+				"name" : "Shadow",
+				"type" : "expanded_image",
+				"x" : SCREEN_WIDTH/2 - (64)*SHADOW_SCALE_X,
+				"y" : SCREEN_HEIGHT - SCREEN_HEIGHT*(70)/600.0 - (88)*SHADOW_SCALE_Y/2.0, 
+				"x_scale" : SHADOW_SCALE_X, "y_scale" : SHADOW_SCALE_Y,
+				"image" : LOCALE_PATH + "shadow/shadow.tga",
+			},
+			{
+				"name" : "character_board",
+				"type" : "thinboard_gold",
+				"x" : BOARD_X,
+				"y" : BOARD_Y,
+				"width" : THINBOARD_CIRCLE_LEFT_WIDTH + (X_GAP * 2) + 1,
+				"height" : 305,
+				"children" :
+				(
+					{
+						"name" : "EmpireNameSlot",
+						"type" : "thinboard_circle",
+						"x" : X_GAP,
+						"y" : Y_GAP,
+						"width" : THINBOARD_CIRCLE_LEFT_WIDTH,
+						"height" : 42,
+						"children" :
+						(
+							{
+								"name" : "EmpireFlag",
+								"type" : "expanded_image",
+								"x" : 4,
+								"y" : 3,
+								"x_scale" : FLAG_SCALE_X,
+								"y_scale" : FLAG_SCALE_Y,
+								"image" : LOCALE_PATH + "empire/empireflag_a.sub"
+							},
+							{
+								"name" : "EmpireName",
+								"type" : "text",
+								"x" : 29,
+								"y" : 0,
+								"text" : uiScriptLocale.SELECT_EMPIRE_NAME,
+								"fontsize" : "LARGE",
+								"all_align" : "center",
+							},
+						),
+					},
+					{
+						"name" : "SelectJobSlot",
+						"type" : "thinboard_circle",
+						"x" : X_GAP,
+						"y" : 61,
+						"width" : THINBOARD_CIRCLE_LEFT_WIDTH,
+						"height" : 231,
+						"children" :
+						(
+							{
+								"name" : "NoneButton_0",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_1",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_2",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*2,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_3", 
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*3,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "NoneButton_4",
+								"type" : "image",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*4,
+								"image" : ROOT_PATH + "public_intro_btn/emptySlot_btn.sub"
+							},
+							{
+								"name" : "CharacterSlot_0",
+								"type" : "radio_button", 
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_1",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_2",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*2,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_3",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*3,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterSlot_4",
+								"type" : "radio_button",
+								"x" : SELECT_BTN_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*4,
+								"default_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/150x35_Selectbtn_03.sub",
+							},
+							{
+								"name" : "CharacterFace_0",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_1",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_2",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*2 - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_3",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*3 - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+							{
+								"name" : "CharacterFace_4",
+								"type" : "image",
+								"x" : SELECT_BTN_X - FACE_X,
+								"y" : SELECT_BTN_Y + SELECT_BTN_GAP*4 - FACE_Y,
+								"image" : "D:/ymir work/ui/intro/public_intro/face/face_warrior_m_01.sub"
+							},
+						),
+					},
+				),
+			},
+			{
+				"name" : "select_thinboard2",
+				"type" : "thinboard_gold", 
+				"x" : BOARD_X,
+				"y" : BOARD_Y + 305 + 3,
+				"width" : THINBOARD_CIRCLE_LEFT_WIDTH + (X_GAP * 2) + 1,
+				"height" : (Y_GAP * 2) + 27,
+				"children" : 
+				(
+					{
+						"name" : "create_button",
+						"type" : "button",
+						"x" : X_GAP + 4, "y" : Y_GAP,
+						"default_image" : ROOT_PATH + "public_intro_btn/plus_btn_01.sub",
+						"over_image" : ROOT_PATH + "public_intro_btn/plus_btn_02.sub",
+						"down_image" : ROOT_PATH + "public_intro_btn/plus_btn_03.sub",
+					},
+					
+
+					{
+						"name" : "delete_button",
+						"type" : "button",
+						"x" : THINBOARD_CIRCLE_LEFT_WIDTH + X_GAP - 58,
+						"y" : Y_GAP,
+						"default_image" : ROOT_PATH + "public_intro_btn/minus_btn_01.sub",
+						"over_image" : ROOT_PATH + "public_intro_btn/minus_btn_02.sub",
+						"down_image" : ROOT_PATH + "public_intro_btn/minus_btn_03.sub",
+					},
+				),
+			},
+			{
+				"name" : "start_button",
+				"type" : "button",
+				"x" : SCREEN_WIDTH/2 - 107,
+				"y" : SCREEN_HEIGHT - SCREEN_HEIGHT*(70)/600.0,
+				"default_image" : ROOT_PATH + "public_intro_btn/start_btn_01.sub",
+				"over_image" : ROOT_PATH + "public_intro_btn/start_btn_02.sub",
+				"down_image" : ROOT_PATH + "public_intro_btn/start_btn_03.sub",
+			},
+			{
+				"name" : "exit_button",
+				"type" : "button",
+				"x" : SCREEN_WIDTH/2 + 32,
+				"y" : SCREEN_HEIGHT - SCREEN_HEIGHT*(70)/600.0,
+				"default_image" : ROOT_PATH + "public_intro_btn/cancel_btn_01.sub",
+				"over_image" : ROOT_PATH + "public_intro_btn/cancel_btn_02.sub",
+				"down_image" : ROOT_PATH + "public_intro_btn/cancel_btn_03.sub",
+			},
+			{
+				"name" : "character_discriptionboard",
+				"type" : "thinboard_gold",
+				"x" : SCREEN_WIDTH - BOARD_X - (THINBOARD_CIRCLE_RIGHT_WIDTH + (X_GAP * 2)),
+				"y" : BOARD_Y,
+				"width" : THINBOARD_CIRCLE_RIGHT_WIDTH + (X_GAP * 2) + 1,
+				"height" : THINBOARD_GOLD_HEIGHT,
+				"children"	:
+				(
+					{
+						"name" : "raceName_Btn",
+						"type" : "image",
+						"x" : 10,
+						"y" : -17,
+						"image" : ROOT_PATH + "public_intro_btn/raceName_btn.sub",
+						"children" :
+						(
+							{
+								"name" : "DiscFace",
+								"type" : "image",
+								"x" : DESC_FACE_X,
+								"y" : DESC_FACE_Y,
+								"image" : "d:/ymir work/bin/icon/face/warrior_m.tga"
+							},
+							{
+								"name" : "raceName_Text",
+								"type" : "text",
+								"x" : 100,
+								"y" : 5,
+								"r" : 0.7843,
+								"g" : 0.7843,
+								"b" : 0.7843,
+								"text" : localeInfo.JOB_WARRIOR, "text_horizontal_align" : "center"
+							}
+						),
+					},
+					{
+						"name" : "text_board", "type" : "thinboard_circle",
+						"x" : X_GAP,
+						"y" : Y_GAP,
+						"width" : THINBOARD_CIRCLE_RIGHT_WIDTH,
+						"height" : THINBOARD_CIRCLE_RIGHT_HEIGHT,
+						"children" :
+						(
+							{
+								"name" : "prev_button",
+								"type" : "button",
+								"x" : 122,
+								"y" : 250,
+								"default_image" : ROOT_PATH + "public_intro_btn/prev_btn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/prev_btn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/prev_btn_01.sub",
+							},
+							{
+								"name" : "next_button",
+								"type" : "button",
+								"x" : 122 + 20 + 10,
+								"y" : 250,
+								"default_image" : ROOT_PATH + "public_intro_btn/next_btn_01.sub",
+								"over_image" : ROOT_PATH + "public_intro_btn/next_btn_02.sub",
+								"down_image" : ROOT_PATH + "public_intro_btn/next_btn_01.sub",
+							},
+						),
+					},
+					{
+						"name" : "hth",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y,
+						"text" : uiScriptLocale.CREATE_HP,
+						"children" :
+						(
+							{
+								"name" : "hth_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "red",
+							},
+							{
+								"name" : "hth_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "hth_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+					{
+						"name" : "int",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y + STAT_GAUGE_GAP,
+						"text" : uiScriptLocale.CREATE_SP,
+						"children" :
+						(
+							{
+								"name" : "int_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "pink",
+							},
+							{
+								"name" : "int_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "int_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+					{
+						"name" : "str",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y + STAT_GAUGE_GAP*2,
+						"text" : uiScriptLocale.CREATE_ATT_GRADE,
+						"children" :
+						(
+							{
+								"name" : "str_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "purple",
+							},
+							{
+								"name" : "str_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "str_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+					{
+						"name" : "dex",
+						"type" : "text",
+						"x" : STAT_GAUGE_X,
+						"y" : STAT_GAUGE_Y + STAT_GAUGE_GAP*3,
+						"text" : uiScriptLocale.CREATE_DEX_GRADE,
+						"children" :
+						(
+							{
+								"name" : "dex_gauge",
+								"type" : "gauge",
+								"x" : STAT_GAUGE_BAR_X,
+								"y" : 4,
+								"width" : STAT_GAUGE_BAR_WIDTH,
+								"color" : "blue",
+							},
+							{
+								"name" : "dex_slot",
+								"type" : "slotbar",
+								"x" : STAT_GAUGE_BAR_WIDTH + STAT_GAUGE_BAR_X + 7,
+								"y" : -1,
+								"width" : STAT_GAUGE_TEXT_WIDTH,
+								"height" : STAT_GAUGE_TEXT_HEIGHT,
+								"children" :
+								(
+									{
+										"name" : "dex_value",
+										"type" : "text",
+										"x" : 0,
+										"y" : 1,
+										"all_align" : "center",
+										"text" : "0",
+									},
+								),
+							},
+						),
+					},
+				), 
+			},
+		),	
+	}

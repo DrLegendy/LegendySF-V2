@@ -269,6 +269,41 @@ PyObject * eventDestroy(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+PyObject* eventSetFontColor(PyObject* poSelf, PyObject* poArgs)
+{
+	int iIndex;
+	if (!PyTuple_GetInteger(poArgs, 0, &iIndex))
+		return Py_BuildException();
+
+	float r;
+	if (!PyTuple_GetFloat(poArgs, 1, &r))
+		return Py_BuildException();
+
+	float g;
+	if (!PyTuple_GetFloat(poArgs, 2, &g))
+		return Py_BuildException();
+
+	float b;
+	if (!PyTuple_GetFloat(poArgs, 3, &b))
+		return Py_BuildException();
+
+
+	CPythonEventManager::Instance().SetFontColor(iIndex, r, g, b);
+	return Py_BuildNone();
+}
+
+PyObject* eventGetTotalLineCount(PyObject* poSelf, PyObject* poArgs)
+{
+	int iIndex;
+	if (!PyTuple_GetInteger(poArgs, 0, &iIndex))
+		return Py_BuildException();
+
+	return Py_BuildValue("i", CPythonEventManager::Instance().GetLineCount(iIndex));
+}
+
+#endif
+
 void initEvent()
 {
 	static PyMethodDef s_methods[] =
@@ -303,6 +338,12 @@ void initEvent()
 
 		{ "QuestButtonClick",			eventQuestButtonClick,				METH_VARARGS },
 		{ "Destroy",					eventDestroy,						METH_VARARGS },
+
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+		{ "SetFontColor",				eventSetFontColor,					METH_VARARGS },
+		{ "GetTotalLineCount",			eventGetTotalLineCount,				METH_VARARGS },
+#endif
+
 		{ NULL,							NULL,								NULL         },
 	};
 

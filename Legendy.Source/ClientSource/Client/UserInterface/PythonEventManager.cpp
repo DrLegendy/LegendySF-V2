@@ -1141,6 +1141,26 @@ void CPythonEventManager::SetLeftTimeString(const char * c_szString)
 	m_strLeftTimeString = c_szString;
 }
 
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+void CPythonEventManager::SetFontColor(int iIndex, float r, float g, float b)
+{
+	if (!CheckEventSetIndex(iIndex))
+		return;
+
+	TEventSet* pEventSet = m_EventSetVector[iIndex];
+	if (!pEventSet)
+		return;
+
+	if (pEventSet->pCurrentTextLine)
+	{
+		pEventSet->CurrentColor.r = r;
+		pEventSet->CurrentColor.g = g;
+		pEventSet->CurrentColor.b = b;
+		pEventSet->pCurrentTextLine->SetColor(pEventSet->CurrentColor.r, pEventSet->CurrentColor.g, pEventSet->CurrentColor.b);
+	}
+}
+#endif
+
 CPythonEventManager::CPythonEventManager()
 	: m_poInterface(0), m_strLeftTimeString("남은 시간 : %d초")
 {

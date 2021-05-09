@@ -186,6 +186,36 @@ class ToolTip(ui.ThinBoard):
 
 		return textLine
 
+	if app.ENABLE_OFFICAL_CHARACTER_SCREEN:
+		def SetThinBoardSize(self, width, height = 12) :#new select
+			self.toolTipWidth = width
+			self.toolTipHeight = height
+
+		def ResizeToolTipText(self, x, y):
+			self.SetSize(x, y)
+
+		def AutoAppendNewTextLine(self, text, color = FONT_COLOR, centerAlign = True):
+			textLine = ui.TextLine()
+			textLine.SetParent(self)
+			textLine.SetFontName(self.defFontName)
+			textLine.SetPackedFontColor(color)
+			textLine.SetText(text)
+			textLine.SetOutline()
+			textLine.SetFeather(FALSE)
+			textLine.Show()
+			textLine.SetPosition(15, self.toolTipHeight)
+			
+			self.childrenList.append(textLine)
+			(textWidth, textHeight) = textLine.GetTextSize()
+			textWidth += 30
+			textHeight += 10
+			if self.toolTipWidth < textWidth:
+				self.toolTipWidth = textWidth
+			
+			self.toolTipHeight += textHeight
+			self.ResizeToolTipText(textWidth, self.toolTipHeight)
+			return textLine
+
 	def AppendTextLine(self, text, color = FONT_COLOR, centerAlign = True):
 		textLine = ui.TextLine()
 		textLine.SetParent(self)

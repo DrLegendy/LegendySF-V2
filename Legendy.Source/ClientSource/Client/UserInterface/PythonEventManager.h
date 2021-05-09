@@ -22,8 +22,11 @@ class CPythonEventManager : public CSingleton<CPythonEventManager>
 			EVENT_POSITION_START = 0,
 			EVENT_POSITION_END = 1,
 
-			//BOX_VISIBLE_LINE_COUNT = 5,
-			BOX_VISIBLE_LINE_COUNT = 15, //DsProject4
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+			BOX_VISIBLE_LINE_COUNT = 15,
+#else
+			BOX_VISIBLE_LINE_COUNT = 5,
+#endif //DsProject4
 		};
 
 		enum EButtonType
@@ -182,7 +185,9 @@ class CPythonEventManager : public CSingleton<CPythonEventManager>
 
 		void SetInterfaceWindow(PyObject * poInterface);
 		void SetLeftTimeString(const char * c_szString);
-
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+		void SetFontColor(int iIndex, float r, float g, float b);
+#endif
 	protected:
 		void __InitEventSet(TEventSet& rEventSet);
 		void __InsertLine(TEventSet& rEventSet, BOOL isCenter=FALSE, int iX_pos=0);

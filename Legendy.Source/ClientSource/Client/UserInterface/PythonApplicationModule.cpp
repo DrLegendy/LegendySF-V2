@@ -1722,4 +1722,10 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_CUBE_RENEWAL_WORLDARD",	0);
 #endif
+
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+	PyModule_AddIntConstant(poModule, "ENABLE_OFFICAL_CHARACTER_SCREEN", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_OFFICAL_CHARACTER_SCREEN", 0);
+#endif
 }

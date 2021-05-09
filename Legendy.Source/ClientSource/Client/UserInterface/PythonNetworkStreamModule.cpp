@@ -1727,6 +1727,14 @@ PyObject* netRegisterErrorLog(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+PyObject* netGetLoginID(PyObject* poSelf, PyObject* poArgs)
+{
+	CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
+	return Py_BuildValue("s", rkNetStream.GetLoginID().c_str());
+}
+#endif
+
 void initnet()
 {
 	static PyMethodDef s_methods[] =
@@ -1895,6 +1903,10 @@ void initnet()
 		// Log
 		{ "RegisterErrorLog",						netRegisterErrorLog,						METH_VARARGS },
 
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+		{ "GetLoginID",								netGetLoginID,									METH_VARARGS },
+#endif
+
 		{ NULL,										NULL,										NULL },
 	};
 
@@ -1937,6 +1949,9 @@ void initnet()
 	PyModule_AddIntConstant(poModule, "ACCOUNT_CHARACTER_SLOT_HAIR", CPythonNetworkStream::ACCOUNT_CHARACTER_SLOT_HAIR);
 #ifdef ENABLE_ACCE_SYSTEM
 	PyModule_AddIntConstant(poModule, "ACCOUNT_CHARACTER_SLOT_ACCE", CPythonNetworkStream::ACCOUNT_CHARACTER_SLOT_ACCE);
+#endif
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+	PyModule_AddIntConstant(poModule, "ACCOUNT_CHARACTER_SLOT_LAST_PLAYTIME", CPythonNetworkStream::ACCOUNT_CHARACTER_SLOT_LAST_PLAYTIME);
 #endif
 	PyModule_AddIntConstant(poModule, "SERVER_COMMAND_LOG_OUT",	CPythonNetworkStream::SERVER_COMMAND_LOG_OUT);
 	PyModule_AddIntConstant(poModule, "SERVER_COMMAND_RETURN_TO_SELECT_CHARACTER",	CPythonNetworkStream::SERVER_COMMAND_RETURN_TO_SELECT_CHARACTER);

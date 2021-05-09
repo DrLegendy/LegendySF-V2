@@ -61,6 +61,9 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 #ifdef ENABLE_ACCE_SYSTEM
 			ACCOUNT_CHARACTER_SLOT_ACCE,
 #endif
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+			ACCOUNT_CHARACTER_SLOT_LAST_PLAYTIME,
+#endif
 		};
 
 		enum
@@ -124,6 +127,9 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		void ConnectGameServer(UINT iChrSlot);
 
 		void SetLoginInfo(const char* c_szID, const char* c_szPassword);
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+		std::string GetLoginID() const { return m_stID; }
+#endif
 		void SetLoginKey(DWORD dwLoginKey);
 		void ClearLoginInfo( void );
 

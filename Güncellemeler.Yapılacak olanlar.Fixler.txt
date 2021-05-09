@@ -76,8 +76,11 @@ EKLENTİLER
 EKLENEN SİSTEMLER
 ***************************
 
-#define ENABLE_EXTRA_APPLY_BONUS				// Yeni Bonuslar Modulu
-#define ENABLE_ELEMENTAL_APPLY_BONUS			// Yeni Elemental Bonuslar Modulu
+#define ENABLE_EXTRA_APPLY_BONUS				// Yeni Bonus Modulu (Metin, Patron vs.)
+#define ENABLE_ELEMENTAL_APPLY_BONUS			// Yeni Elemental Bonus Modulu (Toprak, Ateş vs.)
+#define ENABLE_CUBE_RENEWAL_WORLDARD			// Official Cube Sistemi
+#define ENABLE_CUBE_ATTR_SOCKET					// Official Cube Sistemi Taş ve Efsun Fixi
+#define ENABLE_OFFICAL_CHARACTER_SCREEN			// Official Karakter Ekranı
 
 -----------------------------------------------**********************************************------------------------------------------------
 

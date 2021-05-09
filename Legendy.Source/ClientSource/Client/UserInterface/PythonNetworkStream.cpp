@@ -427,6 +427,12 @@ UINT CPythonNetworkStream::GetAccountCharacterSlotDatau(UINT iSlot, UINT eType)
 			return rkSimplePlayerInfo.wAccePart;
 			break;
 #endif
+
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+		case ACCOUNT_CHARACTER_SLOT_LAST_PLAYTIME:
+			return rkSimplePlayerInfo.dwLastPlayTime;
+			break;
+#endif
 	}
 	return 0;
 }

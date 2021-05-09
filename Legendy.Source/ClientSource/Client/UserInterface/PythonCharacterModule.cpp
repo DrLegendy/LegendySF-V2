@@ -1244,6 +1244,47 @@ PyObject * chrSetAcce(PyObject* poSelf, PyObject* poArgs)
 }
 #endif
 
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+PyObject* chrSetScale(PyObject* poSelf, PyObject* poArgs)
+{
+	float zScale;
+	float yScale;
+	float xScale;
+	if (!PyTuple_GetFloat(poArgs, 0, &xScale) || PyTuple_GetFloat(poArgs, 1, &yScale) || PyTuple_GetFloat(poArgs, 2, &zScale))
+		return Py_BuildException();
+
+	CInstanceBase* pkInst = CPythonCharacterManager::Instance().GetSelectedInstancePtr();
+	if (!pkInst)
+		return Py_BuildNone();
+
+	CActorInstance actoInst = pkInst->GetGraphicThingInstanceRef();
+	actoInst.SetScale(xScale, yScale, zScale, true);
+
+	return Py_BuildNone();
+}
+
+PyObject* chrGetLevel(PyObject* poSelf, PyObject* poArgs)
+{
+	CInstanceBase* pInstance = CPythonCharacterManager::Instance().GetSelectedInstancePtr();
+	if (!pInstance)
+		return Py_BuildValue("i", 0);
+
+	return Py_BuildValue("i", pInstance->GetLevel());
+}
+
+PyObject* chrGetLevelByVID(PyObject* poSelf, PyObject* poArgs)
+{
+	int iVirtualID;
+	if (!PyTuple_GetInteger(poArgs, 0, &iVirtualID))
+		return Py_BuildException();
+
+	CInstanceBase* pInstance = CPythonCharacterManager::Instance().GetInstancePtr(iVirtualID);
+	if (!pInstance)
+		return Py_BuildValue("i", 0);
+
+	return Py_BuildValue("i", pInstance->GetLevel());
+}
+#endif
 
 void initchr()
 {
@@ -1344,6 +1385,12 @@ void initchr()
 		{ "testSetRideMan",					chrtestSetRideMan,					METH_VARARGS },
 #ifdef ENABLE_ACCE_SYSTEM
 		{ "SetAcce",						chrSetAcce,							METH_VARARGS },
+#endif
+
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+		{"SetScale",						chrSetScale,						METH_VARARGS},
+		{"GetLevel",						chrGetLevel,						METH_VARARGS},
+		{"GetLevelByVID",					chrGetLevelByVID,					METH_VARARGS},
 #endif
 
 		{ NULL,								NULL,								NULL		 },

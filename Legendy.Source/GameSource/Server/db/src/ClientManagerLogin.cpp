@@ -231,7 +231,11 @@ void CClientManager::RESULT_LOGIN_BY_KEY(CPeer * peer, SQLMsg * msg)
 	else
 	{
 		snprintf(szQuery, sizeof(szQuery),
-				"SELECT id, name, job, level, playtime, st, ht, dx, iq, part_main, part_hair,"
+				"SELECT id, name, job, level, playtime,"
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+			"UNIX_TIMESTAMP(last_play),"
+			#endif
+			"st, ht, dx, iq, part_main, part_hair,"
 #ifdef ENABLE_ACCE_SYSTEM
 				"part_acce,"
 #endif
@@ -326,6 +330,9 @@ void CreateAccountPlayerDataFromRes(MYSQL_RES * pRes, TAccountTable * pkTab)
 					pkTab->players[j].byJob			= pt->job;
 					pkTab->players[j].byLevel			= pt->level;
 					pkTab->players[j].dwPlayMinutes		= pt->playtime;
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+					str_to_number(pkTab->players[j].dwLastPlayTime, row[5]);
+#endif
 					pkTab->players[j].byST			= pt->st;
 					pkTab->players[j].byHT			= pt->ht;
 					pkTab->players[j].byDX			= pt->dx;
@@ -364,10 +371,15 @@ void CreateAccountPlayerDataFromRes(MYSQL_RES * pRes, TAccountTable * pkTab)
 					pkTab->players[j].y				= 0;
 					pkTab->players[j].skill_group	= 0;
 					pkTab->players[j].bChangeName	= 0;
-
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+					pkTab->players[j].dwLastPlayTime = 0;
+#endif
 					str_to_number(pkTab->players[j].byJob, row[col++]);
 					str_to_number(pkTab->players[j].byLevel, row[col++]);
 					str_to_number(pkTab->players[j].dwPlayMinutes, row[col++]);
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+					str_to_number(pkTab->players[j].dwLastPlayTime, row[col++]);
+#endif
 					str_to_number(pkTab->players[j].byST, row[col++]);
 					str_to_number(pkTab->players[j].byHT, row[col++]);
 					str_to_number(pkTab->players[j].byDX, row[col++]);
@@ -443,7 +455,11 @@ void CClientManager::RESULT_LOGIN(CPeer * peer, SQLMsg * msg)
 			else
 			{
 				snprintf(queryStr, sizeof(queryStr),
-						"SELECT id, name, job, level, playtime, st, ht, dx, iq, part_main, part_hair,"
+						"SELECT id, name, job, level, playtime,"
+#ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
+					"UNIX_TIMESTAMP(last_play),"
+#endif
+					"st, ht, dx, iq, part_main, part_hair,"
 #ifdef ENABLE_ACCE_SYSTEM
 						"part_acce, "
 #endif

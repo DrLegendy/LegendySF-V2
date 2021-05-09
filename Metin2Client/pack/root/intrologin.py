@@ -413,6 +413,7 @@ class LoginWindow(ui.ScriptWindow):
 		if not IsLoginDelay():
 			snd.PlaySound("sound/ui/loginok.wav")
 			self.PopupDisplayMessage(localeInfo.LOGIN_CONNECT_SUCCESS)
+			constInfo.ACCOUNT_NAME = str(self.idEditLine.GetText())
 
 	def OnLoginStart(self):
 		if not IsLoginDelay():
