@@ -295,6 +295,12 @@ namespace quest
 		private:
 			PC*			m_pOtherPCBlockRootPC;
 			std::vector <DWORD>	m_vecPCStack;
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+	public:
+		std::map<WORD, unsigned int> QuestCategoryIndexMap;
+		void ReadQuestCategoryToDict();
+		int GetQuestCategoryByQuestIndex(WORD q_index);
+#endif
 	};
 };
 

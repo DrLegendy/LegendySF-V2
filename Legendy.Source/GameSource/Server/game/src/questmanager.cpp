@@ -148,6 +148,9 @@ namespace quest
 
 		SetEventFlag("guild_withdraw_delay", 1);
 		SetEventFlag("guild_disband_delay", 1);
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+		ReadQuestCategoryToDict();
+#endif
 		return true;
 	}
 
@@ -288,6 +291,66 @@ namespace quest
 
 		return c_qi;
 	}
+
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+	int CQuestManager::GetQuestCategoryByQuestIndex(WORD q_index)
+	{
+		if (QuestCategoryIndexMap.find(q_index) != QuestCategoryIndexMap.end())
+			return QuestCategoryIndexMap[q_index];
+		else
+			return 6; // Default category if not found
+	}
+
+	void CQuestManager::ReadQuestCategoryToDict()
+	{
+		if (!QuestCategoryIndexMap.empty())
+			QuestCategoryIndexMap.clear();
+
+		ifstream inf((g_stQuestDir + "/quest_category.txt").c_str());
+
+		int line = 0;
+
+		if (!inf.is_open())
+		{
+			sys_err("QUEST Cannot open 'quest_category.txt'");
+			return;
+		}
+
+		while (1)
+		{
+			unsigned int category_num;
+
+			inf >> category_num;
+
+			line++;
+
+			if (inf.fail())
+				break;
+
+			string s;
+			getline(inf, s);
+			unsigned int li = 0, ri = s.size() - 1;
+			while (li < s.size() && isspace(s[li])) li++;
+			while (ri > 0 && isspace(s[ri])) ri--;
+
+			if (ri < li)
+				continue;
+
+			s = s.substr(li, ri - li + 1);
+
+			int	n = 0;
+			str_to_number(n, s.c_str());
+			if (n)
+				continue;
+
+			unsigned int quest_index = CQuestManager::instance().GetQuestIndexByName(s);
+			if (quest_index != 0)
+				QuestCategoryIndexMap[quest_index] = category_num;
+			else
+				sys_err("QUEST couldnt find QuestIndex for name Quest: %s(%d)", s.c_str(), category_num);
+		}
+	}
+#endif
 
 	void CQuestManager::Input(unsigned int pc, const char* msg)
 	{
@@ -1055,13 +1118,6 @@ namespace quest
 		packet_script.skin = m_iCurrentSkin;
 		packet_script.src_size = m_strScript.size();
 		packet_script.size = packet_script.src_size + sizeof(struct packet_script);
-#ifdef ENABLE_QUEST_CATEGORY
-		packet_script.quest_flag = 0;
-
-
-		if(m_bQuestInfoFlag == 1)
-			packet_script.quest_flag = 1;
-#endif
 
 		TEMP_BUFFER buf;
 		buf.write(&packet_script, sizeof(struct packet_script));
@@ -1071,9 +1127,6 @@ namespace quest
 
 		if (test_server)
 			sys_log(0, "m_strScript %s size %d", m_strScript.c_str(), buf.size());
-#ifdef ENABLE_QUEST_CATEGORY
-			sys_log(0, "SendScript=====================On Quest flag %d", packet_script.quest_flag);
-#endif
 
 		ClearScript();
 		m_bQuestInfoFlag = 0;

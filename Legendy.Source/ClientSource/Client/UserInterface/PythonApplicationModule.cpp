@@ -1734,4 +1734,10 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_DS_GRADE_MYTH", 0);
 #endif
+
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+	PyModule_AddIntConstant(poModule, "ENABLE_QUEST_CATEGORY_SYSTEM", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_QUEST_CATEGORY_SYSTEM", 0);
+#endif
 }

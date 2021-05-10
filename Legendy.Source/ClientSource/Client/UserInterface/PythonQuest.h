@@ -14,6 +14,9 @@ class CPythonQuest : public CSingleton<CPythonQuest>
 			}
 
 			DWORD			dwIndex;
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+			DWORD			c_index;
+#endif
 
 			std::string		strIconFileName;
 			std::string		strTitle;
@@ -38,7 +41,11 @@ class CPythonQuest : public CSingleton<CPythonQuest>
 		void DeleteQuestInstance(DWORD dwIndex);
 
 		bool IsQuest(DWORD dwIndex);
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+		void MakeQuest(DWORD dwIndex, DWORD c_index);
+#else
 		void MakeQuest(DWORD dwIndex);
+#endif
 
 		void SetQuestTitle(DWORD dwIndex, const char * c_szTitle);
 		void SetQuestClockName(DWORD dwIndex, const char * c_szClockName);

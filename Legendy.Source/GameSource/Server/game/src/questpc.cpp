@@ -239,8 +239,8 @@ namespace quest
 		qi.size = sizeof(struct packet_quest_info);
 		qi.index = m_RunningQuestState->iIndex;
 		qi.flag = m_iSendToClient;
-#ifdef ENABLE_QUEST_CATEGORY
-		qi.c_index = CQuestManager::instance().ReadQuestCategoryFile(qi.index);
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+		qi.c_index = CQuestManager::instance().GetQuestCategoryByQuestIndex(qi.index);
 #endif
 
 		TEMP_BUFFER buf;

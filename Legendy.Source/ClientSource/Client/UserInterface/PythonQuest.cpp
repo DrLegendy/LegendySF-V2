@@ -37,7 +37,11 @@ bool CPythonQuest::IsQuest(DWORD dwIndex)
 	return itor != m_QuestInstanceContainer.end();
 }
 
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+void CPythonQuest::MakeQuest(DWORD dwIndex, DWORD c_index)
+#else
 void CPythonQuest::MakeQuest(DWORD dwIndex)
+#endif
 {
 	DeleteQuestInstance(dwIndex);
 	m_QuestInstanceContainer.push_back(SQuestInstance());
@@ -46,6 +50,9 @@ void CPythonQuest::MakeQuest(DWORD dwIndex)
 
 	SQuestInstance & rQuestInstance = *m_QuestInstanceContainer.rbegin();
 	rQuestInstance.dwIndex = dwIndex;
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+	rQuestInstance.c_index = c_index;
+#endif
 	rQuestInstance.iStartTime = int(CTimer::Instance().GetCurrentSecond());
 }
 
@@ -185,10 +192,19 @@ PyObject * questGetQuestData(PyObject * poSelf, PyObject * poArgs)
 		}
 	}
 
-	return Py_BuildValue("sisi",	pQuestInstance->strTitle.c_str(),
-									pImage,
-									pQuestInstance->strCounterName.c_str(),
-									pQuestInstance->iCounterValue);
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+	if (pQuestInstance->c_index == 99)
+		pQuestInstance->c_index = 6;
+
+	return Py_BuildValue("isiisi", pQuestInstance->dwIndex,
+		pQuestInstance->strTitle.c_str(),
+		pQuestInstance->c_index,
+		pImage,
+		pQuestInstance->strCounterName.c_str(),
+		pQuestInstance->iCounterValue);
+#else
+	return Py_BuildValue("sisi", pQuestInstance->strTitle.c_str(), pImage, pQuestInstance->strCounterName.c_str(), pQuestInstance->iCounterValue);
+#endif
 }
 
 PyObject * questGetQuestIndex(PyObject * poSelf, PyObject * poArgs)
@@ -249,4 +265,7 @@ void initquest()
 
 	PyObject * poModule = Py_InitModule("quest", s_methods);
 	PyModule_AddIntConstant(poModule, "QUEST_MAX_NUM", 5);
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+	PyModule_AddIntConstant(poModule, "QUEST_CATEGORY_MAX_NUM", 7);
+#endif
 }

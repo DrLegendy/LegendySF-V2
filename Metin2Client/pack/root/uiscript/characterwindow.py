@@ -1,4 +1,5 @@
 import uiScriptLocale
+import app
 
 QUEST_ICON_BACKGROUND = 'd:/ymir work/ui/game/quest/slot_base.sub'
 
@@ -11,6 +12,11 @@ ROOT_PATH = "d:/ymir work/ui/game/windows/"
 
 LOCALE_PATH = uiScriptLocale.WINDOWS_PATH
 
+PATTERN_PATH = "d:/ymir work/ui/pattern/"
+QUEST_BOARD_WINDOW_WIDTH	= 231
+QUEST_BOARD_WINDOW_HEIGHT	= 297
+QUEST_BOARD_PATTERN_X_COUNT = 12
+QUEST_BOARD_PATTERN_Y_COUNT = 16
 window = {
 	"name" : "CharacterWindow",
 	"style" : ("movable", "float",),
@@ -35,7 +41,7 @@ window = {
 			"height" : 361,
 
 			"children" :
-			(
+			[
 				{
 					"name" : "Skill_TitleBar",
 					"type" : "titlebar",
@@ -655,8 +661,15 @@ window = {
 
 					),
 				},
+			],
+		},
+	),
+}
+
+if app.ENABLE_QUEST_CATEGORY_SYSTEM:
+	window["children"][0]["children"] = window["children"][0]["children"] + [
 				{
-					"name" : "Emoticon_Page",
+		"name" : "Quest_Page",
 					"type" : "window",
 					"style" : ("attach",),
 
@@ -668,46 +681,142 @@ window = {
 
 					"children" :
 					(
-						{ "name":"Action_Bar", "type":"horizontalbar", "x":12, "y":11, "width":223, },
-						{ "name":"Action_Bar_Text", "type":"text", "x":15, "y":13, "text":uiScriptLocale.CHARACTER_NORMAL_ACTION },
+			{
+				"name" : "quest_page_board_window",
+				"type" : "window",
+				"style" : ("attach", "ltr",),
 
-						## Basis Action Slot
+				"x" : 10,
+				"y" : 7,
+
+				"width" : QUEST_BOARD_WINDOW_WIDTH,
+				"height" : QUEST_BOARD_WINDOW_HEIGHT,
+
+				"children" :
+				(
+					## LeftTop 1
 						{
-							"name" : "SoloEmotionSlot",
-							"type" : "grid_table",
-							"x" : 30,
-							"y" : 33,
-							"horizontal_align" : "center",
-							"start_index" : 1,
-							"x_count" : 6,
-							"y_count" : 3,
-							"x_step" : 32,
-							"y_step" : 32,
-							"x_blank" : 0,
-							"y_blank" : 0,
-							"image" : ICON_SLOT_FILE,
+						"name" : "LeftTop",
+						"type" : "image",
+						"style" : ("ltr",),
+
+						"x" : 0,
+						"y" : 0,
+						"image" : PATTERN_PATH + "border_A_left_top.tga",
+					},
+					## RightTop 2
+					{
+						"name" : "RightTop",
+						"type" : "image",
+						"style" : ("ltr",),
+
+						"x" : QUEST_BOARD_WINDOW_WIDTH - 16,
+						"y" : 0,
+						"image" : PATTERN_PATH + "border_A_right_top.tga",
 						},
+					## LeftBottom 3
+					{
+						"name" : "LeftBottom",
+						"type" : "image",
+						"style" : ("ltr",),
 
-						{ "name":"Reaction_Bar", "type":"horizontalbar", "x":12, "y":8+150, "width":223, },
-						{ "name":"Reaction_Bar_Text", "type":"text", "x":15, "y":10+150, "text":uiScriptLocale.CHARACTER_MUTUAL_ACTION },
+						"x" : 0,
+						"y" : QUEST_BOARD_WINDOW_HEIGHT - 16,
+						"image" : PATTERN_PATH + "border_A_left_bottom.tga",
+					},
+					## RightBottom 4
+					{
+						"name" : "RightBottom",
+						"type" : "image",
+						"style" : ("ltr",),
 
-						## Reaction Slot
+						"x" : QUEST_BOARD_WINDOW_WIDTH - 16,
+						"y" : QUEST_BOARD_WINDOW_HEIGHT - 16,
+						"image" : PATTERN_PATH + "border_A_right_bottom.tga",
+					},
+					## topcenterImg 5
 						{
-							"name" : "DualEmotionSlot",
-							"type" : "grid_table",
-							"x" : 30,
-							"y" : 180,
-							"start_index" : 51,
-							"x_count" : 6,
-							"y_count" : 3,
-							"x_step" : 32,
-							"y_step" : 32,
-							"x_blank" : 0,
-							"y_blank" : 0,
-							"image" : ICON_SLOT_FILE,
+						"name" : "TopCenterImg",
+						"type" : "expanded_image",
+						"style" : ("ltr",),
+
+						"x" : 16,
+						"y" : 0,
+						"image" : PATTERN_PATH + "border_A_top.tga",
+						"rect" : (0.0, 0.0, QUEST_BOARD_PATTERN_X_COUNT, 0),
+					},
+					## leftcenterImg 6
+					{
+						"name" : "LeftCenterImg",
+						"type" : "expanded_image",
+						"style" : ("ltr",),
+
+						"x" : 0,
+						"y" : 16,
+						"image" : PATTERN_PATH + "border_A_left.tga",
+						"rect" : (0.0, 0.0, 0, QUEST_BOARD_PATTERN_Y_COUNT),
+					},
+					## rightcenterImg 7
+					{
+						"name" : "RightCenterImg",
+						"type" : "expanded_image",
+						"style" : ("ltr",),
+
+						"x" : QUEST_BOARD_WINDOW_WIDTH - 16,
+						"y" : 16,
+						"image" : PATTERN_PATH + "border_A_right.tga",
+						"rect" : (0.0, 0.0, 0, QUEST_BOARD_PATTERN_Y_COUNT),
+					},
+					## bottomcenterImg 8
+					{
+						"name" : "BottomCenterImg",
+						"type" : "expanded_image",
+						"style" : ("ltr",),
+
+						"x" : 16,
+						"y" : QUEST_BOARD_WINDOW_HEIGHT - 16,
+						"image" : PATTERN_PATH + "border_A_bottom.tga",
+						"rect" : (0.0, 0.0, QUEST_BOARD_PATTERN_X_COUNT, 0),
+					},
+					## centerImg
+					{
+						"name" : "CenterImg",
+						"type" : "expanded_image",
+						"style" : ("ltr",),
+
+						"x" : 16,
+						"y" : 16,
+						"image" : PATTERN_PATH + "border_A_center.tga",
+						"rect" : (0.0, 0.0, QUEST_BOARD_PATTERN_X_COUNT, QUEST_BOARD_PATTERN_Y_COUNT),
+					},
+
+					{
+						"name" : "quest_object_board_window",
+						"type" : "window",
+						"style" : ("attach", "ltr",),
+
+						"x" : 3,
+						"y" : 3,
+
+						"width" : QUEST_BOARD_WINDOW_WIDTH - 3, # 228
+						"height" : QUEST_BOARD_WINDOW_HEIGHT - 3, # 294
 						},
 					),
 				},
+
+			{
+				"name" : "Quest_ScrollBar",
+				"type" : "scrollbar",
+
+				"x" : 25,
+				"y" : 12,
+				"size" : 290,
+				"horizontal_align" : "right",
+			},
+		),
+	},]
+else:
+	window["children"][0]["children"] = window["children"][0]["children"] + [
 				{
 					"name" : "Quest_Page",
 					"type" : "window",
@@ -766,8 +875,61 @@ window = {
 						{ "name" : "Quest_LastCount_04", "type" : "text", "text" : "남은 개수 입니다", "x" : 60, "y" : 286 },
 
 					),
+	},]
+
+window["children"][0]["children"] = window["children"][0]["children"] + [
+{
+	"name" : "Emoticon_Page",
+	"type" : "window",
+	"style" : ("attach",),
+
+	"x" : 0,
+	"y" : 24,
+
+	"width" : 250,
+	"height" : 304,
+
+	"children" :
+	(
+		## 기본 액션 제목
+		{ "name":"Action_Bar", "type":"horizontalbar", "x":12, "y":11, "width":223, },
+		{ "name":"Action_Bar_Text", "type":"text", "x":15, "y":13, "text":uiScriptLocale.CHARACTER_NORMAL_ACTION },
+
+		## Basis Action Slot
+		{
+			"name" : "SoloEmotionSlot",
+			"type" : "grid_table",
+			"x" : 30,
+			"y" : 33,
+			"horizontal_align" : "center",
+			"start_index" : 1,
+			"x_count" : 6,
+			"y_count" : 3,
+			"x_step" : 32,
+			"y_step" : 32,
+			"x_blank" : 0,
+			"y_blank" : 0,
+			"image" : ICON_SLOT_FILE,
 				},
-			),
+
+		## 상호 액션 제목
+		{ "name":"Reaction_Bar", "type":"horizontalbar", "x":12, "y":8+150, "width":223, },
+		{ "name":"Reaction_Bar_Text", "type":"text", "x":15, "y":10+150, "text":uiScriptLocale.CHARACTER_MUTUAL_ACTION },
+
+		## Reaction Slot
+		{
+			"name" : "DualEmotionSlot",
+			"type" : "grid_table",
+			"x" : 30,
+			"y" : 180,
+			"start_index" : 51,
+			"x_count" : 6,
+			"y_count" : 3,
+			"x_step" : 32,
+			"y_step" : 32,
+			"x_blank" : 0,
+			"y_blank" : 0,
+			"image" : ICON_SLOT_FILE,
 		},
 	),
-}
+},]

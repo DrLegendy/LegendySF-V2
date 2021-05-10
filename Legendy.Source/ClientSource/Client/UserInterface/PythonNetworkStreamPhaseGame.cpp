@@ -2024,7 +2024,11 @@ bool CPythonNetworkStream::RecvQuestInfoPacket()
 	{
 		if (!rkQuest.IsQuest(QuestInfo.index))
 		{
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+			rkQuest.MakeQuest(QuestInfo.index, QuestInfo.c_index);
+#else
 			rkQuest.MakeQuest(QuestInfo.index);
+#endif
 		}
 
 		if (strlen(szTitle) > 0)

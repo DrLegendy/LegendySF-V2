@@ -1,0 +1,12 @@
+2	collect_quest_lv30
+2	collect_quest_lv40
+2	collect_quest_lv50
+2	collect_quest_lv60
+2	collect_quest_lv70
+2	collect_quest_lv80
+2	collect_quest_lv85
+2	collect_quest_lv90
+2	collect_quest_lv92
+2	collect_quest_lv94
+1	questscroll5
+5	gm_info

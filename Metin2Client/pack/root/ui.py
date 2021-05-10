@@ -103,6 +103,9 @@ class Window(object):
 		self.RegisterWindow(layer)
 		self.Hide()
 
+		if app.ENABLE_QUEST_CATEGORY_SYSTEM:
+			self.propertyList = {}
+
 	def __del__(self):
 		wndMgr.Destroy(self.hWnd)
 
@@ -234,14 +237,43 @@ class Window(object):
 			self.onMouseWheelScrollEvent = event
 			wndMgr.SetScrollable(self.hWnd)
 
-
 		def OnMouseWheelScroll(self, mode = "UP"): #mode could be value "UP" and "DOWN"
 			print("OnMouseWheelScroll")
 			if self.onMouseWheelScrollEvent:
 				self.onMouseWheelScrollEvent(mode)
 
+	if app.ENABLE_QUEST_CATEGORY_SYSTEM:
+		def SetProperty(self, propName, propValue):
+			self.propertyList[propName] = propValue
 
+		def GetProperty(self, propName):
+			if propName in self.propertyList:
+				return self.propertyList[propName]
 
+			return None
+
+	if app.ENABLE_QUEST_CATEGORY_SYSTEM:
+		def GetText(self):
+			if not self.ButtonText:
+				return ""
+
+			return self.ButtonText.GetText()
+
+		def SetTextAlignLeft(self, text, height = 4):
+			if not self.ButtonText:
+				textLine = TextLine()
+				textLine.SetParent(self)
+				textLine.SetPosition(27, self.GetHeight()/2)
+				textLine.SetVerticalAlignCenter()
+				textLine.SetHorizontalAlignLeft()
+				textLine.Show()
+				self.ButtonText = textLine
+
+			#퀘스트 리스트 UI에 맞춰 위치 잡음
+			self.ButtonText.SetText(text)
+			self.ButtonText.SetPosition(27, self.GetHeight()/2)
+			self.ButtonText.SetVerticalAlignCenter()
+			self.ButtonText.SetHorizontalAlignLeft()
 
 class ListBoxEx(Window):
 
@@ -1704,6 +1736,92 @@ class TitleBar(Window):
 	def SetCloseEvent(self, event):
 		self.btnClose.SetEvent(event)
 
+if app.ENABLE_QUEST_CATEGORY_SYSTEM:
+	class SubTitleBar(Button):
+		def __init__(self):
+			Button.__init__(self)
+
+		def __del__(self):
+			Button.__del__(self)
+
+		def MakeSubTitleBar(self, width, color):
+			width = max(64, width)
+			self.SetWidth(width)
+			self.SetUpVisual("d:/ymir work/ui/quest_re/quest_tab_01.tga")
+			self.SetOverVisual("d:/ymir work/ui/quest_re/quest_tab_01.tga")
+			self.SetDownVisual("d:/ymir work/ui/quest_re/quest_tab_01.tga")
+			self.Show()
+
+			scrollImage = ImageBox()
+			scrollImage.SetParent(self)
+			scrollImage.LoadImage("d:/ymir work/ui/quest_re/quest_down.tga")
+			scrollImage.SetPosition(5, 2.5)
+			scrollImage.AddFlag("not_pick")
+			scrollImage.Show()
+			self.scrollImage = scrollImage
+
+		def OpenCategory(self, qcount = 0):
+			if qcount > 0:
+				self.scrollImage.LoadImage("d:/ymir work/ui/quest_re/quest_up.tga")
+			else:
+				self.scrollImage.LoadImage("d:/ymir work/ui/quest_re/quest_down.tga")
+
+		def CloseCategory(self, qcount = 0):
+			self.scrollImage.LoadImage("d:/ymir work/ui/quest_re/quest_down.tga")
+
+		def SetQuestLabel(self, filename, qcount):
+			tabColor = ImageBox()
+			tabColor.SetParent(self)
+			tabColor.LoadImage(filename)
+			tabColor.AddFlag("not_pick")
+			tabColor.SetPosition(188, 12)
+			if qcount > 0:
+				tabColor.Show()
+			else:
+				tabColor.Hide()
+			self.tabColor = tabColor
+
+		def SetWidth(self, width):
+			self.SetPosition(32, 0)
+			self.SetSize(width, 23)
+
+	class ListBar(Button):
+		def __init__(self):
+			Button.__init__(self)
+
+		def __del__(self):
+			Button.__del__(self)
+
+		def MakeListBar(self, width, color):
+			width = max(64, width)
+			self.SetWidth(width)
+			self.Show()
+
+			checkbox = ImageBox()
+			checkbox.SetParent(self)
+			checkbox.LoadImage("d:/ymir work/ui/quest_re/quest_new.tga")
+			checkbox.SetPosition(10, 9)
+			checkbox.AddFlag("not_pick")
+			checkbox.Show()
+			self.checkbox = checkbox
+			self.isChecked = False
+
+		def SetWidth(self, width):
+			self.SetPosition(32, 0)
+			self.SetSize(width, 23)
+
+		def CallEvent(self):
+			self.OnClickEvent()
+			super(ListBar, self).CallEvent()
+
+		def OnClickEvent(self):
+			self.checkbox.Hide()
+			self.isChecked = True
+
+		def SetSlot(self, slotIndex, itemIndex, width, height, icon, diffuseColor = (1.0, 1.0, 1.0, 1.0)):
+			wndMgr.SetSlot(self.hWnd, slotIndex, itemIndex, width, height, icon, diffuseColor)
+
+
 class HorizontalBar(Window):
 
 	BLOCK_WIDTH = 32
@@ -3096,6 +3214,9 @@ class PythonScriptLoader(object):
 	GAUGE_KEY_LIST = ( "width", "color", )
 	SCROLLBAR_KEY_LIST = ( "size", )
 	LIST_BOX_KEY_LIST = ( "width", "height", )
+	if app.ENABLE_QUEST_CATEGORY_SYSTEM:
+		SUB_TITLE_BAR_KEY_LIST = ( "width", )
+		LIST_BAR_KEY_LIST = ( "width", )
 
 	def __init__(self):
 		self.Clear()
@@ -3387,10 +3508,22 @@ class PythonScriptLoader(object):
 				parent.Children[Index] = ListBox2()
 				parent.Children[Index].SetParent(parent)
 				self.LoadElementListBox2(parent.Children[Index], ElementValue, parent)
+
 			elif Type == "listboxex":
 				parent.Children[Index] = ListBoxEx()
 				parent.Children[Index].SetParent(parent)
 				self.LoadElementListBoxEx(parent.Children[Index], ElementValue, parent)
+
+			elif Type == "subtitlebar" and app.ENABLE_QUEST_CATEGORY_SYSTEM:
+				parent.Children[Index] = SubTitleBar()
+				parent.Children[Index].SetParent(parent)
+				self.LoadElementSubTitleBar(parent.Children[Index], ElementValue, parent)
+
+			elif Type == "listbar" and app.ENABLE_QUEST_CATEGORY_SYSTEM:
+				parent.Children[Index] = ListBar()
+				parent.Children[Index].SetParent(parent)
+				self.LoadElementListBar(parent.Children[Index], ElementValue, parent)
+
 
 			else:
 				Index += 1
@@ -3824,6 +3957,27 @@ class PythonScriptLoader(object):
 		self.LoadDefaultData(window, value, parentWindow)
 
 		return True
+
+	if app.ENABLE_QUEST_CATEGORY_SYSTEM:
+		## SubTitleBar
+		def LoadElementSubTitleBar(self, window, value, parentWindow):
+			if False == self.CheckKeyList(value["name"], value, self.SUB_TITLE_BAR_KEY_LIST):
+				return False
+
+			window.MakeSubTitleBar(int(value["width"]), value.get("color", "red"))
+			self.LoadElementButton(window, value, parentWindow)
+			window.Show()
+			return True
+
+		## ListBar
+		def LoadElementListBar(self, window, value, parentWindow):
+			if False == self.CheckKeyList(value["name"], value, self.LIST_BAR_KEY_LIST):
+				return False
+
+			window.MakeListBar(int(value["width"]), value.get("color", "red"))
+			self.LoadElementButton(window, value, parentWindow)
+
+			return True
 
 	## Box
 	def LoadElementBox(self, window, value, parentWindow):

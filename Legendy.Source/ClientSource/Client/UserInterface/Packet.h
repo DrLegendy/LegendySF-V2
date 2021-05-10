@@ -2043,6 +2043,9 @@ typedef struct packet_quest_info
 	BYTE header;
 	WORD size;
 	WORD index;
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
+	WORD c_index;
+#endif
 	BYTE flag;
 } TPacketGCQuestInfo;
 

@@ -64,7 +64,15 @@ CLİENT FİX
 
 PACK FİX
 *********************
+
 1-> Kadın Savaşçı karakterin öfke bastığında efekt geç yüklenme sorunu giderildi.
+2-> Metin2Client aura mse dosyalarının syserr vermesi fixlendi.
+-----------------------------------------------**********************************************------------------------------------------------
+
+PROTO DÜZENLEMELERİ
+*********************
+
+1-> Kuşak emiş oranlarının sabit kalma hatası düzeltildi.
 
 -----------------------------------------------**********************************************------------------------------------------------
 
@@ -81,6 +89,8 @@ EKLENEN SİSTEMLER
 #define ENABLE_CUBE_RENEWAL_WORLDARD			// Official Cube Sistemi
 #define ENABLE_CUBE_ATTR_SOCKET					// Official Cube Sistemi Taş ve Efsun Fixi
 #define ENABLE_OFFICAL_CHARACTER_SCREEN			// Official Karakter Ekranı
+#define ENABLE_DS_GRADE_MYTH					// Mitsi Simya Sistemi Güncellemesi
+#define ENABLE_QUEST_CATEGORY_SYSTEM			// Gorev Kategori Modulu
 
 -----------------------------------------------**********************************************------------------------------------------------
 

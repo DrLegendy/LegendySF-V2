@@ -1,3 +1,11 @@
+QUEST_CATEGORY_00	Ana Görevler
+QUEST_CATEGORY_01	Yan Görevler
+QUEST_CATEGORY_02	Araþtýrma Görevleri
+QUEST_CATEGORY_03	Av Görevleri
+QUEST_CATEGORY_04	Uyarýlar
+QUEST_CATEGORY_05	Bilgilendirme
+QUEST_CATEGORY_06	Diðer Görevler
+QUEST_CATEGORY_07	Günlük Görevler
 ACCEPT	Kabul Et.
 ACCE_ABSORB	Bonus Emiþi
 ACCE_COMBINE	Kombinasyon

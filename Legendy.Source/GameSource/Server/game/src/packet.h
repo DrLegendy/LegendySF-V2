@@ -1343,9 +1343,6 @@ struct packet_script
 	WORD	size;
 	BYTE	skin;
 	WORD	src_size;
-#ifdef ENABLE_QUEST_CATEGORY
-	BYTE	quest_flag;
-#endif
 };
 
 typedef struct packet_change_speed
@@ -1490,7 +1487,7 @@ struct packet_quest_info
 	BYTE header;
 	WORD size;
 	WORD index;
-#ifdef ENABLE_QUEST_CATEGORY
+#ifdef ENABLE_QUEST_CATEGORY_SYSTEM
 	WORD c_index;
 #endif
 	BYTE flag;
