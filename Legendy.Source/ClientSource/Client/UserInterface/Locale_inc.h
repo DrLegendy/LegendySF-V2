@@ -69,6 +69,7 @@
 #define ENABLE_ELEMENTAL_APPLY_BONUS											// Elemental Bonuslar Modulu
 #define ENABLE_CUBE_RENEWAL_WORLDARD											// Offical Cube Sistemi
 #define ENABLE_OFFICAL_CHARACTER_SCREEN											// Karakter Ekranı
+#define ENABLE_DS_GRADE_MYTH													// Mitsi Simya Sistemi
 
 
 

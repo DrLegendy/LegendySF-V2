@@ -1728,4 +1728,10 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_OFFICAL_CHARACTER_SCREEN", 0);
 #endif
+
+#ifdef ENABLE_DS_GRADE_MYTH
+	PyModule_AddIntConstant(poModule, "ENABLE_DS_GRADE_MYTH", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_DS_GRADE_MYTH", 0);
+#endif
 }

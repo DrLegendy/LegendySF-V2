@@ -135,7 +135,11 @@ WORD DSManager::GetBasePosition(const LPITEM pItem) const
 	if (row_type > DRAGON_SOUL_GRADE_MAX)
 		return WORD_MAX;
 
+#ifdef ENABLE_DS_GRADE_MYTH
+	return col_type * DRAGON_SOUL_GRADE_MAX * DRAGON_SOUL_BOX_SIZE + row_type * DRAGON_SOUL_BOX_SIZE;
+#else
 	return col_type * DRAGON_SOUL_STEP_MAX * DRAGON_SOUL_BOX_SIZE + row_type * DRAGON_SOUL_BOX_SIZE;
+#endif
 }
 
 bool DSManager::RefreshItemAttributes(LPITEM pDS)

@@ -99,6 +99,7 @@ CPythonResource::CPythonResource()
 	m_resManager.RegisterResourceNewFunctionPointer("gr2", NewThing);
 	m_resManager.RegisterResourceNewFunctionPointer("mde", NewEffectMesh);
 	m_resManager.RegisterResourceNewFunctionPointer("mdatr", NewAttributeData);
+	m_resManager.RegisterResourceNewFunctionPointer("mse", NewEffectMesh);
 }
 
 CPythonResource::~CPythonResource()

@@ -11,6 +11,9 @@ const std::string g_astGradeName[] =
 	"grade_rare",
 	"grade_ancient",
 	"grade_legendary",
+#ifdef ENABLE_DS_GRADE_MYTH
+	"grade_myth",
+#endif
 };
 
 const std::string g_astStepName[] =
@@ -417,12 +420,21 @@ bool DragonSoulTable::CheckRefineStepTables ()
 						m_vecDragonSoulNames[i].c_str(), g_astStepName[j].c_str());
 					return false;
 				}
+#ifdef ENABLE_DS_GRADE_MYTH
+				if (DRAGON_SOUL_STEP_MAX != vec_probs.size())
+				{
+					sys_err("In %s group of RefineStepTables, probability list size is not %d.",
+						m_vecDragonSoulNames[i].c_str(), DRAGON_SOUL_STEP_MAX);
+					return false;
+				}
+#else
 				if (DRAGON_SOUL_GRADE_MAX != vec_probs.size())
 				{
-					sys_err ("In %s group of RefineStepTables, probability list size is not %d.",
+					sys_err("In %s group of RefineStepTables, probability list size is not %d.",
 						m_vecDragonSoulNames[i].c_str(), DRAGON_SOUL_GRADE_MAX);
 					return false;
 				}
+#endif
 				for (size_t k = 0; k < vec_probs.size(); k++)
 				{
 					if (vec_probs[k] < 0.f)

@@ -75,6 +75,7 @@ enum eCommonDefines {
 #define ENABLE_CUBE_RENEWAL_WORLDARD																// Official Cube Sistemi
 #define ENABLE_CUBE_ATTR_SOCKET																		// Official Cube Sistemi Fixi
 #define ENABLE_OFFICAL_CHARACTER_SCREEN																// Karakter Ekranı
+#define ENABLE_DS_GRADE_MYTH																		// Mitsi Simya Sistemi
 
 
 

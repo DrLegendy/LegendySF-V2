@@ -94,6 +94,8 @@ class DragonSoulWindow(ui.ScriptWindow):
 			self.inventoryTab.append(self.GetChild("Inventory_Tab_03"))
 			self.inventoryTab.append(self.GetChild("Inventory_Tab_04"))
 			self.inventoryTab.append(self.GetChild("Inventory_Tab_05"))
+			if app.ENABLE_DS_GRADE_MYTH:
+				self.inventoryTab.append(self.GetChild("Inventory_Tab_06"))
 			self.tabDict = {
 				0	: self.GetChild("Tab_01"),
 				1	: self.GetChild("Tab_02"),
@@ -145,6 +147,8 @@ class DragonSoulWindow(ui.ScriptWindow):
 		self.inventoryTab[2].SetEvent(lambda arg=2: self.SetInventoryPage(arg))
 		self.inventoryTab[3].SetEvent(lambda arg=3: self.SetInventoryPage(arg))
 		self.inventoryTab[4].SetEvent(lambda arg=4: self.SetInventoryPage(arg))
+		if app.ENABLE_DS_GRADE_MYTH:
+			self.inventoryTab[5].SetEvent(lambda arg=5: self.SetInventoryPage(arg))
 		self.inventoryTab[0].Down()
 		## Etc
 		self.wndItem = wndItem
@@ -196,10 +200,17 @@ class DragonSoulWindow(ui.ScriptWindow):
 		if self.inventoryPageIndex != page:
 			self.__HighlightSlot_ClearCurrentPage()
 		self.inventoryPageIndex = page
-		self.inventoryTab[(page+1)%5].SetUp()
-		self.inventoryTab[(page+2)%5].SetUp()
-		self.inventoryTab[(page+3)%5].SetUp()
-		self.inventoryTab[(page+4)%5].SetUp()
+		if app.ENABLE_DS_GRADE_MYTH:
+			self.inventoryTab[(page+1)%6].SetUp()
+			self.inventoryTab[(page+2)%6].SetUp()
+			self.inventoryTab[(page+3)%6].SetUp()
+			self.inventoryTab[(page+4)%6].SetUp()
+			self.inventoryTab[(page+5)%6].SetUp()
+		else:
+			self.inventoryTab[(page+1)%5].SetUp()
+			self.inventoryTab[(page+2)%5].SetUp()
+			self.inventoryTab[(page+3)%5].SetUp()
+			self.inventoryTab[(page+4)%5].SetUp()
 		self.RefreshBagSlotWindow()
 
 	def SetItemToolTip(self, tooltipItem):
@@ -242,7 +253,10 @@ class DragonSoulWindow(ui.ScriptWindow):
 		if player.INVENTORY == window_type:
 			return self.deckPageIndex * player.DRAGON_SOUL_EQUIPMENT_FIRST_SIZE + local_slot_pos
 
-		return (self.DSKindIndex * 5 * player.DRAGON_SOUL_PAGE_SIZE) + self.inventoryPageIndex * player.DRAGON_SOUL_PAGE_SIZE + local_slot_pos
+		if app.ENABLE_DS_GRADE_MYTH:
+			return (self.DSKindIndex * 6 * player.DRAGON_SOUL_PAGE_SIZE) + self.inventoryPageIndex * player.DRAGON_SOUL_PAGE_SIZE + local_slot_pos
+		else:
+			return (self.DSKindIndex * 5 * player.DRAGON_SOUL_PAGE_SIZE) + self.inventoryPageIndex * player.DRAGON_SOUL_PAGE_SIZE + local_slot_pos
 
 	def RefreshBagSlotWindow(self):
 		getItemVNum=player.GetItemIndex
