@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ItemData.h"
+#ifdef ENABLE_DS_SET
+#include "DragonSoulTable.h"
+#endif
 
 class CItemManager : public CSingleton<CItemManager>
 {
@@ -55,6 +58,15 @@ class CItemManager : public CSingleton<CItemManager>
 
 #ifdef ENABLE_ACCE_SYSTEM
 		bool			LoadItemScale(const char* c_szFileName);
+#endif
+
+#ifdef ENABLE_DS_SET
+public:
+	bool LoadDragonSoulTable(const char* szDragonSoulTable);
+	CDragonSoulTable* GetDragonSoulTable();
+
+protected:
+	CDragonSoulTable* m_DragonSoulTable;
 #endif
 
 	protected:

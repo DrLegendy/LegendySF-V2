@@ -5,14 +5,6 @@
 #include "DragonSoul.h"
 #include "log.h"
 
-
-
-
-
-
-
-
-
 void CHARACTER::DragonSoul_Initialize()
 {
 	for (int i = INVENTORY_MAX_NUM + WEAR_MAX_NUM; i < DRAGON_SOUL_EQUIP_SLOT_END; i++)
@@ -88,6 +80,11 @@ bool CHARACTER::DragonSoul_ActivateDeck(int deck_idx)
 		if (NULL != pItem)
 			DSManager::instance().ActivateDragonSoul(pItem);
 	}
+
+#ifdef ENABLE_DS_SET
+	DragonSoul_HandleSetBonus();
+#endif
+
 	return true;
 }
 
@@ -97,10 +94,72 @@ void CHARACTER::DragonSoul_DeactivateAll()
 	{
 		DSManager::instance().DeactivateDragonSoul(GetInventoryItem(i), true);
 	}
+
+#ifdef ENABLE_DS_SET
+	DragonSoul_HandleSetBonus();
+#endif
+
 	m_pointsInstant.iDragonSoulActiveDeck = -1;
 	RemoveAffect(AFFECT_DRAGON_SOUL_DECK_0);
 	RemoveAffect(AFFECT_DRAGON_SOUL_DECK_1);
+
+#ifdef ENABLE_DS_SET
+	RemoveAffect(NEW_AFFECT_DS_SET);
+#endif
 }
+
+#ifdef ENABLE_DS_SET
+void CHARACTER::DragonSoul_HandleSetBonus()
+{
+	bool bAdd = true;
+	uint8_t iSetGrade;
+
+	if (!DSManager::instance().GetDSSetGrade(this, iSetGrade))
+	{
+		CAffect* pkAffect = FindAffect(NEW_AFFECT_DS_SET);
+		if (!pkAffect)
+			return;
+
+		iSetGrade = pkAffect->lApplyValue;
+		bAdd = false;
+	}
+	else
+	{
+		AddAffect(NEW_AFFECT_DS_SET, APPLY_NONE, iSetGrade, 0, INFINITE_AFFECT_DURATION, 0, true);
+	}
+
+	const uint8_t iDeckIdx = DragonSoul_GetActiveDeck();
+	const uint8_t iStartSlotIndex = WEAR_MAX_NUM + (iDeckIdx * DS_SLOT_MAX);
+	const uint8_t iEndSlotIndex = iStartSlotIndex + DS_SLOT_MAX;
+
+	for (uint8_t iSlotIndex = iStartSlotIndex; iSlotIndex < iEndSlotIndex; ++iSlotIndex)
+	{
+		const LPITEM pkItem = GetWear(iSlotIndex);
+		if (!pkItem)
+			return;
+
+		for (uint8_t i = 0; i < ITEM_ATTRIBUTE_MAX_NUM; ++i)
+		{
+			if (pkItem->GetAttributeType(i))
+			{
+				const TPlayerItemAttribute& ia = pkItem->GetAttribute(i);
+				int iSetValue = DSManager::instance().GetDSSetValue(i, ia.bType, pkItem->GetVnum(), iSetGrade);
+
+				if (ia.bType == APPLY_SKILL)
+				{
+					iSetValue = bAdd ? iSetValue : iSetValue ^ 0x00800000;
+				}
+				else
+				{
+					iSetValue = bAdd ? iSetValue : -iSetValue;
+				}
+
+				ApplyPoint(ia.bType, iSetValue);
+			}
+		}
+	}
+}
+#endif
 
 void CHARACTER::DragonSoul_CleanUp()
 {

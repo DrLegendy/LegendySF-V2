@@ -1582,6 +1582,11 @@ void initchr()
 
 	PyModule_AddIntConstant(poModule, "NEW_AFFECT_DRAGON_SOUL_DECK1",		CInstanceBase::NEW_AFFECT_DRAGON_SOUL_DECK1);
 	PyModule_AddIntConstant(poModule, "NEW_AFFECT_DRAGON_SOUL_DECK2",		CInstanceBase::NEW_AFFECT_DRAGON_SOUL_DECK2);
+
+#ifdef ENABLE_DS_SET
+	PyModule_AddIntConstant(poModule, "NEW_AFFECT_DS_SET",					CInstanceBase::NEW_AFFECT_DS_SET);
+#endif
+
 #ifdef ENABLE_ACCE_SYSTEM
 	PyModule_AddIntConstant(poModule, "PART_ACCE",							CRaceData::PART_ACCE);
 #endif

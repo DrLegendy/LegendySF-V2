@@ -43,6 +43,12 @@ public:
 	bool	ActivateDragonSoul(LPITEM pItem);
 	bool	DeactivateDragonSoul(LPITEM pItem, bool bSkipRefreshOwnerActiveState = false);
 	bool	IsActiveDragonSoul(LPITEM pItem) const;
+
+#ifdef ENABLE_DS_SET
+	bool GetDSSetGrade(LPCHARACTER ch, uint8_t & iSetGrade);
+	int GetDSSetValue(uint8_t iAttributeIndex, uint16_t iApplyType, uint32_t iVnum, uint8_t iSetGrade);
+#endif
+
 private:
 	void	SendRefineResultPacket(LPCHARACTER ch, BYTE bSubHeader, const TItemPos& pos);
 

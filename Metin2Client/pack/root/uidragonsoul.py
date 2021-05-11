@@ -39,6 +39,9 @@ class DragonSoulWindow(ui.ScriptWindow):
 		self.SetWindowName("DragonSoulWindow")
 		self.__LoadWindow()
 
+		if app.ENABLE_DS_SET:
+			self.setGrade = 0
+
 	def __del__(self):
 		ui.ScriptWindow.__del__(self)
 
@@ -246,6 +249,38 @@ class DragonSoulWindow(ui.ScriptWindow):
 
 		self.wndEquip.RefreshSlot()
 
+	if app.ENABLE_DRAGON_SOUL_EFFECT:
+		def ActivateEquipSlotWindow(self, deck):
+			# Rouge		== (238.00 / 255.0), (11.00 / 255.0), (11.00 / 255.0), (1.0))
+			# Vert		== (9.00 / 255.0), (142.00 / 255.0), (4.00 / 255.0), (1.0))
+			# Bleu		== (0.00 / 255.0), (0.00 / 255.0), (255.00 / 255.0), (1.5))
+			# Orange	== (239.00 / 255.0), (147.00 / 255.0), (6.00 / 255.0), (1.0))
+			# Gris		== (85.00 / 255.0), (85.00 / 255.0), (85.00 / 255.0), (0.5))
+			# Pas besoin de blanc car la définition de 'i' == blanc par default.
+			for i in xrange(6):
+				if deck == 2:
+					plusCount = 6
+				else:
+					plusCount = 0
+
+				if i == 0:
+					self.wndEquip.ActivateSlot(player.DRAGON_SOUL_EQUIPMENT_SLOT_START + i + plusCount) # Blanc (Classic)
+				elif i == 1:
+					self.wndEquip.ActivateSlot((player.DRAGON_SOUL_EQUIPMENT_SLOT_START + plusCount) + i, (238.00 / 255.0), (11.00 / 255.0), (11.00 / 255.0), (1.0)) # Rouge
+				elif i == 2:
+					self.wndEquip.ActivateSlot((player.DRAGON_SOUL_EQUIPMENT_SLOT_START + plusCount) + i, (9.00 / 255.0), (142.00 / 255.0), (4.00 / 255.0), (1.0)) # Vert
+				elif i == 3:
+					self.wndEquip.ActivateSlot((player.DRAGON_SOUL_EQUIPMENT_SLOT_START + plusCount) + i, (0.00 / 255.0), (0.00 / 255.0), (255.00 / 255.0), (1.5)) # Bleu
+				elif i == 4:
+					self.wndEquip.ActivateSlot((player.DRAGON_SOUL_EQUIPMENT_SLOT_START + plusCount) + i, (239.00 / 255.0), (147.00 / 255.0), (6.00 / 255.0), (1.0)) # Orange
+				elif i == 5:
+					self.wndEquip.ActivateSlot((player.DRAGON_SOUL_EQUIPMENT_SLOT_START + plusCount) + i, (85.00 / 255.0), (85.00 / 255.0), (85.00 / 255.0), (0.5)) # Gris
+
+		def DeactivateEquipSlotWindow(self):
+			for i in xrange(12):
+				self.wndEquip.DeactivateSlot(player.DRAGON_SOUL_EQUIPMENT_SLOT_START + i)
+
+
 	def RefreshStatus(self):
 		self.RefreshItemSlot()
 
@@ -300,7 +335,10 @@ class DragonSoulWindow(ui.ScriptWindow):
 	def ShowToolTip(self, window_type, slotIndex):
 		if None != self.tooltipItem:
 			if player.INVENTORY == window_type:
-				self.tooltipItem.SetInventoryItem(slotIndex)
+				if app.ENABLE_DS_SET and player.IsDSEquipmentSlot(window_type, slotIndex):
+					self.tooltipItem.SetInventoryItem(slotIndex, player.EQUIPMENT)
+				else:
+					self.tooltipItem.SetInventoryItem(slotIndex)
 			else:
 				self.tooltipItem.SetInventoryItem(slotIndex, player.DRAGON_SOUL_INVENTORY)
 
@@ -672,6 +710,16 @@ class DragonSoulWindow(ui.ScriptWindow):
 
 		self.RefreshEquipSlotWindow()
 
+	if app.ENABLE_DS_SET:
+		def SetDSSetGrade(self, grade):
+			self.setGrade = grade
+
+		def GetDSSetGrade(self):
+			if not self.isActivated:
+				return 0
+
+			return self.setGrade
+
 	def ActivateDragonSoulByExtern(self, deck):
 		self.isActivated = True
 		self.activateButton.Down()
@@ -679,10 +727,14 @@ class DragonSoulWindow(ui.ScriptWindow):
 		self.deckTab[deck].Down()
 		self.deckTab[(deck+1)%2].SetUp()
 		self.RefreshEquipSlotWindow()
+		if app.ENABLE_DRAGON_SOUL_EFFECT:
+			self.ActivateEquipSlotWindow(deck)
 
 	def DeactivateDragonSoul(self):
 		self.isActivated = False
 		self.activateButton.SetUp()
+		if app.ENABLE_DRAGON_SOUL_EFFECT:
+			self.DeactivateEquipSlotWindow()
 
 	def ActivateButtonClick(self):
 		self.isActivated = self.isActivated ^ True

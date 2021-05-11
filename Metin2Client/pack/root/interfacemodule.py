@@ -236,6 +236,8 @@ class Interface(object):
 		self.hyperlinkItemTooltip.Hide()
 
 		self.tooltipItem = uiToolTip.ItemToolTip()
+		if app.ENABLE_DS_SET:
+			self.tooltipItem.BindInterface(self)
 		self.tooltipItem.Hide()
 
 		self.tooltipSkill = uiToolTip.SkillToolTip()
@@ -1030,6 +1032,10 @@ class Interface(object):
 	def DragonSoulDeactivate(self):
 		if app.ENABLE_DRAGON_SOUL_SYSTEM:
 			self.wndDragonSoul.DeactivateDragonSoul()
+
+	if app.ENABLE_DS_SET:
+		def DragonSoulSetGrade(self, grade):
+			self.wndDragonSoul.SetDSSetGrade(grade)
 
 	def Highligt_Item(self, inven_type, inven_pos):
 		if player.DRAGON_SOUL_INVENTORY == inven_type:

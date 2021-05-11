@@ -1740,4 +1740,16 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_QUEST_CATEGORY_SYSTEM", 0);
 #endif
+
+#ifdef ENABLE_DS_SET
+	PyModule_AddIntConstant(poModule, "ENABLE_DS_SET", true);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_DS_SET", false);
+#endif
+
+#ifdef ENABLE_DRAGON_SOUL_EFFECT
+	PyModule_AddIntConstant(poModule, "ENABLE_DRAGON_SOUL_EFFECT", true);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_DRAGON_SOUL_EFFECT", false);
+#endif
 }

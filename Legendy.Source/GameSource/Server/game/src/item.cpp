@@ -1086,6 +1086,9 @@ bool CItem::EquipTo(LPCHARACTER ch, BYTE bWearCell)
 	if (IsDragonSoul())
 	{
 		DSManager::instance().ActivateDragonSoul(this);
+#ifdef ENABLE_DS_SET
+		ch->DragonSoul_HandleSetBonus();
+#endif
 	}
 	else
 	{

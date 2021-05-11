@@ -30,37 +30,25 @@
 #define ENABLE_SHOW_MOBAIFLAG
 #define ENABLE_SHOW_MOBLEVEL
 #endif
-// ### New From LocaleInc ###
-//////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////
-// ### From GameLib ###
+
 #define ENABLE_WOLFMAN_CHARACTER
 
 // #define ENABLE_MAGIC_REDUCTION_SYSTEM
 #define ENABLE_MOUNT_COSTUME_SYSTEM
 #define ENABLE_WEAPON_COSTUME_SYSTEM
-// ### From GameLib ###
-//////////////////////////////////////////////////////////////////////////
+
 
 
 /*
 	###		New System Defines - Extended Version		###
 */
 
-// if is define ENABLE_ACCE_SYSTEM the players can use shoulder sash
-// if you want to use object scaling function you must defined ENABLE_OBJ_SCALLING
-#define ENABLE_ACCE_SYSTEM
 #define ENABLE_OBJ_SCALLING
-
-// if you want use SetMouseWheelScrollEvent or you want use mouse wheel to move the scrollbar
-#define ENABLE_MOUSEWHEEL_EVENT
-
-//if you want to see highlighted a new item when dropped or when exchanged
-#define ENABLE_HIGHLIGHT_NEW_ITEM
-
-// it shows emojis in the textlines
-#define ENABLE_EMOJI_SYSTEM
+#define ENABLE_ACCE_SYSTEM														// Kuşak Sistemi
+#define ENABLE_MOUSEWHEEL_EVENT													// Mouse Tekerlek Modulu
+#define ENABLE_HIGHLIGHT_NEW_ITEM												// Yeni Düşen İtem Parlama Sistemi
+#define ENABLE_EMOJI_SYSTEM														// Emoji Sistemi
 
 
 
@@ -70,9 +58,9 @@
 #define ENABLE_CUBE_RENEWAL_WORLDARD											// Offical Cube Sistemi
 #define ENABLE_OFFICAL_CHARACTER_SCREEN											// Karakter Ekranı
 #define ENABLE_DS_GRADE_MYTH													// Mitsi Simya Sistemi
+#define ENABLE_DS_SET															// Simya Set Bonus Sistemi
+#define ENABLE_DRAGON_SOUL_EFFECT												// Simya Renkli Higlight Modulu
 #define ENABLE_QUEST_CATEGORY_SYSTEM											// Gorev Kategori Modulu
-
-
 
 /*
 	###		New Debugging Defines

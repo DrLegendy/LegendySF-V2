@@ -2061,16 +2061,11 @@ public:
 	bool	DragonSoul_ActivateDeck(int deck_idx);
 
 	void	DragonSoul_DeactivateAll();
-
-
-
-
-	//
-
-
-
-
 	void	DragonSoul_CleanUp();
+
+#ifdef ENABLE_DS_SET
+	void DragonSoul_HandleSetBonus();
+#endif
 
 public:
 	bool		DragonSoul_RefineWindow_Open(LPENTITY pEntity);

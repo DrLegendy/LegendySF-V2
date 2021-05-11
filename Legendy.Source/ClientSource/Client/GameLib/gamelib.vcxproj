@@ -373,6 +373,7 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="DragonSoulTable.cpp" />
     <ClCompile Include="DungeonBlock.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -952,6 +953,7 @@
   <ItemGroup>
     <ClInclude Include="ActorInstance.h" />
     <ClInclude Include="ActorInstanceInterface.h" />
+    <ClInclude Include="DragonSoulTable.h" />
     <ClInclude Include="GameLibDefines.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="RaceData.h" />

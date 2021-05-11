@@ -905,6 +905,9 @@ bool LoadLocaleData(const char* localePath)
 	char szMobProto[256];
 	char szSkillDescFileName[256];
 	char szSkillTableFileName[256];
+#ifdef ENABLE_DS_SET
+	char szDragonSoulTable[256];
+#endif
 	char szInsultList[256];
 #ifdef ENABLE_LOAD_ITEM_LIST_FROM_ROOT
 	snprintf(szItemList,	sizeof(szItemList) ,	"item_list.txt");
@@ -917,6 +920,9 @@ bool LoadLocaleData(const char* localePath)
 	snprintf(szSkillDescFileName, sizeof(szSkillDescFileName),	"%s/SkillDesc.txt", localePath);
 	snprintf(szSkillTableFileName, sizeof(szSkillTableFileName),	"%s/SkillTable.txt", localePath);
 	snprintf(szInsultList,	sizeof(szInsultList),	"%s/insult.txt", localePath);
+#ifdef ENABLE_DS_SET
+	snprintf(szDragonSoulTable, sizeof(szDragonSoulTable), "%s/dragon_soul_table.txt", localePath);
+#endif
 
 	rkNPCMgr.Destroy();
 	rkItemMgr.Destroy();
@@ -937,6 +943,11 @@ bool LoadLocaleData(const char* localePath)
 	{
 		Tracenf("LoadLocaleData - LoadItemDesc(%s) Error", szItemDesc);
 	}
+
+#ifdef ENABLE_DS_SET
+	if (!rkItemMgr.LoadDragonSoulTable(szDragonSoulTable))
+		Tracenf("LoadLocaleData - LoadDragonSoulTable(%s) Error", szDragonSoulTable);
+#endif
 
 	if (!rkNPCMgr.LoadNonPlayerData(szMobProto))
 	{

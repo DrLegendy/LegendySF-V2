@@ -1,3 +1,4 @@
+TOOLTIP_DS_SET	Simya Set Bonusu	SNA
 EMPIRE_SELECT	Seç
 EMPIRE_SELECT_MODE	Krallýk seçimi
 CHARACTER_CREATE_MODE	Karakter oluþtur
