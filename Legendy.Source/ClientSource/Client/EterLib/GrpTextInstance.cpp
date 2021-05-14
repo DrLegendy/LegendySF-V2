@@ -468,7 +468,7 @@ void CGraphicTextInstance::Update()
 
 							char szPath[255];
 							snprintf(szPath, sizeof(szPath), "icon/emoji/%s.png", retBuf);
-							TraceError("trying to load %s", szPath);
+							// TraceError("trying to load %s", szPath);
 
 							if (CResourceManager::Instance().IsFileExist(szPath))
 							{

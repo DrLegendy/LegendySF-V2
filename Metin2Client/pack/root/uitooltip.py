@@ -394,15 +394,16 @@ class ToolTip(ui.ThinBoard):
 class ItemToolTip(ToolTip):
 
 	CHARACTER_NAMES = (
-		localeInfo.TOOLTIP_WARRIOR,
-		localeInfo.TOOLTIP_ASSASSIN,
-		localeInfo.TOOLTIP_SURA,
-		localeInfo.TOOLTIP_SHAMAN
+		"|Eemoji/warrior_m|e",
+		"|Eemoji/assassin_w|e",
+		"|Eemoji/sura_m|e",
+		"|Eemoji/shaman_w|e",
+		"|Eemoji/wolfman|e",
 	)
-	if app.ENABLE_WOLFMAN_CHARACTER:
-		CHARACTER_NAMES += (
-			localeInfo.TOOLTIP_WOLFMAN,
-		)
+#	if app.ENABLE_WOLFMAN_CHARACTER:
+#		CHARACTER_NAMES += (
+#			localeInfo.TOOLTIP_WOLFMAN,
+#		)
 
 	CHARACTER_COUNT = len(CHARACTER_NAMES)
 	WEAR_NAMES = (
@@ -1495,6 +1496,29 @@ class ItemToolTip(ToolTip):
 
 		self.__AppendSealInformation(window_type, slotIndex) ## cyh itemseal 2013 11 11
 
+		if chr.IsGameMaster(player.GetMainCharacterIndex()):
+			self.AppendSpace(5)
+			self.AppendTextLine(localeInfo.TOOLTIP_VNUM_ITEM % itemVnum, grp.GenerateColor(1.0, 0.9686, 0.3098, 1.0))
+
+		AFDict = {
+			"|Eemoji/anti_drop|e": item.IsAntiFlag(item.ITEM_ANTIFLAG_DROP),
+			"|Eemoji/anti_sell|e": item.IsAntiFlag(item.ITEM_ANTIFLAG_SELL),
+			# localeInfo.TOOLTIP_ANTIFLAG_GIVE: item.IsAntiFlag(item.ITEM_ANTIFLAG_GIVE),
+			# localeInfo.TOOLTIP_ANTIFLAG_STACK: item.IsAntiFlag(item.ITEM_ANTIFLAG_STACK),
+			"|Eemoji/anti_shop|e": item.IsAntiFlag(item.ITEM_ANTIFLAG_MYSHOP),
+			"|Eemoji/anti_safebox|e": item.IsAntiFlag(item.ITEM_ANTIFLAG_SAFEBOX),
+		}
+		
+		AFNames = [name for name, flag in AFDict.iteritems() if flag]
+		if AFNames:
+
+			self.AppendSpace(5)
+			AFTitle = self.AppendTextLine("[ " + localeInfo.NOT_POSSIBLE + " ]", self.DISABLE_COLOR)
+			AFLine = self.AppendTextLine('{}'.format(' '.join(AFNames)), self.DISABLE_COLOR)
+
+			AFTitle.SetFeather()
+			AFLine.SetFeather()
+
 		self.ShowToolTip()
 
 	def __DragonSoulInfoString (self, dwVnum):
@@ -1729,9 +1753,11 @@ class ItemToolTip(ToolTip):
 			textLine = self.AppendTextLine(localeInfo.FOR_FEMALE, self.NORMAL_COLOR, True)
 			textLine.SetFeather()
 
+
 		if item.IsAntiFlag(item.ITEM_ANTIFLAG_FEMALE):
 			textLine = self.AppendTextLine(localeInfo.FOR_MALE, self.NORMAL_COLOR, True)
 			textLine.SetFeather()
+
 
 	def __AppendPotionInformation(self):
 		self.AppendSpace(5)
@@ -2507,6 +2533,9 @@ class SkillToolTip(ToolTip):
 		self.ShowToolTip()
 
 	def __SetSkillTitle(self, skillIndex, skillGrade):
+		if chr.IsGameMaster(player.GetMainCharacterIndex()):
+			self.AppendTextLine(localeInfo.TOOLTIP_VNUM_SKILL % skillIndex, grp.GenerateColor(0.6705, 0.9490, 0.0, 1.0))
+			self.AppendSpace(5)
 		self.SetTitle(skill.GetSkillName(skillIndex, skillGrade))
 		self.__AppendSkillGradeName(skillIndex, skillGrade)
 
