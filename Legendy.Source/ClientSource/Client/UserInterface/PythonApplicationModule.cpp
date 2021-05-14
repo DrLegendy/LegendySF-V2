@@ -1752,4 +1752,10 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_DRAGON_SOUL_EFFECT", false);
 #endif
+
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+	PyModule_AddIntConstant(poModule, "ENABLE_CHANNEL_SWITCH_SYSTEM", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_CHANNEL_SWITCH_SYSTEM", 0);
+#endif
 }

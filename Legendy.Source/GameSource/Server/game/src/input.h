@@ -298,6 +298,11 @@ protected:
 
 	void		RespondChannelStatus(LPDESC desc, const char* pcData);
 
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+public:
+	void		ChangeChannel(LPDESC desc, const char* pcData);
+#endif
+
 	protected:
 		DWORD		m_dwHandle;
 };

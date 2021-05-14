@@ -2129,7 +2129,11 @@ public:
 	BYTE	CanRefineAcceMaterials();
 	void	RefineAcceMaterials();
 #endif
-
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+public:
+	bool			SwitchChannel(long newAddr, WORD newPort);
+	bool			StartChannelSwitch(long newAddr, WORD newPort);
+#endif
 };
 
 ESex GET_SEX(LPCHARACTER ch);

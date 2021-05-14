@@ -1,3 +1,4 @@
+SYSTEM_MOVE_CHANNEL	Kanal deðiþtir
 QUEST_CATEGORY_00	Ana Görevler
 QUEST_CATEGORY_01	Yan Görevler
 QUEST_CATEGORY_02	Araþtýrma Görevleri

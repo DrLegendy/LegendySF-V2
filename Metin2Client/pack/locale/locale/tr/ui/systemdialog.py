@@ -82,6 +82,19 @@ window = {
 					"down_image" : ROOT + "XLarge_Button_03.sub",
 				},
 				{
+					"name" : "movechannel_button",
+					"type" : "button",
+
+					"x" : 10,
+					"y" : 147,
+
+					"text" : uiScriptLocale.SYSTEM_MOVE_CHANNEL,
+
+					"default_image" : ROOT + "XLarge_Button_01.sub",
+					"over_image" : ROOT + "XLarge_Button_02.sub",
+					"down_image" : ROOT + "XLarge_Button_03.sub",
+				},
+				{
 					"name" : "change_button",
 					"type" : "button",
 

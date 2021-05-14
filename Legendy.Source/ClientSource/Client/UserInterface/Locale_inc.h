@@ -61,6 +61,7 @@
 #define ENABLE_DS_SET															// Simya Set Bonus Sistemi
 #define ENABLE_DRAGON_SOUL_EFFECT												// Simya Renkli Higlight Modulu
 #define ENABLE_QUEST_CATEGORY_SYSTEM											// Gorev Kategori Modulu
+#define ENABLE_CHANNEL_SWITCH_SYSTEM											// Kanal Degistirme Modülü
 
 /*
 	###		New Debugging Defines

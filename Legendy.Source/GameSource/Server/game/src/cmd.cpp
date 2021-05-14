@@ -270,6 +270,11 @@ ACMD(do_force_logout);
 ACMD(do_poison);
 ACMD(do_rewarp);
 #endif
+
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+ACMD(do_change_channel);
+#endif
+
 #ifdef ENABLE_WOLFMAN_CHARACTER
 ACMD(do_bleeding);
 #endif
@@ -577,6 +582,11 @@ struct command_info cmd_info[] =
 	{ "poison",				do_poison,					0,			POS_DEAD,	GM_IMPLEMENTOR	},
 	{ "rewarp",				do_rewarp,					0,			POS_DEAD,	GM_LOW_WIZARD	},
 #endif
+
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+	{ "channel",			do_change_channel,			0,			POS_DEAD,	GM_PLAYER		},
+#endif
+
 #ifdef ENABLE_WOLFMAN_CHARACTER
 	{ "bleeding",			do_bleeding,				0,			POS_DEAD,	GM_IMPLEMENTOR	},
 #endif

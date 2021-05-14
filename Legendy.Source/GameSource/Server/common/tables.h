@@ -145,10 +145,14 @@ enum
 
 	HEADER_GD_REQUEST_CHARGE_CASH	= 137,
 
-	HEADER_GD_DELETE_AWARDID	= 138,	// delete gift notify icon
+	HEADER_GD_DELETE_AWARDID		= 138,	// delete gift notify icon
 
 	HEADER_GD_UPDATE_CHANNELSTATUS	= 139,
 	HEADER_GD_REQUEST_CHANNELSTATUS	= 140,
+
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+	HEADER_GD_FIND_CHANNEL			= 141,
+#endif
 
 	HEADER_GD_SETUP			= 0xff,
 
@@ -281,6 +285,10 @@ enum
 	HEADER_DG_RESULT_CHARGE_CASH	= 179,
 	HEADER_DG_ITEMAWARD_INFORMER	= 180,	//gift notify
 	HEADER_DG_RESPOND_CHANNELSTATUS		= 181,
+
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+	HEADER_DG_CHANNEL_RESULT		= 182,
+#endif
 
 	HEADER_DG_MAP_LOCATIONS		= 0xfe,
 	HEADER_DG_P2P			= 0xff,
@@ -1473,6 +1481,20 @@ typedef struct SChannelStatus
 	short nPort;
 	BYTE bStatus;
 } TChannelStatus;
+
+#ifdef ENABLE_CHANNEL_SWITCH_SYSTEM
+typedef struct
+{
+	long lMapIndex;
+	int channel;
+} TPacketChangeChannel;
+
+typedef struct
+{
+	long lAddr;
+	WORD port;
+} TPacketReturnChannel;
+#endif
 
 #pragma pack()
 #endif

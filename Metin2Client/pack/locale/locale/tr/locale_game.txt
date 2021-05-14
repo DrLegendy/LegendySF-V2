@@ -1,6 +1,7 @@
+MOVE_CHANNEL_TITLE	Kanal seçimi
 NOT_POSSIBLE	Ýmkansýz
-TOOLTIP_VNUM_ITEM	Ýtem kodu (%d)
-TOOLTIP_VNUM_SKILL	Yetenek kodu (%d)
+TOOLTIP_VNUM_ITEM	Ýtem kodu ( %d )
+TOOLTIP_VNUM_SKILL	Yetenek kodu ( %d )
 TOOLTIP_ANTIFLAG_DROP	Düþürme
 TOOLTIP_ANTIFLAG_GIVE	Ticaret
 TOOLTIP_ANTIFLAG_MYSHOP	Pazarlama
