@@ -1341,6 +1341,34 @@ class InventoryWindow(ui.ScriptWindow):
 #			print "Belt Global Pos : ", self.wndBelt.GetGlobalPosition()
 			self.wndBelt.AdjustPositionAndSize()
 
+	if app.ENABLE_DROP_DIALOG_EXTENDED_SYSTEM:
+		def DeleteItem(self, slotPos, invenType):
+			itemIndex = player.GetItemIndex(invenType, slotPos)
+			item.SelectItem(itemIndex)
+			itemQuestionDialog2 = uiCommon.ItemQuestionDialog2()
+			itemQuestionDialog2.SetText('[%s] nesnesine ne yapmak istiyorsun?' % item.GetItemName())
+			itemQuestionDialog2.SetText2('(Fiyat: %s)' % localeInfo.NumberToMoneyString(item.GetISellItemPrice() * player.GetItemCount(invenType, slotPos) * 97 / 100))
+			itemQuestionDialog2.SetDeleteAcceptEvent(lambda arg = 0: self.__AnswerDeleteItem(arg))
+			itemQuestionDialog2.SetSellAcceptEvent(lambda arg = 1: self.__AnswerDeleteItem(arg))
+			itemQuestionDialog2.SetCancelEvent(lambda arg = 2: self.__AnswerDeleteItem(arg))
+			itemQuestionDialog2.Open()
+			itemQuestionDialog2.slotPos = slotPos
+			itemQuestionDialog2.invenType = invenType
+			self.itemQuestionDialog2 = itemQuestionDialog2
+
+		def __AnswerDeleteItem(self, answer):
+			if not self.itemQuestionDialog2:
+				return
+			else:
+				if answer == 0:
+					net.SendItemDeletePacket(self.itemQuestionDialog2.slotPos, self.itemQuestionDialog2.invenType)
+					snd.PlaySound('sound/ui/drop.wav')
+				elif answer == 1:
+					net.SendItemSellPacket(self.itemQuestionDialog2.slotPos, self.itemQuestionDialog2.invenType)
+					snd.PlaySound('sound/ui/money.wav')
+				self.itemQuestionDialog2.Close()
+				self.itemQuestionDialog2 = None
+				return
 
 
 

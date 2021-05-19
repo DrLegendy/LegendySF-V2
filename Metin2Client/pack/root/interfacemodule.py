@@ -1795,6 +1795,11 @@ class Interface(object):
 	def EmptyFunction(self):
 		pass
 
+	if app.ENABLE_DROP_DIALOG_EXTENDED_SYSTEM:
+		def DeleteItem(self, slotPos, invenType):
+			if self.wndInventory:
+				self.wndInventory.DeleteItem(slotPos, invenType)
+
 if __name__ == "__main__":
 
 	import app

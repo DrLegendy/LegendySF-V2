@@ -163,8 +163,13 @@ CPacketInfoCG::CPacketInfoCG()
 	Set(HEADER_CG_ENTERGAME, sizeof(TPacketCGEnterGame), "EnterGame", true);
 
 	Set(HEADER_CG_ITEM_USE, sizeof(TPacketCGItemUse), "ItemUse", true);
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+	Set(HEADER_CG_ITEM_DELETE, sizeof(TPacketCGItemDelete), "ItemDelete", false);
+	Set(HEADER_CG_ITEM_SELL, sizeof(TPacketCGItemSell), "ItemSell", false);
+#else
 	Set(HEADER_CG_ITEM_DROP, sizeof(TPacketCGItemDrop), "ItemDrop", true);
 	Set(HEADER_CG_ITEM_DROP2, sizeof(TPacketCGItemDrop2), "ItemDrop2", true);
+#endif
 	Set(HEADER_CG_ITEM_MOVE, sizeof(TPacketCGItemMove), "ItemMove", true);
 	Set(HEADER_CG_ITEM_PICKUP, sizeof(TPacketCGItemPickup), "ItemPickup", true);
 

@@ -5516,6 +5516,215 @@ bool CHARACTER::UseItem(TItemPos Cell, TItemPos DestCell)
 		return UseItemEx(item, DestCell);
 }
 
+
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+bool CHARACTER::DeleteItem(TItemPos Cell)
+{
+	LPITEM item = NULL;
+
+#ifdef ENABLE_PLAYER_SECURITY_SYSTEM
+	if (IsActivateSecurity() == true)
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("Cannot delete item with security key activate"));
+		return false;
+	}
+#endif
+
+	if (!CanHandleItem())
+		return false;
+
+	if (IsDead() || IsStun())
+		return false;
+
+	if (!IsValidItemPosition(Cell) || !(item = GetItem(Cell)))
+		return false;
+
+	if (true == item->isLocked() || item->IsExchanging() || item->IsEquipped())
+		return false;
+
+#ifdef ENABLE_ITEM_SEALBIND_SYSTEM
+	if (item->IsSealed())
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("You can't do this because item is sealed!"));
+		return false;
+	}
+#endif
+
+	if (quest::CQuestManager::instance().GetPCForce(GetPlayerID())->IsRunning() == true)
+		return false;
+
+	// EXTRA_CHECK
+	int iPulse = thecore_pulse();
+
+	if (iPulse - GetSafeboxLoadTime() < PASSES_PER_SEC(g_nPortalLimitTime)
+		|| iPulse - GetRefineTime() < PASSES_PER_SEC(g_nPortalLimitTime)
+		|| iPulse - GetMyShopTime() < PASSES_PER_SEC(g_nPortalLimitTime))
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("Please wait a second."));
+		return false;
+	}
+
+	if (GetExchange() || GetMyShop() || GetShopOwner() || IsOpenSafebox() || IsCubeOpen())
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("Make sure you don't have any open windows!"));
+		return false;
+	}
+#ifdef ENABLE_OFFLINE_SHOP_SYSTEM
+	if (GetOfflineShopOwner())
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("거래창,창고 등을 연 상태에서는 보따리,비단보따리를 사용할수 없습니다."));
+		return false;
+	}
+#endif
+#ifdef ENABLE_ACCE_SYSTEM
+	if (isAcceOpened(true) || isAcceOpened(false))
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("다른 거래중(창고,교환,상점)에는 사용할 수 없습니다."));
+		return false;
+	}
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+	if (isAuraOpened(true) || isAuraOpened(false))
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("다른 거래중(창고,교환,상점)에는 사용할 수 없습니다."));
+		return false;
+	}
+#endif
+	// EXTRA_CHECK
+#ifdef ENABLE_NEW_PET_SYSTEM
+	if (item->GetVnum() >= 55701 && item->GetVnum() <= 55720)
+		DBManager::instance().DirectQuery("DELETE FROM new_petsystem WHERE id = %d", item->GetID());
+#endif
+	ChatPacket(CHAT_TYPE_INFO, LC_TEXT("%s has been deleted successfully."), item->GetName());
+	ITEM_MANAGER::instance().RemoveItem(item);
+
+	return true;
+}
+
+bool CHARACTER::SellItem(TItemPos Cell)
+{
+	LPITEM item = NULL;
+
+#ifdef ENABLE_PLAYER_SECURITY_SYSTEM
+	if (IsActivateSecurity() == true)
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("Cannot sell item with security key activate"));
+		return false;
+	}
+#endif
+
+	if (!CanHandleItem())
+		return false;
+
+	if (IsDead() || IsStun())
+		return false;
+
+	if (!IsValidItemPosition(Cell) || !(item = GetItem(Cell)))
+		return false;
+
+	if (true == item->isLocked() || item->IsExchanging() || item->IsEquipped())
+		return false;
+
+#ifdef ENABLE_ITEM_SEALBIND_SYSTEM
+	if (item->IsSealed())
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("You can't do this because item is sealed!"));
+		return false;
+	}
+#endif
+
+#ifdef ENABLE_BASIC_ITEM_SYSTEM
+	if (item->IsBasicItem())
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("ITEM_IS_BASIC_CANNOT_DO"));
+		return false;
+	}
+#endif
+
+	if (quest::CQuestManager::instance().GetPCForce(GetPlayerID())->IsRunning() == true)
+		return false;
+
+	if (IS_SET(item->GetAntiFlag(), ITEM_ANTIFLAG_SELL))
+		return false;
+
+	// EXTRA_CHECK
+	int iPulse = thecore_pulse();
+
+	if (iPulse - GetSafeboxLoadTime() < PASSES_PER_SEC(g_nPortalLimitTime)
+		|| iPulse - GetRefineTime() < PASSES_PER_SEC(g_nPortalLimitTime)
+		|| iPulse - GetMyShopTime() < PASSES_PER_SEC(g_nPortalLimitTime))
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("Please wait a second."));
+		return false;
+	}
+
+	if (GetExchange() || GetMyShop() || GetShopOwner() || IsOpenSafebox() || IsCubeOpen())
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("Make sure you don't have any open windows!"));
+		return false;
+	}
+	// EXTRA_CHECK
+
+#ifdef ENABLE_OFFLINE_SHOP_SYSTEM
+	if (GetOfflineShopOwner())
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("거래창,창고 등을 연 상태에서는 보따리,비단보따리를 사용할수 없습니다."));
+		return false;
+	}
+#endif
+
+#ifdef ENABLE_ACCE_SYSTEM
+	if (isAcceOpened(true) || isAcceOpened(false))
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("다른 거래중(창고,교환,상점)에는 사용할 수 없습니다."));
+		return false;
+	}
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+	if (isAuraOpened(true) || isAuraOpened(false))
+	{
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("다른 거래중(창고,교환,상점)에는 사용할 수 없습니다."));
+		return false;
+	}
+#endif
+	DWORD dwPrice;
+	BYTE bCount;
+
+	bCount = item->GetCount();
+	dwPrice = item->GetShopBuyPrice();
+
+	if (IS_SET(item->GetFlag(), ITEM_FLAG_COUNT_PER_1GOLD))
+	{
+		if (dwPrice == 0)
+			dwPrice = bCount;
+		else
+			dwPrice = bCount / dwPrice;
+	}
+	else
+		dwPrice *= bCount;
+
+#ifdef FULL_YANG
+	const long long nTotalMoney = static_cast<long long>(GetGold()) + static_cast<long long>(dwPrice);
+#else
+	const int64_t nTotalMoney = static_cast<int64_t>(GetGold()) + static_cast<int64_t>(dwPrice);
+#endif
+
+	if (GOLD_MAX <= nTotalMoney)
+	{
+		sys_err("[OVERFLOW_GOLD] id %u name %s gold %u", GetPlayerID(), GetName(), GetGold());
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("20억냥이 초과하여 물품을 팔수 없습니다."));
+		return false;
+	}
+#ifdef ENABLE_NEW_PET_SYSTEM
+	if (item->GetVnum() >= 55701 && item->GetVnum() <= 55720)
+		DBManager::instance().DirectQuery("DELETE FROM new_petsystem WHERE id = %d", item->GetID());
+#endif
+	ITEM_MANAGER::instance().RemoveItem(item);
+	PointChange(POINT_GOLD, dwPrice, false);
+
+	return true;
+}
+#else
 bool CHARACTER::DropItem(TItemPos Cell, BYTE bCount)
 {
 	LPITEM item = NULL;
@@ -5614,6 +5823,7 @@ bool CHARACTER::DropItem(TItemPos Cell, BYTE bCount)
 
 	return true;
 }
+#endif
 
 bool CHARACTER::DropGold(int gold)
 {

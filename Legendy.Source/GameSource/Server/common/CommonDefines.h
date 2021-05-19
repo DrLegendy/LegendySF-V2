@@ -79,7 +79,7 @@ enum eCommonDefines {
 #define ENABLE_QUEST_CATEGORY_SYSTEM																// Gorev Kategori Modulu
 #define ENABLE_CHANNEL_SWITCH_SYSTEM																// Kanal Degistirme Modulu
 #define ENABLE_EXTENDED_ITEMNAME_ON_GROUND															// Yere Dusen itemlerin isimleri goruntuleme Modulu
-
+#define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM															// Yere Sat-Sil Sistemi
 
 
 

@@ -544,6 +544,51 @@ bool CPythonNetworkStream::SendItemUseToItemPacket(TItemPos source_pos, TItemPos
 	return SendSequence();
 }
 
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+bool CPythonNetworkStream::SendItemDeletePacket(TItemPos item_pos)
+{
+	if (!__CanActMainInstance())
+		return true;
+
+	TPacketCGItemDelete itemDeletePacket;
+	itemDeletePacket.header = HEADER_CG_ITEM_DELETE;
+	itemDeletePacket.item_pos = item_pos;
+
+	if (!Send(sizeof(TPacketCGItemDelete), &itemDeletePacket))
+	{
+		Tracen("SendItemDeletePacket Error");
+		return false;
+	}
+
+#ifdef _DEBUG
+	Tracef(" << SendItemDeletePacket(item_pos=%d)\n", item_pos);
+#endif
+
+	return true;
+}
+
+bool CPythonNetworkStream::SendItemSellPacket(TItemPos item_pos)
+{
+	if (!__CanActMainInstance())
+		return true;
+
+	TPacketCGItemSell itemSellPacket;
+	itemSellPacket.header = HEADER_CG_ITEM_SELL;
+	itemSellPacket.item_pos = item_pos;
+
+	if (!Send(sizeof(TPacketCGItemSell), &itemSellPacket))
+	{
+		Tracen("SendItemSellPacket Error");
+		return false;
+	}
+
+#ifdef _DEBUG
+	Tracef(" << SendItemSellPacket(item_pos=%d)\n", item_pos);
+#endif
+
+	return true;
+}
+#else
 bool CPythonNetworkStream::SendItemDropPacket(TItemPos pos, DWORD elk)
 {
 	if (!__CanActMainInstance())
@@ -582,6 +627,7 @@ bool CPythonNetworkStream::SendItemDropPacketNew(TItemPos pos, DWORD elk, DWORD 
 
 	return SendSequence();
 }
+#endif
 
 bool CPythonNetworkStream::__IsEquipItemInSlot(TItemPos uSlotPos)
 {

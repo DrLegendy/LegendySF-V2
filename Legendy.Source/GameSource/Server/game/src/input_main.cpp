@@ -888,6 +888,23 @@ void CInputMain::ItemToItem(LPCHARACTER ch, const char* pcData)
 		ch->UseItem(p->Cell, p->TargetCell);
 }
 
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+void CInputMain::ItemDelete(LPCHARACTER ch, const char* data)
+{
+	struct command_item_delete* pinfo = (struct command_item_delete*) data;
+
+	if (ch)
+		ch->DeleteItem(pinfo->Cell);
+}
+
+void CInputMain::ItemSell(LPCHARACTER ch, const char* data)
+{
+	struct command_item_sell* pinfo = (struct command_item_sell*) data;
+
+	if (ch)
+		ch->SellItem(pinfo->Cell);
+}
+#else
 void CInputMain::ItemDrop(LPCHARACTER ch, const char* data)
 {
 	struct command_item_drop* pinfo = (struct command_item_drop*)data;
@@ -924,6 +941,7 @@ void CInputMain::ItemDrop2(LPCHARACTER ch, const char* data)
 	else
 		ch->DropItem(pinfo->Cell, pinfo->count);
 }
+#endif
 
 void CInputMain::ItemMove(LPCHARACTER ch, const char* data)
 {
@@ -3130,21 +3148,35 @@ int CInputMain::Analyze(LPDESC d, BYTE bHeader, const char* c_pData)
 			ItemUse(ch, c_pData);
 		break;
 
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+	case HEADER_CG_ITEM_DELETE:
+		if (!ch->IsObserverMode())
+			ItemDelete(ch, c_pData);
+		break;
+
+	case HEADER_CG_ITEM_SELL:
+		if (!ch->IsObserverMode())
+			ItemSell(ch, c_pData);
+		break;
+#else
 	case HEADER_CG_ITEM_DROP:
 		if (!ch->IsObserverMode())
 		{
 			ItemDrop(ch, c_pData);
 		}
 		break;
+
+	case HEADER_CG_ITEM_DROP2:
+		if (!ch->IsObserverMode())
+			ItemDrop2(ch, c_pData);
+		break;
+#endif
+
 #ifdef ENABLE_ACCE_SYSTEM
 	case HEADER_CG_ACCE:
 		Acce(ch, c_pData);
 		break;
 #endif
-	case HEADER_CG_ITEM_DROP2:
-		if (!ch->IsObserverMode())
-			ItemDrop2(ch, c_pData);
-		break;
 
 	case HEADER_CG_ITEM_MOVE:
 		if (!ch->IsObserverMode())

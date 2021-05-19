@@ -417,3 +417,57 @@ class MoneyInputDialog(ui.ScriptWindow):
 				money = 199999999
 
 		self.moneyText.SetText(self.moneyHeaderText + localeInfo.NumberToMoneyString(money))
+
+if app.ENABLE_DROP_DIALOG_EXTENDED_SYSTEM:
+	class ItemQuestionDialog2(ui.ScriptWindow):
+
+		def __init__(self):
+			ui.ScriptWindow.__init__(self)
+			self.__CreateDialog()
+
+		def __del__(self):
+			ui.ScriptWindow.__del__(self)
+
+		def __CreateDialog(self):
+			pyScrLoader = ui.PythonScriptLoader()
+			pyScrLoader.LoadScriptFile(self, "UIScript/itemquestiondialog.py")
+			self.board = self.GetChild('board')
+			self.textLine = self.GetChild('message')
+			self.textLine2 = self.GetChild('message2')
+			self.deleteButton = self.GetChild('deletebutton')
+			self.sellButton = self.GetChild('sellbutton')
+			self.cancelButton = self.GetChild('cancelbutton')
+
+		def Open(self):
+			self.SetCenterPosition()
+			self.SetTop()
+			self.Show()
+
+		def Close(self):
+			self.Hide()
+
+		def SetWidth(self, width):
+			height = self.GetHeight()
+			self.SetSize(width, height)
+			self.board.SetSize(width, height)
+			self.SetCenterPosition()
+			self.UpdateRect()
+
+		def SetDeleteAcceptEvent(self, event):
+			self.deleteButton.SetEvent(event)
+
+		def SetSellAcceptEvent(self, event):
+			self.sellButton.SetEvent(event)
+
+		def SetCancelEvent(self, event):
+			self.cancelButton.SetEvent(event)
+
+		def SetText(self, text):
+			self.textLine.SetText(text)
+
+		def SetText2(self, text):
+			self.textLine2.SetText(text)
+
+		def OnPressEscapeKey(self):
+			self.Close()
+			return True

@@ -110,8 +110,13 @@ class CInputMain : public CInputProcessor
 		int			Whisper(LPCHARACTER ch, const char * data, size_t uiBytes);
 		int			Chat(LPCHARACTER ch, const char * data, size_t uiBytes);
 		void		ItemUse(LPCHARACTER ch, const char * data);
-		void		ItemDrop(LPCHARACTER ch, const char * data);
-		void		ItemDrop2(LPCHARACTER ch, const char * data);
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+		void		ItemDelete(LPCHARACTER ch, const char* data);
+		void		ItemSell(LPCHARACTER ch, const char* data);
+#else
+		void		ItemDrop(LPCHARACTER ch, const char* data);
+		void		ItemDrop2(LPCHARACTER ch, const char* data);
+#endif
 		void		ItemMove(LPCHARACTER ch, const char * data);
 		void		ItemPickup(LPCHARACTER ch, const char * data);
 		void		ItemToItem(LPCHARACTER ch, const char * pcData);

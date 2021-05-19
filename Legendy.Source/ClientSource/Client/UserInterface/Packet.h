@@ -40,14 +40,21 @@ enum
 	HEADER_CG_DIRECT_ENTER						= 9,
 	HEADER_CG_ENTERGAME							= 10,
 	HEADER_CG_ITEM_USE							= 11,
+#ifndef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
 	HEADER_CG_ITEM_DROP							= 12,
+#endif
 	HEADER_CG_ITEM_MOVE							= 13,
 	HEADER_CG_ITEM_PICKUP						= 15,
 	HEADER_CG_QUICKSLOT_ADD                     = 16,
 	HEADER_CG_QUICKSLOT_DEL                     = 17,
 	HEADER_CG_QUICKSLOT_SWAP                    = 18,
 	HEADER_CG_WHISPER							= 19,
-	HEADER_CG_ITEM_DROP2                        = 20,
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+	HEADER_CG_ITEM_DELETE						= 20,
+	HEADER_CG_ITEM_SELL							= 21,
+#else
+	HEADER_CG_ITEM_DROP2						= 20,
+#endif
 	//HEADER_BLANK21								= 21,
 	//HEADER_BLANK22								= 22,
 	//HEADER_BLANK22								= 23,
@@ -645,6 +652,18 @@ typedef struct command_item_use_to_item
 	TItemPos target_pos;
 } TPacketCGItemUseToItem;
 
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+typedef struct command_item_delete
+{
+	BYTE		header;
+	TItemPos	item_pos;
+} TPacketCGItemDelete;
+typedef struct command_item_sell
+{
+	BYTE		header;
+	TItemPos	item_pos;
+} TPacketCGItemSell;
+#else
 typedef struct command_item_drop
 {
 	BYTE  header;
@@ -659,6 +678,7 @@ typedef struct command_item_drop2
     DWORD       gold;
     BYTE        count;
 } TPacketCGItemDrop2;
+#endif
 
 typedef struct command_item_move
 {

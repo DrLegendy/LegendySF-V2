@@ -1119,7 +1119,12 @@ public:
 	// END_OF_ADD_REFINE_BUILDING
 
 	bool			RefineItem(LPITEM pkItem, LPITEM pkTarget);
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+	bool			DeleteItem(TItemPos Cell);
+	bool			SellItem(TItemPos Cell);
+#else
 	bool			DropItem(TItemPos Cell, BYTE bCount = 0);
+#endif
 	bool			GiveRecallItem(LPITEM item);
 	void			ProcessRecallItem(LPITEM item);
 

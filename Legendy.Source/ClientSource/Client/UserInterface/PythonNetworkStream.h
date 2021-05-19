@@ -154,8 +154,13 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 
 		bool SendItemUsePacket(TItemPos pos);
 		bool SendItemUseToItemPacket(TItemPos source_pos, TItemPos target_pos);
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+		bool SendItemDeletePacket(TItemPos item_pos);
+		bool SendItemSellPacket(TItemPos item_pos);
+#else
 		bool SendItemDropPacket(TItemPos pos, DWORD elk);
 		bool SendItemDropPacketNew(TItemPos pos, DWORD elk, DWORD count);
+#endif
 		bool SendItemMovePacket(TItemPos pos, TItemPos change_pos, BYTE num);
 		bool SendItemPickUpPacket(DWORD vid);
 

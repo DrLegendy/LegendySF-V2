@@ -723,6 +723,77 @@ PyObject* netSendItemUseToItemPacket(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+PyObject* netSendItemDeletePacket(PyObject* poSelf, PyObject* poArgs)
+{
+	TItemPos item_pos;
+
+	switch (PyTuple_Size(poArgs))
+	{
+	case 1:
+	{
+		if (!PyTuple_GetInteger(poArgs, 0, &item_pos.cell))
+			return Py_BuildException();
+
+		CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
+		rkNetStream.SendItemDeletePacket(item_pos);
+		return Py_BuildNone();
+	}
+
+	case 2:
+	{
+		if (!PyTuple_GetInteger(poArgs, 0, &item_pos.cell))
+			return Py_BuildException();
+
+		if (!PyTuple_GetInteger(poArgs, 1, &item_pos.window_type))
+			return Py_BuildException();
+
+		CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
+		rkNetStream.SendItemDeletePacket(item_pos);
+		return Py_BuildNone();
+	}
+
+	default:
+		return Py_BuildNone();
+	}
+	return Py_BuildNone();
+}
+
+PyObject* netSendItemSellPacket(PyObject* poSelf, PyObject* poArgs)
+{
+	TItemPos item_pos;
+
+	switch (PyTuple_Size(poArgs))
+	{
+	case 1:
+	{
+		if (!PyTuple_GetInteger(poArgs, 0, &item_pos.cell))
+			return Py_BuildException();
+
+		CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
+		rkNetStream.SendItemSellPacket(item_pos);
+		return Py_BuildNone();
+	}
+
+	case 2:
+	{
+		if (!PyTuple_GetInteger(poArgs, 0, &item_pos.cell))
+			return Py_BuildException();
+
+		if (!PyTuple_GetInteger(poArgs, 1, &item_pos.window_type))
+			return Py_BuildException();
+
+		CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
+		rkNetStream.SendItemSellPacket(item_pos);
+		return Py_BuildNone();
+	}
+
+	default:
+		return Py_BuildNone();
+	}
+	return Py_BuildNone();
+}
+#else
 PyObject* netSendItemDropPacket(PyObject* poSelf, PyObject* poArgs)
 {
 	TItemPos Cell;
@@ -799,6 +870,7 @@ PyObject* netSendGoldDropPacketNew(PyObject* poSelf, PyObject* poArgs)
 	rkNetStream.SendItemDropPacketNew(TItemPos (RESERVED_WINDOW, 0), (DWORD) iElk, 0);
 	return Py_BuildNone();
 }
+#endif
 
 PyObject* netSendItemMovePacket(PyObject* poSelf, PyObject* poArgs)
 {
@@ -1801,10 +1873,15 @@ void initnet()
 
 		{ "SendItemUsePacket",					netSendItemUsePacket,					METH_VARARGS },
 		{ "SendItemUseToItemPacket",			netSendItemUseToItemPacket,				METH_VARARGS },
+#ifdef ENABLE_DROP_DIALOG_EXTENDED_SYSTEM
+		{ "SendItemDeletePacket",				netSendItemDeletePacket,				METH_VARARGS },
+		{ "SendItemSellPacket",					netSendItemSellPacket,					METH_VARARGS },
+#else
 		{ "SendItemDropPacket",					netSendItemDropPacket,					METH_VARARGS },
 		{ "SendItemDropPacketNew",				netSendItemDropPacketNew,				METH_VARARGS },
 		{ "SendElkDropPacket",					netSendElkDropPacket,					METH_VARARGS },
 		{ "SendGoldDropPacketNew",				netSendGoldDropPacketNew,				METH_VARARGS },
+#endif
 		{ "SendItemMovePacket",					netSendItemMovePacket,					METH_VARARGS },
 		{ "SendItemPickUpPacket",				netSendItemPickUpPacket,				METH_VARARGS },
 		{ "SendGiveItemPacket",					netSendGiveItemPacket,					METH_VARARGS },

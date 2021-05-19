@@ -1277,14 +1277,18 @@ class GameWindow(ui.ScriptWindow):
 						net.SendExchangeStartPacket(dstChrID)
 						net.SendExchangeItemAddPacket(attachedInvenType, attachedItemSlotPos, 0)
 			else:
-				self.__DropItem(attachedType, attachedItemIndex, attachedItemSlotPos, attachedItemCount)
+				if app.ENABLE_DROP_DIALOG_EXTENDED_SYSTEM:
+					self.interface.DeleteItem(attachedItemSlotPos, attachedInvenType)
+				else:
+					self.__DropItem(attachedType, attachedItemIndex, attachedItemSlotPos, attachedItemCount)
 
 	def __PutMoney(self, attachedType, attachedMoney, dstChrID):
 		if True == chr.HasInstance(dstChrID) and player.GetMainCharacterIndex() != dstChrID:
 			net.SendExchangeStartPacket(dstChrID)
 			net.SendExchangeElkAddPacket(attachedMoney)
 		else:
-			self.__DropMoney(attachedType, attachedMoney)
+			if not app.ENABLE_DROP_DIALOG_EXTENDED_SYSTEM:
+				self.__DropMoney(attachedType, attachedMoney)
 
 	def __DropMoney(self, attachedType, attachedMoney):
 		if uiPrivateShopBuilder.IsBuildingPrivateShop():
