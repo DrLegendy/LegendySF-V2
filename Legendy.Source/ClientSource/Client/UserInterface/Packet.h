@@ -1840,6 +1840,13 @@ typedef struct packet_update_item
 
 typedef struct packet_ground_add_item
 {
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+	packet_ground_add_item()
+	{
+		memset(&alSockets, 0, sizeof(alSockets));
+		memset(&aAttrs, 0, sizeof(aAttrs));
+	}
+#endif
     BYTE        bHeader;
     long        lX;
 	long		lY;
@@ -1847,6 +1854,10 @@ typedef struct packet_ground_add_item
 
     DWORD       dwVID;
     DWORD       dwVnum;
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+	long		alSockets[ITEM_SOCKET_SLOT_MAX_NUM];
+	TPlayerItemAttribute aAttrs[ITEM_ATTRIBUTE_SLOT_MAX_NUM];
+#endif
 } TPacketGCItemGroundAdd;
 
 typedef struct packet_ground_del_item

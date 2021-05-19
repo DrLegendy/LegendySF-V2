@@ -1192,10 +1192,21 @@ typedef struct packet_item_update
 
 typedef struct packet_item_ground_add
 {
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+	packet_item_ground_add()
+	{
+		memset(&alSockets, 0, sizeof(alSockets));
+		memset(&aAttrs, 0, sizeof(aAttrs));
+	}
+#endif
 	BYTE	bHeader;
 	long 	x, y, z;
 	DWORD	dwVID;
 	DWORD	dwVnum;
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+	long	alSockets[ITEM_SOCKET_MAX_NUM];
+	TPlayerItemAttribute aAttrs[ITEM_ATTRIBUTE_MAX_NUM];
+#endif
 } TPacketGCItemGroundAdd;
 
 typedef struct packet_item_ownership

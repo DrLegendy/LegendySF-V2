@@ -93,7 +93,11 @@ class CPythonItem : public CSingleton<CPythonItem>
 		void	Render();
 		void	Update(const POINT& c_rkPtMouse);
 
-		void	CreateItem(DWORD dwVirtualID, DWORD dwVirtualNumber, float x, float y, float z, bool bDrop=true);
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+		void	CreateItem(DWORD dwVirtualID, DWORD dwVirtualNumber, float x, float y, float z, bool bDrop = true, long alSockets[ITEM_SOCKET_SLOT_MAX_NUM] = {}, TPlayerItemAttribute aAttrs[ITEM_ATTRIBUTE_SLOT_MAX_NUM] = {});
+#else
+		void	CreateItem(DWORD dwVirtualID, DWORD dwVirtualNumber, float x, float y, float z, bool bDrop = true);
+#endif
 		void	DeleteItem(DWORD dwVirtualID);
 		void	SetOwnership(DWORD dwVID, const char * c_pszName);
 		bool	GetOwnership(DWORD dwVID, const char ** c_pszName);

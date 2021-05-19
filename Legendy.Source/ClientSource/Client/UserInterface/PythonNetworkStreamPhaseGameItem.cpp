@@ -302,11 +302,11 @@ bool CPythonNetworkStream::RecvItemGroundAddPacket()
 
 	__GlobalPositionToLocalPosition(packet_item_ground_add.lX, packet_item_ground_add.lY);
 
-	CPythonItem::Instance().CreateItem(packet_item_ground_add.dwVID,
-									   packet_item_ground_add.dwVnum,
-									   packet_item_ground_add.lX,
-									   packet_item_ground_add.lY,
-									   packet_item_ground_add.lZ);
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+	CPythonItem::Instance().CreateItem(packet_item_ground_add.dwVID, packet_item_ground_add.dwVnum, packet_item_ground_add.lX, packet_item_ground_add.lY, packet_item_ground_add.lZ, true, packet_item_ground_add.alSockets, packet_item_ground_add.aAttrs);
+#else
+	CPythonItem::Instance().CreateItem(packet_item_ground_add.dwVID, packet_item_ground_add.dwVnum, packet_item_ground_add.lX, packet_item_ground_add.lY, packet_item_ground_add.lZ);
+#endif
 	return true;
 }
 

@@ -82,6 +82,7 @@ EKLENTİLER
 # GM Karakterlerde İtem ID numaraları görüntülenme modülü eklendi.
 # GM Karakterlerde Skill ID numarası görüntülenme modülü eklendi.
 # Emoji sistem iconları eklendi ve Antiflag ve flaglara göre tooltip düzenlendi.
+# Yere atılan, slot veya metinden düşen itemlerin isimlerinin gözükme eklentisi eklendi. (Beceri kitabı, Dönüşüm küresi gibi)
 
 -----------------------------------------------**********************************************------------------------------------------------
 
@@ -96,6 +97,8 @@ EKLENEN SİSTEMLER
 #define ENABLE_DS_GRADE_MYTH					// Mitsi Simya Sistemi Güncellemesi
 #define ENABLE_QUEST_CATEGORY_SYSTEM			// Gorev Kategori Modulu
 #define ENABLE_CHANNEL_SWITCH_SYSTEM			// Hızlı Kanal Değiştirme Sistemi
+#define ENABLE_EXTENDED_ITEMNAME_ON_GROUND		// Yere Dusen Itemlerin Isimleri Gorme Modulu
+
 -----------------------------------------------**********************************************------------------------------------------------
 
 GELECEK OLANLAR

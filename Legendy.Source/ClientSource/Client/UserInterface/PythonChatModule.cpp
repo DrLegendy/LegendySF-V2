@@ -2,6 +2,10 @@
 #include "PythonChat.h"
 #include "PythonItem.h"
 #include "../gamelib/ItemManager.h"
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+#include "PythonSkill.h"
+#include "PythonNonPlayer.h"
+#endif
 
 PyObject * chatSetChatColor(PyObject* poSelf, PyObject* poArgs)
 {
@@ -435,11 +439,34 @@ PyObject * chatGetLinkFromHyperlink(PyObject * poSelf, PyObject * poArgs)
 				}
 			}
 
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+			char szText[128];
+			memset(szText, 0, sizeof(szText));
+			if (pItemData->GetIndex() == 50300)
+			{
+				CPythonSkill::SSkillData* c_pSkillData;
+				CPythonSkill::Instance().GetSkillData(atoi(results[3].c_str()), &c_pSkillData);
+				sprintf(szText, "%s %s", c_pSkillData->strName.c_str(), pItemData->GetName());
+			}
+			else if (pItemData->GetType() == 19)
+			{
+				CPythonNonPlayer& rkNonPlayer = CPythonNonPlayer::Instance();
+				sprintf(szText, "%s %s", rkNonPlayer.GetMonsterName(atoi(results[3].c_str())), pItemData->GetName());
+			}
+			else
+			{
+				sprintf(szText, "%s", pItemData->GetName());
+			}
+			if (isAttr)
+				snprintf(buf, sizeof(buf), "|cffffc700|H%s|h[%s]|h|r", itemlink, szText);
+			else
+				snprintf(buf, sizeof(buf), "|cfff1e6c0|H%s|h[%s]|h|r", itemlink, szText);
+#else
 			if (isAttr)
 				snprintf(buf, sizeof(buf), "|cffffc700|H%s|h[%s]|h|r", itemlink, pItemData->GetName());
 			else
 				snprintf(buf, sizeof(buf), "|cfff1e6c0|H%s|h[%s]|h|r", itemlink, pItemData->GetName());
-
+#endif
 			return Py_BuildValue("s", buf);
 		}
 	}

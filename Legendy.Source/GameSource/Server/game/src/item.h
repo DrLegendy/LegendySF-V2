@@ -40,7 +40,12 @@ class CItem : public CEntity
 
 		int		GetGold();
 		int		GetShopBuyPrice();
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+		const char* GetName();
+		std::string GetNameString();
+#else
 		const char *	GetName()		{ return m_pProto ? m_pProto->szLocaleName : NULL; }
+#endif
 		const char *	GetBaseName()		{ return m_pProto ? m_pProto->szName : NULL; }
 		BYTE		GetSize()		{ return m_pProto ? m_pProto->bSize : 0;	}
 

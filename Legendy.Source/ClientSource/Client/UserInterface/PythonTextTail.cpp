@@ -12,6 +12,9 @@
 const D3DXCOLOR c_TextTail_Player_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 const D3DXCOLOR c_TextTail_Monster_Color = D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f);
 const D3DXCOLOR c_TextTail_Item_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+const D3DXCOLOR c_TextTail_SpecialItem_Color = D3DXCOLOR(1.0f, 0.67f, 0.0f, 1.0f); //Golden
+#endif
 const D3DXCOLOR c_TextTail_Chat_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 const D3DXCOLOR c_TextTail_Info_Color = D3DXCOLOR(1.0f, 0.785f, 0.785f, 1.0f);
 const D3DXCOLOR c_TextTail_Guild_Name_Color = 0xFFEFD3FF;
@@ -547,16 +550,29 @@ void CPythonTextTail::RegisterCharacterTextTail(DWORD dwGuildID, DWORD dwVirtual
 	m_CharacterTextTailMap.insert(TTextTailMap::value_type(dwVirtualID, pTextTail));
 }
 
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+void CPythonTextTail::RegisterItemTextTail(DWORD VirtualID, const char* c_szText, CGraphicObjectInstance* pOwner, bool bHasAttr)
+#else
 void CPythonTextTail::RegisterItemTextTail(DWORD VirtualID, const char * c_szText, CGraphicObjectInstance * pOwner)
+#endif
 {
 #ifdef __DEBUG
 	char szName[256];
 	spritnf(szName, "%s[%d]", c_szText, VirtualID);
-
-	TTextTail * pTextTail = RegisterTextTail(VirtualID, c_szText, pOwner, c_TextTail_Name_Position, c_TextTail_Item_Color);
+	D3DXCOLOR c_d3dColor = c_TextTail_Item_Color;
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+	if (bHasAttr)
+		c_d3dColor = c_TextTail_SpecialItem_Color;
+#endif
+	TTextTail* pTextTail = RegisterTextTail(VirtualID, c_szText, pOwner, c_TextTail_Name_Position, c_d3dColor);
 	m_ItemTextTailMap.insert(TTextTailMap::value_type(VirtualID, pTextTail));
 #else
-	TTextTail * pTextTail = RegisterTextTail(VirtualID, c_szText, pOwner, c_TextTail_Name_Position, c_TextTail_Item_Color);
+	D3DXCOLOR c_d3dColor = c_TextTail_Item_Color;
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+	if (bHasAttr)
+		c_d3dColor = c_TextTail_SpecialItem_Color;
+#endif
+	TTextTail* pTextTail = RegisterTextTail(VirtualID, c_szText, pOwner, c_TextTail_Name_Position, c_d3dColor);
 	m_ItemTextTailMap.insert(TTextTailMap::value_type(VirtualID, pTextTail));
 #endif
 }
@@ -709,7 +725,18 @@ void CPythonTextTail::SetItemTextTailOwner(DWORD dwVID, const char * c_szName)
 		pTextTail->pOwnerTextInstance->SetTextPointer(ms_pFont);
 		pTextTail->pOwnerTextInstance->SetHorizonalAlign(CGraphicTextInstance::HORIZONTAL_ALIGN_CENTER);
 		pTextTail->pOwnerTextInstance->SetValue(strName.c_str());
+#ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
+		CInstanceBase* pInstance = CPythonCharacterManager::Instance().GetMainInstancePtr();
+		if (pInstance)
+		{
+			if (!strcmp(pInstance->GetNameString(), c_szName))
+				pTextTail->pOwnerTextInstance->SetColor(1.0f, 1.0f, 0.0f);
+			else
+				pTextTail->pOwnerTextInstance->SetColor(1.0f, 0.0f, 0.0f);
+		}
+#else
 		pTextTail->pOwnerTextInstance->SetColor(1.0f, 1.0f, 0.0f);
+#endif
 		pTextTail->pOwnerTextInstance->Update();
 
 		int xOwnerSize, yOwnerSize;

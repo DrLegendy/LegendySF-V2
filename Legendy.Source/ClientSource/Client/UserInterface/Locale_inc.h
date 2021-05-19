@@ -62,7 +62,7 @@
 #define ENABLE_DRAGON_SOUL_EFFECT												// Simya Renkli Higlight Modulu
 #define ENABLE_QUEST_CATEGORY_SYSTEM											// Gorev Kategori Modulu
 #define ENABLE_CHANNEL_SWITCH_SYSTEM											// Kanal Degistirme Modülü
-
+#define ENABLE_EXTENDED_ITEMNAME_ON_GROUND										// Yere Dusen Itemlerin Isimleri Gorme Modulu
 /*
 	###		New Debugging Defines
 */
