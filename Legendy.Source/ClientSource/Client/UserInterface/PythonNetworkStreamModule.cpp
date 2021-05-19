@@ -366,6 +366,24 @@ PyObject* netConnectToAccountServer(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
+PyObject* netTargetInfoLoad(PyObject* poSelf, PyObject* poArgs)
+{
+	DWORD dwVID;
+	if (!PyArg_ParseTuple(poArgs, "i", &dwVID))
+	{
+		return Py_BuildException();
+	}
+	if (dwVID < 0)
+	{
+		return Py_BuildNone();
+	}
+	CPythonNetworkStream& rns = CPythonNetworkStream::Instance();
+	rns.SendTargetInfoLoadPacket(dwVID);
+	return Py_BuildNone();
+}
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 PyObject* netSetLoginInfo(PyObject* poSelf, PyObject* poArgs)
@@ -1842,6 +1860,11 @@ void initnet()
 		// END_OF_FIELD_MUSIC
 
 		{ "ToggleGameDebugInfo",				netToggleGameDebugInfo,					METH_VARARGS },
+
+#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
+		{ "SendTargetInfoLoad", 				netTargetInfoLoad, 						METH_VARARGS },
+#endif
+
 		{ "SetLoginInfo",						netSetLoginInfo,						METH_VARARGS },
 		{ "SetPhaseWindow",						netSetPhaseWindow,						METH_VARARGS },
 		{ "ClearPhaseWindow",					netClearPhaseWindow,					METH_VARARGS },

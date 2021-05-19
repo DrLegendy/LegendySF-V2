@@ -393,6 +393,11 @@ class ToolTip(ui.ThinBoard):
 
 class ItemToolTip(ToolTip):
 
+	if app.ENABLE_TARGET_INFORMATION_SYSTEM:
+		isStone = False
+		isBook = False
+		isBook2 = False
+
 	CHARACTER_NAMES = (
 		"|Eemoji/warrior_m|e",
 		"|Eemoji/assassin_w|e",
@@ -695,6 +700,39 @@ class ItemToolTip(ToolTip):
 		self.AddItemData(itemVnum, metinSlot, attrSlot)
 		self.AppendPrice(price)
 
+	if app.ENABLE_TARGET_INFORMATION_SYSTEM:
+		def SetItemToolTipStone(self, itemVnum):
+			self.itemVnum = itemVnum
+			item.SelectItem(itemVnum)
+			itemType = item.GetItemType()
+
+			itemDesc = item.GetItemDescription()
+			itemSummary = item.GetItemSummary()
+			attrSlot = 0
+			self.__AdjustMaxWidth(attrSlot, itemDesc)
+			itemName = item.GetItemName()
+			realName = itemName[:itemName.find("+")]
+			self.SetTitle(realName + " +0 - +4")
+
+			## Description ###
+			self.AppendDescription(itemDesc, 26)
+			self.AppendDescription(itemSummary, 26, self.CONDITION_COLOR)
+
+			if item.ITEM_TYPE_METIN == itemType:
+				self.AppendMetinInformation()
+				self.AppendMetinWearInformation()
+
+			for i in xrange(item.LIMIT_MAX_NUM):
+				(limitType, limitValue) = item.GetLimit(i)
+
+				if item.LIMIT_REAL_TIME_START_FIRST_USE == limitType:
+					self.AppendRealTimeStartFirstUseLastTime(item, metinSlot, i)
+
+				elif item.LIMIT_TIMER_BASED_ON_WEAR == limitType:
+					self.AppendTimerBasedOnWearLastTime(metinSlot)
+
+			self.ShowToolTip()
+
 	def SetShopItemBySecondaryCoin(self, slotIndex):
 		itemVnum = shop.GetItemID(slotIndex)
 		if 0 == itemVnum:
@@ -993,7 +1031,13 @@ class ItemToolTip(ToolTip):
 		self.SetTitle(itemName)
 
 	def __SetNormalItemTitle(self):
-		self.SetTitle(item.GetItemName())
+		if app.ENABLE_TARGET_INFORMATION_SYSTEM:
+			if self.isStone:
+				itemName = item.GetItemName()
+				realName = itemName[:itemName.find("+")]
+				self.SetTitle(realName + " +0 - +4")
+		else:
+			self.SetTitle(item.GetItemName())
 
 	def __SetSpecialItemTitle(self):
 		self.AppendTextLine(item.GetItemName(), self.SPECIAL_TITLE_COLOR)

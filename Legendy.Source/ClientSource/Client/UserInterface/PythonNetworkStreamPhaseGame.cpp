@@ -653,6 +653,13 @@ void CPythonNetworkStream::GamePhase()
 				ret = RecvAccePacket();
 				break;
 #endif
+
+#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
+			case HEADER_GC_TARGET_INFO:
+				ret = RecvTargetInfoPacket();
+				break;
+#endif
+
 			default:
 				ret = RecvDefaultPacket(header);
 				break;
@@ -2487,6 +2494,40 @@ bool CPythonNetworkStream::RecvTargetPacket()
 	return true;
 }
 
+#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
+bool CPythonNetworkStream::RecvTargetInfoPacket()
+{
+	TPacketGCTargetInfo pInfoTargetPacket;
+	if (!Recv(sizeof(TPacketGCTargetInfo), &pInfoTargetPacket))
+	{
+		Tracen("Recv Info Target Packet Error");
+		return false;
+	}
+	CInstanceBase* pInstPlayer = CPythonCharacterManager::Instance().GetMainInstancePtr();
+	CInstanceBase* pInstTarget = CPythonCharacterManager::Instance().GetInstancePtr(pInfoTargetPacket.dwVID);
+	if (pInstPlayer && pInstTarget)
+	{
+		if (!pInstTarget->IsDead())
+		{
+			if (pInstTarget->IsEnemy() || pInstTarget->IsStone())
+			{
+				PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "BINARY_AddTargetMonsterDropInfo",
+					Py_BuildValue("(iii)", pInfoTargetPacket.race, pInfoTargetPacket.dwVnum, pInfoTargetPacket.count));
+				PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "BINARY_RefreshTargetMonsterDropInfo", Py_BuildValue("(i)", pInfoTargetPacket.race));
+			}
+			else
+				PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "CloseTargetBoard", Py_BuildValue("()"));
+		}
+	}
+	else
+	{
+		PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "CloseTargetBoard", Py_BuildValue("()"));
+	}
+
+	return true;
+}
+#endif
+
 bool CPythonNetworkStream::RecvMountPacket()
 {
 	TPacketGCMount MountPacket;
@@ -4277,6 +4318,18 @@ bool CPythonNetworkStream::RecvViewEquipPacket()
 
 	return true;
 }
+
+#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
+bool CPythonNetworkStream::SendTargetInfoLoadPacket(DWORD dwVID)
+{
+	TPacketCGTargetInfoLoad TargetInfoLoadPacket;
+	TargetInfoLoadPacket.header = HEADER_CG_TARGET_INFO_LOAD;
+	TargetInfoLoadPacket.dwVID = dwVID;
+	if (!Send(sizeof(TargetInfoLoadPacket), &TargetInfoLoadPacket))
+		return false;
+	return true;
+}
+#endif
 
 bool CPythonNetworkStream::RecvLandPacket()
 {
