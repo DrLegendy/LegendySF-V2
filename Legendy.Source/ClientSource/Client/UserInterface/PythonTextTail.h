@@ -62,7 +62,11 @@ class CPythonTextTail : public CSingleton<CPythonTextTail>
 		void ShowCharacterTextTail(DWORD VirtualID);
 		void ShowItemTextTail(DWORD VirtualID);
 
-		void RegisterCharacterTextTail(DWORD dwGuildID, DWORD dwVirtualID, const D3DXCOLOR & c_rColor, float fAddHeight=10.0f);
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	void RegisterCharacterTextTail(DWORD dwGuildID, const char* c_szGuildLeaderGradeName, DWORD dwVirtualID, const D3DXCOLOR& c_rColor, float fAddHeight = 10.0f);
+#else
+	void RegisterCharacterTextTail(DWORD dwGuildID, DWORD dwVirtualID, const D3DXCOLOR& c_rColor, float fAddHeight = 10.0f);
+#endif
 #ifdef ENABLE_EXTENDED_ITEMNAME_ON_GROUND
 		void RegisterItemTextTail(DWORD VirtualID, const char* c_szText, CGraphicObjectInstance* pOwner, bool bHasAttr = false);
 #else

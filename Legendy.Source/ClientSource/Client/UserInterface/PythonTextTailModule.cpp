@@ -31,12 +31,22 @@ PyObject * textTailRegisterCharacterTextTail(PyObject * poSelf, PyObject * poArg
 	int iGuildID;
 	if (!PyTuple_GetInteger(poArgs, 0, &iGuildID))
 		return Py_BuildException();
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	char * szGradeName;
+	if (!PyTuple_GetString(poArgs, 1, &szGradeName))
+		return Py_BuildException();
+	int iVirtualID;
+	if (!PyTuple_GetInteger(poArgs, 2, &iVirtualID))
+		return Py_BuildException();
+
+	CPythonTextTail::Instance().RegisterCharacterTextTail(iGuildID, szGradeName, iVirtualID, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+#else
 	int iVirtualID;
 	if (!PyTuple_GetInteger(poArgs, 1, &iVirtualID))
 		return Py_BuildException();
 
 	CPythonTextTail::Instance().RegisterCharacterTextTail(iGuildID, iVirtualID, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-
+#endif
 	return Py_BuildNone();
 }
 

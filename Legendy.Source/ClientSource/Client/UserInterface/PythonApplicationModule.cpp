@@ -1764,4 +1764,10 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_DROP_DIALOG_EXTENDED_SYSTEM", 0);
 #endif
+
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	PyModule_AddIntConstant(poModule, "ENABLE_GUILD_LEADER_GRADE_NAME", true);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_GUILD_LEADER_GRADE_NAME", false);
+#endif
 }

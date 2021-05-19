@@ -982,6 +982,9 @@ void CHARACTER::EncodeInsertPacket(LPENTITY entity)
 			{
 				memset(addPacket.name, 0, CHARACTER_NAME_MAX_LEN);
 				addPacket.dwGuildID = 0;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+				addPacket.bGuildLeaderGrade = 0;
+#endif
 				addPacket.sAlignment = 0;
 			}
 		}
@@ -993,10 +996,22 @@ void CHARACTER::EncodeInsertPacket(LPENTITY entity)
 			if (GetGuild() != NULL)
 			{
 				addPacket.dwGuildID = GetGuild()->GetID();
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+				CGuild* pGuild = this->GetGuild();
+				if (pGuild->GetMasterPID() == GetPlayerID())
+					addPacket.bGuildLeaderGrade = 3;
+				else if (pGuild->GetGeneralPID(GetPlayerID()) == true)
+					addPacket.bGuildLeaderGrade = 2;
+				else
+					addPacket.bGuildLeaderGrade = 1;
+#endif
 			}
 			else
 			{
 				addPacket.dwGuildID = 0;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+				addPacket.bGuildLeaderGrade = 0;
+#endif
 			}
 
 			addPacket.sAlignment = m_iAlignment / 10;
@@ -1107,6 +1122,23 @@ void CHARACTER::UpdatePacket()
 	pack2 = pack;
 	pack2.dwGuildID = 0;
 	pack2.sAlignment = 0;
+
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	CGuild* pGuild = this->GetGuild();
+	if (pGuild)
+	{
+		if (pGuild->GetMasterPID() == GetPlayerID())
+			pack.bGuildLeaderGrade = 3;
+		else if (pGuild->GetGeneralPID(GetPlayerID()) == true)
+			pack.bGuildLeaderGrade = 2;
+		else
+			pack.bGuildLeaderGrade = 1;
+	}
+	else
+	{
+		pack.bGuildLeaderGrade = 0;
+	}
+#endif
 
 	if (false)
 	{

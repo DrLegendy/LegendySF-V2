@@ -89,6 +89,9 @@ void SNetworkActorData::__copy__(const SNetworkActorData& src)
 	m_dwMountVnum = src.m_dwMountVnum;
 
 	m_dwGuildID = src.m_dwGuildID;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	m_bGuildLeaderGrade = src.m_bGuildLeaderGrade;
+#endif
 	m_dwLevel = src.m_dwLevel;
 	m_stName = src.m_stName;
 }
@@ -350,6 +353,9 @@ CInstanceBase* CNetworkActorManager::__AppendCharacterManagerActor(SNetworkActor
 	kCreateData.m_dwEmpireID=rkNetActorData.m_dwEmpireID;
 	kCreateData.m_dwVID=rkNetActorData.m_dwVID;
 	kCreateData.m_dwMountVnum=rkNetActorData.m_dwMountVnum;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	kCreateData.m_bGuildLeaderGrade = rkNetActorData.m_bGuildLeaderGrade;
+#endif
 	kCreateData.m_dwRace=rkNetActorData.m_dwRace;
 	kCreateData.m_fRot=rkNetActorData.m_fRot;
  	kCreateData.m_lPosX=rkNetActorData.m_lCurX;
@@ -487,7 +493,11 @@ void CNetworkActorManager::UpdateActor(const SNetworkUpdateActorData& c_rkNetUpd
 #ifdef ENABLE_ACCE_SYSTEM
 		pkInstFind->ChangeAcce(c_rkNetUpdateActorData.m_dwAcce);
 #endif
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		pkInstFind->ChangeGuild(c_rkNetUpdateActorData.m_dwGuildID, c_rkNetUpdateActorData.m_bGuildLeaderGrade);
+#else
 		pkInstFind->ChangeGuild(c_rkNetUpdateActorData.m_dwGuildID);
+#endif
 		pkInstFind->SetAffectFlagContainer(c_rkNetUpdateActorData.m_kAffectFlags);
 		pkInstFind->SetMoveSpeed(c_rkNetUpdateActorData.m_dwMovSpd);
 		pkInstFind->SetAttackSpeed(c_rkNetUpdateActorData.m_dwAtkSpd);
@@ -510,6 +520,9 @@ void CNetworkActorManager::UpdateActor(const SNetworkUpdateActorData& c_rkNetUpd
 
 	rkNetActorData.m_kAffectFlags=c_rkNetUpdateActorData.m_kAffectFlags;
 	rkNetActorData.m_dwGuildID=c_rkNetUpdateActorData.m_dwGuildID;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	rkNetActorData.m_bGuildLeaderGrade = c_rkNetUpdateActorData.m_bGuildLeaderGrade;
+#endif
 	//rkNetActorData.m_dwLevel=c_rkNetUpdateActorData.m_dwLevel;
 	rkNetActorData.m_dwMovSpd=c_rkNetUpdateActorData.m_dwMovSpd;
 	rkNetActorData.m_dwAtkSpd=c_rkNetUpdateActorData.m_dwAtkSpd;

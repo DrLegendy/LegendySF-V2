@@ -229,6 +229,10 @@ class CGuild
 		TGuildMember*	GetMember(DWORD pid);
 		DWORD			GetMemberPID(const std::string& strName);
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		BYTE			GetGeneralPID(DWORD pid);
+#endif
+
 		bool		HasGradeAuth(int grade, int auth_flag) const	{ return (bool)(m_data.grade_array[grade-1].auth_flag & auth_flag);}
 
 		void		AddComment(LPCHARACTER ch, const std::string& str);

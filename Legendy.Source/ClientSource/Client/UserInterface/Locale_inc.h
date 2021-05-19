@@ -64,6 +64,7 @@
 #define ENABLE_CHANNEL_SWITCH_SYSTEM											// Kanal Degistirme Modülü
 #define ENABLE_EXTENDED_ITEMNAME_ON_GROUND										// Yere Dusen Itemlerin Isımlerı Gorme Modulu
 #define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM										// Yere Sat-Sil Sistemi
+#define ENABLE_GUILD_LEADER_GRADE_NAME											// Lonca Lider-General Sistemi
 
 /*
 	###		New Debugging Defines

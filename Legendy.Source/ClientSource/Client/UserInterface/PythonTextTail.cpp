@@ -492,7 +492,11 @@ bool CPythonTextTail::isIn(CPythonTextTail::TTextTail * pSource, CPythonTextTail
 	return false;
 }
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+void CPythonTextTail::RegisterCharacterTextTail(DWORD dwGuildID, const char * c_szGuildLeaderGradeName, DWORD dwVirtualID, const D3DXCOLOR & c_rColor, float fAddHeight)
+#else
 void CPythonTextTail::RegisterCharacterTextTail(DWORD dwGuildID, DWORD dwVirtualID, const D3DXCOLOR & c_rColor, float fAddHeight)
+#endif
 {
 	CInstanceBase * pCharacterInstance = CPythonCharacterManager::Instance().GetInstancePtr(dwVirtualID);
 
@@ -535,6 +539,10 @@ void CPythonTextTail::RegisterCharacterTextTail(DWORD dwGuildID, DWORD dwVirtual
 		std::string strGuildName;
 		if (!CPythonGuild::Instance().GetGuildName(dwGuildID, &strGuildName))
 			strGuildName = "Noname";
+
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		strGuildName.insert(0, c_szGuildLeaderGradeName);
+#endif
 
 		CGraphicTextInstance *& prGuildNameInstance = pTextTail->pGuildNameTextInstance;
 		prGuildNameInstance = CGraphicTextInstance::New();

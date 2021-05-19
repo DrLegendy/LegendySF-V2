@@ -182,6 +182,8 @@ class LoadingWindow(ui.ScriptWindow):
 
 		self.__RegisterSkill()
 		self.__RegisterTitleName()
+		if app.ENABLE_GUILD_LEADER_GRADE_NAME:
+			self.__RegisterGuildLeaderGradeName()
 		self.__RegisterColor()
 		self.__InitData()
 		self.__LoadMap()
@@ -205,6 +207,8 @@ class LoadingWindow(ui.ScriptWindow):
 		self.__RegisterDungeonMapName()
 		self.__RegisterSkill()
 		self.__RegisterTitleName()
+		if app.ENABLE_GUILD_LEADER_GRADE_NAME:
+			self.__RegisterGuildLeaderGradeName()
 		self.__RegisterColor()
 		self.__RegisterEmotionIcon()
 
@@ -281,6 +285,12 @@ class LoadingWindow(ui.ScriptWindow):
 	def __RegisterTitleName(self):
 		for i in xrange(len(localeInfo.TITLE_NAME_LIST)):
 			chrmgr.RegisterTitleName(i, localeInfo.TITLE_NAME_LIST[i])
+
+	if app.ENABLE_GUILD_LEADER_GRADE_NAME:
+		def __RegisterGuildLeaderGradeName(self):
+			for i in xrange(len(localeInfo.GUILD_LEADER_GRADE_NAME_LIST)):
+				chrmgr.RegisterGuildLeaderGradeName(i, localeInfo.GUILD_LEADER_GRADE_NAME_LIST[i])
+
 
 	def __RegisterColor(self):
 

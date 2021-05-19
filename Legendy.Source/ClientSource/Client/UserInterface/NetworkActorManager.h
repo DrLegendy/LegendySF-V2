@@ -42,6 +42,9 @@ struct SNetworkActorData
 	DWORD	m_dwMountVnum;
 
 	DWORD	m_dwGuildID;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	BYTE m_bGuildLeaderGrade;
+#endif
 	DWORD	m_dwLevel;
 
 	SNetworkActorData();
@@ -96,6 +99,9 @@ struct SNetworkUpdateActorData
 	short m_sAlignment;
 	BYTE m_byPKMode;
 	DWORD m_dwMountVnum;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	DWORD m_bGuildLeaderGrade;
+#endif
 	DWORD m_dwStateFlags;
 	CAffectFlagContainer m_kAffectFlags;
 
@@ -114,6 +120,9 @@ struct SNetworkUpdateActorData
 		m_sAlignment=0;
 		m_byPKMode=0;
 		m_dwMountVnum=0;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		m_bGuildLeaderGrade = 0;
+#endif
 		m_dwStateFlags=0;
 		m_kAffectFlags.Clear();
 	}

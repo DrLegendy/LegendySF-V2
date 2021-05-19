@@ -662,6 +662,19 @@ DWORD CGuild::GetMemberPID(const std::string& strName)
 	return 0;
 }
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+BYTE CGuild::GetGeneralPID(DWORD pid)
+{
+	for (TGuildMemberContainer::iterator iter = m_member.begin(); iter != m_member.end(); iter++)
+	{
+		if (iter->first == pid)
+			return iter->second.is_general;
+	}
+
+	return 0;
+}
+#endif
+
 void CGuild::__P2PUpdateGrade(SQLMsg* pmsg)
 {
 	if (pmsg->Get()->uiNumRows)

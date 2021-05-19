@@ -32,6 +32,22 @@ PyObject * chrmgrRegisterTitleName(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+PyObject * chrmgrRegisterGuildLeaderGradeName(PyObject* poSelf, PyObject* poArgs)
+{
+	int	iIndex;
+	if (!PyTuple_GetInteger(poArgs, 0, &iIndex))
+		return Py_BadArgument();
+
+	char * szGradeName;
+	if (!PyTuple_GetString(poArgs, 1, &szGradeName))
+		return Py_BadArgument();
+
+	CInstanceBase::RegisterGuildLeaderGradeName(iIndex, szGradeName);
+	return Py_BuildNone();
+}
+#endif
+
 PyObject * chrmgrRegisterNameColor(PyObject* poSelf, PyObject* poArgs)
 {
 	int index;
@@ -753,6 +769,9 @@ void initchrmgr()
 		{ "RegisterTitleName",			chrmgrRegisterTitleName,				METH_VARARGS },
 		{ "RegisterNameColor",			chrmgrRegisterNameColor,				METH_VARARGS },
 		{ "RegisterTitleColor",			chrmgrRegisterTitleColor,				METH_VARARGS },
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		{ "RegisterGuildLeaderGradeName",	chrmgrRegisterGuildLeaderGradeName,	METH_VARARGS },
+#endif
 
 		{ NULL,							NULL,									NULL },
 	};

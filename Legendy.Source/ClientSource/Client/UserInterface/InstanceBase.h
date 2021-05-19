@@ -34,7 +34,9 @@ class CInstanceBase
 			DWORD	m_dwAcce;
 #endif
 			DWORD	m_dwMountVnum;
-
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		BYTE m_bGuildLeaderGrade;
+#endif
 			short	m_sAlignment;
 			BYTE	m_byPKMode;
 			CAffectFlagContainer	m_kAffectFlags;
@@ -413,6 +415,9 @@ class CInstanceBase
 		static void CreateSystem(UINT uCapacity);
 		static bool RegisterEffect(UINT eEftType, const char* c_szEftAttachBone, const char* c_szEftName, bool isCache);
 		static void RegisterTitleName(int iIndex, const char * c_szTitleName);
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	static void RegisterGuildLeaderGradeName(int iIndex, const char * szGradeName);
+#endif
 		static bool RegisterNameColor(UINT uIndex, UINT r, UINT g, UINT b);
 		static bool RegisterTitleColor(UINT uIndex, UINT r, UINT g, UINT b);
 		static bool ChangeEffectTexture(UINT eEftType, const char* c_szSrcFileName, const char* c_szDstFileName);
@@ -528,7 +533,11 @@ class CInstanceBase
 		bool					ChangeArmor(DWORD dwArmor);
 		void					ChangeWeapon(DWORD eWeapon);
 		void					ChangeHair(DWORD eHair);
-		void					ChangeGuild(DWORD dwGuildID);
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		void ChangeGuild(DWORD dwGuildID, BYTE bGuildLeaderGrade);
+#else
+		void ChangeGuild(DWORD dwGuildID);
+#endif
 		DWORD					GetWeaponType();
 
 		void					SetComboType(UINT uComboType);
@@ -551,6 +560,10 @@ class CInstanceBase
 		DWORD					GetVirtualNumber();
 		DWORD					GetEmpireID();
 		DWORD					GetGuildID();
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		BYTE					GetGuildLeaderGrade();
+		BYTE					GetGuildLeaderGradeType();
+#endif
 		int						GetAlignment();
 		UINT					GetAlignmentGrade();
 		int						GetAlignmentType();
@@ -931,7 +944,9 @@ class CInstanceBase
 		DWORD					m_dwLevel;
 		DWORD					m_dwEmpireID;
 		DWORD					m_dwGuildID;
-
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		BYTE					m_bGuildLeaderGrade;
+#endif
 	protected:
 		CAffectFlagContainer	m_kAffectFlagContainer;
 		DWORD					m_adwCRCAffectEffect[AFFECT_NUM];

@@ -41,6 +41,10 @@ D3DXCOLOR CInstanceBase::ms_kD3DXClrTitle[CInstanceBase::TITLE_MAX_NUM] =
 D3DXCOLOR g_akD3DXClrTitle[CInstanceBase::TITLE_NUM];
 D3DXCOLOR g_akD3DXClrName[CInstanceBase::NAMECOLOR_NUM];
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+std::map<int, std::string> g_GuildLeaderGradeNameMap;
+#endif
+
 std::map<int, std::string> g_TitleNameMap;
 std::set<DWORD> g_kSet_dwPVPReadyKey;
 std::set<DWORD> g_kSet_dwPVPKey;
@@ -629,8 +633,20 @@ void CInstanceBase::AttachTextTail()
 	float fTextTailHeight=IsMountingHorse() ? 110.0f : 10.0f;
 
 	static D3DXCOLOR s_kD3DXClrTextTail=D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	CPythonTextTail::Instance().RegisterCharacterTextTail(m_dwGuildID, dwVID, s_kD3DXClrTextTail, fTextTailHeight);
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	BYTE bGuildLeaderGrade = GetGuildLeaderGradeType();
 
+	std::map<int, std::string>::iterator itor = g_GuildLeaderGradeNameMap.find(bGuildLeaderGrade);
+	if (g_GuildLeaderGradeNameMap.end() != itor)
+	{
+		const std::string& c_rstrGuildLeaderGradeName = itor->second;
+		CPythonTextTail::Instance().RegisterCharacterTextTail(m_dwGuildID, c_rstrGuildLeaderGradeName.c_str(), dwVID, s_kD3DXClrTextTail, fTextTailHeight);
+	}
+	else
+		CPythonTextTail::Instance().RegisterCharacterTextTail(m_dwGuildID, "", dwVID, s_kD3DXClrTextTail, fTextTailHeight);
+#else
+	CPythonTextTail::Instance().RegisterCharacterTextTail(m_dwGuildID, dwVID, s_kD3DXClrTextTail, fTextTailHeight);
+#endif
 	// CHARACTER_LEVEL
 	if (m_dwLevel)
 	{
@@ -1093,6 +1109,13 @@ void CInstanceBase::RegisterTitleName(int iIndex, const char * c_szTitleName)
 {
 	g_TitleNameMap.insert(make_pair(iIndex, c_szTitleName));
 }
+
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+void CInstanceBase::RegisterGuildLeaderGradeName(int iIndex, const char* c_szGradeName)
+{
+	g_GuildLeaderGradeNameMap.insert(make_pair(iIndex, c_szGradeName));
+}
+#endif
 
 D3DXCOLOR __RGBToD3DXColoru(UINT r, UINT g, UINT b)
 {

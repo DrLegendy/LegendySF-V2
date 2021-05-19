@@ -80,7 +80,7 @@ enum eCommonDefines {
 #define ENABLE_CHANNEL_SWITCH_SYSTEM																// Kanal Degistirme Modulu
 #define ENABLE_EXTENDED_ITEMNAME_ON_GROUND															// Yere Dusen itemlerin isimleri goruntuleme Modulu
 #define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM															// Yere Sat-Sil Sistemi
-
+#define ENABLE_GUILD_LEADER_GRADE_NAME																// Lonca Lider-General Sistemi
 
 
 // ### CommonDefines Systems ###

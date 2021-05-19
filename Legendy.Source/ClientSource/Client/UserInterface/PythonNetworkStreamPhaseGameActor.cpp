@@ -131,7 +131,9 @@ bool CPythonNetworkStream::RecvCharacterAppendPacket()
 #endif
 
 	kNetActorData.m_dwMountVnum=0;/*chrAddPacket.dwMountVnum*/;
-
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	kNetActorData.m_bGuildLeaderGrade = 0;
+#endif
 	kNetActorData.m_dwLevel = 0;
 
 	if(kNetActorData.m_bType != CActorInstance::TYPE_PC &&
@@ -181,7 +183,9 @@ bool CPythonNetworkStream::RecvCharacterAdditionalInfo()
 		kNetActorData.m_dwAcce		= chrInfoPacket.awPart[CHR_EQUIPPART_ACCE];
 #endif
 		kNetActorData.m_dwMountVnum	= chrInfoPacket.dwMountVnum;
-
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		kNetActorData.m_bGuildLeaderGrade = chrInfoPacket.bGuildLeaderGrade;
+#endif
 		__RecvCharacterAppendPacket(&kNetActorData);
 	}
 	else
@@ -219,6 +223,9 @@ bool CPythonNetworkStream::RecvCharacterAppendPacketNew()
 	kNetActorData.m_dwStateFlags= chrAddPacket.bStateFlag;
 	kNetActorData.m_dwVID		= chrAddPacket.dwVID;
 	kNetActorData.m_dwMountVnum	= chrAddPacket.dwMountVnum;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	kNetActorData.m_bGuildLeaderGrade = chrAddPacket.bGuildLeaderGrade;
+#endif
 	kNetActorData.m_fRot		= chrAddPacket.angle;
 
 	kNetActorData.m_kAffectFlags.CopyData(0, sizeof(chrAddPacket.dwAffectFlag[0]), &chrAddPacket.dwAffectFlag[0]);
@@ -258,6 +265,9 @@ bool CPythonNetworkStream::RecvCharacterUpdatePacket()
 	kNetUpdateActorData.m_byPKMode=chrUpdatePacket.bPKMode;
 	kNetUpdateActorData.m_dwStateFlags=chrUpdatePacket.bStateFlag;
 	kNetUpdateActorData.m_dwMountVnum=chrUpdatePacket.dwMountVnum;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	kNetUpdateActorData.m_bGuildLeaderGrade = chrUpdatePacket.bGuildLeaderGrade;
+#endif
 	__RecvCharacterUpdatePacket(&kNetUpdateActorData);
 
 	return true;
@@ -288,6 +298,9 @@ bool CPythonNetworkStream::RecvCharacterUpdatePacketNew()
 	kNetUpdateActorData.m_byPKMode		= chrUpdatePacket.bPKMode;
 	kNetUpdateActorData.m_dwStateFlags	= chrUpdatePacket.bStateFlag;
 	kNetUpdateActorData.m_dwMountVnum	= chrUpdatePacket.dwMountVnum;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	kNetUpdateActorData.m_bGuildLeaderGrade = chrUpdatePacket.bGuildLeaderGrade;
+#endif
 
 	__RecvCharacterUpdatePacket(&kNetUpdateActorData);
 

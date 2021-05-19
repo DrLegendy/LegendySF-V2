@@ -553,6 +553,13 @@ DWORD CInstanceBase::GetGuildID()
 	return m_dwGuildID;
 }
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+BYTE CInstanceBase::GetGuildLeaderGrade()
+{
+	return m_bGuildLeaderGrade;
+}
+#endif
+
 int CInstanceBase::GetAlignment()
 {
 	return m_sAlignment;
@@ -605,6 +612,18 @@ int CInstanceBase::GetAlignmentType()
 
 	return ALIGNMENT_TYPE_NORMAL;
 }
+
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+BYTE CInstanceBase::GetGuildLeaderGradeType()
+{
+	if (m_bGuildLeaderGrade == 3)
+		return 0;
+	else if (m_bGuildLeaderGrade == 2)
+		return 1;
+
+	return 2;
+}
+#endif
 
 BYTE CInstanceBase::GetPKMode()
 {
@@ -835,7 +854,9 @@ bool CInstanceBase::Create(const SCreateData& c_rkCreateData)
 
 	m_dwGuildID = c_rkCreateData.m_dwGuildID;
 	m_dwEmpireID = c_rkCreateData.m_dwEmpireID;
-
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	m_bGuildLeaderGrade = c_rkCreateData.m_bGuildLeaderGrade;
+#endif
 	SetVirtualNumber(c_rkCreateData.m_dwRace);
 	SetRotation(c_rkCreateData.m_fRot);
 
@@ -1121,10 +1142,16 @@ void CInstanceBase::OnMoving()
 	m_GraphicThingInstance.__OnMoving();
 }
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+void CInstanceBase::ChangeGuild(DWORD dwGuildID, BYTE bGuildLeaderGrade)
+#else
 void CInstanceBase::ChangeGuild(DWORD dwGuildID)
+#endif
 {
 	m_dwGuildID=dwGuildID;
-
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	m_bGuildLeaderGrade = bGuildLeaderGrade;
+#endif
 	DetachTextTail();
 	AttachTextTail();
 	RefreshTextTail();
@@ -3355,6 +3382,9 @@ void CInstanceBase::__Initialize()
 
 	m_dwLevel = 0;
 	m_dwGuildID = 0;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	m_bGuildLeaderGrade = 0;
+#endif
 	m_dwEmpireID = 0;
 
 	m_eType = 0;

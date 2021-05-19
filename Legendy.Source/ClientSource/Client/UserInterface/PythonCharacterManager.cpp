@@ -902,7 +902,11 @@ void CPythonCharacterManager::RefreshAllGuildMark()
 		if (!pInstance->IsPC())
 			continue;
 
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+		pInstance->ChangeGuild(pInstance->GetGuildID(), pInstance->GetGuildLeaderGrade());
+#else
 		pInstance->ChangeGuild(pInstance->GetGuildID());
+#endif
 		pInstance->RefreshTextTail();
 	}
 }

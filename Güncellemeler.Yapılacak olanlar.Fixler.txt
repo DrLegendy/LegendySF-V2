@@ -99,6 +99,7 @@ EKLENEN SİSTEMLER
 #define ENABLE_CHANNEL_SWITCH_SYSTEM			// Hızlı Kanal Değiştirme Sistemi
 #define ENABLE_EXTENDED_ITEMNAME_ON_GROUND		// Yere Dusen Itemlerin Isimleri Gorme Modulu
 #define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM		// Yere Sat-Sil Sistemi
+#define ENABLE_GUILD_LEADER_GRADE_NAME			// Lonca Lider-General Sistemi
 -----------------------------------------------**********************************************------------------------------------------------
 
 GELECEK OLANLAR

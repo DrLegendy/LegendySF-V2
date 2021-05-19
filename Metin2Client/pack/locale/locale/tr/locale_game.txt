@@ -373,6 +373,8 @@ GUILD_WAR_WIN_TAKE_AWAY_FLAG2	ve kendi üssüne götür.
 GUILD_WAR_WIN_WIPE_OUT_GUILD	Kazanmak için tüm düþmanlarý öldür.
 GUILD_WITHDRAW	Geri çekil.
 GUILD_YOU_DO_NOT_JOIN	Bir Loncaya üye deðilsin.
+GUILD_LEADER_GRADE0	|cffFF0000|h[Lider] 
+GUILD_LEADER_GRADE1	|cff00ff00|h[General] 
 HORSE_HEALTH0	Ölü
 HORSE_HEALTH1	Aç kalmýþ halde
 HORSE_HEALTH2	Acýkmýþ halde

@@ -1012,6 +1012,9 @@ typedef struct packet_char_additional_info
 	short	sAlignment;
 	BYTE	bPKMode;
 	DWORD	dwMountVnum;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	BYTE bGuildLeaderGrade;
+#endif
 } TPacketGCCharacterAdditionalInfo;
 
 /*
@@ -1050,6 +1053,9 @@ typedef struct packet_update_char
 	short	sAlignment;
 	BYTE	bPKMode;
 	DWORD	dwMountVnum;
+#ifdef ENABLE_GUILD_LEADER_GRADE_NAME
+	BYTE bGuildLeaderGrade;
+#endif
 	//WORD	wRaceNum;
 } TPacketGCCharacterUpdate;
 
