@@ -1770,4 +1770,10 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_GUILD_LEADER_GRADE_NAME", false);
 #endif
+
+#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
+	PyModule_AddIntConstant(poModule, "ENABLE_TARGET_INFORMATION_SYSTEM", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_TARGET_INFORMATION_SYSTEM", 0);
+#endif
 }
