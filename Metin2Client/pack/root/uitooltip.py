@@ -1036,6 +1036,8 @@ class ItemToolTip(ToolTip):
 				itemName = item.GetItemName()
 				realName = itemName[:itemName.find("+")]
 				self.SetTitle(realName + " +0 - +4")
+			else:
+				self.SetTitle(item.GetItemName())
 		else:
 			self.SetTitle(item.GetItemName())
 
