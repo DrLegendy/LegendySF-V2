@@ -80,9 +80,6 @@ def SET_ITEM_QUESTION_DIALOG_STATUS(flag):
 import app
 import net
 
-if app.ENABLE_TARGET_INFORMATION_SYSTEM:
-	MONSTER_INFO_DATA = {}
-
 if app.ENABLE_CHANNEL_SWITCH_SYSTEM:
 	channel_idx = 0
 

@@ -77,9 +77,7 @@ enum
 	HEADER_CG_FISHING				= 82,
 
 	HEADER_CG_ITEM_GIVE				= 83,
-#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
-	HEADER_CG_TARGET_INFO_LOAD		= 89,
-#endif
+
 	HEADER_CG_EMPIRE				= 90,
 
 	HEADER_CG_REFINE				= 96,
@@ -283,10 +281,6 @@ enum
 	HEADER_GC_MAIN_CHARACTER3_BGM		= 137,
 	HEADER_GC_MAIN_CHARACTER4_BGM_VOL	= 138,
 	// END_OF_SUPPORT_BGM
-
-#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
-	HEADER_GC_TARGET_INFO			= 140,
-#endif
 
 	HEADER_GC_AUTH_SUCCESS			= 150,
 
@@ -1511,27 +1505,6 @@ typedef struct packet_target
 	DWORD	dwVID;
 	BYTE	bHPPercent;
 } TPacketGCTarget;
-
-#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
-typedef struct packet_target_info
-{
-	BYTE	header;
-	DWORD	dwVID;
-	DWORD	race;
-	DWORD	dwVnum;
-#ifdef ENABLE_ITEM_COUNT_LIMIT_SYSTEM
-	WORD    count;
-#else
-	BYTE    count;
-#endif
-} TPacketGCTargetInfo;
-
-typedef struct packet_target_info_load
-{
-	BYTE header;
-	DWORD dwVID;
-} TPacketCGTargetInfoLoad;
-#endif
 
 typedef struct packet_warp
 {

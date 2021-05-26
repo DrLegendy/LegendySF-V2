@@ -64,12 +64,6 @@
 #include "DragonSoul.h"
 #include "../../common/CommonDefines.h"
 
-#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
-#include <algorithm>
-#include <iterator>
-using namespace std;
-#endif
-
 extern const BYTE g_aBuffOnAttrPoints;
 extern bool RaceToJob(unsigned race, unsigned* ret_job);
 
@@ -449,10 +443,6 @@ void CHARACTER::Initialize()
 #ifdef ENABLE_ACCE_SYSTEM
 	m_bAcceCombination = false;
 	m_bAcceAbsorption = false;
-#endif
-
-#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
-	dwLastTargetInfoPulse = 0;
 #endif
 }
 

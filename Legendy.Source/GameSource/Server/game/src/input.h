@@ -165,9 +165,6 @@ class CInputMain : public CInputProcessor
 #endif
 
 		void		Refine(LPCHARACTER ch, const char* c_pData);
-#ifdef ENABLE_TARGET_INFORMATION_SYSTEM
-		void TargetInfoLoad(LPCHARACTER ch, const char* c_pData);
-#endif
 #ifdef ENABLE_ACCE_SYSTEM
 		void		Acce(LPCHARACTER pkChar, const char* c_pData);
 #endif
