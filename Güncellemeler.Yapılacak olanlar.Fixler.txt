@@ -44,6 +44,7 @@ GAME FİX
 42->DsProject42 = Bu quest fonksiyonunda ch değerinin bulunmaması durumunda oluşabilecek core düşmesi engellendi.
 43->DsProject43 = Simya 1 levelde görevsiz olarak aktif hale getirildi.
 44->DsProject44 = Simya için sürükleyerek çıkartma getirildi.
+45->DSProject45 = Gelinlik, Smokin ve Bukete efsun atma ve efsun değiştirme fixlendi.
 
 -----------------------------------------------**********************************************------------------------------------------------
 
@@ -101,6 +102,7 @@ EKLENEN SİSTEMLER
 #define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM		// Yere Sat-Sil Sistemi
 #define ENABLE_GUILD_LEADER_GRADE_NAME			// Lonca Lider-General Sistemi
 #define ENABLE_TARGET_INFORMATION_SYSTEM		// Mob Info Sistemi
+#define ENABLE_AURA_SYSTEM						// Official Aura Sistemi
 -----------------------------------------------**********************************************------------------------------------------------
 
 GELECEK OLANLAR

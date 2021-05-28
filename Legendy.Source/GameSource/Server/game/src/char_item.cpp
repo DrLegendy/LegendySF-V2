@@ -80,6 +80,27 @@ struct FFindStone
 	}
 };
 
+//@DsProject45_START
+static bool LEGENDY_EFSUN_ENGEL(int vnum)
+{
+	switch (vnum)
+	{
+		case 50201:
+		case 50202:
+		case 11901:
+		case 11902:
+		case 11903:
+		case 11904:
+		case 11911:
+		case 11912:
+		case 11913:
+		case 11914:
+			return true;
+	}
+
+	return false;
+}
+//@DsProject45_END
 
 
 static bool IS_SUMMON_ITEM(int vnum)
@@ -4691,6 +4712,8 @@ bool CHARACTER::UseItemEx(LPITEM item, TItemPos DestCell)
 					return false;
 				}
 
+
+
 			if (item2->IsExchanging() || item2->IsEquipped()) // @fixme114
 				return false;
 
@@ -4749,6 +4772,14 @@ bool CHARACTER::UseItemEx(LPITEM item, TItemPos DestCell)
 					ChatPacket(CHAT_TYPE_INFO, LC_TEXT("변경할 속성이 없습니다."));
 					return false;
 				}
+
+//@DsProject45_START
+				if (LEGENDY_EFSUN_ENGEL(item2->GetVnum()))
+				{
+					ChatPacket(CHAT_TYPE_INFO, "Smokin, gelinlik ve buket efsununu degistiremezsin.");
+					return false;
+				}
+//@DsProject45_END
 
 				if ((GM_PLAYER == GetGMLevel()) && (false == test_server) && (g_dwItemBonusChangeTime > 0))
 				{
@@ -4849,6 +4880,14 @@ bool CHARACTER::UseItemEx(LPITEM item, TItemPos DestCell)
 					ChatPacket(CHAT_TYPE_INFO, LC_TEXT("속성을 변경할 수 없는 아이템입니다."));
 					return false;
 				}
+
+//@DsProject45_START
+				if (LEGENDY_EFSUN_ENGEL(item2->GetVnum()))
+				{
+					ChatPacket(CHAT_TYPE_INFO, "Smokin, gelinlik ve bukete efsun ekleyemezsin.");
+					return false;
+				}
+//@DsProject45_END
 
 				if (item2->GetAttributeCount() < 4)
 				{

@@ -382,7 +382,8 @@ void CClientManager::QUERY_PLAYER_LOAD(CPeer * peer, DWORD dwHandle, TPlayerLoad
 #ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
 			"UNIX_TIMESTAMP(last_play),"
 			#endif
-			"horse_skill_point FROM player%s WHERE id=%d",
+			"horse_skill_point "
+			"FROM player%s WHERE id=%d",
 				GetTablePostfix(), packet->player_id);
 
 		ClientHandleInfo * pkInfo = new ClientHandleInfo(dwHandle, packet->player_id);

@@ -351,10 +351,10 @@ typedef struct SSimplePlayer
 	BYTE		byJob;
 	BYTE		byLevel;
 	DWORD		dwPlayMinutes;
-	BYTE		byST, byHT, byDX, byIQ;
 #ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
 	DWORD		dwLastPlayTime;
 #endif
+	BYTE		byST, byHT, byDX, byIQ;
 	WORD		wMainPart;
 	BYTE		bChangeName;
 	WORD		wHairPart;
