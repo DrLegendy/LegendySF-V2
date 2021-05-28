@@ -157,6 +157,11 @@ extern const char * c_apszEmpireNames[EMPIRE_MAX_NUM];
 extern const char * c_apszPrivNames[MAX_PRIV_NUM];
 extern const SStoneDropInfo aStoneDrop[STONE_INFO_MAX_NUM];
 
+#ifdef __AURA_SYSTEM__
+extern int s_aiAuraRefineInfo[AURA_GRADE_MAX_NUM][AURA_REFINE_INFO_MAX];
+int* GetAuraRefineInfo(BYTE bLevel);
+int GetAuraRefineInfo(BYTE bGrade, BYTE bInfo);
+#endif
 typedef struct
 {
 	long lMapIndex;

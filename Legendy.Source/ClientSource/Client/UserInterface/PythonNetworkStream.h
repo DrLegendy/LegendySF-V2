@@ -61,6 +61,9 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 #ifdef ENABLE_ACCE_SYSTEM
 			ACCOUNT_CHARACTER_SLOT_ACCE,
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+			ACCOUNT_CHARACTER_SLOT_AURA,
+#endif
 #ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
 			ACCOUNT_CHARACTER_SLOT_LAST_PLAYTIME,
 #endif
@@ -643,6 +646,17 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		void __FilterInsult(char* szLine, UINT uLineLen);
 
 		void __SetGuildID(DWORD id);
+
+#ifdef ENABLE_AURA_SYSTEM
+	protected:
+		bool RecvAuraPacket();
+
+	public:
+		bool SendAuraRefineCheckIn(TItemPos InventoryCell, TItemPos AuraCell, BYTE byAuraRefineWindowType);
+		bool SendAuraRefineCheckOut(TItemPos AuraCell, BYTE byAuraRefineWindowType);
+		bool SendAuraRefineAccept(BYTE byAuraRefineWindowType);
+		bool SendAuraRefineCancel();
+#endif
 
 	protected:
 		TPacketGCHandshake m_HandshakeData;

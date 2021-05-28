@@ -271,7 +271,7 @@ DWORD CActorInstance::AttachEffectByName(DWORD dwParentPartIndex, const char * c
 	return AttachEffectByID(dwParentPartIndex, c_pszBoneName, dwCRC);
 }
 
-DWORD CActorInstance::AttachEffectByID(DWORD dwParentPartIndex, const char * c_pszBoneName, DWORD dwEffectID, const D3DXVECTOR3 * c_pv3Position)
+DWORD CActorInstance::AttachEffectByID(DWORD dwParentPartIndex, const char * c_pszBoneName, DWORD dwEffectID, const D3DXVECTOR3 * c_pv3Position, float fParticleScale, const D3DXVECTOR3* c_pv3MeshScale)
 {
 	TAttachingEffect ae;
 	ae.iLifeType = EFFECT_LIFE_INFINITE;
@@ -288,7 +288,10 @@ DWORD CActorInstance::AttachEffectByID(DWORD dwParentPartIndex, const char * c_p
 		D3DXMatrixIdentity(&ae.matTranslation);
 	}
 	CEffectManager& rkEftMgr=CEffectManager::Instance();
-	rkEftMgr.CreateEffectInstance(ae.dwEffectIndex, dwEffectID);
+	if (c_pv3MeshScale)
+		rkEftMgr.CreateEffectInstanceWithScale(ae.dwEffectIndex, dwEffectID, fParticleScale, c_pv3MeshScale);
+	else
+		rkEftMgr.CreateEffectInstanceWithScale(ae.dwEffectIndex, dwEffectID, fParticleScale);
 
 	if (c_pszBoneName)
 	{
@@ -648,3 +651,8 @@ void CActorInstance::AttachAcce(CItemData * pItemData, float fSpecular)
 	}
 }
 #endif
+
+void CActorInstance::ChangePart(DWORD dwPartIndex, DWORD dwItemIndex)
+{
+	m_adwPartItemID[dwPartIndex] = dwItemIndex;
+}

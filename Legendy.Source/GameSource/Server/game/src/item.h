@@ -153,6 +153,14 @@ class CItem : public CEntity
 		void		SetLastOwnerPID(DWORD pid) { m_dwLastOwnerPID = pid; }
 #endif
 
+#ifdef __AURA_SYSTEM__
+		bool	IsAuraBoosterForSocket();
+
+		void	StartAuraBoosterSocketExpireEvent();
+		void	StopAuraBoosterSocketExpireEvent();
+		void	SetAuraBoosterSocketExpireEvent(LPEVENT pkEvent);
+#endif
+
 		int		GetAttributeSetIndex();
 		void		AlterToMagicItem();
 		void		AlterToSocketItem(int iSocketCount);
@@ -286,7 +294,9 @@ class CItem : public CEntity
 		LPEVENT		m_pkRealTimeExpireEvent;
 		LPEVENT		m_pkAccessorySocketExpireEvent;
 		LPEVENT		m_pkOwnershipEvent;
-
+#ifdef __AURA_SYSTEM__
+		LPEVENT		m_pkAuraBoostSocketExpireEvent;
+#endif
 		DWORD		m_dwOwnershipPID;
 
 		bool		m_bSkipSave;

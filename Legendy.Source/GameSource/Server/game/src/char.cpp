@@ -454,6 +454,15 @@ void CHARACTER::Initialize()
 #ifdef ENABLE_TARGET_INFORMATION_SYSTEM
 	dwLastTargetInfoPulse = 0;
 #endif
+
+#ifdef __AURA_SYSTEM__
+	m_bAuraRefineWindowType = AURA_WINDOW_TYPE_MAX;
+	m_bAuraRefineWindowOpen = false;
+	for (BYTE i = AURA_SLOT_MAIN; i < AURA_SLOT_MAX; i++)
+		m_pAuraRefineWindowItemSlot[i] = NPOS;
+
+	memset(&m_bAuraRefineInfo, 0, AURA_REFINE_INFO_SLOT_MAX * sizeof(TAuraRefineInfo));
+#endif
 }
 
 void CHARACTER::Create(const char* c_pszName, DWORD vid, bool isPC)
@@ -962,7 +971,9 @@ void CHARACTER::EncodeInsertPacket(LPENTITY entity)
 #ifdef ENABLE_ACCE_SYSTEM
 		addPacket.awPart[CHR_EQUIPPART_ACCE] = GetPart(PART_ACCE);
 #endif
-
+#ifdef __AURA_SYSTEM__
+		addPacket.awPart[CHR_EQUIPPART_AURA] = GetPart(PART_AURA);
+#endif
 		addPacket.bPKMode = m_bPKMode;
 		addPacket.dwMountVnum = GetMountVnum();
 		addPacket.bEmpire = m_bEmpire;
@@ -1114,7 +1125,9 @@ void CHARACTER::UpdatePacket()
 #ifdef ENABLE_ACCE_SYSTEM
 	pack.awPart[CHR_EQUIPPART_ACCE] = GetPart(PART_ACCE);
 #endif
-
+#ifdef __AURA_SYSTEM__
+	pack.awPart[CHR_EQUIPPART_AURA] = GetPart(PART_AURA);
+#endif
 	pack.bMovingSpeed = GetLimitPoint(POINT_MOV_SPEED);
 	pack.bAttackSpeed = GetLimitPoint(POINT_ATT_SPEED);
 	pack.bStateFlag = m_bAddChrState;
@@ -1497,6 +1510,11 @@ void CHARACTER::Disconnect(const char* c_pszReason)
 
 	CloseMall();
 
+#ifdef __AURA_SYSTEM__
+	if (IsAuraRefineWindowOpen())
+		AuraRefineWindowClose();
+#endif
+
 	CPVPManager::instance().Disconnect(this);
 
 	CTargetManager::instance().Logout(GetPlayerID());
@@ -1873,6 +1891,9 @@ void CHARACTER::SetPlayerProto(const TPlayerTable* t)
 	SetPart(PART_HAIR, t->parts[PART_HAIR]);
 #ifdef ENABLE_ACCE_SYSTEM
 	SetPart(PART_ACCE, t->parts[PART_ACCE]);
+#endif
+#ifdef __AURA_SYSTEM__
+	SetPart(PART_AURA, t->parts[PART_AURA]);
 #endif
 	m_points.iRandomHP = t->sRandomHP;
 	m_points.iRandomSP = t->sRandomSP;
@@ -2292,6 +2313,32 @@ void CHARACTER::ComputeBattlePoints()
 				}
 			}
 
+#ifdef __AURA_SYSTEM__
+			else if (pkItem && pkItem->GetType() == ITEM_COSTUME && pkItem->GetSubType() == COSTUME_AURA)
+			{
+				const long c_lLevelSocket = pkItem->GetSocket(ITEM_SOCKET_AURA_CURRENT_LEVEL);
+				const long c_lDrainSocket = pkItem->GetSocket(ITEM_SOCKET_AURA_DRAIN_ITEM_VNUM);
+				const long c_lBoostSocket = pkItem->GetSocket(ITEM_SOCKET_AURA_BOOST);
+
+				BYTE bCurLevel = (c_lLevelSocket / 100000) - 1000;
+				BYTE bBoostIndex = c_lBoostSocket / 100000000;
+
+				TItemTable* pBoosterProto = ITEM_MANAGER::instance().GetTable(ITEM_AURA_BOOST_ITEM_VNUM_BASE + bBoostIndex);
+				float fAuraDrainPer = (1.0f * bCurLevel / 10.0f) / 100.0f;
+				if (pBoosterProto)
+					fAuraDrainPer += 1.0f * pBoosterProto->alValues[ITEM_AURA_BOOST_PERCENT_VALUE] / 100.0f;
+
+				TItemTable* pDrainedItem = NULL;
+				if (c_lDrainSocket != 0)
+					pDrainedItem = ITEM_MANAGER::instance().GetTable(c_lDrainSocket);
+				if (pDrainedItem != NULL && pDrainedItem->bType == ITEM_ARMOR && pDrainedItem->bSubType == ARMOR_SHIELD)
+				{
+					float fValue = (pDrainedItem->alValues[1] + (2 * pDrainedItem->alValues[5])) * fAuraDrainPer;
+					iArmor += static_cast<int>((fValue < 1.0f) ? ceilf(fValue) : truncf(fValue));;
+				}
+			}
+#endif
+
 		if (true == IsHorseRiding())
 		{
 			if (iArmor < GetHorseArmor())
@@ -2372,6 +2419,9 @@ void CHARACTER::ComputePoints()
 
 #ifdef ENABLE_ACCE_SYSTEM
 	SetPart(PART_ACCE, GetOriginalPart(PART_ACCE));
+#endif
+#ifdef __AURA_SYSTEM__
+	SetPart(PART_AURA, GetOriginalPart(PART_AURA));
 #endif
 
 	SetPoint(POINT_PARTY_ATTACKER_BONUS, lAttackerBonus);
@@ -5085,7 +5135,11 @@ void CHARACTER::OnClick(LPCHARACTER pkChrCauser)
 				//PREVENT_TRADE_WINDOW
 				if (pkChrCauser == this)
 				{
-					if ((GetExchange() || IsOpenSafebox() || GetShopOwner()) || IsCubeOpen())
+					if ((GetExchange() || IsOpenSafebox() || GetShopOwner()) || IsCubeOpen()
+#ifdef __AURA_SYSTEM__
+						|| IsAuraRefineWindowOpen()
+#endif
+						)
 					{
 						pkChrCauser->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("다른 거래중(창고,교환,상점)에는 개인상점을 사용할 수 없습니다."));
 						return;
@@ -5094,14 +5148,22 @@ void CHARACTER::OnClick(LPCHARACTER pkChrCauser)
 				else
 				{
 
-					if ((pkChrCauser->GetExchange() || pkChrCauser->IsOpenSafebox() || pkChrCauser->GetMyShop() || pkChrCauser->GetShopOwner()) || pkChrCauser->IsCubeOpen())
+					if ((pkChrCauser->GetExchange() || pkChrCauser->IsOpenSafebox() || pkChrCauser->GetMyShop() || pkChrCauser->GetShopOwner()) || pkChrCauser->IsCubeOpen()
+#ifdef __AURA_SYSTEM__
+						|| pkChrCauser->IsAuraRefineWindowOpen()
+#endif
+						)
 					{
 						pkChrCauser->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("다른 거래중(창고,교환,상점)에는 개인상점을 사용할 수 없습니다."));
 						return;
 					}
 
 					//if ((GetExchange() || IsOpenSafebox() || GetShopOwner()))
-					if ((GetExchange() || IsOpenSafebox() || IsCubeOpen()))
+					if ((GetExchange() || IsOpenSafebox() || IsCubeOpen()
+#ifdef __AURA_SYSTEM__
+						|| IsAuraRefineWindowOpen()
+#endif
+						))
 					{
 						pkChrCauser->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("상대방이 다른 거래를 하고 있는 중입니다."));
 						return;
@@ -6881,7 +6943,11 @@ bool CHARACTER::IsHack(bool bSendMsg, bool bCheckShopOwner, int limittime)
 
 	if (bCheckShopOwner)
 	{
-		if (GetExchange() || GetMyShop() || GetShopOwner() || IsOpenSafebox() || IsCubeOpen())
+		if (GetExchange() || GetMyShop() || GetShopOwner() || IsOpenSafebox() || IsCubeOpen()
+#ifdef __AURA_SYSTEM__
+			|| IsAuraRefineWindowOpen()
+#endif
+			)
 		{
 			if (bSendMsg)
 				ChatPacket(CHAT_TYPE_INFO, LC_TEXT("거래창,창고 등을 연 상태에서는 다른곳으로 이동,종료 할수 없습니다"));
@@ -6891,7 +6957,11 @@ bool CHARACTER::IsHack(bool bSendMsg, bool bCheckShopOwner, int limittime)
 	}
 	else
 	{
-		if (GetExchange() || GetMyShop() || IsOpenSafebox() || IsCubeOpen())
+		if (GetExchange() || GetMyShop() || IsOpenSafebox() || IsCubeOpen()
+#ifdef __AURA_SYSTEM__
+			|| IsAuraRefineWindowOpen()
+#endif
+			)
 		{
 			if (bSendMsg)
 				ChatPacket(CHAT_TYPE_INFO, LC_TEXT("거래창,창고 등을 연 상태에서는 다른곳으로 이동,종료 할수 없습니다"));
@@ -7415,7 +7485,11 @@ bool CHARACTER::CanWarp() const
 	if ((iPulse - GetRefineTime()) < limit_time)
 		return false;
 
-	if (GetExchange() || GetMyShop() || GetShopOwner() || IsOpenSafebox() || IsCubeOpen())
+	if (GetExchange() || GetMyShop() || GetShopOwner() || IsOpenSafebox() || IsCubeOpen()
+#ifdef __AURA_SYSTEM__
+		|| IsAuraRefineWindowOpen()
+#endif
+		)
 		return false;
 
 	return true;

@@ -74,8 +74,14 @@ void CParticleSystemInstance::CreateParticles(float fElapsedTime)
 
 		m_pEmitterProperty->GetEmittingVelocity(m_fLocalTime, &fVelocity);
 
+		//m_pEmitterProperty->GetParticleSizeX(m_fLocalTime, &v2HalfSize.x);
+		//m_pEmitterProperty->GetParticleSizeY(m_fLocalTime, &v2HalfSize.y);
+
 		m_pEmitterProperty->GetParticleSizeX(m_fLocalTime, &v2HalfSize.x);
 		m_pEmitterProperty->GetParticleSizeY(m_fLocalTime, &v2HalfSize.y);
+
+		v2HalfSize.x = v2HalfSize.x * m_fParticleScale;
+		v2HalfSize.y = v2HalfSize.y * m_fParticleScale;
 
 		if (BILLBOARD_TYPE_LIE == m_pParticleProperty->m_byBillboardType && mc_pmatLocal)
 		{

@@ -88,6 +88,9 @@ PyObject * chrCreateInstance(PyObject* poSelf, PyObject* poArgs)
 #ifdef ENABLE_ACCE_SYSTEM
 		kCreateData.m_dwAcce = 0;
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+		kCreateData.m_dwAura = 0;
+#endif
 		kCreateData.m_isMain=false;
 
 		PyObject* poHorse=PyDict_GetItemString(poDict, "horse");
@@ -1286,6 +1289,21 @@ PyObject* chrGetLevelByVID(PyObject* poSelf, PyObject* poArgs)
 }
 #endif
 
+#ifdef ENABLE_AURA_SYSTEM
+PyObject* chrSetAura(PyObject* poSelf, PyObject* poArgs)
+{
+	int iAura;
+	if (!PyTuple_GetInteger(poArgs, 0, &iAura))
+		return Py_BuildException();
+
+	CInstanceBase* pCharacterInstance = CPythonCharacterManager::Instance().GetSelectedInstancePtr();
+	if (pCharacterInstance)
+		pCharacterInstance->SetAura(iAura);
+
+	return Py_BuildNone();
+}
+#endif
+
 void initchr()
 {
 	static PyMethodDef s_methods[] =
@@ -1386,7 +1404,9 @@ void initchr()
 #ifdef ENABLE_ACCE_SYSTEM
 		{ "SetAcce",						chrSetAcce,							METH_VARARGS },
 #endif
-
+		#ifdef ENABLE_AURA_SYSTEM
+		{ "SetAura",					chrSetAura,							METH_VARARGS },
+#endif
 #ifdef ENABLE_OFFICAL_CHARACTER_SCREEN
 		{"SetScale",						chrSetScale,						METH_VARARGS},
 		{"GetLevel",						chrGetLevel,						METH_VARARGS},
@@ -1589,5 +1609,8 @@ void initchr()
 
 #ifdef ENABLE_ACCE_SYSTEM
 	PyModule_AddIntConstant(poModule, "PART_ACCE",							CRaceData::PART_ACCE);
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+	PyModule_AddIntConstant(poModule, "PART_AURA", CRaceData::PART_AURA);
 #endif
 }

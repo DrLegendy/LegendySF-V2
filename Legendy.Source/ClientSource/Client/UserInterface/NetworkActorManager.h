@@ -34,7 +34,9 @@ struct SNetworkActorData
 #ifdef ENABLE_ACCE_SYSTEM
 	DWORD	m_dwAcce;
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+	DWORD	m_dwAura;
+#endif
 	DWORD	m_dwOwnerVID;
 
 	short	m_sAlignment;
@@ -94,6 +96,9 @@ struct SNetworkUpdateActorData
 #ifdef ENABLE_ACCE_SYSTEM
 	DWORD	m_dwAcce;
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+	DWORD m_dwAura;
+#endif
 	DWORD m_dwMovSpd;
 	DWORD m_dwAtkSpd;
 	short m_sAlignment;
@@ -114,6 +119,9 @@ struct SNetworkUpdateActorData
 		m_dwHair=0;
 #ifdef ENABLE_ACCE_SYSTEM
 		m_dwAcce = 0;
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+		m_dwAura = 0;
 #endif
 		m_dwMovSpd=0;
 		m_dwAtkSpd=0;

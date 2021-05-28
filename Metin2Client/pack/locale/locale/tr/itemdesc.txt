@@ -3061,3 +3061,38 @@
 91090	Sýnýf Deðiþikliði	Bu nesne ile savaþcý,ninja,sura veya þaman karakterlerinden birine geçiþ yapabilirsiniz. Kullanýldýktan sonra kaybolur.
 91091	Beceri Ustasý Kaðýdý	Bu nesne ile becerilerinizin tamamýný perfect yapabilirsiniz. Kullanýldýktan sonra kaybolur.
 80009	Iþýnlanma Yüzüðü	Bu nesne ile istediðiniz bir bölgeye ýþýnlanabilirsiniz.
+49001	Genel Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 49'a kadar yükseltilebilir ve seviye 50'den itibaren geliþtirilebilir.
+49002	Sade Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 99 itibarýyla geliþtirilebilir.
+49003	Soylu Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 149 itibarýyla geliþtirilebilir.
+49004	Iþýltýlý Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 199 itibarýyla geliþtirilebilir.
+49005	Gösteriþli Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 249 itibarýyla geliþtirilebilir.
+49006	Parlak Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin.
+49011	Genel Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 49'a kadar yükseltilebilir ve seviye 50'den itibaren geliþtirilebilir.
+49012	Sade Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 99 itibarýyla geliþtirilebilir.
+49013	Soylu Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 149 itibarýyla geliþtirilebilir.
+49014	Iþýltýlý Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 199 itibarýyla geliþtirilebilir.
+49015	Gösteriþli Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 249 itibarýyla geliþtirilebilir.
+49016	Parlak Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin.
+49021	Genel Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 49'a kadar yükseltilebilir ve seviye 50'den itibaren geliþtirilebilir.
+49022	Sade Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 99 itibarýyla geliþtirilebilir.
+49023	Soylu Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 149 itibarýyla geliþtirilebilir.
+49024	Iþýltýlý Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 199 itibarýyla geliþtirilebilir.
+49025	Gösteriþli Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 249 itibarýyla geliþtirilebilir.
+49026	Parlak Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin.
+49031	Genel Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 49'a kadar yükseltilebilir ve seviye 50'den itibaren geliþtirilebilir.
+49032	Sade Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 99 itibarýyla geliþtirilebilir.
+49033	Soylu Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 149 itibarýyla geliþtirilebilir.
+49034	Iþýltýlý Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 199 itibarýyla geliþtirilebilir.
+49035	Gösteriþli Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin. Auranýn buz runikleri ile Aura giysisini yükseltebilirsin. Seviye 249 itibarýyla geliþtirilebilir.
+49036	Parlak Aura Giysisi	Belirli bir emiþ oraný ile takýlarýn deðerini aura giysisine aktarabilirsin.
+49980	Aura Temizleyici	Aura kýyafetindeki güçlendiriciyi temizler.
+49981	Aura Güçlendirici (Küçük)	Aura kýyafetindeki absorbsiyon oranýnýzý 1 Gün boyunca %1 artýrýr.Takviye süresi kuþanma sýrasýnda sona erer.
+49982	Aura Güçlendirici (Orta)	Aura kýyafetindeki absorbsiyon oranýnýzý 3 Gün boyunca %2 artýrýr.Takviye süresi kuþanma sýrasýnda sona erer.
+49983	Aura Güçlendirici (Büyük)	Aura kýyafetindeki absorbsiyon oranýnýzý 5 Gün boyunca %3 artýrýr.Takviye süresi kuþanma sýrasýnda sona erer.
+49984	Aura Güçlendirici (Özel)	Aura kýyafetindeki absorbsiyon oranýnýzý %5 artýrýr.
+49990	Auranýn Buz Runiði	Aura giysini yükseltmek için gerekli olan malzeme. Aura giysini yükseltmek için Teovahdan'a git.
+49991	Auranýn Ateþ Runiði (10)	Aura giysini yükseltmek için gerekli olan malzeme. Aura giysini yükseltmek için Teovahdan'a git.
+49992	Auranýn Ateþ Runiði (50)	Aura giysini yükseltmek için gerekli olan malzeme. Aura giysini yükseltmek için Teovahdan'a git.
+49993	Auranýn Ateþ Runiði (100)	Aura giysini yükseltmek için gerekli olan malzeme. Aura giysini yükseltmek için Teovahdan'a git.
+49994	Auranýn Ateþ Runiði (250)	Aura giysini yükseltmek için gerekli olan malzeme. Aura giysini yükseltmek için Teovahdan'a git.
+49995	Auranýn Ateþ Runiði (500)	Aura giysini yükseltmek için gerekli olan malzeme. Aura giysini yükseltmek için Teovahdan'a git.

@@ -39,6 +39,13 @@ namespace NRaceData
 		JOB_MAX_NUM
 	};
 
+	enum ESex
+	{
+		SEX_MALE,
+		SEX_FEMALE,
+		SEX_MAX_NUM
+	};
+
 	// Character Attacking Data
 	enum EAttackType
 	{

@@ -110,9 +110,14 @@ enum EDragonSoulStepTypes
 #ifdef ENABLE_ACCE_SYSTEM
 	const DWORD	c_Costume_Slot_Acce		= c_Costume_Slot_Start + CItemData::COSTUME_ACCE;
 #endif
-
+#ifdef ENABLE_WEAPON_COSTUME_SYSTEM
+	const DWORD	c_Costume_Slot_Weapon = c_Costume_Slot_Start + CItemData::COSTUME_WEAPON; // c_Costume_Slot_End + 1;
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+	const DWORD c_Costume_Slot_Aura		= c_Costume_Slot_Start + CItemData::COSTUME_AURA;
+#endif
 #if defined(ENABLE_WEAPON_COSTUME_SYSTEM) || defined(ENABLE_ACCE_SYSTEM)
-	const DWORD c_Costume_Slot_Count	= 4;
+	const DWORD c_Costume_Slot_Count	= 6;
 #elif defined(ENABLE_MOUNT_COSTUME_SYSTEM)
 	const DWORD c_Costume_Slot_Count	= 3;
 #else
@@ -121,9 +126,8 @@ enum EDragonSoulStepTypes
 
 	const DWORD c_Costume_Slot_End		= c_Costume_Slot_Start + c_Costume_Slot_Count;
 
-#ifdef ENABLE_WEAPON_COSTUME_SYSTEM
-	const DWORD	c_Costume_Slot_Weapon	= c_Equipment_Start + CItemData::WEAR_COSTUME_WEAPON; // c_Costume_Slot_End + 1;
-#endif
+
+
 
 #endif
 
@@ -166,8 +170,52 @@ enum ESlotType
 	SLOT_TYPE_PRIVATE_SHOP,
 	SLOT_TYPE_MALL,
 	SLOT_TYPE_DRAGON_SOUL_INVENTORY,
+#ifdef ENABLE_AURA_SYSTEM
+	SLOT_TYPE_AURA,
+#endif
 	SLOT_TYPE_MAX,
 };
+
+#ifdef ENABLE_AURA_SYSTEM
+const BYTE c_AuraMaxLevel = 250;
+
+enum EAuraRefineInfoSlot
+{
+	AURA_REFINE_INFO_SLOT_CURRENT,
+	AURA_REFINE_INFO_SLOT_NEXT,
+	AURA_REFINE_INFO_SLOT_EVOLVED,
+	AURA_REFINE_INFO_SLOT_MAX
+};
+
+enum EAuraWindowType
+{
+	AURA_WINDOW_TYPE_ABSORB,
+	AURA_WINDOW_TYPE_GROWTH,
+	AURA_WINDOW_TYPE_EVOLVE,
+	AURA_WINDOW_TYPE_MAX,
+};
+
+enum EAuraSlotType
+{
+	AURA_SLOT_MAIN,
+	AURA_SLOT_SUB,
+	AURA_SLOT_RESULT,
+	AURA_SLOT_MAX
+};
+
+enum EAuraRefineInfoType
+{
+	AURA_REFINE_INFO_STEP,
+	AURA_REFINE_INFO_LEVEL_MIN,
+	AURA_REFINE_INFO_LEVEL_MAX,
+	AURA_REFINE_INFO_NEED_EXP,
+	AURA_REFINE_INFO_MATERIAL_VNUM,
+	AURA_REFINE_INFO_MATERIAL_COUNT,
+	AURA_REFINE_INFO_NEED_GOLD,
+	AURA_REFINE_INFO_EVOLVE_PCT,
+	AURA_REFINE_INFO_MAX
+};
+#endif
 
 enum EWindows
 {
@@ -177,8 +225,11 @@ enum EWindows
 	SAFEBOX,
 	MALL,
 	DRAGON_SOUL_INVENTORY,
-	GROUND,
+#ifdef ENABLE_AURA_SYSTEM
+	AURA_REFINE,
+#endif
 	BELT_INVENTORY,
+	GROUND,
 
 	WINDOW_TYPE_MAX,
 };
@@ -257,16 +308,24 @@ typedef struct SItemPos
 	}
 #endif
 
+	bool IsNPOS()
+	{
+		return (window_type == RESERVED_WINDOW && cell == WORD_MAX);
+	}
 	bool operator==(const struct SItemPos& rhs) const
 	{
 		return (window_type == rhs.window_type) && (cell == rhs.cell);
 	}
-
+	bool operator!=(const struct SItemPos& rhs) const
+	{
+		return (window_type != rhs.window_type) || (cell != rhs.cell);
+	}
 	bool operator<(const struct SItemPos& rhs) const
 	{
 		return (window_type < rhs.window_type) || ((window_type == rhs.window_type) && (cell < rhs.cell));
 	}
 } TItemPos;
+const TItemPos NPOS(RESERVED_WINDOW, WORD_MAX);
 #pragma pack(pop)
 
 const DWORD c_QuickBar_Line_Count = 3;
@@ -381,3 +440,6 @@ CResource* DefaultItalicFont_GetResource();
 void SetGuildSymbolPath(const char * c_szPathName);
 const char * GetGuildSymbolFileName(DWORD dwGuildID);
 BYTE SlotTypeToInvenType(BYTE bSlotType);
+#ifdef ENABLE_AURA_SYSTEM
+int* GetAuraRefineInfo(BYTE bLevel);
+#endif

@@ -33,6 +33,9 @@ class CInstanceBase
 #ifdef ENABLE_ACCE_SYSTEM
 			DWORD	m_dwAcce;
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+			DWORD	m_dwAura;
+#endif
 			DWORD	m_dwMountVnum;
 #ifdef ENABLE_GUILD_LEADER_GRADE_NAME
 		BYTE m_bGuildLeaderGrade;
@@ -443,13 +446,14 @@ class CInstanceBase
 		float __GetBowRange();
 
 	protected:
-		DWORD	__AttachEffect(UINT eEftType);
+		//DWORD	__AttachEffect(UINT eEftType);
+		DWORD	__AttachEffect(UINT eEftType, float fScale = 1.0f);
 		DWORD	__AttachEffect(char filename[128]);
 		void	__DetachEffect(DWORD dwEID);
 
 	public:
-		void CreateSpecialEffect(DWORD iEffectIndex);
-		void AttachSpecialEffect(DWORD effect);
+		void CreateSpecialEffect(DWORD iEffectIndex, float fScale = 1.0f);
+		void AttachSpecialEffect(DWORD effect, float fScale = 1.0f);
 
 	protected:
 		static std::string ms_astAffectEffectAttachBone[EFFECT_NUM];
@@ -528,6 +532,10 @@ class CInstanceBase
 #ifdef ENABLE_ACCE_SYSTEM
 		void					SetAcce(DWORD dwAcce);
 		void					ChangeAcce(DWORD dwAcce);
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+		bool	SetAura(DWORD eAura);
+		void	ChangeAura(DWORD eAura);
 #endif
 		bool					SetWeapon(DWORD eWeapon);
 		bool					ChangeArmor(DWORD dwArmor);
@@ -1030,7 +1038,9 @@ class CInstanceBase
 #ifdef ENABLE_ACCE_SYSTEM
 		DWORD					m_dwAcceEffect;
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+		DWORD	m_auraRefineEffect;
+#endif
 		struct SMoveAfterFunc
 		{
 			UINT eFunc;

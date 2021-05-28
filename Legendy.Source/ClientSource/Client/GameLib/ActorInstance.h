@@ -280,6 +280,7 @@ public:
 
 	void AttachWeapon(DWORD dwItemIndex, DWORD dwParentPartIndex = CRaceData::PART_MAIN, DWORD dwPartIndex = CRaceData::PART_WEAPON);
 	void AttachWeapon(DWORD dwParentPartIndex, DWORD dwPartIndex, CItemData* pItemData);
+	void ChangePart(DWORD dwPartIndex, DWORD dwItemIndex);
 
 	void RefreshActorInstance();
 	DWORD GetPartItemID(DWORD dwPartIndex);
@@ -289,7 +290,7 @@ public:
 	void UpdateAttachingInstances();
 	void  DettachEffect(DWORD dwEID);
 	DWORD AttachEffectByName(DWORD dwParentPartIndex, const char* c_pszBoneName, const char* c_pszEffectFileName);
-	DWORD AttachEffectByID(DWORD dwParentPartIndex, const char* c_pszBoneName, DWORD dwEffectID, const D3DXVECTOR3* c_pv3Position = NULL);
+	DWORD AttachEffectByID(DWORD dwParentPartIndex, const char* c_pszBoneName, DWORD dwEffectID, const D3DXVECTOR3* c_pv3Position = NULL, float fParticleScale = 1.0f, const D3DXVECTOR3* c_pv3MeshScale = NULL);
 	DWORD AttachSmokeEffect(DWORD eSmoke);
 
 	/////////////////////////////////////////////////////////////////////////////////////

@@ -170,6 +170,7 @@ void CEffectInstance::__SetParticleData(CParticleSystemData * pData)
 	CParticleSystemInstance * pInstance = CParticleSystemInstance::New();
 	pInstance->SetDataPointer(pData);
 	pInstance->SetLocalMatrixPointer(&m_matGlobal);
+	pInstance->SetParticleScale(GetParticleScale());
 
 	m_ParticleInstanceVector.push_back(pInstance);
 }
@@ -178,6 +179,7 @@ void CEffectInstance::__SetMeshData(CEffectMeshScript * pMesh)
 	CEffectMeshInstance * pMeshInstance = CEffectMeshInstance::New();
 	pMeshInstance->SetDataPointer(pMesh);
 	pMeshInstance->SetLocalMatrixPointer(&m_matGlobal);
+	pMeshInstance->SetMeshScale(GetMeshScale());
 
 	m_MeshInstanceVector.push_back(pMeshInstance);
 }
@@ -269,7 +271,8 @@ void CEffectInstance::__Initialize()
 	m_pSoundInstanceVector = NULL;
 	m_fBoundingSphereRadius = 0.0f;
 	m_v3BoundingSpherePosition.x = m_v3BoundingSpherePosition.y = m_v3BoundingSpherePosition.z = 0.0f;
-
+	m_fParticleScale = 1.0f;
+	m_v3MeshScale.x = m_v3MeshScale.y = m_v3MeshScale.z = 1.0f;
 	m_pkEftData=NULL;
 
 	D3DXMatrixIdentity(&m_matGlobal);

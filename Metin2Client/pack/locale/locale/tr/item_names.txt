@@ -7827,18 +7827,6 @@ VNUM	LOCALE_NAME
 45507	Maske (k)
 45508	Maske+ (e)
 45509	Maske+ (k)
-49001	Genel Aura Giysisi
-49002	Sade Aura Giysisi
-49003	Soylu Aura Giysisi
-49004	Iþýltýlý Aura Giysisi
-49005	Gösteriþli Aura Giysisi
-49006	Parlak Aura Giysisi
-49990	Auranýn Buz Runiði
-49991	Auranýn Ateþ Runiði (10)
-49992	Auranýn Ateþ Run. (50)
-49993	Auranýn Ateþ Run. (100)
-49994	Auranýn Ateþ Run. (250)
-49995	Auranýn Ateþ Run. (500)
 50001	Ýyi Þans Kitabý
 50002	Altýn Yüzük
 50003	Beceri Sýfýrlama Kaðýdý
@@ -9990,3 +9978,38 @@ VNUM	LOCALE_NAME
 165200	Mitsi ejderha oniksi
 165300	Mitsi ejderha oniksi
 165400	Mitsi ejderha oniksi
+49001	Genel Aura Giysisi
+49002	Sade Aura Giysisi
+49003	Soylu Aura Giysisi
+49004	Iþýltýlý Aura Giysisi
+49005	Gösteriþli Aura Giysisi
+49006	Parlak Aura Giysisi
+49011	Genel Aura Giysisi 2
+49012	Sade Aura Giysisi 2
+49013	Soylu Aura Giysisi 2
+49014	Iþýltýlý Aura Giysisi 2
+49015	Gösteriþli Aura Giysisi 2
+49016	Parlak Aura Giysisi 2
+49021	Genel Aura Giysisi 3
+49022	Sade Aura Giysisi 3
+49023	Soylu Aura Giysisi 3
+49024	Iþýltýlý Aura Giysisi 3
+49025	Gösteriþli Aura Giysisi 3
+49026	Parlak Aura Giysisi 3
+49031	Genel Aura Giysisi 4
+49032	Sade Aura Giysisi 4
+49033	Soylu Aura Giysisi 4
+49034	Iþýltýlý Aura Giysisi 4
+49035	Gösteriþli Aura Giysisi 4
+49036	Parlak Aura Giysisi 4
+49980	Aura Temizleyici
+49981	Aura Güçlendirici (Küçük)
+49982	Aura Güçlendirici (Orta)
+49983	Aura Güçlendirici (Büyük)
+49984	Aura Güçlendirici (Özel)
+49990	Auranýn Buz Runiði
+49991	Auranýn Ateþ Runiði (10)
+49992	Auranýn Ateþ Runiði (50)
+49993	Auranýn Ateþ Runiði (100)
+49994	Auranýn Ateþ Runiði (250)
+49995	Auranýn Ateþ Runiði (500)

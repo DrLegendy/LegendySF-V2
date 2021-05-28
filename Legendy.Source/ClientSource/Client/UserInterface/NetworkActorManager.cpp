@@ -81,7 +81,9 @@ void SNetworkActorData::__copy__(const SNetworkActorData& src)
 #ifdef ENABLE_ACCE_SYSTEM
 	m_dwAcce = src.m_dwAcce;
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+	m_dwAura = src.m_dwAura;
+#endif
 	m_dwOwnerVID = src.m_dwOwnerVID;
 
 	m_sAlignment = src.m_sAlignment;
@@ -115,7 +117,9 @@ SNetworkActorData::SNetworkActorData()
 #ifdef ENABLE_ACCE_SYSTEM
 	m_dwAcce = 0;
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+	m_dwAura = 0;
+#endif
 	m_dwEmpireID=0;
 
 	m_dwOwnerVID=0;
@@ -373,6 +377,9 @@ CInstanceBase* CNetworkActorManager::__AppendCharacterManagerActor(SNetworkActor
 #ifdef ENABLE_ACCE_SYSTEM
 	kCreateData.m_dwAcce = rkNetActorData.m_dwAcce;
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+	kCreateData.m_dwAura = rkNetActorData.m_dwAura;
+#endif
 	kCreateData.m_isMain=__IsMainActorVID(dwVID);
 
 	CInstanceBase* pOldInstance = rkChrMgr.GetInstancePtr(dwVID);
@@ -493,6 +500,9 @@ void CNetworkActorManager::UpdateActor(const SNetworkUpdateActorData& c_rkNetUpd
 #ifdef ENABLE_ACCE_SYSTEM
 		pkInstFind->ChangeAcce(c_rkNetUpdateActorData.m_dwAcce);
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+		pkInstFind->ChangeAura(c_rkNetUpdateActorData.m_dwAura);
+#endif
 #ifdef ENABLE_GUILD_LEADER_GRADE_NAME
 		pkInstFind->ChangeGuild(c_rkNetUpdateActorData.m_dwGuildID, c_rkNetUpdateActorData.m_bGuildLeaderGrade);
 #else
@@ -534,6 +544,9 @@ void CNetworkActorManager::UpdateActor(const SNetworkUpdateActorData& c_rkNetUpd
 #endif
 	rkNetActorData.m_sAlignment=c_rkNetUpdateActorData.m_sAlignment;
 	rkNetActorData.m_byPKMode=c_rkNetUpdateActorData.m_byPKMode;
+#ifdef ENABLE_AURA_SYSTEM
+	rkNetActorData.m_dwAura = c_rkNetUpdateActorData.m_dwAura;
+#endif
 }
 
 void CNetworkActorManager::MoveActor(const SNetworkMoveActorData& c_rkNetMoveActorData)

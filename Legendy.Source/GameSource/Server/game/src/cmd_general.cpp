@@ -1992,6 +1992,16 @@ ACMD(do_costume)
 #ifdef ENABLE_WEAPON_COSTUME_SYSTEM
 	CItem* pWeapon = ch->GetWear(WEAR_COSTUME_WEAPON);
 #endif
+#ifdef __AURA_SYSTEM__
+	CItem* pAura = ch->GetWear(WEAR_COSTUME_AURA);
+	if (pAura)
+	{
+		const char* itemName = pAura->GetName();
+		ch->ChatPacket(CHAT_TYPE_INFO, "  AURA : %s", itemName);
+		if (pAura->IsEquipped() && arg1[0] == 'a')
+			ch->UnequipItem(pAura);
+	}
+#endif
 
 	ch->ChatPacket(CHAT_TYPE_INFO, "COSTUME status:");
 

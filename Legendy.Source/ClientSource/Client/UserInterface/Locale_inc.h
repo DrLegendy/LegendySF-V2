@@ -66,6 +66,7 @@
 #define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM										// Yere Sat-Sil Sistemi
 #define ENABLE_GUILD_LEADER_GRADE_NAME											// Lonca Lider-General Sistemi
 #define ENABLE_TARGET_INFORMATION_SYSTEM										// Mob info Sistemi
+#define ENABLE_AURA_SYSTEM
 /*
 	###		New Debugging Defines
 */

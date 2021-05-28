@@ -129,7 +129,9 @@ bool CPythonNetworkStream::RecvCharacterAppendPacket()
 #ifdef ENABLE_ACCE_SYSTEM
 	kNetActorData.m_dwAcce = 0;
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+	kNetActorData.m_dwAura = 0;/* chrAddPacket.awPart[CHR_EQUIPPART_AURA]*/
+#endif
 	kNetActorData.m_dwMountVnum=0;/*chrAddPacket.dwMountVnum*/;
 #ifdef ENABLE_GUILD_LEADER_GRADE_NAME
 	kNetActorData.m_bGuildLeaderGrade = 0;
@@ -181,6 +183,9 @@ bool CPythonNetworkStream::RecvCharacterAdditionalInfo()
 		kNetActorData.m_dwHair		= chrInfoPacket.awPart[CHR_EQUIPPART_HAIR];
 #ifdef ENABLE_ACCE_SYSTEM
 		kNetActorData.m_dwAcce		= chrInfoPacket.awPart[CHR_EQUIPPART_ACCE];
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+		kNetActorData.m_dwAura = chrInfoPacket.awPart[CHR_EQUIPPART_AURA];
 #endif
 		kNetActorData.m_dwMountVnum	= chrInfoPacket.dwMountVnum;
 #ifdef ENABLE_GUILD_LEADER_GRADE_NAME
@@ -256,6 +261,9 @@ bool CPythonNetworkStream::RecvCharacterUpdatePacket()
 #ifdef ENABLE_ACCE_SYSTEM
 	kNetUpdateActorData.m_dwAcce		= chrUpdatePacket.awPart[CHR_EQUIPPART_ACCE];
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+	kNetUpdateActorData.m_dwAura = chrUpdatePacket.awPart[CHR_EQUIPPART_AURA];
+#endif
 	kNetUpdateActorData.m_dwVID			=chrUpdatePacket.dwVID;
 
 
@@ -268,6 +276,7 @@ bool CPythonNetworkStream::RecvCharacterUpdatePacket()
 #ifdef ENABLE_GUILD_LEADER_GRADE_NAME
 	kNetUpdateActorData.m_bGuildLeaderGrade = chrUpdatePacket.bGuildLeaderGrade;
 #endif
+
 	__RecvCharacterUpdatePacket(&kNetUpdateActorData);
 
 	return true;

@@ -113,7 +113,7 @@ class CItemData
 			ITEM_TYPE_MAX_NUM,
 		};
 
-#ifdef __UNIMPLEMENTED__
+
 		enum EResourceSubTypes
 		{
 			RESOURCE_FISHBONE = 0,
@@ -128,8 +128,12 @@ class CItemData
 			RESOURCE_STONE = 9,
 			RESOURCE_METIN = 10,
 			RESOURCE_ORE = 11,
+#ifdef ENABLE_AURA_SYSTEM
+			RESOURCE_AURA,
+#endif
 		};
 
+#ifdef __UNIMPLEMENTED__
 		enum EPetSubTypes
 		{
 			PET_EGG = 0,
@@ -145,6 +149,20 @@ class CItemData
 			MEDIUM_MOVE_COSTUME_ATTR = 0,
 		};
 #endif
+
+		enum EWeddingItem
+		{
+			WEDDING_TUXEDO1 = 11901,
+			WEDDING_TUXEDO2 = 11902,
+			WEDDING_BRIDE_DRESS1 = 11903,
+			WEDDING_BRIDE_DRESS2 = 11904,
+			WEDDING_TUXEDO3 = 11911,
+			WEDDING_TUXEDO4 = 11912,
+			WEDDING_BRIDE_DRESS3 = 11913,
+			WEDDING_BRIDE_DRESS4 = 11914,
+			WEDDING_BOUQUET1 = 50201,
+			WEDDING_BOUQUET2 = 50202,
+		};
 
 		enum EWeaponSubTypes
 		{
@@ -207,6 +225,9 @@ class CItemData
 #ifdef ENABLE_WEAPON_COSTUME_SYSTEM
 			COSTUME_WEAPON	= 4,		//4
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+			COSTUME_AURA	= 5,
+#endif
 			COSTUME_NUM_TYPES,
 		};
 
@@ -246,6 +267,9 @@ class CItemData
 #ifdef ENABLE_USE_COSTUME_ATTR
 			USE_CHANGE_COSTUME_ATTR,			// 31
 			USE_RESET_COSTUME_ATTR,				// 32
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+			USE_PUT_INTO_AURA_SOCKET,			// xx AURA_BOOSTER
 #endif
 		};
 
@@ -354,22 +378,22 @@ class CItemData
 			WEAR_ABILITY8,  // 18
 			WEAR_COSTUME_BODY,	// 19
 			WEAR_COSTUME_HAIR,	// 20
-
-			WEAR_RING1,
 #ifdef ENABLE_MOUNT_COSTUME_SYSTEM
-			WEAR_COSTUME_MOUNT = WEAR_RING1, // costume_mount == ring1
+			WEAR_COSTUME_MOUNT,
 #endif
-
-			WEAR_RING2,
 #ifdef ENABLE_ACCE_SYSTEM
-			WEAR_COSTUME_ACCE = WEAR_RING2, // costume_acce == ring2
+			WEAR_COSTUME_ACCE,
 #endif
-
+#ifdef ENABLE_WEAPON_COSTUME_SYSTEM
+			WEAR_COSTUME_WEAPON,// 26
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+			WEAR_COSTUME_AURA,//27
+#endif
+			WEAR_RING1,
+			WEAR_RING2,
 			WEAR_BELT,
 
-#ifdef ENABLE_WEAPON_COSTUME_SYSTEM
-			WEAR_COSTUME_WEAPON,// 24
-#endif
 
 			WEAR_MAX_NUM = 32,
 		};
@@ -837,6 +861,52 @@ class CItemData
 		TItemTable m_ItemTable;
 #ifdef ENABLE_ACCE_SYSTEM
 		TScaleTable	m_ScaleTable;
+#endif
+
+#ifdef ENABLE_AURA_SYSTEM
+	public:
+		enum EAuraGradeType
+		{
+			AURA_GRADE_NONE,
+			AURA_GRADE_ORDINARY,
+			AURA_GRADE_SIMPLE,
+			AURA_GRADE_NOBLE,
+			AURA_GRADE_SPARKLING,
+			AURA_GRADE_MAGNIFICENT,
+			AURA_GRADE_RADIANT,
+			AURA_GRADE_MAX_NUM,
+		};
+		enum EAuraItem
+		{
+			AURA_BOOST_ITEM_VNUM_BASE = 49980
+		};
+		enum EAuraBoostIndex
+		{
+			ITEM_AURA_BOOST_ERASER,
+			ITEM_AURA_BOOST_WEAK,
+			ITEM_AURA_BOOST_NORMAL,
+			ITEM_AURA_BOOST_STRONG,
+			ITEM_AURA_BOOST_ULTIMATE,
+			ITEM_AURA_BOOST_MAX,
+		};
+
+	protected:
+		typedef struct SAuraScaleTable
+		{
+			D3DXVECTOR3 v3MeshScale[NRaceData::SEX_MAX_NUM][NRaceData::JOB_MAX_NUM];
+			float fParticleScale[NRaceData::SEX_MAX_NUM][NRaceData::JOB_MAX_NUM];
+		} TAuraScaleTable;
+
+		TAuraScaleTable m_AuraScaleTable;
+		DWORD m_dwAuraEffectID;
+
+	public:
+		void SetAuraScaleTableData(BYTE byJob, BYTE bySex, float fMeshScaleX, float fMeshScaleY, float fMeshScaleZ, float fParticleScale);
+		D3DXVECTOR3& GetAuraMeshScaleVector(BYTE byJob, BYTE bySex);
+		float GetAuraParticleScale(BYTE byJob, BYTE bySex);
+
+		void SetAuraEffectID(const char* szAuraEffectPath);
+		DWORD GetAuraEffectID() const { return m_dwAuraEffectID; }
 #endif
 
 	public:

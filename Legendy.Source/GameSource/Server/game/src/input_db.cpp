@@ -1178,7 +1178,11 @@ void CInputDB::SafeboxLoad(LPDESC d, const char * c_pData)
 	LPCHARACTER ch = d->GetCharacter();
 
 	//PREVENT_TRADE_WINDOW
-	if (ch->GetShopOwner() || ch->GetExchange() || ch->GetMyShop() || ch->IsCubeOpen() )
+	if (ch->GetShopOwner() || ch->GetExchange() || ch->GetMyShop() || ch->IsCubeOpen() 
+#ifdef __AURA_SYSTEM__
+		|| ch->IsAuraRefineWindowOpen()
+#endif
+		)
 	{
 		d->GetCharacter()->ChatPacket(CHAT_TYPE_INFO, LC_TEXT("다른거래창이 열린상태에서는 창고를 열수가 없습니다." ) );
 		d->GetCharacter()->CancelSafeboxLoad();

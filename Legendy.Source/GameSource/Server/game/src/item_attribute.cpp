@@ -22,6 +22,11 @@ int CItem::GetAttributeSetIndex()
 		return ATTRIBUTE_SET_WEAPON;
 	}
 
+#ifdef __AURA_SYSTEM__
+	if (GetType() == ITEM_COSTUME && GetSubType() == COSTUME_AURA)
+		return -1;
+#endif
+
 	if (GetType() == ITEM_ARMOR)
 	{
 		switch (GetSubType())

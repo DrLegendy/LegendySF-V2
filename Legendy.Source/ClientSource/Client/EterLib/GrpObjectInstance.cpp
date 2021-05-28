@@ -20,7 +20,8 @@ void CGraphicObjectInstance::Clear()
 	m_isVisible = TRUE;
 
 	m_v3Position.x = m_v3Position.y = m_v3Position.z = 0.0f;
-	m_v3Scale.x = m_v3Scale.y = m_v3Scale.z = 0.0f;
+	//m_v3Scale.x = m_v3Scale.y = m_v3Scale.z = 0.0f;
+	m_v3Scale.x = m_v3Scale.y = m_v3Scale.z = 1.0f;
 	//m_fRotation = 0.0f;
 	m_fYaw = m_fPitch = m_fRoll = 0.0f;
 	D3DXMatrixIdentity(&m_worldMatrix);
@@ -31,6 +32,12 @@ void CGraphicObjectInstance::Clear()
 	D3DXMatrixIdentity(&m_PositionMatrix);
 	D3DXMatrixIdentity(&m_TransformMatrix);
 #endif
+
+	m_v3ScaleAcce.x = m_v3ScaleAcce.y = m_v3ScaleAcce.z = 0.0f;
+	m_bAttachedAcceRace = 0;
+	D3DXMatrixIdentity(&m_matAbsoluteTrans);
+	D3DXMatrixIdentity(&m_matScale);
+	D3DXMatrixIdentity(&m_matScaleWorld);
 
 	ZeroMemory(m_abyPortalID, sizeof(m_abyPortalID));
 
@@ -112,7 +119,8 @@ void CGraphicObjectInstance::Transform()
 	D3DXMATRIX tmp1;
 	D3DXMatrixMultiply(&tmp1, &m_PositionMatrix, &m_mRotation);
 
-	m_worldMatrix = tmp1;
+	//m_worldMatrix = tmp1;
+	m_worldMatrix = m_matScaleWorld * m_mRotation;
 	m_worldMatrix._41 += m_v3Position.x;
 	m_worldMatrix._42 += m_v3Position.y;
 	m_worldMatrix._43 += m_v3Position.z;
@@ -233,6 +241,27 @@ void CGraphicObjectInstance::SetScale(float x, float y, float z)
 #endif
 }
 
+void CGraphicObjectInstance::SetScaleWorld(float x, float y, float z)
+{
+	m_v3Scale.x = x;
+	m_v3Scale.y = y;
+	m_v3Scale.z = z;
+	D3DXMatrixScaling(&m_matScaleWorld, x, y, z);
+}
+
+void CGraphicObjectInstance::SetAcceScale(float x, float y, float z)
+{
+	m_v3ScaleAcce.x = x;
+	m_v3ScaleAcce.y = y;
+	m_v3ScaleAcce.z = z;
+}
+
+void CGraphicObjectInstance::SetAcceScale(const D3DXVECTOR3& rv3Scale, BYTE bRace)
+{
+	m_v3ScaleAcce = rv3Scale;
+	m_bAttachedAcceRace = bRace;
+}
+
 void CGraphicObjectInstance::Show()
 {
 	m_isVisible = true;
@@ -322,7 +351,8 @@ void CGraphicObjectInstance::Initialize()
 
 	m_v3Position.x = m_v3Position.y = m_v3Position.z = 0.0f;
 #ifdef ENABLE_OBJ_SCALLING
-	m_v3Scale.x = m_v3Scale.y = m_v3Scale.z = 0.0f;
+	//m_v3Scale.x = m_v3Scale.y = m_v3Scale.z = 0.0f;
+	m_v3Scale.x = m_v3Scale.y = m_v3Scale.z = 1.0f;
 #else
 	m_v3Scale.x = m_v3Scale.y = m_v3Scale.z = 1.0f;
 #endif
@@ -338,6 +368,11 @@ void CGraphicObjectInstance::Initialize()
 	D3DXMatrixIdentity(&m_PositionMatrix);
 	D3DXMatrixIdentity(&m_TransformMatrix);
 #endif
+
+	m_v3ScaleAcce.x = m_v3ScaleAcce.y = m_v3ScaleAcce.z = 0.0f;
+	D3DXMatrixIdentity(&m_matAbsoluteTrans);
+	D3DXMatrixIdentity(&m_matScale);
+	D3DXMatrixIdentity(&m_matScaleWorld);
 
 	OnInitialize();
 }

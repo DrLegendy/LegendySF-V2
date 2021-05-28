@@ -25,7 +25,9 @@ class CRaceData
 #ifdef ENABLE_ACCE_SYSTEM
 			PART_ACCE,
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+			PART_AURA,
+#endif
 			PART_MAX_NUM,
 		};
 

@@ -329,7 +329,11 @@ void Cube_open(LPCHARACTER ch)
 	}
 
 
-	if (ch->GetExchange() || ch->GetMyShop() || ch->GetShopOwner() || ch->IsOpenSafebox() || ch->IsCubeOpen() || ch->isAcceOpened(true) || ch->isAcceOpened(false))
+	if (ch->GetExchange() || ch->GetMyShop() || ch->GetShopOwner() || ch->IsOpenSafebox() || ch->IsCubeOpen() || ch->isAcceOpened(true) || ch->isAcceOpened(false)
+#ifdef __AURA_SYSTEM__
+		|| ch->IsAuraRefineWindowOpen()
+#endif
+		)
 	{
 		ch->ChatPacket(CHAT_TYPE_INFO, "Cannot open refinement window");
 		return;

@@ -130,21 +130,23 @@ enum EWearPositions
 	WEAR_COSTUME_BODY,	// 19
 	WEAR_COSTUME_HAIR,	// 20
 
-	WEAR_RING1,
 #ifdef ENABLE_MOUNT_COSTUME_SYSTEM
-	WEAR_COSTUME_MOUNT = WEAR_RING1, // costume_mount == ring1
+	WEAR_COSTUME_MOUNT,//23
 #endif
-
-	WEAR_RING2,
 #ifdef ENABLE_ACCE_SYSTEM
-	WEAR_COSTUME_ACCE = WEAR_RING2, // costume_acce == ring2
+	WEAR_COSTUME_ACCE,//24
 #endif
-
-	WEAR_BELT,
-
 #ifdef ENABLE_WEAPON_COSTUME_SYSTEM
-	WEAR_COSTUME_WEAPON,
+	WEAR_COSTUME_WEAPON,//26
 #endif
+#ifdef __AURA_SYSTEM__
+	WEAR_COSTUME_AURA,//27
+#endif
+
+	WEAR_RING1,//21
+	WEAR_RING2,//22
+	WEAR_BELT,//25
+
 
 	WEAR_MAX = 32	//
 };
@@ -262,6 +264,9 @@ enum EParts
 	PART_HAIR,
 #ifdef ENABLE_ACCE_SYSTEM
 	PART_ACCE,
+#endif
+#ifdef __AURA_SYSTEM__
+	PART_AURA,
 #endif
 	PART_MAX_NUM,
 	PART_WEAPON_SUB,
@@ -519,6 +524,9 @@ enum EWindows
 	SAFEBOX,
 	MALL,
 	DRAGON_SOUL_INVENTORY,
+#ifdef __AURA_SYSTEM__
+	AURA_REFINE,
+#endif
 	BELT_INVENTORY,
 	GROUND
 };
@@ -849,6 +857,10 @@ typedef struct SItemPos
 	{
 		return (window_type < rhs.window_type) || ((window_type == rhs.window_type) && (cell < rhs.cell));
 	}
+	bool operator!=(const struct SItemPos& rhs) const
+	{
+		return (window_type != rhs.window_type) || (cell != rhs.cell);
+	}
 } TItemPos;
 
 const TItemPos NPOS(RESERVED_WINDOW, WORD_MAX);
@@ -864,6 +876,69 @@ typedef enum
 	SHOP_COIN_TYPE_GOLD, // DEFAULT VALUE
 	SHOP_COIN_TYPE_SECONDARY_COIN,
 } EShopCoinType;
+
+
+#ifdef __AURA_SYSTEM__
+typedef struct SAuraRefineInfo
+{
+	BYTE bAuraRefineInfoLevel;
+	BYTE bAuraRefineInfoExpPercent;
+} TAuraRefineInfo;
+
+enum EAuraMisc
+{
+	AURA_MAX_LEVEL = 250,
+	AURA_REFINE_MAX_DISTANCE = 1000,
+};
+
+enum EAuraWindowType
+{
+	AURA_WINDOW_TYPE_ABSORB,
+	AURA_WINDOW_TYPE_GROWTH,
+	AURA_WINDOW_TYPE_EVOLVE,
+	AURA_WINDOW_TYPE_MAX,
+};
+
+enum EAuraSlotType
+{
+	AURA_SLOT_MAIN,
+	AURA_SLOT_SUB,
+	AURA_SLOT_RESULT,
+	AURA_SLOT_MAX
+};
+
+enum EAuraGradeType
+{
+	AURA_GRADE_NONE,
+	AURA_GRADE_ORDINARY,
+	AURA_GRADE_SIMPLE,
+	AURA_GRADE_NOBLE,
+	AURA_GRADE_SPARKLING,
+	AURA_GRADE_MAGNIFICENT,
+	AURA_GRADE_RADIANT,
+	AURA_GRADE_MAX_NUM,
+};
+enum EAuraRefineInfoType
+{
+	AURA_REFINE_INFO_STEP,
+	AURA_REFINE_INFO_LEVEL_MIN,
+	AURA_REFINE_INFO_LEVEL_MAX,
+	AURA_REFINE_INFO_NEED_EXP,
+	AURA_REFINE_INFO_MATERIAL_VNUM,
+	AURA_REFINE_INFO_MATERIAL_COUNT,
+	AURA_REFINE_INFO_NEED_GOLD,
+	AURA_REFINE_INFO_EVOLVE_PCT,
+	AURA_REFINE_INFO_MAX
+};
+
+enum ERefineInfoType
+{
+	AURA_REFINE_INFO_SLOT_CURRENT,
+	AURA_REFINE_INFO_SLOT_NEXT,
+	AURA_REFINE_INFO_SLOT_EVOLVED,
+	AURA_REFINE_INFO_SLOT_MAX
+};
+#endif
 
 #pragma pack(pop)
 

@@ -928,6 +928,15 @@ bool LoadLocaleData(const char* localePath)
 	rkItemMgr.Destroy();
 	rkSkillMgr.Destroy();
 
+#ifdef ENABLE_AURA_SYSTEM
+	char szAuraScale[256];
+	snprintf(szAuraScale, sizeof(szAuraScale), "%s/aura_scale.txt", localePath);
+	if (!rkItemMgr.LoadAuraScale(szAuraScale))
+	{
+		TraceError("LoadLocaleData - LoadAuraScale(%s) Error", szAuraScale);
+	}
+#endif
+
 	if (!rkItemMgr.LoadItemList(szItemList))
 	{
 		TraceError("LoadLocaleData - LoadItemList(%s) Error", szItemList);

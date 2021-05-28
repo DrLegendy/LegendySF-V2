@@ -101,6 +101,9 @@ BYTE c_aSlotTypeToInvenType[SLOT_TYPE_MAX] =
 	RESERVED_WINDOW,		// SLOT_TYPE_PRIVATE_SHOP
 	RESERVED_WINDOW,
 	DRAGON_SOUL_INVENTORY,	// SLOT_TYPE_DRAGON_SOUL_INVENTORY
+	#ifdef ENABLE_AURA_SYSTEM
+	AURA_REFINE,			// SLOT_TYPE_AURA
+#endif
 };
 
 BYTE SlotTypeToInvenType(BYTE bSlotType)
@@ -110,3 +113,29 @@ BYTE SlotTypeToInvenType(BYTE bSlotType)
 	else
 		return c_aSlotTypeToInvenType[bSlotType];
 }
+
+#ifdef ENABLE_AURA_SYSTEM
+static int s_aiAuraRefineInfo[CItemData::AURA_GRADE_MAX_NUM][AURA_REFINE_INFO_MAX] = {
+	{1,   1,  49,  1000, 30617, 10,  5000000, 100},
+	{2,  50,  99,  2000, 31136, 10,  5000000, 100},
+	{3, 100, 149,  4000, 31137, 10,  5000000, 100},
+	{4, 150, 199,  8000, 31138, 10,  8000000, 100},
+	{5, 200, 249, 16000, 31138, 20, 10000000, 100},
+	{6, 250, 250,     0,     0,  0,        0,   0},
+	{0,   0,   0,     0,     0,  0,        0,   0}
+};
+
+int* GetAuraRefineInfo(BYTE bLevel)
+{
+	if (bLevel > 250)
+		return NULL;
+
+	for (int i = 0; i < CItemData::AURA_GRADE_MAX_NUM + 1; ++i)
+	{
+		if (bLevel >= s_aiAuraRefineInfo[i][AURA_REFINE_INFO_LEVEL_MIN] && bLevel <= s_aiAuraRefineInfo[i][AURA_REFINE_INFO_LEVEL_MAX])
+			return s_aiAuraRefineInfo[i];
+	}
+
+	return NULL;
+}
+#endif

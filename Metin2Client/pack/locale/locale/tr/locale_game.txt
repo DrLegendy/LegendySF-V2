@@ -1,3 +1,35 @@
+AURA_BOOST_DRAIN_PER	Bonus Absorbsiyon +%d%%
+AURA_DRAIN_PER	Absorbsiyon oraný %.1f%%
+AURA_DRAIN_BOOST_PER	Absorbsiyon oraný %.1f%% (+%d%%)
+AURA_EVOLUTION_GOLD	[Aura] Yetersiz yang.
+AURA_IMPOSSIBLE_ABSORBITEM	[Aura] Bu nesne absorbe edilemez.
+AURA_IMPOSSIBLE_EQUIPITEM	[Aura] Giyili itemler absorbe edilemez.
+AURA_IMPOSSIBLE_EVOLUTION_ITEM	[Aura] Dönüþtürülemez.
+AURA_IMPOSSIBLE_EVOLUTION_ITEMCOUNT	[Aura] Dönüþüm için yetersiz nesne.
+AURA_IMPOSSIBLE_GROWTHITEM	[Aura] Geliþtirilemez.
+AURA_IMPOSSIBLE_GROWTHITEM2	[Aura] Malzemeleri ekleyin.
+AURA_IMPOSSIBLE_REFINEITEM	[Aura] Sadece kalkan, kolye, küpe ve bilezik eklenebilir.
+AURA_IMPOSSIBLE_REFINEITEM2	[Aura] Sadece Aura giysi, kalkan, kolye, küpe ve bilezik eklenebilir.
+AURA_IMPOSSIBLE_SEALITEM	[Aura] Ruha baðlý nesneler eklenemez.
+AURA_ITEM_NEED_REGISTER	[Aura] Öðeleri ekleyin.
+AURA_LEVEL_STEP	Lv %d (Derece %d)
+AURA_MAX_LEVEL	[Aura] Aura kýyafeti maksimum seviyeye ulaþtý.
+AURA_NOTICE_DEL_ABSORDITEM	[Aura] Absorbe edilen nesne yok olacaktýr.
+AURA_OPEN_OTHER_WINDOW	Yükseltme, Dönüþtürme ve Absorbsiyon penceresi açýkken bu iþlemi gerçekleþtiremezsiniz.
+AURA_POSSIBLE_AURAITEM	[Aura] Sadece Aura kýyafeti kullanýlabilir.
+AURA_POSSIBLE_AURARESOURCE	[Aura] Sadece Aura Buz Runiði ve Aura Ateþ Runiði eklenebilir.
+AURA_POSSIBLE_REGISTER_AURAITEM	[Aura] Ýlk önce Aura kýyafetini eklemelisiniz.
+AURA_TITLE_ABSORB	Bonus Absorbsiyon Penceresi
+AURA_TITLE_EVOLUTION	Aura Dönüþtürme
+AURA_TITLE_GROWTH	Aura Yükseltme
+AURA_TOOLTIP_EVOLUTION_PER	Þans: %d%%
+AURA_TOOLTIP_EXP	EXP (%d%% / 100%%)
+AURA_TOOLTIP_LEVEL	Lvl%d (Derece %d) (Absorbsiyon oraný %.1f%%)
+AURA_TOOLTIP_NEED_YANG	%s Yang
+AURA_TOOLTIP_NEXT	Yeni
+AURA_TOOLTIP_NOW	Akým
+AURA_TOOLTIP_RESOURCE	Sarf malzemeleri
+AURA_TOOLTIP_RESOURCE_ITEM	%s * %d
 MOVE_CHANNEL_TITLE	Kanal seçimi
 NOT_POSSIBLE	Ýmkansýz
 TARGET_INFO_RESISTS	Dayanýklýlýk:

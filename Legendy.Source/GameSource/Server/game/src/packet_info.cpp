@@ -243,6 +243,9 @@ CPacketInfoCG::CPacketInfoCG()
 #ifdef ENABLE_ACCE_SYSTEM
 	Set(HEADER_CG_ACCE, sizeof(TPacketAcce), "Acce", true);
 #endif
+#ifdef __AURA_SYSTEM__
+	Set(HEADER_CG_AURA, sizeof(TPacketCGAura), "Aura", true);
+#endif
 #ifdef ENABLE_CUBE_RENEWAL_WORLDARD
 	Set(HEADER_CG_CUBE_RENEWAL, sizeof(TPacketCGCubeRenewalSend), "CubeRenewalSend", true);
 #endif

@@ -1246,6 +1246,10 @@ class GameWindow(ui.ScriptWindow):
 			elif player.SLOT_TYPE_DRAGON_SOUL_INVENTORY == attachedType:
 				self.__PutItem(attachedType, attachedItemIndex, attachedItemSlotPos, attachedItemCount, self.PickingCharacterIndex)
 
+			## Aura System
+			elif app.ENABLE_AURA_SYSTEM and player.SLOT_TYPE_AURA == attachedType:
+				self.__PutItem(attachedType, attachedItemIndex, attachedItemSlotPos, attachedItemCount, self.PickingCharacterIndex)
+
 			mouseModule.mouseController.DeattachObject()
 
 		else:
@@ -1281,6 +1285,9 @@ class GameWindow(ui.ScriptWindow):
 					self.interface.DeleteItem(attachedItemSlotPos, attachedInvenType)
 				else:
 					self.__DropItem(attachedType, attachedItemIndex, attachedItemSlotPos, attachedItemCount)
+
+		if app.ENABLE_AURA_SYSTEM and player.SLOT_TYPE_AURA == attachedType:
+			self.__DropItem(attachedType, attachedItemIndex, attachedItemSlotPos, attachedItemCount)
 
 	def __PutMoney(self, attachedType, attachedMoney, dstChrID):
 		if True == chr.HasInstance(dstChrID) and player.GetMainCharacterIndex() != dstChrID:
@@ -1364,6 +1371,9 @@ class GameWindow(ui.ScriptWindow):
 				self.itemDropQuestionDialog = itemDropQuestionDialog
 
 				constInfo.SET_ITEM_QUESTION_DIALOG_STATUS(1)
+
+			if app.ENABLE_AURA_SYSTEM and player.SLOT_TYPE_AURA == attachedType:
+				net.SendAuraRefineCheckOut(attachedItemSlotPos, player.GetAuraRefineWindowType())
 
 	def RequestDropItem(self, answer):
 		if not self.itemDropQuestionDialog:
@@ -2159,6 +2169,13 @@ class GameWindow(ui.ScriptWindow):
 			snd.FadeOutAllMusic()
 			musicInfo.LoadLastPlayFieldMusic()
 			snd.FadeInMusic("BGM/" + musicInfo.fieldMusic)
+
+	if app.ENABLE_AURA_SYSTEM:
+		def AuraWindowOpen(self, type):
+			self.interface.AuraWindowOpen(type)
+
+		def AuraWindowClose(self):
+			self.interface.AuraWindowClose()
 
 	if app.ENABLE_TARGET_INFORMATION_SYSTEM:
 		def BINARY_AddTargetMonsterDropInfo(self, raceNum, itemVnum, itemCount):

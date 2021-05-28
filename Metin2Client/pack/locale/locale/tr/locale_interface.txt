@@ -1,3 +1,5 @@
+AURA_MAIN	Aura Kýyafeti
+AURA_SUB	Malzeme
 SYSTEM_MOVE_CHANNEL	Kanal deðiþtir
 QUEST_CATEGORY_00	Ana Görevler
 QUEST_CATEGORY_01	Yan Görevler

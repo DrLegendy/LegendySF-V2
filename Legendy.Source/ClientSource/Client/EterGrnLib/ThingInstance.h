@@ -41,7 +41,7 @@ class CGraphicThingInstance : public CGraphicObjectInstance
 		bool		Picking(const D3DXVECTOR3 & v, const D3DXVECTOR3 & dir, float & out_x, float & out_y);
 
 		void		OnInitialize();
-
+		void		RecalcAccePositionMatrixFromBoneMatrix();
 		bool		CreateDeviceObjects();
 		void		DestroyDeviceObjects();
 

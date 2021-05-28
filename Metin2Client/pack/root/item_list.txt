@@ -9920,18 +9920,6 @@
 45503	ETC	icon/item/45503.tga
 45504	ETC	icon/item/45504.tga
 45505	ETC	icon/item/45505.tga
-49001	AURA	icon/item/49001.tga	d:/ymir work/pc/common/effect/aura/aura_01_49_001.mse
-49002	AURA	icon/item/49002.tga	d:/ymir work/pc/common/effect/aura/aura_50_99_002.mse
-49003	AURA	icon/item/49003.tga	d:/ymir work/pc/common/effect/aura/aura_100_149_003.mse
-49004	AURA	icon/item/49004.tga	d:/ymir work/pc/common/effect/aura/aura_150_199_004.mse
-49005	AURA	icon/item/49005.tga	d:/ymir work/pc/common/effect/aura/aura_200_249_005.mse
-49006	AURA	icon/item/49006.tga	d:/ymir work/pc/common/effect/aura/aura_250_006.mse
-49990	ETC	icon/item/49990.tga
-49991	ETC	icon/item/49991.tga
-49992	ETC	icon/item/49991.tga
-49993	ETC	icon/item/49991.tga
-49994	ETC	icon/item/49991.tga
-49995	ETC	icon/item/49991.tga
 50001	ETC	icon/item/50001.tga
 50002	ETC	icon/item/50002.tga
 50003	ETC	icon/item/50003.tga
@@ -12447,3 +12435,38 @@
 53587	ETC	icon/item/53501.tga
 53588	ETC	icon/item/53501.tga
 53589	ETC	icon/item/53501.tga
+49001	AURA	icon/item/49001.tga	d:/ymir work/pc/common/effect/aura/aura_01_49_001.mse
+49002	AURA	icon/item/49002.tga	d:/ymir work/pc/common/effect/aura/aura_50_99_002.mse
+49003	AURA	icon/item/49003.tga	d:/ymir work/pc/common/effect/aura/aura_100_149_003.mse
+49004	AURA	icon/item/49004.tga	d:/ymir work/pc/common/effect/aura/aura_150_199_004.mse
+49005	AURA	icon/item/49005.tga	d:/ymir work/pc/common/effect/aura/aura_200_249_005.mse
+49006	AURA	icon/item/49006.tga	d:/ymir work/pc/common/effect/aura/aura_250_006.mse
+49011	AURA	icon/item/49011.tga	d:/ymir work/pc/common/effect/aura/aura_01_49_011.mse
+49012	AURA	icon/item/49012.tga	d:/ymir work/pc/common/effect/aura/aura_50_99_012.mse
+49013	AURA	icon/item/49013.tga	d:/ymir work/pc/common/effect/aura/aura_100_149_013.mse
+49014	AURA	icon/item/49014.tga	d:/ymir work/pc/common/effect/aura/aura_150_199_014.mse
+49015	AURA	icon/item/49015.tga	d:/ymir work/pc/common/effect/aura/aura_200_249_015.mse
+49016	AURA	icon/item/49016.tga	d:/ymir work/pc/common/effect/aura/aura_250_016.mse
+49021	AURA	icon/item/49021.tga	d:/ymir work/pc/common/effect/aura/aura_01_49_021.mse
+49022	AURA	icon/item/49022.tga	d:/ymir work/pc/common/effect/aura/aura_50_99_022.mse
+49023	AURA	icon/item/49023.tga	d:/ymir work/pc/common/effect/aura/aura_100_149_023.mse
+49024	AURA	icon/item/49024.tga	d:/ymir work/pc/common/effect/aura/aura_150_199_024.mse
+49025	AURA	icon/item/49025.tga	d:/ymir work/pc/common/effect/aura/aura_200_249_025.mse
+49026	AURA	icon/item/49026.tga	d:/ymir work/pc/common/effect/aura/aura_250_026.mse
+49031	AURA	icon/item/49031.tga	d:/ymir work/pc/common/effect/aura/aura_01_49_031.mse
+49032	AURA	icon/item/49032.tga	d:/ymir work/pc/common/effect/aura/aura_50_99_032.mse
+49033	AURA	icon/item/49033.tga	d:/ymir work/pc/common/effect/aura/aura_100_149_033.mse
+49034	AURA	icon/item/49034.tga	d:/ymir work/pc/common/effect/aura/aura_150_199_034.mse
+49035	AURA	icon/item/49035.tga	d:/ymir work/pc/common/effect/aura/aura_200_249_035.mse
+49036	AURA	icon/item/49036.tga	d:/ymir work/pc/common/effect/aura/aura_250_036.mse
+49980	ETC	icon/item/49980.tga
+49981	ETC	icon/item/49981.tga
+49982	ETC	icon/item/49982.tga
+49983	ETC	icon/item/49983.tga
+49984	ETC	icon/item/49984.tga
+49990	ETC	icon/item/49990.tga
+49991	ETC	icon/item/49991.tga
+49992	ETC	icon/item/49991.tga
+49993	ETC	icon/item/49991.tga
+49994	ETC	icon/item/49991.tga
+49995	ETC	icon/item/49991.tga

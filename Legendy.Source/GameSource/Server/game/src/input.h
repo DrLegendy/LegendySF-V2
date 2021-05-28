@@ -171,6 +171,9 @@ class CInputMain : public CInputProcessor
 #ifdef ENABLE_ACCE_SYSTEM
 		void		Acce(LPCHARACTER pkChar, const char* c_pData);
 #endif
+#ifdef __AURA_SYSTEM__
+		int			Aura(LPCHARACTER ch, const char* data, size_t uiBytes);
+#endif
 		void		Roulette(LPCHARACTER ch, const char* c_pData);
 };
 

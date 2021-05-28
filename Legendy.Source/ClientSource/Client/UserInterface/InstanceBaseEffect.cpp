@@ -213,9 +213,9 @@ void CInstanceBase::ProcessDamage()
 	}
 }
 
-void CInstanceBase::AttachSpecialEffect(DWORD effect)
+void CInstanceBase::AttachSpecialEffect(DWORD effect, float fScale)
 {
-	__AttachEffect(effect);
+	__AttachEffect(effect, fScale);
 }
 
 void CInstanceBase::LevelUp()
@@ -228,13 +228,13 @@ void CInstanceBase::SkillUp()
 	__AttachEffect(EFFECT_SKILLUP);
 }
 
-void CInstanceBase::CreateSpecialEffect(DWORD iEffectIndex)
+void CInstanceBase::CreateSpecialEffect(DWORD iEffectIndex, float fScale)
 {
-	const D3DXMATRIX & c_rmatGlobal = m_GraphicThingInstance.GetTransform();
+	const D3DXMATRIX& c_rmatGlobal = m_GraphicThingInstance.GetTransform();
 
 	DWORD dwEffectIndex = CEffectManager::Instance().GetEmptyIndex();
 	DWORD dwEffectCRC = ms_adwCRCAffectEffect[iEffectIndex];
-	CEffectManager::Instance().CreateEffectInstance(dwEffectIndex, dwEffectCRC);
+	CEffectManager::Instance().CreateEffectInstanceWithScale(dwEffectIndex, dwEffectCRC, fScale);
 	CEffectManager::Instance().SelectEffectInstance(dwEffectIndex);
 	CEffectManager::Instance().SetEffectInstanceGlobalMatrix(c_rmatGlobal);
 }
@@ -268,7 +268,7 @@ DWORD CInstanceBase::__EffectContainer_AttachEffect(DWORD dwEftKey)
 	if (rkDctEftID.end()!=f)
 		return 0;
 
-	DWORD dwEftID=__AttachEffect(dwEftKey);
+	DWORD dwEftID = __AttachEffect(dwEftKey, m_GraphicThingInstance.GetScale().x);
 	rkDctEftID.insert(SEffectContainer::Dict::value_type(dwEftKey, dwEftID));
 	return dwEftID;
 }
@@ -1023,7 +1023,7 @@ void CInstanceBase::__DetachEffect(DWORD dwEID)
 	m_GraphicThingInstance.DettachEffect(dwEID);
 }
 
-DWORD CInstanceBase::__AttachEffect(UINT eEftType)
+DWORD CInstanceBase::__AttachEffect(UINT eEftType, float fScale)
 {
 #ifdef ENABLE_CANSEEHIDDENTHING_FOR_GM
 	if (IsAffect(AFFECT_INVISIBILITY) && !__MainCanSeeHiddenThing())
@@ -1038,7 +1038,7 @@ DWORD CInstanceBase::__AttachEffect(UINT eEftType)
 
 	if (ms_astAffectEffectAttachBone[eEftType].empty())
 	{
-		return m_GraphicThingInstance.AttachEffectByID(0, NULL, ms_adwCRCAffectEffect[eEftType]);
+		return m_GraphicThingInstance.AttachEffectByID(0, NULL, ms_adwCRCAffectEffect[eEftType], (const D3DXVECTOR3*)NULL, fScale);
 	}
 	else
 	{
@@ -1060,7 +1060,7 @@ DWORD CInstanceBase::__AttachEffect(UINT eEftType)
 		}
 		else
 		{
-			return m_GraphicThingInstance.AttachEffectByID(0, rstrBoneName.c_str(), ms_adwCRCAffectEffect[eEftType]);
+			return m_GraphicThingInstance.AttachEffectByID(0, rstrBoneName.c_str(), ms_adwCRCAffectEffect[eEftType], (const D3DXVECTOR3*)NULL, fScale);
 		}
 	}
 

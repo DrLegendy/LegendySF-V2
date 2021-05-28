@@ -45,6 +45,9 @@ import uiScriptLocale
 import event
 import localeInfo
 
+if app.ENABLE_AURA_SYSTEM:
+	import uiaura
+
 if app.ENABLE_ACCE_SYSTEM:
 	import uiacce
 
@@ -205,6 +208,10 @@ class Interface(object):
 			self.wndDragonSoulRefine.SetInventoryWindows(self.wndInventory, self.wndDragonSoul)
 			self.wndInventory.SetDragonSoulRefineWindow(self.wndDragonSoulRefine)
 
+		if app.ENABLE_AURA_SYSTEM:
+			wndAura = uiaura.AuraWindow()
+			self.wndAura = wndAura
+
 	def __MakeDialogs(self):
 		self.dlgExchange = uiExchange.ExchangeDialog()
 		self.dlgExchange.LoadDialog()
@@ -348,6 +355,9 @@ class Interface(object):
 		if app.ENABLE_ACCE_SYSTEM:
 			self.wndAcceCombine.SetItemToolTip(self.tooltipItem)
 			self.wndAcceAbsorption.SetItemToolTip(self.tooltipItem)
+
+		if app.ENABLE_AURA_SYSTEM:
+			self.wndAura.SetItemToolTip(self.tooltipItem)
 
 		# ITEM_MALL
 		self.wndMall.SetItemToolTip(self.tooltipItem)
@@ -500,6 +510,10 @@ class Interface(object):
 				self.wndCubeRenewal.Destroy()
 				self.wndCubeRenewal.Close()
 
+		if app.ENABLE_AURA_SYSTEM:
+			if self.wndAura:
+				self.wndAura.Destroy()
+
 		self.wndChatLog.Destroy()
 		for btn in self.questButtonList:
 			btn.SetEvent(0)
@@ -557,7 +571,8 @@ class Interface(object):
 		del self.tipBoard
 		del self.bigBoard
 		del self.wndItemSelect
-
+		if app.ENABLE_AURA_SYSTEM:
+			del self.wndAura
 		if app.ENABLE_ACCE_SYSTEM:
 			del self.wndAcceCombine
 			del self.wndAcceAbsorption
@@ -616,6 +631,10 @@ class Interface(object):
 		self.wndInventory.RefreshItemSlot()
 		if app.ENABLE_DRAGON_SOUL_SYSTEM:
 			self.wndDragonSoul.RefreshItemSlot()
+		if app.ENABLE_AURA_SYSTEM:
+			if player.IsAuraRefineWindowOpen():
+				if self.wndAura and self.wndAura.IsShow():
+					self.wndAura.RefreshAuraWindow()
 
 	def RefreshCharacter(self):
 		self.wndCharacter.RefreshCharacter()
@@ -914,6 +933,9 @@ class Interface(object):
 		if self.wndExpandedTaskBar:
 			self.wndExpandedTaskBar.Hide()
 
+		if app.ENABLE_AURA_SYSTEM:
+			if self.wndAura:
+				self.wndAura.Hide()
 
 	def ShowMouseImage(self):
 		self.wndTaskBar.ShowMouseImage()
@@ -1323,6 +1345,11 @@ class Interface(object):
 		#	chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.CANNOT_OPEN_PRIVATE_SHOP_IN_SAFE_AREA)
 		#	return
 
+		if app.ENABLE_AURA_SYSTEM:
+			if self.wndAura and self.wndAura.IsShow():
+				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.AURA_OPEN_OTHER_WINDOW)
+				return
+
 		inputDialog = uiCommon.InputDialog()
 		inputDialog.SetTitle(localeInfo.PRIVATE_SHOP_INPUT_NAME_DIALOG_TITLE)
 		inputDialog.SetMaxLength(32)
@@ -1342,6 +1369,11 @@ class Interface(object):
 
 		if not len(self.inputDialog.GetText()):
 			return True
+
+		if app.ENABLE_AURA_SYSTEM:
+			if self.wndAura and self.wndAura.IsShow():
+				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.AURA_OPEN_OTHER_WINDOW)
+				return
 
 		self.privateShopBuilder.Open(self.inputDialog.GetText())
 		self.ClosePrivateShopInputNameDialog()
@@ -1799,6 +1831,30 @@ class Interface(object):
 		def DeleteItem(self, slotPos, invenType):
 			if self.wndInventory:
 				self.wndInventory.DeleteItem(slotPos, invenType)
+
+	if app.ENABLE_AURA_SYSTEM:
+		def AuraWindowOpen(self, type):
+			if self.wndAura.IsShow():
+				return
+
+			if self.inputDialog or self.privateShopBuilder.IsShow():# or shop.GetNameDialogOpen():
+				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.ACCE_NOT_OPEN_PRIVATE_SHOP)
+				return
+
+			if self.dlgRefineNew and self.dlgRefineNew.IsShow():
+				chat.AppendChat(chat.CHAT_TYPE_INFO, localeInfo.ACCE_NOT_OPEN_REFINE)
+				return
+
+			self.wndAura.Open(type)
+
+			if not self.wndInventory.IsShow():
+				self.wndInventory.Show()
+
+		def AuraWindowClose(self):
+			if not self.wndAura.IsShow():
+				return
+
+			self.wndAura.CloseWindow()
 
 if __name__ == "__main__":
 

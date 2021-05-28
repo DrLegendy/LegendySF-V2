@@ -137,7 +137,11 @@ int get_Item_SubType_Value(unsigned int type_value, string inputString)
 				"USE_INVISIBILITY", "USE_DETACHMENT", "USE_BUCKET", "USE_POTION_CONTINUE", "USE_CLEAN_SOCKET",
 				"USE_CHANGE_ATTRIBUTE", "USE_ADD_ATTRIBUTE", "USE_ADD_ACCESSORY_SOCKET", "USE_PUT_INTO_ACCESSORY_SOCKET",
 				"USE_ADD_ATTRIBUTE2", "USE_RECIPE", "USE_CHANGE_ATTRIBUTE2", "USE_BIND", "USE_UNBIND", "USE_TIME_CHARGE_PER", "USE_TIME_CHARGE_FIX", "USE_PUT_INTO_BELT_SOCKET", "USE_PUT_INTO_RING_SOCKET",
-				"USE_CHANGE_COSTUME_ATTR", "USE_RESET_COSTUME_ATTR", "USE_UNK33", "USE_CHANGE_ATTRIBUTE_PLUS" };
+				"USE_CHANGE_COSTUME_ATTR", "USE_RESET_COSTUME_ATTR",
+#ifdef __AURA_SYSTEM__
+				"USE_PUT_INTO_AURA_SOCKET",
+#endif
+				"USE_UNK33", "USE_CHANGE_ATTRIBUTE_PLUS" };
 	static string arSub4[] = { "AUTOUSE_POTION", "AUTOUSE_ABILITY_UP", "AUTOUSE_BOMB", "AUTOUSE_GOLD", "AUTOUSE_MONEYBAG", "AUTOUSE_TREASURE_BOX" };
 	static string arSub5[] = { "MATERIAL_LEATHER", "MATERIAL_BLOOD", "MATERIAL_ROOT", "MATERIAL_NEEDLE", "MATERIAL_JEWEL",
 		"MATERIAL_DS_REFINE_NORMAL", "MATERIAL_DS_REFINE_BLESSED", "MATERIAL_DS_REFINE_HOLLY" };
@@ -148,10 +152,18 @@ int get_Item_SubType_Value(unsigned int type_value, string inputString)
 	static string arSub12[] = { "FISH_ALIVE", "FISH_DEAD" };
 	static string arSub14[] = { "RESOURCE_FISHBONE", "RESOURCE_WATERSTONEPIECE", "RESOURCE_WATERSTONE", "RESOURCE_BLOOD_PEARL",
 						"RESOURCE_BLUE_PEARL", "RESOURCE_WHITE_PEARL", "RESOURCE_BUCKET", "RESOURCE_CRYSTAL", "RESOURCE_GEM",
-						"RESOURCE_STONE", "RESOURCE_METIN", "RESOURCE_ORE" };
+						"RESOURCE_STONE", "RESOURCE_METIN", "RESOURCE_ORE"
+#ifdef __AURA_SYSTEM__
+						, "RESOURCE_AURA"
+#endif
+	};
 	static string arSub16[] = { "UNIQUE_NONE", "UNIQUE_BOOK", "UNIQUE_SPECIAL_RIDE", "UNIQUE_3", "UNIQUE_4", "UNIQUE_5",
 					"UNIQUE_6", "UNIQUE_7", "UNIQUE_8", "UNIQUE_9", "USE_SPECIAL" };
-	static string arSub28[] = { "COSTUME_BODY", "COSTUME_HAIR", "COSTUME_MOUNT", "COSTUME_ACCE", "COSTUME_WEAPON" };
+	static string arSub28[] = { "COSTUME_BODY", "COSTUME_HAIR", "COSTUME_MOUNT", "COSTUME_ACCE", "COSTUME_WEAPON"
+#ifdef __AURA_SYSTEM__
+		, "COSTUME_AURA"
+#endif
+	};
 	static string arSub29[] = { "DS_SLOT1", "DS_SLOT2", "DS_SLOT3", "DS_SLOT4", "DS_SLOT5", "DS_SLOT6" };
 	static string arSub31[] = { "EXTRACT_DRAGON_SOUL", "EXTRACT_DRAGON_HEART" };
 
@@ -486,8 +498,8 @@ int get_Item_ApplyType_Value(string inputString)
 			//cout << j << " ";
 			retInt = j;
 			break;
+		}
 	}
-}
 	//cout << endl;
 
 	return retInt;
@@ -516,7 +528,7 @@ int get_Mob_Rank_Value(string inputString)
 			retInt = j;
 			break;
 		}
-}
+	}
 	//cout << endl;
 
 	return retInt;
@@ -542,7 +554,7 @@ int get_Mob_Type_Value(string inputString)
 			retInt = j;
 			break;
 		}
-}
+	}
 	//cout << endl;
 
 	return retInt;
@@ -567,7 +579,7 @@ int get_Mob_BattleType_Value(string inputString)
 			retInt = j;
 			break;
 		}
-}
+	}
 	//cout << endl;
 
 	return retInt;
@@ -592,7 +604,7 @@ int get_Mob_Size_Value(string inputString)
 			retInt = j + 1;
 			break;
 		}
-}
+	}
 	//cout << endl;
 
 	return retInt;
@@ -620,8 +632,8 @@ int get_Mob_AIFlag_Value(string inputString)
 
 			if (tempString2.compare("") == 0)
 				break;
+		}
 	}
-}
 	delete[]arInputString;
 	//cout << "AIFlag : " << aiFlagStr << " -> " << retValue << endl;
 
@@ -649,8 +661,8 @@ int get_Mob_RaceFlag_Value(string inputString)
 
 			if (tempString2.compare("") == 0)
 				break;
+		}
 	}
-}
 	delete[]arInputString;
 	//cout << "Race Flag : " << raceFlagStr << " -> " << retValue << endl;
 

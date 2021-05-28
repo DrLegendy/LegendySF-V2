@@ -82,7 +82,7 @@ enum eCommonDefines {
 #define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM															// Yere Sat-Sil Sistemi
 #define ENABLE_GUILD_LEADER_GRADE_NAME																// Lonca Lider-General Sistemi
 #define ENABLE_TARGET_INFORMATION_SYSTEM															// Mop Drop İnfo Sistemi
-
+#define __AURA_SYSTEM__																				// Aura Sistemi
 
 // ### CommonDefines Systems ###
 //////////////////////////////////////////////////////////////////////////

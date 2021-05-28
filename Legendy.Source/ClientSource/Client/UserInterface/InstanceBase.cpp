@@ -839,6 +839,9 @@ bool CInstanceBase::Create(const SCreateData& c_rkCreateData)
 #ifdef ENABLE_ACCE_SYSTEM
 		SetAcce(c_rkCreateData.m_dwAcce);
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+		SetAura(c_rkCreateData.m_dwAura);
+#endif
 	}
 
 	__Create_SetName(c_rkCreateData);
@@ -3131,6 +3134,9 @@ bool CInstanceBase::ChangeArmor(DWORD dwArmor)
 	DWORD dwAcce = GetPart(CRaceData::PART_ACCE);
 #endif
 	DWORD eWeapon = GetPart(CRaceData::PART_WEAPON);
+#ifdef ENABLE_AURA_SYSTEM
+	DWORD eAura = GetPart(CRaceData::PART_AURA);
+#endif
 	float fRot = GetRotation();
 	float fAdvRot = GetAdvancingRotation();
 
@@ -3152,6 +3158,9 @@ bool CInstanceBase::ChangeArmor(DWORD dwArmor)
 	SetWeapon(eWeapon);
 #ifdef ENABLE_ACCE_SYSTEM
 	SetAcce(dwAcce);
+#endif
+#ifdef ENABLE_AURA_SYSTEM
+	SetAura(eAura);
 #endif
 	SetRotation(fRot);
 	SetAdvancingRotation(fAdvRot);
@@ -3427,7 +3436,9 @@ void CInstanceBase::__Initialize()
 #ifdef ENABLE_ACCE_SYSTEM
 	m_dwAcceEffect = 0;
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+	m_auraRefineEffect = 0;
+#endif
 	m_sAlignment = 0;
 	m_byPKMode = 0;
 	m_isKiller = false;
@@ -3463,3 +3474,50 @@ void CInstanceBase::GetBoundBox(D3DXVECTOR3 * vtMin, D3DXVECTOR3 * vtMax)
 	m_GraphicThingInstance.GetBoundBox(vtMin, vtMax);
 }
 
+#ifdef ENABLE_AURA_SYSTEM
+void CInstanceBase::ChangeAura(DWORD eAura)
+{
+	if (m_GraphicThingInstance.GetPartItemID(CRaceData::PART_AURA) != eAura)
+		SetAura(eAura);
+}
+
+bool CInstanceBase::SetAura(DWORD eAura)
+{
+	if (!IsPC() || IsPoly() || __IsShapeAnimalWear())
+		return false;
+
+	m_GraphicThingInstance.ChangePart(CRaceData::PART_AURA, eAura);
+	if (!eAura)
+	{
+		if (m_auraRefineEffect)
+		{
+			__DetachEffect(m_auraRefineEffect);
+			m_auraRefineEffect = 0;
+		}
+		m_awPart[CRaceData::PART_AURA] = 0;
+		return true;
+	}
+
+	CItemData* pItemData;
+	if (!CItemManager::Instance().GetItemDataPointer(eAura, &pItemData))
+	{
+		if (m_auraRefineEffect)
+		{
+			__DetachEffect(m_auraRefineEffect);
+			m_auraRefineEffect = 0;
+		}
+		m_awPart[CRaceData::PART_AURA] = 0;
+		return true;
+	}
+
+	BYTE byRace = (BYTE)GetRace();
+	BYTE byJob = (BYTE)RaceToJob(byRace);
+	BYTE bySex = (BYTE)RaceToSex(byRace);
+
+	D3DXVECTOR3 v3MeshScale = pItemData->GetAuraMeshScaleVector(byJob, bySex);
+	float fParticleScale = pItemData->GetAuraParticleScale(byJob, bySex);
+	m_auraRefineEffect = m_GraphicThingInstance.AttachEffectByID(0, "Bip01 Spine2", pItemData->GetAuraEffectID(), NULL, fParticleScale, &v3MeshScale);
+	m_awPart[CRaceData::PART_AURA] = eAura;
+	return true;
+}
+#endif

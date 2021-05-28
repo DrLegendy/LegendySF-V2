@@ -172,7 +172,9 @@ enum
 #ifdef ENABLE_CUBE_RENEWAL_WORLDARD
 	HEADER_CG_CUBE_RENEWAL					= 207,
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+		HEADER_CG_AURA = 208,
+#endif
 	HEADER_CG_KEY_AGREEMENT						= 0xfb, // _IMPROVED_PACKET_ENCRYPTION_
 	HEADER_CG_TIME_SYNC							= 0xfc,
 	HEADER_CG_CLIENT_VERSION					= 0xfd,
@@ -379,7 +381,9 @@ enum
 #ifdef ENABLE_CUBE_RENEWAL_WORLDARD
 	HEADER_GC_CUBE_RENEWAL						= 214,
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+		HEADER_GC_AURA = 216,
+#endif
 	HEADER_GC_KEY_AGREEMENT_COMPLETED			= 0xfa, // _IMPROVED_PACKET_ENCRYPTION_
 	HEADER_GC_KEY_AGREEMENT						= 0xfb, // _IMPROVED_PACKET_ENCRYPTION_
 	HEADER_GC_HANDSHAKE_OK						= 0xfc, // 252
@@ -1341,7 +1345,9 @@ enum ECharacterEquipmentPart
 #ifdef ENABLE_ACCE_SYSTEM
 	CHR_EQUIPPART_ACCE,
 #endif
-
+#ifdef ENABLE_AURA_SYSTEM
+	CHR_EQUIPPART_AURA,
+#endif
 	CHR_EQUIPPART_NUM,
 };
 
@@ -3045,6 +3051,86 @@ typedef struct packet_target_info_load
 	BYTE header;
 	DWORD dwVID;
 } TPacketCGTargetInfoLoad;
+#endif
+
+
+#ifdef ENABLE_AURA_SYSTEM
+enum EPacketGCAuraSubHeader
+{
+	AURA_SUBHEADER_GC_OPEN,
+	AURA_SUBHEADER_GC_CLOSE,
+	AURA_SUBHEADER_GC_SET_ITEM,
+	AURA_SUBHEADER_GC_CLEAR_SLOT,
+	AURA_SUBHEADER_GC_CLEAR_ALL,
+	AURA_SUBHEADER_GC_CLEAR_RIGHT,
+	AURA_SUBHEADER_GC_REFINE_INFO,
+};
+
+typedef struct SSubPacketGCAuraOpenClose
+{
+	BYTE	bAuraWindowType;
+} TSubPacketGCAuraOpenClose;
+
+typedef struct SSubPacketGCAuraSetItem
+{
+	TItemPos	Cell;
+	TItemPos	AuraCell;
+	TItemData	pItem;
+} TSubPacketGCAuraSetItem;
+
+typedef struct SSubPacketGCAuraClearSlot
+{
+	BYTE	bAuraSlotPos;
+} TSubPacketGCAuraClearSlot;
+
+typedef struct SSubPacketGCAuraRefineInfo
+{
+	BYTE	bAuraRefineInfoType;
+	BYTE	bAuraRefineInfoLevel;
+	BYTE	bAuraRefineInfoExpPercent;
+} TSubPacketGCAuraRefineInfo;
+
+enum EPacketCGAuraSubHeader
+{
+	AURA_SUBHEADER_CG_REFINE_CHECKIN,
+	AURA_SUBHEADER_CG_REFINE_CHECKOUT,
+	AURA_SUBHEADER_CG_REFINE_ACCEPT,
+	AURA_SUBHEADER_CG_REFINE_CANCEL,
+};
+
+typedef struct SSubPacketCGAuraRefineCheckIn
+{
+	TItemPos	ItemCell;
+	TItemPos	AuraCell;
+	BYTE		byAuraRefineWindowType;
+} TSubPacketCGAuraRefineCheckIn;
+
+typedef struct SSubPacketCGAuraRefineCheckOut
+{
+	TItemPos	AuraCell;
+	BYTE		byAuraRefineWindowType;
+} TSubPacketCGAuraRefineCheckOut;
+
+typedef struct SSubPacketCGAuraRefineAccept
+{
+	BYTE		byAuraRefineWindowType;
+} TSubPacketCGAuraRefineAccept;
+
+typedef struct SPacketGCAura
+{
+	SPacketGCAura() : bHeader(HEADER_GC_AURA) {}
+	BYTE bHeader;
+	WORD wSize;
+	BYTE bSubHeader;
+} TPacketGCAura;
+
+typedef struct SPacketCGAura
+{
+	SPacketCGAura() : bHeader(HEADER_CG_AURA) {}
+	BYTE bHeader;
+	WORD wSize;
+	BYTE bSubHeader;
+} TPacketCGAura;
 #endif
 
 #pragma pack(pop)

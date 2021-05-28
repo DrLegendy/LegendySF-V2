@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "../eterLib/ResourceManager.h"
-
+#ifdef ENABLE_AURA_SYSTEM
+#include "../EffectLib/EffectManager.h"
+#endif
 #include "ItemData.h"
 
 CDynamicPool<CItemData>		CItemData::ms_kPool;
@@ -281,6 +283,10 @@ const char* CItemData::GetUseTypeString() const
 		case USE_RESET_COSTUME_ATTR:
 			return DEF_STR(USE_RESET_COSTUME_ATTR);
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+		case USE_PUT_INTO_AURA_SOCKET:
+			return DEF_STR(USE_PUT_INTO_AURA_SOCKET);
+#endif
 	}
 	return "USE_UNKNOWN_TYPE";
 }
@@ -455,6 +461,11 @@ void CItemData::Clear()
 #ifdef ENABLE_ACCE_SYSTEM
 	memset(&m_ScaleTable, 0, sizeof(m_ScaleTable));
 #endif
+#ifdef ENABLE_AURA_SYSTEM
+	memset(&m_AuraScaleTable, 0, sizeof(m_AuraScaleTable));
+	m_dwAuraEffectID = 0;
+#endif
+
 }
 
 CItemData::CItemData()
@@ -465,3 +476,29 @@ CItemData::CItemData()
 CItemData::~CItemData()
 {
 }
+
+#ifdef ENABLE_AURA_SYSTEM
+void CItemData::SetAuraScaleTableData(BYTE byJob, BYTE bySex, float fMeshScaleX, float fMeshScaleY, float fMeshScaleZ, float fParticleScale)
+{
+	m_AuraScaleTable.v3MeshScale[bySex][byJob].x = fMeshScaleX;
+	m_AuraScaleTable.v3MeshScale[bySex][byJob].y = fMeshScaleY;
+	m_AuraScaleTable.v3MeshScale[bySex][byJob].z = fMeshScaleZ;
+	m_AuraScaleTable.fParticleScale[bySex][byJob] = fParticleScale;
+}
+
+D3DXVECTOR3& CItemData::GetAuraMeshScaleVector(BYTE byJob, BYTE bySex)
+{
+	return m_AuraScaleTable.v3MeshScale[bySex][byJob];
+}
+
+float CItemData::GetAuraParticleScale(BYTE byJob, BYTE bySex)
+{
+	return m_AuraScaleTable.fParticleScale[bySex][byJob];
+}
+
+void CItemData::SetAuraEffectID(const char* szAuraEffectPath)
+{
+	if (szAuraEffectPath)
+		CEffectManager::Instance().RegisterEffect2(szAuraEffectPath, &m_dwAuraEffectID);
+}
+#endif

@@ -1548,7 +1548,10 @@ void CHARACTER::Dead(LPCHARACTER pkKiller, bool bImmediateDead)
 	CShopManager::instance().StopShopping(this);
 	CloseMyShop();
 	CloseSafebox();
-
+#ifdef __AURA_SYSTEM__
+	if (IsAuraRefineWindowOpen())
+		AuraRefineWindowClose();
+#endif
 	if (true == IsMonster() && 2493 == GetMobTable().dwVnum)
 	{
 		if (NULL != pkKiller && NULL != pkKiller->GetGuild())
