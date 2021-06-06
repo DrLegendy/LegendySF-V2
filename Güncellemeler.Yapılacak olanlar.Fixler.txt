@@ -105,6 +105,3 @@ EKLENEN SİSTEMLER
 #define ENABLE_AURA_SYSTEM						// Official Aura Sistemi
 -----------------------------------------------**********************************************------------------------------------------------
 
-GELECEK OLANLAR
-***************************
-Client directx 8 sürümünü 9.42 sürümüne uyarlı yükseltme

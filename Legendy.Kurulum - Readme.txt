@@ -61,3 +61,4 @@ account'a sað týklayýp Console seçeneðini seçiniz.
 Çýkan ekranda týrnak içerisindeki kýsmý giriniz. "select password ( "12345" );
 
 bu komut size 12345 þifresinin MD5 uzantýsýný verecektir. Daha sonrasýnda account password kýsmýna bu þifreyi girebilirsiniz.
+
