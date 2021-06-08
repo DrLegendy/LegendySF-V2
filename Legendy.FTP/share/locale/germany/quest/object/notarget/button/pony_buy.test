@@ -1,6 +1,0 @@
-say_title ( "Binicilik yeterliligi." ) 
-say ( "" ) 
-say_reward ( "30 dakika içerisinde 20 okçu " ) 
-say_reward ( "öldür ve seyise sonuç " ) 
-say_reward ( "hakkinda bilgi ver. " ) 
-say ( "" ) 

@@ -1,7 +1,0 @@
-if d . select ( get_server_timer_arg ( ) ) then 
-local set = snow_dungeon . get_settings ( ) 
-local v = set . Key_on_level_8 d . setf ( "level" , 8 ) 
-local cord = set . base_cord local pos = set . Position_level_8 d . jump_all ( ( cord [ 1 ] + pos [ 1 ] ) , ( cord [ 2 ] + pos [ 2 ] ) ) 
-notice_in_map ( "Yaratýklarý keserek " .. item_name ( v ) .. " düþürün." ) 
-notice_in_map ( "Bu nesnenin dilinden sadece Þaman ve Ninjalar anlayabiliyor..." ) 
-end 

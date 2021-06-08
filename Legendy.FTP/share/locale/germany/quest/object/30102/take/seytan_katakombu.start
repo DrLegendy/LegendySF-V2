@@ -1,5 +1,0 @@
-if item . vnum == 30312 then notice_in_map ( "Uzaklardan ulumalarý duyuluyor. Gaddar Azrail'i uyandýrdýnýz." ) 
-item . remove ( ) 
-npc . purge ( ) 
-timer ( "catacomb_kat_6" , 6 ) 
- return end 

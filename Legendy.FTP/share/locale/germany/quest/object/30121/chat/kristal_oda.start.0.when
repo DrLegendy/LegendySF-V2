@@ -1,1 +1,0 @@
-return pc . get_map_index ( ) == 73 and pc . get_channel_id ( ) == 1 or pc . get_channel_id ( ) == 2

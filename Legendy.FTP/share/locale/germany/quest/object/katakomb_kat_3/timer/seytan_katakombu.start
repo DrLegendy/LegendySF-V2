@@ -1,4 +1,0 @@
-d . jump_all ( 3072 + 1376 , 12032 + 250 ) 
-d . regen_file ( "data/dungeon/katakomb/catacomb_kat3.txt" ) 
-notice_in_map ( "Gerçek Misilleme Metinini bul ve yok et!" ) 
-d . setf ( "catacomb_metin" , 2 ) 

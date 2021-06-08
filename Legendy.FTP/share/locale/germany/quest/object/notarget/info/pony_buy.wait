@@ -1,4 +1,0 @@
-say_title ( "At resminin yapimi devam ediyor." ) 
-say ( "" ) 
-say_reward ( "At resmi tamamlandigi zaman" ) 
-say_reward ( "seyisin yanina git." ) 

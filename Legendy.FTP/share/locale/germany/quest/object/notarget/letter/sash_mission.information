@@ -1,5 +1,0 @@
-local v = find_npc_by_vnum ( 60003 ) 
-if v ~= 0 then 
-target . vid ( "theowahdan" , v , "Theowahdan" ) 
-end 
-send_letter ( "&Özel bir kumaþ " ) 

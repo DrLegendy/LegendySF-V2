@@ -1,8 +1,0 @@
-say_title ( "Bilgi:" ) 
-say ( "" ) 
-say ( "Seyis'e bir at madalyonu getir!" ) 
-say ( "Böylece binicilik egitimine katilabilirsin." ) 
-say ( "Bir at madalyonu almanin en kolay yolu," ) 
-say ( "ikinci köydeki Maymun Zindani'na gitmek." ) 
-setstate ( "start" ) 
-q . done ( ) 

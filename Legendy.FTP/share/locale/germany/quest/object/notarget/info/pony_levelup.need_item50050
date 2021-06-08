@@ -1,8 +1,0 @@
-say_title ( "At madalyonu bul!" ) 
-say ( "" ) 
-say_reward ( "Binicilik egitiminden mezun olabilmek için" ) 
-say_reward ( "bir at madalyonuna ihtiyacin var." ) 
-say_reward ( "Bunun en kolay yolu, Maymun Zindani'ndan almak." ) 
-say ( "" ) 
-setstate ( "start" ) 
-q . done ( ) 

@@ -1,3 +1,0 @@
-if d . select ( get_server_timer_arg ( ) ) then 
-snow_dungeon . _ExitAll ( ) 
-end 

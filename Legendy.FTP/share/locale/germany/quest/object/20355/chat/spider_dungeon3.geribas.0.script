@@ -1,7 +1,0 @@
-say_title ( "Yüzbaþý:" ) 
-say ( "" ) 
-say ( "Aferin, baþardýn! Göster bi..." ) 
-say ( "Hým, bu yazýlarý çözemiyorum, bir kelime dahi" ) 
-say ( "anlamýyorum. Bilgin Uriel'e danýþ en iyisi." ) 
-say ( "" ) 
-setstate ( "urielego" ) 

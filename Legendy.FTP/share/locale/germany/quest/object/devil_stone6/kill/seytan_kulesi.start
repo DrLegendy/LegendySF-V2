@@ -1,3 +1,0 @@
-timer ( "devil_jump_7" , 6 ) 
-d . kill_all ( ) 
-d . check_eliminated ( ) 

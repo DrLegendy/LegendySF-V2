@@ -1,2 +1,0 @@
-if pc . level > 0 then set_state ( "zone_enter" ) 
- return end 

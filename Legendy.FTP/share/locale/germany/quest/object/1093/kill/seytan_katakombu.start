@@ -1,7 +1,0 @@
-if pc . in_dungeon ( ) and pc . get_map_index ( ) >= 660000 and pc . get_map_index ( ) < 670000 then notice_in_map ( "Görevi başarıyla tamamladın." ) 
-notice_in_map ( "Seni Şeytan Katakombu'nda bekleyeceğim!" ) 
-notice_in_map ( "Peşimden gel, öfkem felaketin olsun!" ) 
-if pc . getqf ( "azraili_kestim" ) == 0 then 
-pc . setqf ( "azraili_kestim" , 1 ) 
-end 
- return end 

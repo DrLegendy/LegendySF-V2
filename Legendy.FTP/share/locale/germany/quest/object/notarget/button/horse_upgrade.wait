@@ -1,5 +1,0 @@
-say_title ( "Silah-at kitabini bekle" ) 
-say ( "" ) 
-say_reward ( "Seyis Silah-at kitabini hazirlayana" ) 
-say_reward ( "kadar bekle." ) 
-say ( "" ) 

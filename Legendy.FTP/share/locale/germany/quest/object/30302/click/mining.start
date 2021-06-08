@@ -1,3 +1,0 @@
-if pc . is_mount ( ) ~= true then 
-pc . mining ( ) 
-end 

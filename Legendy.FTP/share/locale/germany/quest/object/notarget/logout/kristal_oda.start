@@ -1,5 +1,0 @@
-if pc . get_map_index ( ) == 79 then 
-pc . delqf ( "icerdesin1" ) 
-pc . delqf ( "icerdesin2" ) 
-pc . delqf ( "lider" ) 
-end 

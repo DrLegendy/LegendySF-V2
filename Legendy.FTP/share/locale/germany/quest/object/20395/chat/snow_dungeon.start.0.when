@@ -1,1 +1,0 @@
-return ( party . is_party ( ) and d . find ( party . getf ( "ice_dungeon_map_index" ) ) )

@@ -1,5 +1,0 @@
-q . set_counter ( "Kalan Gururlu Ork Generali:" , 10 - pc . getqf ( "kill_count" ) ) 
-setskin ( NOWINDOW ) 
-makequestbutton ( "Gururlu Ork Generali öldür!" ) 
-q . set_title ( "Gururlu Ork Generali öldür!" ) 
-q . start ( ) 

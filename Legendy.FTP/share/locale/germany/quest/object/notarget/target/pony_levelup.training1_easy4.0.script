@@ -1,3 +1,0 @@
-target . delete ( "__TARGET__" ) 
-say ( "Nokta isaretlendi." ) 
-setstate ( "report" ) 

@@ -1,4 +1,0 @@
-setskin ( NOWINDOW ) 
-makequestbutton ( "At madalyonu bul!" ) 
-q . set_title ( "At madalyonu bul!" ) 
-q . start ( ) 

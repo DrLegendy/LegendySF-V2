@@ -1,9 +1,0 @@
-if pc . get_map_index ( ) == 66 then 
-if pc . get_x ( ) < 2048 + 88 or pc . get_y ( ) < 6656 + 577 or pc . get_x ( ) > 2048 + 236 or pc . get_y ( ) > 6656 + 737 then 
-pc . warp ( 590500 , 110500 ) 
-end 
-pc . set_warp_location ( 65 , 5905 , 1105 ) 
-elseif pc . get_map_index ( ) >= 660000 and pc . get_map_index ( ) < 670000 then 
-pc . set_warp_location ( 65 , 5905 , 1105 ) 
-seytan_kulesi . register_player ( pc . get_vid ( ) ) 
-end 

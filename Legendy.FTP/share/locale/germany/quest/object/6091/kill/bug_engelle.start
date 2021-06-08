@@ -1,2 +1,0 @@
-if pc . get_map_index ( ) == 351 then forked . warp_all_in_map ( "351" , "62" , 5980 * 100 , 7075 * 100 , 60 ) 
- return end 

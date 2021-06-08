@@ -1,2 +1,0 @@
-local set = snow_dungeon . get_settings ( ) 
-local v = set . BossVnumGroup d . spawn_group ( v , 928 , 335 , 5 , 1 , 1 ) 

@@ -1,7 +1,0 @@
-local set = snow_dungeon . get_settings ( ) 
-server_timer ( "Jp_Boss" , 3 , d . get_map_index ( ) ) 
-d . clear_regen ( ) 
-d . kill_all ( ) 
-d . regen_file ( "data/dungeon/ice_dungeon/zone_boss.txt" ) 
-local v = set . BossVnumGroup d . spawn_group ( v , 928 , 335 , 5 , 1 , 1 ) 
-setskin ( NOWINDOW ) 

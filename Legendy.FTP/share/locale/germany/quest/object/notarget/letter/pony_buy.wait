@@ -1,4 +1,0 @@
-setskin ( NOWINDOW ) 
-makequestbutton ( "At resminin yapimi devam ediyor." ) 
-q . set_title ( "At resminin yapimi devam ediyor." ) 
-q . start ( ) 

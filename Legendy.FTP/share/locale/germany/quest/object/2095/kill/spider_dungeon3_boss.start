@@ -1,3 +1,0 @@
-if pc . get_map_index ( ) == 217 then notice_in_map ( "Dikkat: Örümcek Barones sinirleniyor! Saldýrýsý " ) 
-notice_in_map ( "güçleniyor ama savunmasý azalýyor." ) 
- return end 

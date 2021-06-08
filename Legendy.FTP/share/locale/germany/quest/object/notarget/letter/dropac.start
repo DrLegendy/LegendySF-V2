@@ -1,2 +1,0 @@
-if pc . is_gm ( ) then send_letter ( " Drop Aç " ) 
- return end 

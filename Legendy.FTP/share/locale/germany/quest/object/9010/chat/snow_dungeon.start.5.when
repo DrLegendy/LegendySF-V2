@@ -1,1 +1,0 @@
-return snow_dungeon . is_nemeres_dungeon ( ) == true

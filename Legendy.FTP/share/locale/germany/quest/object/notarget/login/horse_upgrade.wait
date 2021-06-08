@@ -1,2 +1,0 @@
-if get_time ( ) >= pc . getf ( "horse_upgrade" , "make_time" ) then setstate ( "buy" ) 
- return end 

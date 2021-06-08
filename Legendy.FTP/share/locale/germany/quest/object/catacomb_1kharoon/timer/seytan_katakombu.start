@@ -1,3 +1,0 @@
-say ( "Kharoon'u öldürdün. Maðaranýn en son" ) 
-say ( "seviyesine ýþýnlanýyorsunuz." ) 
-timer ( "catacomb_kharoon" , 2 ) 

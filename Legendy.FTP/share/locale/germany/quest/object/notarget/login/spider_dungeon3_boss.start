@@ -1,2 +1,0 @@
-if pc . getqf ( "go_to_spider" ) == 1 then loop_timer ( "barones_check" , 1 ) 
- return end 

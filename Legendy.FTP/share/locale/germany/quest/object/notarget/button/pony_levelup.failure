@@ -1,7 +1,0 @@
-say_title ( "Binicilik egitimi basarisiz" ) 
-say ( "" ) 
-say_reward ( "Binicilik egitimin basarisiz oldu; " ) 
-say_reward ( "attan indin veya" ) 
-say_reward ( "baglantin kesildi." ) 
-say ( "" ) 
-setstate ( "start" ) 

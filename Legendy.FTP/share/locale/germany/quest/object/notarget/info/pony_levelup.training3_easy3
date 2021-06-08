@@ -1,6 +1,0 @@
-say_title ( "Her noktaya at sür." ) 
-say ( "" ) 
-say_reward ( "Harikada isaretlenen her noktaya" ) 
-say_reward ( "atini sür. Eger attan inersen" ) 
-say_reward ( "egitimin basarisiz olacak." ) 
-say ( "" ) 

@@ -1,3 +1,0 @@
-game . set_event_flag ( "kuleazrail" , 0 ) 
-notice_in_map ( "Süre bitti!" ) 
-d . exit_all ( ) 

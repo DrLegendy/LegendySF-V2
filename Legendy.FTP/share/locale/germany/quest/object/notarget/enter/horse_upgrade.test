@@ -1,2 +1,0 @@
-pc . setqf ( "limit_time" , get_time ( ) + 30 * 60 ) 
-pc . setqf ( "kill_count" , 0 ) 

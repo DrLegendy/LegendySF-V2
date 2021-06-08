@@ -1,5 +1,0 @@
-say_title ( "Özel bir kumaþ " ) 
-say ( mob_name ( 60003 ) .. " seni görmek istiyor. Onu ziyaret et ve" ) 
-say ( "hikayesini dinle." ) 
-say ( "" ) 
-say_reward ( "Mini Harita'daki yanýp sönen noktayý takip et." ) 

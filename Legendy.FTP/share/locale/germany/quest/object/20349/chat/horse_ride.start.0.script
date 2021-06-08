@@ -1,6 +1,0 @@
-local msg = "Attan inmek istiyor musun?" 
-say ( msg ) 
-local s = select ( "in" , "inme" ) 
-if s == 1 then 
-pc . unmount ( ) 
-end 

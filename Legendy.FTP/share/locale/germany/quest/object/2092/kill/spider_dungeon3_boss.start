@@ -1,8 +1,0 @@
-if pc . get_map_index ( ) == 217 then notice_in_map ( "Örümcek Barones yok edildi! Tüm savaþçýlar otuz " ) 
-notice_in_map ( "saniye içinde yuvadan dýþarý ýþýnlanacak." ) 
-if not pc . is_gm ( ) then 
-party . setqf ( "sen_girdin" , get_time ( ) + 30 ) 
-end 
-party . setqf ( "2092" , 1 ) 
-game . set_event_flag ( "spider_use_time" , get_time ( ) + 30 ) 
- return end 

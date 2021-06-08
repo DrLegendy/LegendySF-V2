@@ -1,2 +1,0 @@
-pc . setf ( "flame_dungeon" , "exit_time" , get_global_time ( ) - 1800 ) 
-say ( "Geri" ) 

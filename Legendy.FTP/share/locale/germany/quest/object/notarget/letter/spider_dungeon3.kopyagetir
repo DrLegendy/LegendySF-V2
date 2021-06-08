@@ -1,5 +1,0 @@
-local v = find_npc_by_vnum ( 30130 ) 
-if v ~= 0 and pc . get_map_index ( ) == 217 then 
-target . vid ( "__TARGET__" , v , "Mezar Tasi" ) 
-end 
-send_letter ( "Yazý " ) 

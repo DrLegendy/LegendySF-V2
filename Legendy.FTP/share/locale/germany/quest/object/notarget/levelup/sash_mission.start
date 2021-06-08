@@ -1,2 +1,0 @@
-if pc . get_level ( ) >= 40 then set_state ( "information" ) 
- return end 

@@ -1,6 +1,0 @@
-q . set_counter ( "Öldürmen gereken:" , 20 - pc . getqf ( "kill_count" ) ) 
-q . set_clock ( "Kalan süre:" , pc . getqf ( "limit_time" ) - get_time ( ) ) 
-setskin ( NOWINDOW ) 
-makequestbutton ( "Binicilik yeterliligi." ) 
-q . set_title ( "Binicilik yeterliligi." ) 
-q . start ( ) 

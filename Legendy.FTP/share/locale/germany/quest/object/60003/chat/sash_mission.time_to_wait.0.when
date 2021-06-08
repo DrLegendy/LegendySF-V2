@@ -1,1 +1,0 @@
-return pc . count_item ( 85000 ) >= 40

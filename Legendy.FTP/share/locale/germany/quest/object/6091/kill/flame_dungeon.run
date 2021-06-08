@@ -1,9 +1,0 @@
-if flame_dungeon . is_flamed ( d . get_map_index ( ) ) and d . getf ( "level" ) == 17 then notice_in_map ( "Razadör Yýkýldý!.." ) 
-notice_in_map ( "Ejderha Tapýnaðý içindeki Tüm Savaþcýlar  Bir dakika içerisinde ýþýnlanacaktýr." ) 
-timer ( "exit_dungeon" , 60 ) 
-flame_dungeon . level_clear ( ) 
-if party . is_party ( ) then 
-party . setf ( "flame_dungeon_boss_kill_count" , 1 ) 
-end 
- return end if flame_dungeon . is_flamed ( d . get_map_index ( ) ) then timer ( "exit_dungeon2" , 60 ) 
- return end 

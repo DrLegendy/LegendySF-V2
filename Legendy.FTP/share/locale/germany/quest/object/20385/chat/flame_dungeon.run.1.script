@@ -1,3 +1,0 @@
-say ( "??? ???" ) 
-flame_dungeon . clear_timer ( d . get_map_index ( ) ) 
-flame_dungeon . make_dungeon ( ) 

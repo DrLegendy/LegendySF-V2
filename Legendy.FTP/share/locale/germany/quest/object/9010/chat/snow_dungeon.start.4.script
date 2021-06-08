@@ -1,2 +1,0 @@
-server_timer ( "Jp_OutAll" , 5 , d . get_map_index ( ) ) 
-say ( "done" ) 

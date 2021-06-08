@@ -1,4 +1,0 @@
-if item . vnum == 30304 then npc . purge ( ) 
-item . remove ( ) 
-timer ( "devil_jump_9" , 8 ) 
- return end 

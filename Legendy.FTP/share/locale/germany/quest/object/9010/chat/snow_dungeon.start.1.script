@@ -1,6 +1,0 @@
-local set = snow_dungeon . get_settings ( ) 
-server_timer ( "Jp_9" , 6 , d . get_map_index ( ) ) 
-d . clear_regen ( ) 
-d . kill_all ( ) 
-d . regen_file ( "data/dungeon/ice_dungeon/zone_9.txt" ) 
-setskin ( NOWINDOW ) 

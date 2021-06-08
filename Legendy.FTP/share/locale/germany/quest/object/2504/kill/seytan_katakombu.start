@@ -1,4 +1,0 @@
-local rka = number ( 1 , 10 ) 
-if rka == 1 then 
-game . drop_item ( 30311 , 1 ) 
-end 

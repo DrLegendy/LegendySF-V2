@@ -1,6 +1,0 @@
-target . delete ( "__TARGET__" ) 
-say_title ( "Binicilik egitimi (8)" ) 
-say ( "" ) 
-say_reward ( "(8)Noktaya ulasildi!" ) 
-say ( "" ) 
-setstate ( "training_frame_red_step9" ) 

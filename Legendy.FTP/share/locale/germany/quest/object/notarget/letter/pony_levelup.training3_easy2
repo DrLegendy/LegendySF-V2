@@ -1,5 +1,0 @@
-target . pos ( "__TARGET__" , 670 , 1157 , 41 , "" ) 
-setskin ( NOWINDOW ) 
-makequestbutton ( "Her noktaya at sür." ) 
-q . set_title ( "Her noktaya at sür." ) 
-q . start ( ) 
