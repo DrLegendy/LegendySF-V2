@@ -185,6 +185,10 @@ class CMainPacketHeaderMap : public CNetworkPacketHeaderMap
 			Set(HEADER_GC_SPECIFIC_EFFECT,	CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketGCSpecificEffect), STATIC_SIZE_PACKET));
 			Set(HEADER_GC_DRAGON_SOUL_REFINE,		CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketGCDragonSoulRefine), STATIC_SIZE_PACKET));
 
+#ifdef ENABLE_DS_SET
+			Set(HEADER_GC_DS_TABLE, CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketDSTable), STATIC_SIZE_PACKET));
+#endif
+
 #ifdef ENABLE_ACCE_SYSTEM
 			Set(HEADER_GC_ACCE, CNetworkPacketHeaderMap::TPacketType(sizeof(TPacketAcce), STATIC_SIZE_PACKET));
 #endif

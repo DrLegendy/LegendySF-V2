@@ -70,6 +70,8 @@ class CGraphicTextInstance
 
 		int PixelPositionToCharacterPosition(int iPixelPosition);
 		int GetHorizontalAlign();
+		void SetLineHeight(int iHeight);
+		int GetLineHeight();
 
 	protected:
 		void __Initialize();

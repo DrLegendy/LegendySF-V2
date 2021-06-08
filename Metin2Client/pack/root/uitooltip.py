@@ -1251,45 +1251,43 @@ class ItemToolTip(ToolTip):
 					self.AppendTextLine(affectString, affectColor)
 
 	if app.ENABLE_DS_SET:
-		def __AppendDragonSoulAttributeInformation(self, attrSlot, dsType = 0, setGrade = 0):
+		def __AppendDragonSoulAttributeInformation(self, attrSlot, dsType = 0, grade = 0):
 			if 0 != attrSlot:
-				if setGrade != 0:
-					setWeightValue = item.GetDSSetWeight(setGrade)
-					basicApplyCount = item.GetDSBasicApplyCount(dsType)
-
+				if grade != 0:
+					setWeightValue = item.GetDSSetWeight(dsType, grade)
+					basicApplyCount = item.GetDSBasicApplyCount(dsType, grade)
+					
 					for i in xrange(player.ATTRIBUTE_SLOT_MAX_NUM):
 						type = attrSlot[i][0]
 						value = attrSlot[i][1]
-
 						if 0 == value:
 							continue
-
+						
 						affectString = self.__GetAffectString(type, value)
 						if affectString:
 							affectColor = self.__GetAttributeColor(i, value)
-
+							
 							setValue = 0
 							if i < basicApplyCount:
 								setValue = item.GetDSBasicApplyValue(dsType, type)
 							else:
 								setValue = item.GetDSAdditionalApplyValue(dsType, type)
-
+							
 							if setValue != 0:
-								setValue = (setValue * setWeightValue - 1) / 100 + 1
+								setValue = (setValue * setWeightValue - 1)/100 + 1
 								if affectString.find('%') == -1:
-									self.AppendTwoColorTextLine(affectString, affectColor, " (+{})".format(setValue))
+									self.AppendTwoColorTextLine(affectString, affectColor, " (+%d)" % (setValue))
 								else:
-									self.AppendTwoColorTextLine(affectString, affectColor, " (+{}%)".format(setValue))
+									self.AppendTwoColorTextLine(affectString, affectColor, " (+%d%%)" % (setValue))
 							else:
 								self.AppendTextLine(affectString, affectColor)
 				else:
 					for i in xrange(player.ATTRIBUTE_SLOT_MAX_NUM):
 						type = attrSlot[i][0]
 						value = attrSlot[i][1]
-
 						if 0 == value:
 							continue
-
+						
 						affectString = self.__GetAffectString(type, value)
 						if affectString:
 							affectColor = self.__GetAttributeColor(i, value)
@@ -1821,8 +1819,8 @@ class ItemToolTip(ToolTip):
 			self.AppendTextLine(self.__DragonSoulInfoString(itemVnum))
 
 			if app.ENABLE_DS_SET:
-				if self.window_type == player.EQUIPMENT and self.interface and self.interface.wndDragonSoul:
-					self.__AppendDragonSoulAttributeInformation(attrSlot, itemVnum / 10000, self.interface.wndDragonSoul.GetDSSetGrade())
+				if window_type == player.EQUIPMENT and self.interface and self.interface.wndDragonSoul:
+					self.__AppendDragonSoulAttributeInformation(attrSlot, itemVnum/10000, self.interface.wndDragonSoul.GetDSSetGrade())
 				else:
 					self.__AppendDragonSoulAttributeInformation(attrSlot)
 			else:

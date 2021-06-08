@@ -993,3 +993,13 @@ bool CPythonNetworkStream::RecvDragonSoulRefine()
 
 	return true;
 }
+
+#ifdef ENABLE_DS_SET
+bool CPythonNetworkStream::RecvDSTablePacket() {
+	TPacketDSTable p;
+	if (!Recv(sizeof(TPacketDSTable), &p))
+		return false;
+	
+	return CPythonItem::Instance().SetDSTable(p);
+}
+#endif

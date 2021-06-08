@@ -4,10 +4,6 @@
 #include "../gamelib/ItemManager.h"
 #include "../gamelib/GameLibDefines.h"
 
-#ifdef ENABLE_DS_SET
-#include "../GameLib/DragonSoulTable.h"
-#endif
-
 #include "InstanceBase.h"
 #include "AbstractApplication.h"
 
@@ -506,68 +502,6 @@ PyObject* itemLoadItemTable(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
-#ifdef ENABLE_DS_SET
-PyObject* itemGetDSSetWeight(PyObject* poSelf, PyObject* poArgs)
-{
-	BYTE iSetGrade;
-	if (!PyTuple_GetInteger(poArgs, 0, &iSetGrade))
-		return Py_BadArgument();
-
-	CDragonSoulTable* dsTable = CItemManager::Instance().GetDragonSoulTable();
-	if (!dsTable)
-		return Py_BuildException("DragonSoulTable not initalized");
-
-	return Py_BuildValue("i", dsTable->GetDSSetWeight(iSetGrade));
-}
-
-PyObject* itemGetDSBasicApplyCount(PyObject* poSelf, PyObject* poArgs)
-{
-	BYTE iDSType;
-	if (!PyTuple_GetInteger(poArgs, 0, &iDSType))
-		return Py_BadArgument();
-
-	CDragonSoulTable* dsTable = CItemManager::Instance().GetDragonSoulTable();
-	if (!dsTable)
-		return Py_BuildException("DragonSoulTable not initalized");
-
-	return Py_BuildValue("i", dsTable->GetDSBasicApplyCount(iDSType));
-}
-
-PyObject* itemGetDSBasicApplyValue(PyObject* poSelf, PyObject* poArgs)
-{
-	BYTE iDSType;
-	if (!PyTuple_GetInteger(poArgs, 0, &iDSType))
-		return Py_BadArgument();
-
-	WORD iApplyType;
-	if (!PyTuple_GetInteger(poArgs, 1, &iApplyType))
-		return Py_BadArgument();
-
-	CDragonSoulTable* dsTable = CItemManager::Instance().GetDragonSoulTable();
-	if (!dsTable)
-		return Py_BuildException("DragonSoulTable not initalized");
-
-	return Py_BuildValue("i", dsTable->GetDSBasicApplyValue(iDSType, iApplyType));
-}
-
-PyObject* itemGetDSAdditionalApplyValue(PyObject* poSelf, PyObject* poArgs)
-{
-	BYTE iDSType;
-	if (!PyTuple_GetInteger(poArgs, 0, &iDSType))
-		return Py_BadArgument();
-
-	WORD iApplyType;
-	if (!PyTuple_GetInteger(poArgs, 1, &iApplyType))
-		return Py_BadArgument();
-
-	CDragonSoulTable* dsTable = CItemManager::Instance().GetDragonSoulTable();
-	if (!dsTable)
-		return Py_BuildException("DragonSoulTable not initalized");
-
-	return Py_BuildValue("i", dsTable->GetDSAdditionalApplyValue(iDSType, iApplyType));
-}
-#endif
-
 PyObject* itemIsWeddingItem(PyObject* poSelf, PyObject* poArgs)
 {
 	DWORD dwItemIndex;
@@ -627,6 +561,56 @@ PyObject* itemGetItemNameByVnum(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildValue("s", CItemManager::Instance().GetSelectedItemDataPointer()->GetName());
 }
 
+#ifdef ENABLE_DS_SET
+PyObject * itemGetDSSetWeight(PyObject * poSelf, PyObject * poArgs) {
+	int iDSType;
+	if (!PyTuple_GetInteger(poArgs, 0, &iDSType))
+		return Py_BadArgument();
+	
+	int iDSGrade;
+	if (!PyTuple_GetInteger(poArgs, 1, &iDSGrade))
+		return Py_BadArgument();
+	
+	return Py_BuildValue("f", CPythonItem::Instance().GetDSSetWeight(iDSType, iDSGrade));
+}
+
+PyObject * itemGetDSBasicApplyCount(PyObject * poSelf, PyObject * poArgs) {
+	int iDSType;
+	if (!PyTuple_GetInteger(poArgs, 0, &iDSType))
+		return Py_BadArgument();
+	
+	int iDSGrade;
+	if (!PyTuple_GetInteger(poArgs, 1, &iDSGrade))
+		return Py_BadArgument();
+	
+	return Py_BuildValue("i", CPythonItem::Instance().GetDSBasicApplyCount(iDSType, iDSGrade));
+}
+
+PyObject * itemGetDSBasicApplyValue(PyObject * poSelf, PyObject * poArgs) {
+	int iDSType;
+	if (!PyTuple_GetInteger(poArgs, 0, &iDSType))
+		return Py_BadArgument();
+	
+	int iDSApplyType;
+	if (!PyTuple_GetInteger(poArgs, 1, &iDSApplyType))
+		return Py_BadArgument();
+	
+	return Py_BuildValue("i", CPythonItem::Instance().GetDSBasicApplyValue(iDSType, iDSApplyType));
+}
+
+PyObject * itemGetDSAdditionalApplyValue(PyObject * poSelf, PyObject * poArgs) {
+	int iDSType;
+	if (!PyTuple_GetInteger(poArgs, 0, &iDSType))
+		return Py_BadArgument();
+	
+	int iDSApplyType;
+	if (!PyTuple_GetInteger(poArgs, 1, &iDSApplyType))
+		return Py_BadArgument();
+	
+	return Py_BuildValue("i", CPythonItem::Instance().GetDSAdditionalApplyValue(iDSType, iDSApplyType));
+}
+#endif
+
 void initItem()
 {
 	static PyMethodDef s_methods[] =
@@ -683,6 +667,7 @@ void initItem()
 		{ "GetDSBasicApplyValue",			itemGetDSBasicApplyValue,				METH_VARARGS },
 		{ "GetDSAdditionalApplyValue",		itemGetDSAdditionalApplyValue,			METH_VARARGS },
 #endif
+
 		{ "IsWeddingItem",					itemIsWeddingItem,						METH_VARARGS },
 		{ "GetItemNameByVnum",				itemGetItemNameByVnum,					METH_VARARGS },
 		{ NULL,								NULL,									NULL		 },

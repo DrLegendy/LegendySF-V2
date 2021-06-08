@@ -8129,6 +8129,13 @@ bool CHARACTER::CanEquipNow(const LPITEM item, const TItemPos& srcCell, const TI
 
 	}
 
+#ifdef ENABLE_DS_SET
+	if ((DragonSoul_IsDeckActivated()) && (item->IsDragonSoul())) {
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("DS_DEACTIVATE_REQ"));
+		return false;
+	}
+#endif
+
 	return true;
 }
 
@@ -8147,6 +8154,12 @@ bool CHARACTER::CanUnequipNow(const LPITEM item, const TItemPos& srcCell, const 
 	if (IS_SET(item->GetFlag(), ITEM_FLAG_IRREMOVABLE))
 		return false;
 
+#ifdef ENABLE_DS_SET
+	if ((DragonSoul_IsDeckActivated()) && (item->IsDragonSoul())) {
+		ChatPacket(CHAT_TYPE_INFO, LC_TEXT("DS_DEACTIVATE_REQ"));
+		return false;
+	}
+#endif
 
 	{
 		int pos = -1;

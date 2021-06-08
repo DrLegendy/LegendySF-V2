@@ -297,6 +297,10 @@ namespace UI
 
 			void GetTextSize(int* pnWidth, int* pnHeight);
 
+			void SetLineHeight(int iHeight);
+			int GetLineHeight();
+			int GetTextLineCount();
+
 		protected:
 			void OnUpdate();
 			void OnRender();

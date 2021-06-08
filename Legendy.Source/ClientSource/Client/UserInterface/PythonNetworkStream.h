@@ -595,6 +595,10 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool RecvHSCheckRequest();
 		bool RecvXTrapVerifyRequest();
 
+#ifdef ENABLE_DS_SET
+		bool	RecvDSTablePacket();
+#endif
+
 		// @fixme007
 		bool RecvUnk213();
 

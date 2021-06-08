@@ -318,8 +318,12 @@ enum
 	HEADER_GC_DRAGON_SOUL_REFINE			= 209,
 	HEADER_GC_RESPOND_CHANNELSTATUS			= 210,
 
+#ifdef ENABLE_DS_SET
+	HEADER_GC_DS_TABLE						= 212,
+#endif
+
 #ifdef ENABLE_CUBE_RENEWAL_WORLDARD
-		HEADER_GC_CUBE_RENEWAL = 214,
+	HEADER_GC_CUBE_RENEWAL = 214,
 #endif
 
 #ifdef __AURA_SYSTEM__
@@ -2485,10 +2489,13 @@ typedef struct SPacketGCStateCheck
 	unsigned char state;
 } TPacketGCStateCheck;
 
-
-
-
-
+#ifdef ENABLE_DS_SET
+typedef struct STPacketDSTable {
+	BYTE	bHeader;
+	int		iType, iApplyCount, iBasicApplyValue[255], iAditionalApplyValue[255];
+	float	fWeight;
+} TPacketDSTable;
+#endif
 
 #ifdef ENABLE_ACCE_SYSTEM
 enum

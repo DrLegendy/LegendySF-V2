@@ -717,7 +717,7 @@ class DragonSoulWindow(ui.ScriptWindow):
 		def GetDSSetGrade(self):
 			if not self.isActivated:
 				return 0
-
+			
 			return self.setGrade
 
 	def ActivateDragonSoulByExtern(self, deck):

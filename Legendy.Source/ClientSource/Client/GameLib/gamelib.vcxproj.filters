@@ -197,7 +197,6 @@
       <Filter>Fly</Filter>
     </ClCompile>
     <ClCompile Include="StdAfx.cpp" />
-    <ClCompile Include="DragonSoulTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActorInstance.h">
@@ -314,6 +313,5 @@
     <ClInclude Include="Interface.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="GameLibDefines.h" />
-    <ClInclude Include="DragonSoulTable.h" />
   </ItemGroup>
 </Project>

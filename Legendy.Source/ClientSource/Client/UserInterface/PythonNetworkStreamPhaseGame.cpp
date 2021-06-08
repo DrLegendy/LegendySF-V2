@@ -638,6 +638,12 @@ void CPythonNetworkStream::GamePhase()
 				ret = RecvDragonSoulRefine();
 				break;
 
+#ifdef ENABLE_DS_SET
+			case HEADER_GC_DS_TABLE:
+				ret = RecvDSTablePacket();
+				break;
+#endif
+
 #ifdef ENABLE_CUBE_RENEWAL_WORLDARD
 			case HEADER_GC_CUBE_RENEWAL:
 				ret = RecvCubeRenewalPacket();

@@ -375,6 +375,10 @@ enum
 	HEADER_GC_DRAGON_SOUL_REFINE						= 209,
 	HEADER_GC_RESPOND_CHANNELSTATUS				= 210,
 
+#ifdef ENABLE_DS_SET
+	HEADER_GC_DS_TABLE							= 212,
+#endif
+
 	// @fixme007
 	HEADER_GC_UNK_213							= 213,
 
@@ -2937,6 +2941,13 @@ typedef struct SChannelStatus
 	BYTE bStatus;
 } TChannelStatus;
 
+#ifdef ENABLE_DS_SET
+typedef struct STPacketDSTable {
+	BYTE	bHeader;
+	int		iType, iApplyCount, iBasicApplyValue[255], iAditionalApplyValue[255];
+	float	fWeight;
+} TPacketDSTable;
+#endif
 
 #ifdef ENABLE_ACCE_SYSTEM
 enum EAcceInfo

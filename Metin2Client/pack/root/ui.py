@@ -885,6 +885,15 @@ class TextLine(Window):
 	def GetTextSize(self):
 		return wndMgr.GetTextSize(self.hWnd)
 
+	def SetLineHeight(self, Height):
+		wndMgr.SetLineHeight(self.hWnd, Height)
+
+	def GetLineHeight(self):
+		return wndMgr.GetLineHeight(self.hWnd)
+
+	def GetTextLineCount(self):
+		return wndMgr.GetTextLineCount(self.hWnd)
+
 class EmptyCandidateWindow(Window):
 	def __init__(self):
 		Window.__init__(self)

@@ -73,6 +73,10 @@ bool CHARACTER::DragonSoul_ActivateDeck(int deck_idx)
 
 	m_pointsInstant.iDragonSoulActiveDeck = deck_idx;
 
+#ifdef ENABLE_DS_SET
+	DragonSoul_SetRefresh();
+#endif
+
 	for (int i = DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * deck_idx;
 		i < DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * (deck_idx + 1); i++)
 	{
@@ -80,10 +84,6 @@ bool CHARACTER::DragonSoul_ActivateDeck(int deck_idx)
 		if (NULL != pItem)
 			DSManager::instance().ActivateDragonSoul(pItem);
 	}
-
-#ifdef ENABLE_DS_SET
-	DragonSoul_HandleSetBonus();
-#endif
 
 	return true;
 }
@@ -95,71 +95,13 @@ void CHARACTER::DragonSoul_DeactivateAll()
 		DSManager::instance().DeactivateDragonSoul(GetInventoryItem(i), true);
 	}
 
-#ifdef ENABLE_DS_SET
-	DragonSoul_HandleSetBonus();
-#endif
-
 	m_pointsInstant.iDragonSoulActiveDeck = -1;
 	RemoveAffect(AFFECT_DRAGON_SOUL_DECK_0);
 	RemoveAffect(AFFECT_DRAGON_SOUL_DECK_1);
-
 #ifdef ENABLE_DS_SET
-	RemoveAffect(NEW_AFFECT_DS_SET);
+	RemoveAffect(AFFECT_DS_SET);
 #endif
 }
-
-#ifdef ENABLE_DS_SET
-void CHARACTER::DragonSoul_HandleSetBonus()
-{
-	bool bAdd = true;
-	uint8_t iSetGrade;
-
-	if (!DSManager::instance().GetDSSetGrade(this, iSetGrade))
-	{
-		CAffect* pkAffect = FindAffect(NEW_AFFECT_DS_SET);
-		if (!pkAffect)
-			return;
-
-		iSetGrade = pkAffect->lApplyValue;
-		bAdd = false;
-	}
-	else
-	{
-		AddAffect(NEW_AFFECT_DS_SET, APPLY_NONE, iSetGrade, 0, INFINITE_AFFECT_DURATION, 0, true);
-	}
-
-	const uint8_t iDeckIdx = DragonSoul_GetActiveDeck();
-	const uint8_t iStartSlotIndex = WEAR_MAX_NUM + (iDeckIdx * DS_SLOT_MAX);
-	const uint8_t iEndSlotIndex = iStartSlotIndex + DS_SLOT_MAX;
-
-	for (uint8_t iSlotIndex = iStartSlotIndex; iSlotIndex < iEndSlotIndex; ++iSlotIndex)
-	{
-		const LPITEM pkItem = GetWear(iSlotIndex);
-		if (!pkItem)
-			return;
-
-		for (uint8_t i = 0; i < ITEM_ATTRIBUTE_MAX_NUM; ++i)
-		{
-			if (pkItem->GetAttributeType(i))
-			{
-				const TPlayerItemAttribute& ia = pkItem->GetAttribute(i);
-				int iSetValue = DSManager::instance().GetDSSetValue(i, ia.bType, pkItem->GetVnum(), iSetGrade);
-
-				if (ia.bType == APPLY_SKILL)
-				{
-					iSetValue = bAdd ? iSetValue : iSetValue ^ 0x00800000;
-				}
-				else
-				{
-					iSetValue = bAdd ? iSetValue : -iSetValue;
-				}
-
-				ApplyPoint(ia.bType, iSetValue);
-			}
-		}
-	}
-}
-#endif
 
 void CHARACTER::DragonSoul_CleanUp()
 {
@@ -168,6 +110,70 @@ void CHARACTER::DragonSoul_CleanUp()
 		DSManager::instance().DeactivateDragonSoul(GetInventoryItem(i), true);
 	}
 }
+
+#ifdef ENABLE_DS_SET
+void CHARACTER::DragonSoul_SetRefresh()
+{
+	RemoveAffect(AFFECT_DS_SET);
+	
+	int idx = DragonSoul_GetActiveDeck();
+	if (idx < DRAGON_SOUL_DECK_0 || idx >= DRAGON_SOUL_DECK_MAX_NUM)
+		return;
+	
+	std::vector<int> gradeList;
+	bool bExpired = false;
+	for (int i = 0; i < DS_SLOT_MAX; i++)
+		gradeList.push_back(0);
+	
+	int j = 0;
+	for (int i = DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * idx; i < DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * (idx + 1); i++)
+	{
+		LPITEM pItem = GetInventoryItem(i);
+		if (!pItem)
+			return;
+		
+		if (!DSManager::instance().IsTimeLeftDragonSoul(pItem))
+			bExpired = true;
+		
+		gradeList[j] = (pItem->GetVnum() / 1000) % 10;
+		j += 1;
+	}
+	
+	if ((!bExpired) && ((gradeList[0] == DRAGON_SOUL_GRADE_LEGENDARY)
+#ifdef ENABLE_DS_GRADE_MYTH
+		|| (gradeList[0] == DRAGON_SOUL_GRADE_MYTH)
+#endif
+	)) {
+		if (std::equal(gradeList.begin() + 1, gradeList.end(), gradeList.begin())) {
+			AddAffect(AFFECT_DS_SET, APPLY_NONE, gradeList[0], 0, INFINITE_AFFECT_DURATION, 0, false);
+			
+			TPacketDSTable p;
+			p.bHeader = HEADER_GC_DS_TABLE;
+			for (int i = DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * idx; i < DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * (idx + 1); i++) {
+				LPITEM pItem = GetInventoryItem(i);
+				if (NULL != pItem) {
+					p.iType = pItem->GetVnum() / 10000;
+					p.fWeight = DSManager::instance().GetWeight(pItem->GetVnum());
+					p.iApplyCount = DSManager::instance().GetApplyCount(pItem->GetVnum());
+					
+					for (int q = 0; q < 255; q++) {
+						p.iBasicApplyValue[q] = 0;
+						p.iAditionalApplyValue[q] = 0;
+					}
+					
+					for (int q = 0; q < p.iApplyCount; q++)
+						p.iBasicApplyValue[pItem->GetAttributeType(q)] = DSManager::instance().GetBasicApplyValue(pItem->GetVnum(), pItem->GetAttributeType(q));
+					
+					for (int q = p.iApplyCount; q < ITEM_ATTRIBUTE_MAX_NUM; q++)
+						p.iAditionalApplyValue[pItem->GetAttributeType(q)] = DSManager::instance().GetAdditionalApplyValue(pItem->GetVnum(), pItem->GetAttributeType(q));
+					
+					GetDesc()->Packet(&p, sizeof(p));
+				}
+			}
+		}
+	}
+}
+#endif
 
 bool CHARACTER::DragonSoul_RefineWindow_Open(LPENTITY pEntity)
 {

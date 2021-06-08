@@ -1742,9 +1742,9 @@ void initapp()
 #endif
 
 #ifdef ENABLE_DS_SET
-	PyModule_AddIntConstant(poModule, "ENABLE_DS_SET", true);
+	PyModule_AddIntConstant(poModule, "ENABLE_DS_SET", 1);
 #else
-	PyModule_AddIntConstant(poModule, "ENABLE_DS_SET", false);
+	PyModule_AddIntConstant(poModule, "ENABLE_DS_SET", 0);
 #endif
 
 #ifdef ENABLE_DRAGON_SOUL_EFFECT

@@ -45,8 +45,10 @@ public:
 	bool	IsActiveDragonSoul(LPITEM pItem) const;
 
 #ifdef ENABLE_DS_SET
-	bool GetDSSetGrade(LPCHARACTER ch, uint8_t & iSetGrade);
-	int GetDSSetValue(uint8_t iAttributeIndex, uint16_t iApplyType, uint32_t iVnum, uint8_t iSetGrade);
+	float	GetWeight(DWORD dwVnum);
+	int		GetApplyCount(DWORD dwVnum);
+	int		GetBasicApplyValue(DWORD dwVnum, int iType, bool bAttr = false);
+	int		GetAdditionalApplyValue(DWORD dwVnum, int iType, bool bAttr = false);
 #endif
 
 private:

@@ -941,6 +941,14 @@ void CItem::ModifyPoints(bool bAdd)
 							sValue += 1;
 					}
 
+#ifdef ENABLE_DS_SET
+					//short sValue = ia.sValue;
+					else if ((IsDragonSoul()) && (m_pOwner->FindAffect(AFFECT_DS_SET)))
+					{
+						sValue += i < DSManager::instance().GetApplyCount(GetVnum()) ? DSManager::instance().GetBasicApplyValue(GetVnum(), ia.bType, true) : DSManager::instance().GetAdditionalApplyValue(GetVnum(), ia.bType, true);
+					}
+#endif
+
 					if (ia.bType == APPLY_SKILL)
 						m_pOwner->ApplyPoint(ia.bType, bAdd ? sValue : sValue ^ 0x00800000);
 					else
@@ -1192,9 +1200,6 @@ bool CItem::EquipTo(LPCHARACTER ch, BYTE bWearCell)
 	if (IsDragonSoul())
 	{
 		DSManager::instance().ActivateDragonSoul(this);
-#ifdef ENABLE_DS_SET
-		ch->DragonSoul_HandleSetBonus();
-#endif
 	}
 	else
 	{

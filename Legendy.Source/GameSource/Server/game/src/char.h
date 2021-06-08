@@ -2101,11 +2101,10 @@ public:
 	bool	DragonSoul_ActivateDeck(int deck_idx);
 
 	void	DragonSoul_DeactivateAll();
-	void	DragonSoul_CleanUp();
-
 #ifdef ENABLE_DS_SET
-	void DragonSoul_HandleSetBonus();
+	void	DragonSoul_SetRefresh();
 #endif
+	void	DragonSoul_CleanUp();
 
 public:
 	bool		DragonSoul_RefineWindow_Open(LPENTITY pEntity);

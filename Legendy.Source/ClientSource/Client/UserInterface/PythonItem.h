@@ -3,6 +3,10 @@
 
 #include "../EterGrnLib/ThingInstance.h"
 
+#ifdef ENABLE_DS_SET
+#include "Packet.h"
+#endif
+
 class CItemData;
 
 class CPythonItem : public CSingleton<CPythonItem>
@@ -71,6 +75,18 @@ class CPythonItem : public CSingleton<CPythonItem>
 
 		typedef std::map<DWORD, TGroundItemInstance *>	TGroundItemInstanceMap;
 
+#ifdef ENABLE_DS_SET
+		typedef struct SDSTable
+		{
+			float	fWeight;
+			int		iApplyCount;
+			int		iBasicApplyValue[255];
+			int		iAditionalApplyValue[255];
+		} TDSTable;
+		
+		typedef std::map<int, TDSTable>	TDSTableMap;
+#endif
+
 	public:
 		CPythonItem(void);
 		virtual ~CPythonItem(void);
@@ -134,4 +150,13 @@ class CPythonItem : public CSingleton<CPythonItem>
 		std::string m_astUseSoundFileName[USESOUND_NUM];
 
 		std::vector<CItemData *> m_NoGradeNameItemData;
+#ifdef ENABLE_DS_SET
+		TDSTableMap	m_DSTableMap;
+	public:
+		bool	SetDSTable(TPacketDSTable p);
+		float	GetDSSetWeight(int iDSType, int iDSGrade);
+		int		GetDSBasicApplyCount(int iDSType, int iDSGrade);
+		int		GetDSBasicApplyValue(int iDSType, int iDSApplyType);
+		int		GetDSAdditionalApplyValue(int iDSType, int iDSApplyType);
+#endif
 };

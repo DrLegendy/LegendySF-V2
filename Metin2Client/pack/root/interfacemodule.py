@@ -1051,13 +1051,13 @@ class Interface(object):
 		if app.ENABLE_DRAGON_SOUL_SYSTEM:
 			self.wndDragonSoul.ActivateDragonSoulByExtern(deck)
 
-	def DragonSoulDeactivate(self):
-		if app.ENABLE_DRAGON_SOUL_SYSTEM:
-			self.wndDragonSoul.DeactivateDragonSoul()
-
 	if app.ENABLE_DS_SET:
 		def DragonSoulSetGrade(self, grade):
 			self.wndDragonSoul.SetDSSetGrade(grade)
+
+	def DragonSoulDeactivate(self):
+		if app.ENABLE_DRAGON_SOUL_SYSTEM:
+			self.wndDragonSoul.DeactivateDragonSoul()
 
 	def Highligt_Item(self, inven_type, inven_pos):
 		if player.DRAGON_SOUL_INVENTORY == inven_type:
