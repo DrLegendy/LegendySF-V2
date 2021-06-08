@@ -302,35 +302,46 @@ int CalcAttBonus(LPCHARACTER pkAttacker, LPCHARACTER pkVictim, int iAtk)
 			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_TREE)) / 100;
 
 #ifdef ENABLE_EXTRA_APPLY_BONUS
-		else if (pkVictim->IsRaceFlag(RACE_FLAG_INSECT))
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_INSECT)) / 100;
-#endif
-#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
-		else if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_ELEC))
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_ELEC)) / 100;
-		else if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_WIND))
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_WIND)) / 100;
-		else if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_EARTH))
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_EARTH)) / 100;
-		else if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_DARK))
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_DARK)) / 100;
-		else if (pkVictim->IsRaceFlag(RACE_FLAG_ZODIAC))
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_ZODIAC)) / 100;
-#endif
-#ifdef ENABLE_EXTRA_APPLY_BONUS
-		if (pkVictim->GetMobRank() >= MOB_RANK_BOSS && pkAttacker->GetDungeon() == nullptr)
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_BOSS)) / 100;
-		else if (pkVictim->IsStone())
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_STONE)) / 100;
-		else if (pkAttacker->IsPC() && pkAttacker->GetDungeon() != nullptr)
-			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_DUNGEON)) / 100;
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_ELEC) ||
+			pkVictim->IsRaceFlag(RACE_FLAG_ATT_WIND) ||
+			pkVictim->IsRaceFlag(RACE_FLAG_ATT_EARTH) ||
+			pkVictim->IsRaceFlag(RACE_FLAG_ATT_DARK) ||
+			pkVictim->IsRaceFlag(RACE_FLAG_ATT_FIRE) ||
+			pkVictim->IsRaceFlag(RACE_FLAG_ATT_ICE)
+			)
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_ELEMENTS)) / 80;
+		if (pkVictim->GetRaceNum() == 6091)
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_RAZADOR)) / 100;
+		if (pkVictim->GetRaceNum() == 6191)
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_NEMERE)) / 100;
+		if (pkVictim->GetRaceNum() == 1093)
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_LUCIFER)) / 100;
+		if (pkVictim->GetRaceNum() == 2493)
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_BLUE_DRAGON)) / 100;
+		if (pkVictim->GetRaceNum() == 2598)
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_AZRAEL)) / 100;
+		if (pkVictim->GetRaceNum() == 2291)
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_RED_DRAGON)) / 100;
 #endif
 
-		iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_MONSTER)) / 100;
+		int iStoneBonus = pkAttacker->GetPoint(POINT_ATTBONUS_STONE);
+		int iBossBonus = pkAttacker->GetPoint(POINT_ATTBONUS_BOSS);
+		int iMonsterBonus = pkAttacker->GetPoint(POINT_ATTBONUS_MONSTER);
+
+#ifdef ENABLE_EXTRA_APPLY_BONUS
+		if (pkVictim->IsStone())
+			iAtk += (iAtk * iStoneBonus) / 100;
+		if (pkVictim->IsBoss())
+			iAtk += (iAtk * iBossBonus) / 100;
+#endif
+		iAtk += (iAtk * iMonsterBonus) / 100;
 	}
 	else if (pkVictim->IsPC())
 	{
 		iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_HUMAN)) / 100;
+#ifdef ENABLE_EXTRA_APPLY_BONUS
+		iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_CHARACTERS)) / 100;
+#endif
 
 		switch (pkVictim->GetJob())
 		{
@@ -359,9 +370,13 @@ int CalcAttBonus(LPCHARACTER pkAttacker, LPCHARACTER pkVictim, int iAtk)
 
 	if (pkAttacker->IsPC() == true)
 	{
-#ifdef ENABLE_EXTRA_APPLY_BONUS
+#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
 		iAtk -= (iAtk * pkVictim->GetPoint(POINT_RESIST_HUMAN)) / 100;
 #endif
+#ifdef ENABLE_EXTRA_APPLY_BONUS
+		iAtk -= (iAtk * pkVictim->GetPoint(POINT_ENCHANT_CHARACTERS)) / 100;
+#endif
+
 		switch (pkAttacker->GetJob())
 		{
 		case JOB_WARRIOR:

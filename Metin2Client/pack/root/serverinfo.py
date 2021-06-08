@@ -3,7 +3,7 @@ app.ServerName = None
 
 SRV1 = {
 	"name":"|cffffd500|h Legendy2", #GOLD
-	"host":"192.168.0.26",
+	"host":"192.168.0.13",
 	"auth1":30001,
 	"ch1":30003,
 	"ch2":30007,

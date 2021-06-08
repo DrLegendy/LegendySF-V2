@@ -1,0 +1,106 @@
+GAME FİX
+***************************
+1->DsProject1 = Arkadaş listesinden bir oyuncuyu sildiğinizde diğer oyuncunun arkadaş listesinde bulunulması hatası giderildi.
+2->DsProject2 = At/binek binildiğinde ateş hayaleti kapanır.
+3->DsProject3 = İzleyici modundayken saldırı işlemesi engellendi
+4->DsProject4 = Pazarlara saldırı işlemesi engellendi
+5->DsProject5 = Set align de derece hesaplaması hatası çözümlendi.
+6->DsProject6 = Karakter becerileri sıfırlandığında eski beceri grubuna ait güçlendirmelerin temizlenmemesi problemi giderildi.
+7->DsProject7 = Bineklerin geriye atması hatası giderili
+8->DsProject8 = Büyülü Silah ve Hava Kılıcı skillerinin silahsız kullanılması engellendi.
+9->DsProject9 = Cube Result'ın taşması sorunu giderildi.
+10->DsProject10 = Blend fonksiyonunda üst üste binmesi durumunda elde edilen obje silinmediği için oluşan memory leak giderilmiştir.
+11->DsProject11 = Son seviyeye ulaşıldığında tecrübe elde edilemeyeceği için beceri kitabı okunulamaması hatası giderildi. ( Bu fix hızlı bk okuma sistemi eklendiğinde buga sebep oluyordu sorun giderildi ve tekrardan düzenlendi )
+12->DsProject12 = pc.select fonksiyonunda ch değeri tanımlandıktan sonra hiçbir kontrol olmadan kullanılıyordu. Bununla ilgili hata çözümü uygulandı.
+13->DsProject13 = Yeşil ve mor pot aktifken tekrar kullanılması engellendi.
+14->DsProject14 = Partideyken bayrak değiştirme hatası giderildi.
+15->DsProject15 = Sys_err daki type değerinin değişkenler arasında bulunmaması hatası giderildi.
+16->DsProject16 = pPc'nin olmaması durumunda oluşan çökme hatası giderildi.
+17->DsProject17 = Karakter yaratılırken karakter adının uzunluğa ait sunucu taraflı bir kontrol bulunmadığı için istenilen uzunlukta karakter ismi yapılabiliyordu. Bu hata çözümlendi.
+18->DsProject18 = Cesaret pelerinin %50 şansla çalışması durumu kaldırıldı ve menzili 2 katına çıkartıldı.
+19->DsProject19 = GetQuestFlag fonksiyonunda pPc değerinin bulunmaması durumunda yaşanan çökme hatası giderildi.
+20->DsProject20 = Savaş ilanındaki savaş tipi değerin negatif olması nedeniyle oluşan çökme giderildi.
+21->DsProject21 = Depo'da oluşan memory leak hatası giderildi.
+22->DsProject22 = Ejderha Atışı işlememesi hatası çözümlendi.
+23->DsProject23 = Ejderha Kükremesi işlememesi hatası çözümlendi.
+24->DsProject24 = Canavar sayısı olarak oyuncu olmayanların değil canavar ve metin taşlarının sayısına göre hesaplanması çözümü uygulandı.
+25->DsProject25 = d.notice fonksiyonunda Desc olmayan oyunculara gönderilmesi hatası giderildi.
+26->DsProject26 = Party fonksiyonlarının tamamında bulunan kontrol bulunmadan değişkenin kullanılması hatası giderildi.
+27->DsProject27 = pkOldGrid objesi kullanıldıktan sonra bellekten silinmiyordu. Bununla ilgili hata çözümü uygulandı.
+28->DsProject28 = Monarşi sistemindeki tablo ile QUERY'nin uyuşmaması sorunu giderildi.
+29->DsProject29 = Level atlayınca pot verme kapatıldı.
+30->DsProject30 = Cesaret pelerini sınırsız yapıldı.
+31->DsProject31 = Canavarlar Zehir Yedikleri Zaman Agresif Olmazlar
+32->DsProject32 = ShopEx Memoryleak fix.
+33->DsProject33 = Get_leader_vid çalıştığı sırada party yoksa core düşmesine sebep olan hata giderildi.
+34->DsProject34 = Oyuncu isminde büyük-küçük harfler bulunmasından dolayı karakter üzerinde komutların çalışmaması sorunu giderildi.
+35->DsProject35 = RemoveGoodAffect'e ateş hayaleti eklendi. Skill sıfırlandığında ateş hayaleti silinecek.
+36->DsProject36 = pDungeon oluşmaması durumunda core düşmesine sebep olan hata giderildi.
+37->DsProject37 = 0 yang eşya alınmaması hatası fixlendi.
+38->DsProject38 = Cmd fonksiyonlarında kullanılan one_argument, two_argument'e ilave olarak 3,4,5,6 arguments alternatifleri eklendi
+39->DsProject39 = Core düşmesi yaşanmaması için kontrol eklendi.
+40->DsProject40 = Bu fonksiyonun GM'leri kapsamaması gerekiyor.
+41->DsProject41 = Bu quest fonksiyonunda name veya arg değerlerinin bulunmaması durumunda oluşabilecek core düşmesi engellendi.
+42->DsProject42 = Bu quest fonksiyonunda ch değerinin bulunmaması durumunda oluşabilecek core düşmesi engellendi.
+43->DsProject43 = Simya 1 levelde görevsiz olarak aktif hale getirildi.
+44->DsProject44 = Simya için sürükleyerek çıkartma getirildi.
+45->DSProject45 = Gelinlik, Smokin ve Bukete efsun atma ve efsun değiştirme fixlendi.
+
+
+-----------------------------------------------**********************************************------------------------------------------------
+CLİENT FİX
+*********************
+1->DsProject1 = Lens Gösterimi Fix
+2->DsProject2 = Client taraflı bir memory leak giderildi. Burada bulunan continue ifadesi alt satırda bulunan obje temizlenme işlemini engellemekteydi.
+3->DsProject3 = Görünmez moddan çıktıktan sonra efektlerin gözükmemesi hatası giderildi.
+4->DsProject4 = Karakter ekranı satır sayısı yükseltildi.(Offical Ekran İçin)
+5->DsProject5 = Skybox bulut kırpma hatası giderildi.
+6->DsProject6 = Pet, binek, pazarlar düşman olarak gözükmeyecek.
+7->DsProject7 = Kamera hareket ettirilince görünmezlerin görünür olması hata çözümü.
+8->DsProject8 = At üzerindeki şamanın saldırı işlememe hata çözümü.
+8->DsProject8 = Pack yükleme sistemi baştan sona düzenlendi. Pack isimleri client üzerinden alınacaktır
+
+-----------------------------------------------**********************************************------------------------------------------------
+PACK FİX
+*********************
+1-> Kadın Savaşçı karakterin öfke bastığında efekt geç yüklenme sorunu giderildi.
+2-> Metin2Client aura mse dosyalarının syserr vermesi fixlendi.
+
+-----------------------------------------------**********************************************------------------------------------------------
+PROTO DÜZENLEMELERİ
+*********************
+1-> Kuşak emiş oranlarının sabit kalma hatası düzeltildi.
+
+-----------------------------------------------**********************************************------------------------------------------------
+EKLENTİLER
+*********************
+# GM Karakterlerde İtem ID numaraları görüntülenme modülü eklendi.
+# GM Karakterlerde Skill ID numarası görüntülenme modülü eklendi.
+# Emoji sistem iconları eklendi ve Antiflag ve flaglara göre tooltip düzenlendi.
+# Yere atılan, slot veya metinden düşen itemlerin isimlerinin gözükme eklentisi eklendi. (Beceri kitabı, Dönüşüm küresi gibi)
+# Yere sat-sil modulu eklendi.
+
+-----------------------------------------------**********************************************------------------------------------------------
+FIXED
+*********************
+-Metin,Patron vs efsunlarının çalışmama sorunu düzeltildi. Sistem tamemen değiştirildi. Ek bonuslar eklendi ( Razador,Nemere vs.)
+
+-----------------------------------------------**********************************************------------------------------------------------
+
+EKLENEN SİSTEMLER
+***************************
+#define ENABLE_EXTRA_APPLY_BONUS				// Yeni Bonuslar Modulu
+#define ENABLE_ELEMENTAL_APPLY_BONUS			// Yeni Elemental Bonuslar Modulu
+#define ENABLE_CUBE_RENEWAL_WORLDARD			// Official Cube Sistemi
+#define ENABLE_CUBE_ATTR_SOCKET					// Official Cube Sistemi Taş ve Efsun Fixi
+#define ENABLE_OFFICAL_CHARACTER_SCREEN			// Official Karakter Ekranı
+#define ENABLE_DS_GRADE_MYTH					// Mitsi Simya Sistemi Güncellemesi
+#define ENABLE_QUEST_CATEGORY_SYSTEM			// Gorev Kategori Modulu
+#define ENABLE_CHANNEL_SWITCH_SYSTEM			// Hızlı Kanal Değiştirme Sistemi
+#define ENABLE_EXTENDED_ITEMNAME_ON_GROUND		// Yere Dusen Itemlerin Isimleri Gorme Modulu
+#define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM		// Yere Sat-Sil Sistemi
+#define ENABLE_GUILD_LEADER_GRADE_NAME			// Lonca Lider-General Sistemi
+#define ENABLE_TARGET_INFORMATION_SYSTEM		// Mob Info Sistemi
+#define ENABLE_AURA_SYSTEM						// Official Aura Sistemi
+
+-----------------------------------------------**********************************************------------------------------------------------

@@ -3628,22 +3628,42 @@ void CHARACTER::PointChange(BYTE type, int amount, bool bAmount, bool bBroadcast
 #ifdef ENABLE_MAGIC_REDUCTION_SYSTEM
 	case POINT_RESIST_MAGIC_REDUCTION:
 #endif
-	case POINT_FREEZE_PCT:
-	case POINT_LASTING_FIRE_PCT:
+#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
+	case POINT_ENCHANT_FIRE:
+	case POINT_ENCHANT_ICE:
+	case POINT_ENCHANT_EARTH:
+	case POINT_ENCHANT_DARK:
+	case POINT_ENCHANT_WIND:
+	case POINT_ENCHANT_ELECT:
+
+	case POINT_RESIST_HUMAN:
+
+	case POINT_ATTBONUS_SWORD:
+	case POINT_ATTBONUS_TWOHAND:
+	case POINT_ATTBONUS_DAGGER:
+	case POINT_ATTBONUS_BELL:
+	case POINT_ATTBONUS_FAN:
+	case POINT_ATTBONUS_BOW:
+#ifdef ENABLE_WOLFMAN_CHARACTER
+	case POINT_ATTBONUS_CLAW:
+#endif
+	case POINT_ATTBONUS_CZ:
+	case POINT_ATTBONUS_DESERT:
+	case POINT_ATTBONUS_INSECT:
+#endif
 #ifdef ENABLE_EXTRA_APPLY_BONUS
 	case POINT_ATTBONUS_STONE:
 	case POINT_ATTBONUS_BOSS:
-	case POINT_ATTBONUS_DUNGEON:
-	case POINT_RESIST_HUMAN:
-#endif
-#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
-	case POINT_ATTBONUS_ELEC:
-	case POINT_ATTBONUS_FIRE:
-	case POINT_ATTBONUS_ICE:
-	case POINT_ATTBONUS_WIND:
-	case POINT_ATTBONUS_EARTH:
-	case POINT_ATTBONUS_DARK:
-	case POINT_ATTBONUS_ZODIAC:
+	case POINT_ATTBONUS_ELEMENTS:
+	case POINT_ENCHANT_ELEMENTS:
+	case POINT_ATTBONUS_CHARACTERS:
+	case POINT_ENCHANT_CHARACTERS:
+	case POINT_ATTBONUS_RAZADOR:
+	case POINT_ATTBONUS_NEMERE:
+	case POINT_ATTBONUS_LUCIFER:
+	case POINT_ATTBONUS_BLUE_DRAGON:
+	case POINT_ATTBONUS_RED_DRAGON:
+	case POINT_ATTBONUS_AZRAEL:
 #endif
 	case POINT_RESIST_WIND:
 	case POINT_RESIST_ICE:
@@ -4040,23 +4060,41 @@ void CHARACTER::ApplyPoint(BYTE bApplyType, int iVal)
 #ifdef ENABLE_MAGIC_REDUCTION_SYSTEM
 	case APPLY_RESIST_MAGIC_REDUCTION:	//98
 #endif
-	case APPLY_FREEZE_PCT:
-	case APPLY_LASTING_FIRE_PCT:
+#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
+	case APPLY_ENCHANT_FIRE:
+	case APPLY_ENCHANT_ICE:
+	case APPLY_ENCHANT_EARTH:
+	case APPLY_ENCHANT_DARK:
+	case APPLY_ENCHANT_WIND:
+	case APPLY_ENCHANT_ELECT:
+	case APPLY_MOUNT:
+	case APPLY_RESIST_HUMAN:
+	case APPLY_ATTBONUS_SWORD:
+	case APPLY_ATTBONUS_TWOHAND:
+	case APPLY_ATTBONUS_DAGGER:
+	case APPLY_ATTBONUS_BELL:
+	case APPLY_ATTBONUS_FAN:
+	case APPLY_ATTBONUS_BOW:
+#ifdef ENABLE_WOLFMAN_CHARACTER
+	case APPLY_ATTBONUS_CLAW:
+#endif
+	case APPLY_ATTBONUS_CZ:
+	case APPLY_ATTBONUS_DESERT:
+	case APPLY_ATTBONUS_INSECT:
+#endif
 #ifdef ENABLE_EXTRA_APPLY_BONUS
 	case APPLY_ATTBONUS_STONE:
 	case APPLY_ATTBONUS_BOSS:
-	case APPLY_ATTBONUS_DUNGEON:
-	case APPLY_RESIST_HUMAN:
-	case APPLY_ATTBONUS_INSECT:
-#endif
-#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
-	case APPLY_ATTBONUS_ELEC:
-	case APPLY_ATTBONUS_FIRE:
-	case APPLY_ATTBONUS_ICE:
-	case APPLY_ATTBONUS_WIND:
-	case APPLY_ATTBONUS_EARTH:
-	case APPLY_ATTBONUS_DARK:
-	case APPLY_ATTBONUS_ZODIAC:
+	case APPLY_ATTBONUS_ELEMENTS:
+	case APPLY_ENCHANT_ELEMENTS:
+	case APPLY_ATTBONUS_CHARACTERS:
+	case APPLY_ENCHANT_CHARACTERS:
+	case APPLY_ATTBONUS_RAZADOR:
+	case APPLY_ATTBONUS_NEMERE:
+	case APPLY_ATTBONUS_LUCIFER:
+	case APPLY_ATTBONUS_BLUE_DRAGON:
+	case APPLY_ATTBONUS_RED_DRAGON:
+	case APPLY_ATTBONUS_AZRAEL:
 #endif
 		PointChange(aApplyInfo[bApplyType].bPointType, iVal);
 		break;
@@ -8282,3 +8320,95 @@ bool CHARACTER::StartChannelSwitch(long newAddr, WORD newPort)
 	return true;
 }
 #endif
+
+bool CHARACTER::IsBoss()
+{
+	switch (GetRaceNum())
+	{
+	case 191:
+	case 192:
+	case 193:
+	case 194:
+	case 491:
+	case 492:
+	case 493:
+	case 494:
+	case 533:
+	case 534:
+	case 591:
+	case 691:
+	case 692:
+	case 693:
+	case 791:
+	case 792:
+	case 793:
+	case 794:
+	case 795:
+	case 796:
+	case 993:
+	case 1091:
+	case 1092:
+	case 1093:
+	case 1094:
+	case 1095:
+	case 1191:
+	case 1192:
+	case 1304:
+	case 1306:
+	case 1307:
+	case 1901:
+	case 1902:
+	case 1903:
+	case 2091:
+	case 2092:
+	case 2093:
+	case 2094:
+	case 2095:
+	case 2191:
+	case 2192:
+	case 2206:
+	case 2207:
+	case 2291:
+	case 2306:
+	case 2491:
+	case 2492:
+	case 2493:
+	case 2494:
+	case 2495:
+	case 2597:
+	case 2598:
+	case 3090:
+	case 3091:
+	case 3190:
+	case 3191:
+	case 3290:
+	case 3291:
+	case 3390:
+	case 3391:
+	case 3490:
+	case 3491:
+	case 3590:
+	case 3591:
+	case 3595:
+	case 3596:
+	case 3690:
+	case 3691:
+	case 3790:
+	case 3791:
+	case 3890:
+	case 3891:
+	case 5161:
+	case 5162:
+	case 5163:
+	case 6091:
+	case 6191:
+		// EVENTS
+	case 6415:
+	case 6416:
+	case 6417:
+	case 6419:
+		return true;
+	}
+
+	return false;
+}

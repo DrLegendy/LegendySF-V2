@@ -1028,22 +1028,45 @@ void initItem()
 	PyModule_AddIntConstant(poModule, "E_SEAL_DATE_UNLIMITED_TIMESTAMP",	CItemData::SEAL_DATE_UNLIMITED_TIMESTAMP);
 #endif
 
-#ifdef ENABLE_EXTRA_APPLY_BONUS
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_STONE",				CItemData::APPLY_ATTBONUS_STONE);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_BOSS",				CItemData::APPLY_ATTBONUS_BOSS);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_DUNGEON",				CItemData::APPLY_ATTBONUS_DUNGEON);
-	PyModule_AddIntConstant(poModule, "APPLY_RESIST_HUMAN",					CItemData::APPLY_RESIST_HUMAN);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_INSECT",				CItemData::APPLY_ATTBONUS_INSECT);
+#ifdef ENABLE_MOUNT_COSTUME_SYSTEM
+	PyModule_AddIntConstant(poModule, "APPLY_MOUNT", CItemData::APPLY_MOUNT);
 #endif
 
 #ifdef ENABLE_ELEMENTAL_APPLY_BONUS
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_ELEC", 				CItemData::APPLY_ATTBONUS_ELEC);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_FIRE", 				CItemData::APPLY_ATTBONUS_FIRE);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_ICE", 				CItemData::APPLY_ATTBONUS_ICE);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_WIND", 				CItemData::APPLY_ATTBONUS_WIND);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_EARTH", 				CItemData::APPLY_ATTBONUS_EARTH);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_DARK", 				CItemData::APPLY_ATTBONUS_DARK);
-	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_ZODIAC",				CItemData::APPLY_ATTBONUS_ZODIAC);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_ELECT", CItemData::APPLY_ENCHANT_ELECT);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_FIRE", CItemData::APPLY_ENCHANT_FIRE);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_ICE", CItemData::APPLY_ENCHANT_ICE);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_WIND", CItemData::APPLY_ENCHANT_WIND);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_EARTH", CItemData::APPLY_ENCHANT_EARTH);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_DARK", CItemData::APPLY_ENCHANT_DARK);
+	PyModule_AddIntConstant(poModule, "APPLY_RESIST_HUMAN", CItemData::APPLY_RESIST_HUMAN);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_SWORD", CItemData::APPLY_ATTBONUS_SWORD);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_TWOHAND", CItemData::APPLY_ATTBONUS_TWOHAND);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_DAGGER", CItemData::APPLY_ATTBONUS_DAGGER);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_BELL", CItemData::APPLY_ATTBONUS_BELL);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_FAN", CItemData::APPLY_ATTBONUS_FAN);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_BOW", CItemData::APPLY_ATTBONUS_BOW);
+#ifdef ENABLE_WOLFMAN_CHARACTER
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_CLAW", CItemData::APPLY_ATTBONUS_CLAW);
+#endif
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_CZ", CItemData::APPLY_ATTBONUS_CZ);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_DESERT", CItemData::APPLY_ATTBONUS_DESERT);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_INSECT", CItemData::APPLY_ATTBONUS_INSECT);
+
+#endif
+#ifdef ENABLE_EXTRA_APPLY_BONUS
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_STONE", CItemData::APPLY_ATTBONUS_STONE);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_BOSS", CItemData::APPLY_ATTBONUS_BOSS);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_ELEMENTS", CItemData::APPLY_ATTBONUS_ELEMENTS);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_ELEMENTS", CItemData::APPLY_ENCHANT_ELEMENTS);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_CHARACTERS", CItemData::APPLY_ATTBONUS_CHARACTERS);
+	PyModule_AddIntConstant(poModule, "APPLY_ENCHANT_CHARACTERS", CItemData::APPLY_ENCHANT_CHARACTERS);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_RAZADOR", CItemData::APPLY_ATTBONUS_RAZADOR);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_NEMERE", CItemData::APPLY_ATTBONUS_NEMERE);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_LUCIFER", CItemData::APPLY_ATTBONUS_LUCIFER);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_BLUE_DRAGON", CItemData::APPLY_ATTBONUS_BLUE_DRAGON);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_RED_DRAGON", CItemData::APPLY_ATTBONUS_RED_DRAGON);
+	PyModule_AddIntConstant(poModule, "APPLY_ATTBONUS_AZRAEL", CItemData::APPLY_ATTBONUS_AZRAEL);
 #endif
 
 #ifdef ENABLE_AURA_SYSTEM

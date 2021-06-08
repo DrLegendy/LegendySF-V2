@@ -1251,13 +1251,22 @@ TOOLTIP_ANTI_SELL	Depoda satýlamaz
 TOOLTIP_APPLY_ACCEDRAIN_RATE	Emiþ Derecesi: %%%d	SA
 TOOLTIP_APPLY_ATTBONUS_ANIMAL	Hayvanlara karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_ASSASSIN	Ninjalara karþý güçlü +%%%d	SA
+TOOLTIP_APPLY_ATTBONUS_BELL	Çan savunmasýndan kopuþ +%d%%	SA
+TOOLTIP_APPLY_ATTBONUS_BOW	Ok savunmasýndan kopuþ +%d%%	SA
+TOOLTIP_APPLY_ATTBONUS_CLAW	Pençe/Hançer savunmasýndan kopuþ +%d%%	SA
+TOOLTIP_APPLY_ATTBONUS_CZ	Zodyak canavarýna karþý güçlü +%d%%	SA
+TOOLTIP_APPLY_ATTBONUS_DAGGER	Hançer/Pençe savunmasýndan kopuþ +%d%%	SA
+TOOLTIP_APPLY_ATTBONUS_DESERT	Çöl canavarýna karþý güçlü +%d%%	SA
 TOOLTIP_APPLY_ATTBONUS_DEVIL	Þeytanlara karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_HUMAN	Yarý insanlara karþý güçlü +%%%d	SA
+TOOLTIP_APPLY_ATTBONUS_INSECT	Böceklere karþý güçlü +%d%%	SA
 TOOLTIP_APPLY_ATTBONUS_MILGYO	Mistiklere karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_MONSTER	Canavarlara karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_ORC	Orklara karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_SHAMAN	Þamanlara karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_SURA	Suralara karþý güçlü +%%%d	SA
+TOOLTIP_APPLY_ATTBONUS_SWORD	Kýlýç savunmasýndan kopuþ +%d%%	SA
+TOOLTIP_APPLY_ATTBONUS_TWOHAND	Çift el savunmasýndan kopuþ +%d%%	SA
 TOOLTIP_APPLY_ATTBONUS_UNDEAD	Ölümsüzlere karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_WARRIOR	Savasçýlara karþý güçlü +%%%d	SA
 TOOLTIP_APPLY_ATTBONUS_WOLFMAN	Lycanlar'a karþý güçlü + %%%d	SA
@@ -1268,6 +1277,12 @@ TOOLTIP_APPLY_COMBAT_SP_RECOVER	Savaþta her 5 saniyede SP yenile %d	SA
 TOOLTIP_APPLY_CRITICAL_PCT	Kritik Vuruþ Þansý: +%%%d	SA
 TOOLTIP_APPLY_DAMAGE_SP_RECOVER	Vuruþ yapýldýðýnda Sp geri kazaným þansý %%%d	SA
 TOOLTIP_APPLY_DODGE	Oklardan korunma þansý %%%d	SA
+TOOLTIP_APPLY_ENCHANT_DARK	Karanlýðýn gücü +%d%%	SA
+TOOLTIP_APPLY_ENCHANT_EARTH	Topraðýn gücü +%d%%	SA
+TOOLTIP_APPLY_ENCHANT_ELECT	Þimþeklerin gücü +%d%%	SA
+TOOLTIP_APPLY_ENCHANT_FIRE	Ateþin gücü +%d%%	SA
+TOOLTIP_APPLY_ENCHANT_ICE	Buzun gücü +%d%%	SA
+TOOLTIP_APPLY_ENCHANT_WIND	Rüzgarýn gücü +%d%%	SA
 TOOLTIP_APPLY_EXP_DOUBLE_BONUS	EXP Bonus þansý %%%d	SA
 TOOLTIP_APPLY_GOLD_DOUBLE_BONUS	Ýki kat Yang düþme þansý %%%d	SA
 TOOLTIP_APPLY_IMMUNE_FALL	Yere düþme karþýsýnda baðýþýklýk	SNA
@@ -1292,6 +1307,8 @@ TOOLTIP_APPLY_RESIST_BELL	Çan Savunmasý %%%d	SA
 TOOLTIP_APPLY_RESIST_CLAW	Pençelerde savunma þansý +%%%d	SA
 TOOLTIP_APPLY_RESIST_DAGGER	Býçak Savunmasý %%%d	SA
 TOOLTIP_APPLY_RESIST_FAN	Yelpaze Savunmasý %%%d	SA
+TOOLTIP_APPLY_RESIST_HUMAN	Yarý insanlara karþý direnç %d%%	SA
+TOOLTIP_APPLY_RESIST_MOUNT_FALL	Düþüþ direnci +%d%%	SA
 TOOLTIP_APPLY_RESIST_SHAMAN	Þaman saldýrýlarýna karþý savunma þansý: %%%d	SA
 TOOLTIP_APPLY_RESIST_SURA	Sura saldýrýlarýna karþý savunma þansý: %%%d	SA
 TOOLTIP_APPLY_RESIST_SWORD	Kýlýç Savunmasý %%%d	SA
@@ -1308,6 +1325,20 @@ TOOLTIP_APPLY_STUN_PCT	Bayýlma þansý: %%%d	SA
 TOOLTIP_ARMOR	Zýrh
 TOOLTIP_ARROW	Ok
 TOOLTIP_ASSASSIN	Ninja
+TOOLTIP_ATTBONUS_STONE	Metin taþý karþýsýnda güçlü +%%%d	SA
+TOOLTIP_ATTBONUS_BOSS	Patronlara karþý güçlü +%%%d	SA
+TOOLTIP_ATTBONUS_ELEMENTS	Elementlere karþý güçlü +%%%d	SA
+TOOLTIP_ENCHANT_ELEMENTS	Elementlere karþý direnç +%%%d	SA
+TOOLTIP_ATTBONUS_CHARACTERS	Karakterlere karþý güçlü +%%%d	SA
+TOOLTIP_ENCHANT_CHARACTERS	Karakterlere karþý direnç +%%%d	SA
+TOOLTIP_ATTBONUS_RAZADOR	Razadora karþý güçlü +%%%d	SA
+TOOLTIP_ATTBONUS_NEMERE	Nemereye karþý güçlü +%%%d	SA
+TOOLTIP_ATTBONUS_LUCIFER	Lucifere karþý güçlü +%%%d	SA
+TOOLTIP_ATTBONUS_BLUE_DRAGON	Mavi Ejdere karþý güçlü +%%%d	SA
+TOOLTIP_ATTBONUS_RED_DRAGON	Kara Ejdere karþý güçlü +%%%d	SA
+TOOLTIP_ATTBONUS_AZRAEL	Azraile karþý güçlü +%%%d	SA
+TOOLTIP_APPLY_ATTBONUS_FAN	Yelpaze savunmasýndan kopuþ +%%%d	SA
+TOOLTIP_APPLY_MOUNT	Mob Vnum: %%%d	SA
 TOOLTIP_ATT_GRADE	Saldýrý Deðeri +%d	SA
 TOOLTIP_ATT_SPEED	Saldýrý Hýzý +%%%d	SA
 TOOLTIP_AUTO_POTION_HP	Güneþ Özütü
@@ -1442,6 +1473,25 @@ TOOLTIP_RESIST_FIRE	Ateþe karþý dayanýklýlýk %%%d	SA
 TOOLTIP_RESIST_ICE	Buz Direnci +%%%d	SA
 TOOLTIP_RESIST_MAGIC	Büyüye karþý dayanýklýlýk %%%d	SA
 TOOLTIP_RESIST_MAGIC_REDUCTION	Büyü bozma %%%d	SA
+TOOLTIP_ENCHANT_FIRE	Ateþe Karþý Güç %%%d	SA
+TOOLTIP_ENCHANT_ICE	Buza Karþý Güç %%%d	SA
+TOOLTIP_ENCHANT_EARTH	Topraða Karþý Güç %%%d	SA
+TOOLTIP_ENCHANT_DARK	Karanlýða Karþý Güç %%%d	SA
+TOOLTIP_ENCHANT_WIND	Rüzgara Karþý Güç %%%d	SA
+TOOLTIP_ENCHANT_ELECT	Þimþeðe Karþý Güç %%%d	SA
+TOOLTIP_ATTBONUS_INSECT	Böceklere Karþý Güç %%%d	SA
+TOOLTIP_ATTBONUS_SWORD	Kýlýçtan Kopuþ %%%d	SA
+TOOLTIP_ATTBONUS_TWOHAND	Çiftel Kopuþ %%%d	SA
+TOOLTIP_ATTBONUS_DAGGER	Hançerden Kopuþ %%%d	SA
+TOOLTIP_ATTBONUS_BELL	Çandan kopuþ %%%d	SA
+TOOLTIP_ATTBONUS_FAN	Yelpazeden Kopuþ %%%d	SA
+TOOLTIP_ATTBONUS_BOW	Oklardan Kopuþ %%%d	SA
+TOOLTIP_ATTBONUS_CLAW	Pençelerden Kopuþ %%%d	SA
+TOOLTIP_ATTBONUS_CZ	Zodyaklara Karþý Güç %%%d	SA
+TOOLTIP_ATTBONUS_DESERT	Çöl Canavarlarýna Karþý Güç %%%d	SA
+TOOLTIP_RESIST_HUMAN	Yarý-insan direnci %%%d	SA
+TOOLTIP_ATTBONUS_STONE	Metinlere Karþý Güç %%%d	SA
+TOOLTIP_ATTBONUS_BOSS	Patronlara Karþý Güç %%%d	SA
 TOOLTIP_REST_USABLE_COUNT	Kalan: %d
 TOOLTIP_SEALED	Ruha baðlý
 TOOLTIP_SELLPRICE	Fiyat: %s
