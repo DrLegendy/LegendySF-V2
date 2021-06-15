@@ -300,6 +300,22 @@ int CalcAttBonus(LPCHARACTER pkAttacker, LPCHARACTER pkVictim, int iAtk)
 			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_DESERT)) / 100;
 		else if (pkVictim->IsRaceFlag(RACE_FLAG_TREE))
 			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_TREE)) / 100;
+#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_ELEC))
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ENCHANT_ELECT)) / 100;
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_WIND))
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ENCHANT_WIND)) / 100;
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_EARTH))
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ENCHANT_EARTH)) / 100;
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_DARK))
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ENCHANT_DARK)) / 100;
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_FIRE))
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ENCHANT_FIRE)) / 100;
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_ICE))
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ENCHANT_ICE)) / 100;
+		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_CZ))
+			iAtk += (iAtk * pkAttacker->GetPoint(POINT_ATTBONUS_CZ)) / 100;
+#endif
 
 #ifdef ENABLE_EXTRA_APPLY_BONUS
 		if (pkVictim->IsRaceFlag(RACE_FLAG_ATT_ELEC) ||

@@ -3053,7 +3053,11 @@ public:
 
 			NormalAttackAffect(m_me, pkVictim);
 
+#ifdef ENABLE_ELEMENTAL_APPLY_BONUS
+			iDam = iDam * (100 - (pkVictim->GetPoint(POINT_RESIST_BOW) - pkVictim->GetPoint(POINT_ATTBONUS_BOW))) / 100;
+#else
 			iDam = iDam * (100 - pkVictim->GetPoint(POINT_RESIST_BOW)) / 100;
+#endif
 
 			//sys_log(0, "%s arrow %s dam %d", m_me->GetName(), pkVictim->GetName(), iDam);
 
