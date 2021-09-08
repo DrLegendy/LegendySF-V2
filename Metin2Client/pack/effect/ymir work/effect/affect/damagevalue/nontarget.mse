@@ -126,7 +126,7 @@ Group Particle
         }
         List TextureFiles
         {
-            "0.jpg"
+            "target_miss.dds"
         }
     }
 }

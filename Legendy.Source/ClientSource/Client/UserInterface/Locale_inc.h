@@ -66,7 +66,11 @@
 #define ENABLE_DROP_DIALOG_EXTENDED_SYSTEM										// Yere Sat-Sil Sistemi
 #define ENABLE_GUILD_LEADER_GRADE_NAME											// Lonca Lider-General Sistemi
 #define ENABLE_TARGET_INFORMATION_SYSTEM										// Mob info Sistemi
-#define ENABLE_AURA_SYSTEM
+#define ENABLE_AURA_SYSTEM														// Offical Aura Sistemi
+#define NOKTA_HASAR																// Noktalı Hasar Sistemi
+#ifdef NOKTA_HASAR
+//#define M_K_T HASAR	//exmp: 1.200.300.400 > 1T200M300K400
+#endif
 /*
 	###		New Debugging Defines
 */

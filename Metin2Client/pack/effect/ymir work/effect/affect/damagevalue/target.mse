@@ -28,7 +28,6 @@ Group Particle
         }
         List TimeEventEmittingAngularVelocity
         {
-            0.000000 0.000000
         }
         List TimeEventEmittingDirectionX
         {
@@ -55,6 +54,7 @@ Group Particle
         List TimeEventLifeTime
         {
             0.000000 0.500000
+            0.322857 1.924779
         }
         List TimeEventSizeX
         {

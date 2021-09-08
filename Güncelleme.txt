@@ -84,7 +84,8 @@ EKLENTİLER
 FIXED
 *********************
 -Metin,Patron vs efsunlarının çalışmama sorunu düzeltildi. Sistem tamemen değiştirildi. Ek bonuslar eklendi ( Razador,Nemere vs.)
-
+-Navicat Tünel Bağlantı kaldırıldı. (Mysql Şifresi : legendy)
+-Motlist syserr hataları giderildi.
 -----------------------------------------------**********************************************------------------------------------------------
 
 EKLENEN SİSTEMLER
@@ -102,5 +103,5 @@ EKLENEN SİSTEMLER
 #define ENABLE_GUILD_LEADER_GRADE_NAME			// Lonca Lider-General Sistemi
 #define ENABLE_TARGET_INFORMATION_SYSTEM		// Mob Info Sistemi
 #define ENABLE_AURA_SYSTEM						// Official Aura Sistemi
-
+#define NOKTA_HASAR								// Noktalı Hasar Sistemi
 -----------------------------------------------**********************************************------------------------------------------------

@@ -177,6 +177,12 @@ void CInstanceBase::ProcessDamage()
 	DWORD index = 0;
 	DWORD num = 0;
 	vector<string> textures;
+#ifdef NOKTA_HASAR
+	BYTE idxMultiplier = 0;
+#ifdef M_K_T HASAR
+	BYTE valIdx = 0;
+#endif
+#endif
 	while(damage>0)
 	{
 		if(index > 7)
@@ -199,7 +205,11 @@ void CInstanceBase::ProcessDamage()
 		matrix._43 = v3Pos.z;
 		D3DXMatrixTranslation(&matrix,v3Pos.x,v3Pos.y,v3Pos.z);
 		D3DXMatrixMultiply(&matrix,&pCamera->GetInverseViewMatrix(),&matrix);
-		D3DXMatrixTranslation(&matTrans,FONT_WIDTH*index,0,0);
+#ifdef NOKTA_HASAR
+		D3DXMatrixTranslation(&matTrans, FONT_WIDTH * idxMultiplier, 0, 0);
+#else
+		D3DXMatrixTranslation(&matTrans, FONT_WIDTH * index, 0, 0);
+#endif
 		matTrans._41 = -matTrans._41;
 		matrix = matTrans*matrix;
 		D3DXMatrixMultiply(&matrix,&pCamera->GetViewMatrix(),&matrix);
@@ -210,6 +220,44 @@ void CInstanceBase::ProcessDamage()
 		textures.clear();
 
 		index++;
+
+#ifdef NOKTA_HASAR
+		idxMultiplier++;
+		if (damage > 0 && (index % 3) == 0) {
+#ifdef M_K_T HASAR
+			if (valIdx > 0) {
+				if (valIdx > 1)
+					textures.push_back("d:/ymir work/effect/affect/damagevalue/damage_t.dds");
+				else
+					textures.push_back("d:/ymir work/effect/affect/damagevalue/damage_m.dds");
+			}
+			else {
+				textures.push_back("d:/ymir work/effect/affect/damagevalue/damage_k.dds");
+			}
+#else
+			textures.push_back("d:/ymir work/effect/affect/damagevalue/" + strDamageType + "dot.dds");
+#endif
+			rkEftMgr.SetEffectTextures(ms_adwCRCAffectEffect[rdwCRCEft], textures);
+			D3DXMATRIX matrix, matTrans;
+			D3DXMatrixIdentity(&matrix);
+			matrix._41 = v3Pos.x;
+			matrix._42 = v3Pos.y;
+			matrix._43 = v3Pos.z;
+			D3DXMatrixTranslation(&matrix, v3Pos.x, v3Pos.y, v3Pos.z);
+			D3DXMatrixMultiply(&matrix, &pCamera->GetInverseViewMatrix(), &matrix);
+			D3DXMatrixTranslation(&matTrans, FONT_WIDTH * idxMultiplier, 0, 0);
+			matTrans._41 = -matTrans._41;
+			matrix = matTrans * matrix;
+			D3DXMatrixMultiply(&matrix, &pCamera->GetViewMatrix(), &matrix);
+			rkEftMgr.CreateEffect(ms_adwCRCAffectEffect[rdwCRCEft], D3DXVECTOR3(matrix._41, matrix._42, matrix._43), v3Rot);
+			textures.clear();
+			idxMultiplier++;
+#ifdef M_K_T HASAR
+			valIdx++;
+#endif
+		}
+#endif
+
 	}
 }
 
